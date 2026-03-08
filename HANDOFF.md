@@ -36,6 +36,7 @@
 - `CLAUDE_*` environment variables diff
 - model IDs diff
 - settings default 値 diff
+- 配布パッケージ全ファイルの manifest diff
 
 ### 3. Capability Signals
 
@@ -50,6 +51,7 @@
   - IDE / UI / Voice / Remote
 - 公式 changelog が取れれば、その記述も同じ分類に混ぜる
 - `source-only` な change をレポート冒頭で強調表示
+- package-level の file diff も snapshot に保存
 - capability signal は `Official` と `Source` を分けて表示
 
 ## 主要ファイル

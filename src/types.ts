@@ -19,12 +19,21 @@ export interface ExtractedSignals {
   settings: Record<string, unknown>;
 }
 
+export interface PackageFileRecord {
+  path: string;
+  kind: "text" | "binary";
+  size: number;
+  sha256: string;
+}
+
 export interface SnapshotSource {
   version: string;
   buildTime: string;
   sourceDir: string;
   cliContent: string;
   sdkContent: string;
+  packageFiles: PackageFileRecord[];
+  textFileContents: Record<string, string>;
 }
 
 export interface ChangeEntry {
@@ -48,6 +57,7 @@ export interface SourceOnlyChanges {
   envVars: ChangeEntry[];
   settings: ChangeEntry[];
   tools: ChangeEntry[];
+  packageFiles: ChangeEntry[];
 }
 
 export interface ComparisonReport {
@@ -62,6 +72,7 @@ export interface ComparisonReport {
   envVars: ChangeEntry[];
   settings: ChangeEntry[];
   tools: ChangeEntry[];
+  packageFiles: ChangeEntry[];
   capabilitySignals: CapabilitySignal[];
   sourceOnlyChanges: SourceOnlyChanges;
 }

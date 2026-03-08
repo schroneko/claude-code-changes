@@ -1,4 +1,10 @@
-import type { ChangeEntry, ComparisonReport, ExtractedSignals, ToolDefinition } from "./types.js";
+import type {
+  ChangeEntry,
+  ComparisonReport,
+  ExtractedSignals,
+  PackageFileRecord,
+  ToolDefinition,
+} from "./types.js";
 import { classifyCapabilitySignals } from "./taxonomy.js";
 
 function diffArrays(prev: string[], curr: string[]): ChangeEntry[] {
@@ -89,11 +95,85 @@ function diffSlashCommands(prev: ExtractedSignals["slashCommands"], curr: Extrac
   return diffArrays(prevNames, currNames);
 }
 
+function formatBytes(bytes: number): string {
+  if (bytes < 1024) {
+    return `${bytes} B`;
+  }
+  if (bytes < 1024 * 1024) {
+    return `${(bytes / 1024).toFixed(1)} KB`;
+  }
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function countLines(content: string): number {
+  if (content.length === 0) {
+    return 0;
+  }
+  return content.split("\n").length;
+}
+
+function diffPackageFiles(
+  prevFiles: PackageFileRecord[],
+  currFiles: PackageFileRecord[],
+  prevTextFileContents: Record<string, string>,
+  currTextFileContents: Record<string, string>,
+): ChangeEntry[] {
+  const entries: ChangeEntry[] = [];
+  const prevMap = new Map(prevFiles.map((file) => [file.path, file]));
+  const currMap = new Map(currFiles.map((file) => [file.path, file]));
+  const allPaths = new Set([...prevMap.keys(), ...currMap.keys()]);
+
+  for (const filePath of [...allPaths].sort()) {
+    const prevFile = prevMap.get(filePath);
+    const currFile = currMap.get(filePath);
+
+    if (!prevFile && currFile) {
+      entries.push({
+        type: "added",
+        name: filePath,
+        detail: `${currFile.kind}, ${formatBytes(currFile.size)}`,
+      });
+      continue;
+    }
+    if (prevFile && !currFile) {
+      entries.push({
+        type: "removed",
+        name: filePath,
+        detail: `${prevFile.kind}, ${formatBytes(prevFile.size)}`,
+      });
+      continue;
+    }
+    if (!prevFile || !currFile || prevFile.sha256 === currFile.sha256) {
+      continue;
+    }
+
+    if (prevFile.kind === "text" && currFile.kind === "text") {
+      const prevLines = countLines(prevTextFileContents[filePath] ?? "");
+      const currLines = countLines(currTextFileContents[filePath] ?? "");
+      entries.push({
+        type: "changed",
+        name: filePath,
+        detail: `text, ${prevLines} -> ${currLines} lines`,
+      });
+      continue;
+    }
+
+    entries.push({
+      type: "changed",
+      name: filePath,
+      detail: `${prevFile.kind} ${formatBytes(prevFile.size)} -> ${currFile.kind} ${formatBytes(currFile.size)}`,
+    });
+  }
+
+  return entries;
+}
+
 function buildSourceOnlyChanges(input: {
   slashCommands: ChangeEntry[];
   envVars: ChangeEntry[];
   settings: ChangeEntry[];
   tools: ChangeEntry[];
+  packageFiles: ChangeEntry[];
   officialMentionedCommands: string[];
 }): ComparisonReport["sourceOnlyChanges"] {
   return {
@@ -103,6 +183,7 @@ function buildSourceOnlyChanges(input: {
     envVars: input.envVars,
     settings: input.settings,
     tools: input.tools,
+    packageFiles: input.packageFiles,
   };
 }
 
@@ -111,6 +192,10 @@ export function buildComparisonReport(input: {
   currSignals: ExtractedSignals;
   prevCliContent: string;
   currCliContent: string;
+  prevPackageFiles: PackageFileRecord[];
+  currPackageFiles: PackageFileRecord[];
+  prevTextFileContents: Record<string, string>;
+  currTextFileContents: Record<string, string>;
   officialChangelogBullets: string[];
   officialMentionedCommands: string[];
 }): ComparisonReport {
@@ -119,11 +204,18 @@ export function buildComparisonReport(input: {
   const envVars = diffArrays(input.prevSignals.envVars, input.currSignals.envVars);
   const settings = diffSettings(input.prevSignals.settings, input.currSignals.settings);
   const tools = diffTools(input.prevSignals.tools, input.currSignals.tools);
+  const packageFiles = diffPackageFiles(
+    input.prevPackageFiles,
+    input.currPackageFiles,
+    input.prevTextFileContents,
+    input.currTextFileContents,
+  );
   const sourceOnlyChanges = buildSourceOnlyChanges({
     slashCommands,
     envVars,
     settings,
     tools,
+    packageFiles,
     officialMentionedCommands: input.officialMentionedCommands,
   });
 
@@ -149,6 +241,7 @@ export function buildComparisonReport(input: {
     envVars,
     settings,
     tools,
+    packageFiles,
     capabilitySignals,
     sourceOnlyChanges,
   };
@@ -218,6 +311,7 @@ function renderSlashCommandInventory(report: ComparisonReport): string[] {
 
 function renderSourceOnlyHighlights(report: ComparisonReport): string[] {
   const sections: Array<{ label: string; entries: ChangeEntry[] }> = [
+    { label: "Package Files", entries: report.sourceOnlyChanges.packageFiles },
     { label: "Slash Commands", entries: report.sourceOnlyChanges.slashCommands },
     { label: "Environment Variables", entries: report.sourceOnlyChanges.envVars },
     { label: "Settings", entries: report.sourceOnlyChanges.settings },
@@ -249,6 +343,9 @@ export function renderMarkdown(report: ComparisonReport): string {
   lines.push("");
   lines.push("## Source-Only Highlights");
   lines.push(...renderSourceOnlyHighlights(report));
+  lines.push("");
+  lines.push("## 0. Package Files");
+  lines.push(...renderChangeList(report.packageFiles, []));
   lines.push("");
   lines.push("## 1. Slash Commands");
   lines.push("### Changes");

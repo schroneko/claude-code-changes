@@ -37,6 +37,10 @@ async function compareDirs(prevDir: string, currDir: string): Promise<void> {
     currSignals,
     prevCliContent: prevSource.cliContent,
     currCliContent: currSource.cliContent,
+    prevPackageFiles: prevSource.packageFiles,
+    currPackageFiles: currSource.packageFiles,
+    prevTextFileContents: prevSource.textFileContents,
+    currTextFileContents: currSource.textFileContents,
     officialChangelogBullets,
     officialMentionedCommands,
   });
@@ -76,6 +80,10 @@ async function track(version?: string): Promise<void> {
       currSignals: signals,
       prevCliContent: prevSource.cliContent,
       currCliContent: source.cliContent,
+      prevPackageFiles: prevSource.packageFiles,
+      currPackageFiles: source.packageFiles,
+      prevTextFileContents: prevSource.textFileContents,
+      currTextFileContents: source.textFileContents,
       officialChangelogBullets,
       officialMentionedCommands,
     });

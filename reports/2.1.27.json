@@ -620,6 +620,13 @@
   ],
   "settings": [],
   "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 581907 -> 562501 lines"
+    }
+  ],
   "capabilitySignals": [
     {
       "id": "slash-and-workflows",
@@ -746,6 +753,13 @@
       }
     ],
     "settings": [],
-    "tools": []
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 581907 -> 562501 lines"
+      }
+    ]
   }
 }
