@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "track": "node --import tsx src/main.ts track",
+    "compare": "node --import tsx src/main.ts compare",
+    "list": "node --import tsx src/main.ts list",
     "compare:fixture": "node --import tsx src/main.ts compare ../claude-code-analysis/versions/2.1.25 ../claude-code-analysis/versions/2.1.27",
     "typecheck": "tsc --noEmit"
   },

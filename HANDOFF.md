@@ -15,7 +15,7 @@
 - プロジェクト名は `claude-code-changes`
 - 配置場所は `/Users/username/Sync/claude-code-changes`
 - `claude-code-analysis` 配下に入れていた誤配置版は削除済み
-- GitHub 上のリモートリポジトリはまだ作っていない
+- GitHub private repo は作成済み: `git@github.com:schroneko/claude-code-changes.git`
 - `git init` 済み
 - `node_modules` は存在し、ローカル実行は可能
 
@@ -29,6 +29,7 @@
 - `built-in` / `plugin` / `inferred` を区別してレポート表示
 - `pluginCommand` と `userFacingName: () =>` も抽出対象
 - 差分だけでなく現行在庫も Markdown に表示
+- `npm run compare -- <prev> <curr>` と `npm run list` で使いやすくしてある
 
 ### 2. Public Surface
 
@@ -85,6 +86,18 @@ fixture 比較:
 npm run compare:fixture
 ```
 
+保存済み snapshot 一覧:
+
+```bash
+npm run list
+```
+
+保存済み snapshot 同士の比較:
+
+```bash
+npm run compare -- 2.1.27 2.1.71
+```
+
 最新追跡:
 
 ```bash
@@ -103,6 +116,8 @@ npm run track -- 2.1.71
 
 - `npm run typecheck`
 - `npm run compare:fixture`
+- `npm run list`
+- `npm run track -- 2.1.71`
 
 `compare:fixture` は現在、
 
@@ -144,8 +159,8 @@ npm run track -- 2.1.71
 
 1. `Slash Commands` の hidden / docs-only 差分の詰め
 2. `Capability Signals` の分類精度向上
-3. GitHub private repo 作成と remote push
-4. 初回 commit 整理
+3. report の見やすさ調整
+4. GitHub Actions の運用観察
 
 ## 推奨する次の具体作業
 

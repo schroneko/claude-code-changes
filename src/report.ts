@@ -218,16 +218,26 @@ export function buildComparisonReport(input: {
     packageFiles,
     officialMentionedCommands: input.officialMentionedCommands,
   });
-
-  const capabilitySignals = classifyCapabilitySignals({
-    prevCliContent: input.prevCliContent,
-    currCliContent: input.currCliContent,
-    officialChangelogBullets: input.officialChangelogBullets,
+  const hasAnyDetectedChange = [
     slashCommands,
-    settings,
+    models,
     envVars,
+    settings,
     tools,
-  });
+    packageFiles,
+  ].some((entries) => entries.length > 0);
+
+  const capabilitySignals = hasAnyDetectedChange
+    ? classifyCapabilitySignals({
+        prevCliContent: input.prevCliContent,
+        currCliContent: input.currCliContent,
+        officialChangelogBullets: input.officialChangelogBullets,
+        slashCommands,
+        settings,
+        envVars,
+        tools,
+      })
+    : [];
 
   return {
     version: input.currSignals.version,
