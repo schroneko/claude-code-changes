@@ -98,6 +98,12 @@ npm run list
 npm run compare -- 2.1.27 2.1.71
 ```
 
+過去版の穴埋め:
+
+```bash
+npm run backfill -- 2.1.27 2.1.71
+```
+
 最新追跡:
 
 ```bash
@@ -118,6 +124,7 @@ npm run track -- 2.1.71
 - `npm run compare:fixture`
 - `npm run list`
 - `npm run track -- 2.1.71`
+- `npm run backfill -- 2.1.70 2.1.71`
 
 `compare:fixture` は現在、
 

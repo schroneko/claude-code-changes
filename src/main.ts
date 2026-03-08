@@ -7,6 +7,7 @@ import {
   compareVersions,
   copyReportArtifacts,
   fetchPackage,
+  getPublishedVersions,
   getSavedSnapshotDirs,
   loadSnapshotSource,
   saveSnapshot,
@@ -21,6 +22,7 @@ function usage(): never {
   console.error("  npm run track -- [version]");
   console.error("  npm run compare -- <prevSnapshotOrDir> <currSnapshotOrDir>");
   console.error("  npm run list");
+  console.error("  npm run backfill -- <fromVersion> <toVersion>");
   process.exit(1);
 }
 
@@ -76,18 +78,28 @@ function printList(): void {
     console.log("- none");
   } else {
     for (const version of markdownReports) {
-      console.log(`- ${version}`);
+      console.log(`- ${version}${snapshotVersions.includes(version) ? "" : " [report-only]"}`);
     }
   }
+
+  const snapshotOnly = snapshotVersions.filter((version) => !markdownReports.includes(version));
+  const reportOnly = markdownReports.filter((version) => !snapshotVersions.includes(version));
+
+  console.log("");
+  console.log("Summary:");
+  console.log(`- snapshots: ${snapshotVersions.length}`);
+  console.log(`- reports: ${markdownReports.length}`);
+  console.log(`- snapshot-only: ${snapshotOnly.length > 0 ? snapshotOnly.join(", ") : "none"}`);
+  console.log(`- report-only: ${reportOnly.length > 0 ? reportOnly.join(", ") : "none"}`);
 }
 
-async function compareDirs(prevDir: string, currDir: string): Promise<void> {
-  const prevSource = loadSnapshotSource(prevDir);
-  const currSource = loadSnapshotSource(currDir);
+function buildReport(
+  prevSource: ReturnType<typeof loadSnapshotSource>,
+  currSource: ReturnType<typeof loadSnapshotSource>,
+  officialChangelog: string,
+): { markdown: string; json: string; version: string } {
   const prevSignals = extractSignals(prevSource);
   const currSignals = extractSignals(currSource);
-
-  const officialChangelog = await getOfficialChangelog(CHANGELOG_CACHE_PATH);
   const officialChangelogBullets = parseChangelogEntry(officialChangelog, currSignals.version);
   const officialMentionedCommands = extractCommandsFromBullets(officialChangelogBullets);
 
@@ -104,13 +116,26 @@ async function compareDirs(prevDir: string, currDir: string): Promise<void> {
     officialMentionedCommands,
   });
 
-  const markdown = renderMarkdown(report);
-  const json = JSON.stringify(report, null, 2);
-  copyReportArtifacts(join(ROOT_DIR, "reports"), report.version, markdown, json);
-  console.log(markdown);
-  const paths = reportPaths(report.version);
+  return {
+    version: report.version,
+    markdown: renderMarkdown(report),
+    json: JSON.stringify(report, null, 2),
+  };
+}
+
+function saveAndPrintReport(result: { markdown: string; json: string; version: string }): void {
+  copyReportArtifacts(join(ROOT_DIR, "reports"), result.version, result.markdown, result.json);
+  console.log(result.markdown);
+  const paths = reportPaths(result.version);
   console.log(`Saved report: ${paths.markdownPath}`);
   console.log(`Saved JSON: ${paths.jsonPath}`);
+}
+
+async function compareDirs(prevDir: string, currDir: string): Promise<void> {
+  const prevSource = loadSnapshotSource(prevDir);
+  const currSource = loadSnapshotSource(currDir);
+  const officialChangelog = await getOfficialChangelog(CHANGELOG_CACHE_PATH);
+  saveAndPrintReport(buildReport(prevSource, currSource, officialChangelog));
 }
 
 async function track(version?: string): Promise<void> {
@@ -130,38 +155,65 @@ async function track(version?: string): Promise<void> {
     if (savedSnapshotDirs.length === 0) {
       console.log(`Saved initial snapshot for ${signals.version}`);
       console.log(`Snapshot dir: ${join(ROOT_DIR, "snapshots", signals.version)}`);
-      console.log("Run another `npm run track` after a new release, or compare snapshots with `npm run compare -- <prev> <curr>`.");
+      console.log("Run another `npm run track` after a new release, or backfill a range with `npm run backfill -- <from> <to>`.");
       return;
     }
 
     const prevSource = loadSnapshotSource(savedSnapshotDirs[0]);
-    const prevSignals = extractSignals(prevSource);
-    const officialChangelogBullets = parseChangelogEntry(officialChangelog, signals.version);
-    const officialMentionedCommands = extractCommandsFromBullets(officialChangelogBullets);
-
-    const report = buildComparisonReport({
-      prevSignals,
-      currSignals: signals,
-      prevCliContent: prevSource.cliContent,
-      currCliContent: source.cliContent,
-      prevPackageFiles: prevSource.packageFiles,
-      currPackageFiles: source.packageFiles,
-      prevTextFileContents: prevSource.textFileContents,
-      currTextFileContents: source.textFileContents,
-      officialChangelogBullets,
-      officialMentionedCommands,
-    });
-
-    const markdown = renderMarkdown(report);
-    const json = JSON.stringify(report, null, 2);
-    copyReportArtifacts(join(ROOT_DIR, "reports"), report.version, markdown, json);
-    console.log(markdown);
-    const paths = reportPaths(report.version);
-    console.log(`Saved report: ${paths.markdownPath}`);
-    console.log(`Saved JSON: ${paths.jsonPath}`);
+    saveAndPrintReport(buildReport(prevSource, source, officialChangelog));
   } finally {
     fetched.cleanup();
   }
+}
+
+async function backfill(fromVersion: string, toVersion: string): Promise<void> {
+  const officialChangelog = await getOfficialChangelog(CHANGELOG_CACHE_PATH);
+  const publishedVersions = getPublishedVersions();
+  const minVersion = compareVersions(fromVersion, toVersion) <= 0 ? fromVersion : toVersion;
+  const maxVersion = compareVersions(fromVersion, toVersion) <= 0 ? toVersion : fromVersion;
+  const targetVersions = publishedVersions.filter((version) =>
+    compareVersions(version, minVersion) >= 0 && compareVersions(version, maxVersion) <= 0,
+  );
+
+  if (targetVersions.length === 0) {
+    throw new Error(`No published versions found in range ${fromVersion}..${toVersion}`);
+  }
+
+  console.log(`Backfilling ${targetVersions.length} version(s): ${targetVersions[0]} -> ${targetVersions[targetVersions.length - 1]}`);
+
+  const snapshotSources = new Map<string, ReturnType<typeof loadSnapshotSource>>();
+
+  for (const version of targetVersions) {
+    const snapshotDir = join(ROOT_DIR, "snapshots", version);
+    if (existsSync(snapshotDir)) {
+      snapshotSources.set(version, loadSnapshotSource(snapshotDir, version));
+      console.log(`Using existing snapshot: ${version}`);
+      continue;
+    }
+
+    const fetched = fetchPackage(version);
+    try {
+      const source = loadSnapshotSource(fetched.packageDir, version);
+      const signals = extractSignals(source);
+      saveSnapshot(ROOT_DIR, source, signals);
+      snapshotSources.set(version, loadSnapshotSource(join(ROOT_DIR, "snapshots", version), version));
+      console.log(`Saved snapshot: ${version}`);
+    } finally {
+      fetched.cleanup();
+    }
+  }
+
+  for (let index = 1; index < targetVersions.length; index += 1) {
+    const prevVersion = targetVersions[index - 1];
+    const currVersion = targetVersions[index];
+    const prevSource = snapshotSources.get(prevVersion)!;
+    const currSource = snapshotSources.get(currVersion)!;
+    const result = buildReport(prevSource, currSource, officialChangelog);
+    copyReportArtifacts(join(ROOT_DIR, "reports"), result.version, result.markdown, result.json);
+    console.log(`Built report: ${prevVersion} -> ${currVersion}`);
+  }
+
+  console.log("Backfill complete.");
 }
 
 async function main(): Promise<void> {
@@ -188,6 +240,14 @@ async function main(): Promise<void> {
 
   if (command === "list") {
     printList();
+    return;
+  }
+
+  if (command === "backfill") {
+    if (args.length < 2) {
+      usage();
+    }
+    await backfill(args[0], args[1]);
     return;
   }
 

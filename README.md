@@ -26,6 +26,8 @@ npm run track
 
 初回実行だけでは比較相手がないので、通常は「次のリリースが出たあとにもう一度 `npm run track`」でレポートができます。
 
+過去の版をまとめて埋めたい場合は `backfill` を使います。
+
 ## どこを見ればいいか
 
 普段見るのは基本的に `reports/` です。
@@ -90,6 +92,12 @@ npm run compare:fixture
 npm run list
 ```
 
+ある区間の全リリースをまとめて取得して、連続する差分レポートを作る:
+
+```bash
+npm run backfill -- 2.1.27 2.1.71
+```
+
 型チェック:
 
 ```bash
@@ -111,6 +119,12 @@ npm run typecheck
 
 - `reports/<version>.md`
 - `reports/<version>.json`
+
+`npm run list` の見方:
+
+- `Snapshots`: ローカルに実体がある版
+- `Reports`: 生成済みレポート
+- `[report-only]`: ローカル snapshot がなく、fixture などから作られたレポートだけがある版
 
 ## 何を抽出しているか
 
@@ -155,6 +169,12 @@ npm run typecheck
 1. `npm run track`
 2. `reports/<version>.md` を読む
 3. 必要なら `git diff` で report 更新を確認する
+
+過去分も揃えたい場合:
+
+1. `npm run backfill -- <from> <to>`
+2. `npm run list`
+3. `reports/` を読む
 
 GitHub Actions で自動運用する場合:
 

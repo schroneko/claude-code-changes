@@ -1,6 +1,6 @@
 {
   "version": "2.1.71",
-  "prevVersion": "2.1.71",
+  "prevVersion": "2.1.70",
   "buildTime": "",
   "officialChangelogBullets": [
     "Added `/loop` command to run a prompt or slash command on a recurring interval (e.g. `/loop 5m check the deploy`)",
@@ -42,7 +42,16 @@
     "/settings",
     "/tag"
   ],
-  "slashCommands": [],
+  "slashCommands": [
+    {
+      "type": "added",
+      "name": "/heapdump"
+    },
+    {
+      "type": "added",
+      "name": "/loop"
+    }
+  ],
   "currentSlashCommands": [
     {
       "name": "/add-dir",
@@ -662,16 +671,250 @@
     }
   ],
   "models": [],
-  "envVars": [],
+  "envVars": [
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_DEBUG_LOG_LEVEL"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_TWO_STAGE_CLASSIFIER"
+    }
+  ],
   "settings": [],
   "tools": [],
-  "packageFiles": [],
-  "capabilitySignals": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 552282 -> 558284 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 33 -> 33 lines"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/ripgrep/arm64-darwin/ripgrep.node",
+      "detail": "binary, 5.9 MB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/ripgrep/arm64-linux/ripgrep.node",
+      "detail": "binary, 4.4 MB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/ripgrep/arm64-win32/ripgrep.node",
+      "detail": "binary, 3.8 MB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/ripgrep/x64-darwin/ripgrep.node",
+      "detail": "binary, 5.9 MB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/ripgrep/x64-linux/ripgrep.node",
+      "detail": "binary, 4.8 MB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/ripgrep/x64-win32/ripgrep.node",
+      "detail": "binary, 6.6 MB"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Added `/loop` command to run a prompt or slash command on a recurring interval (e.g. `/loop 5m check the deploy`)",
+        "Fixed forked conversations (`/fork`) sharing the same plan file, which caused plan edits in one fork to overwrite the other",
+        "Fixed `/plugin marketplace update` failing with merge conflicts when the marketplace is pinned to a branch/tag ref",
+        "Fixed `/plugin marketplace add owner/repo@ref` incorrectly parsing `@` — previously only `#` worked as a ref separator, causing undiagnosable errors with `strictKnownMarketplaces`"
+      ],
+      "sourceHighlights": [
+        "Slash command added: /loop"
+      ],
+      "evidence": [
+        "Command example: z && o3.createElement(T, { dimColor: !0 }, \"Plan saved to: \", _, \" · /plan to edit\"),",
+        "Command example: let P = `${X} ${M1.dim(\"· /permissions to manage\")}`;"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed startup UI freeze when many claude.ai proxy connectors refresh an expired OAuth token simultaneously",
+        "Fixed claude.ai connectors failing to reconnect after OAuth token refresh",
+        "Fixed claude.ai MCP connector startup notifications appearing for every org-configured connector instead of only previously connected ones",
+        "Improved plugin-provided MCP server deduplication — servers that duplicate a manually-configured server (same command/URL) are now skipped, preventing duplicate connections and tool sets. Suppressions are shown in the `/plugin` menu."
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: setOauthTokenFromFd: () => h46,",
+        "Feature example: getOauthTokenFromFd: () => sg1,"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed plugin installations being lost when running multiple Claude Code instances",
+        "Fixed `/plugin marketplace update` failing with merge conflicts when the marketplace is pinned to a branch/tag ref",
+        "Fixed `/plugin marketplace add owner/repo@ref` incorrectly parsing `@` — previously only `#` worked as a ref separator, causing undiagnosable errors with `strictKnownMarketplaces`",
+        "Improved `/plugin uninstall` to disable project-scoped plugins in `.claude/settings.local.json` instead of modifying `.claude/settings.json`, so changes don't affect teammates"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: return `The name '${A}' is reserved for official Anthropic marketplaces. Only repositories from 'github.com/${L31}/' can use this name.`;",
+        "Feature example: return `The name '${A}' is reserved for official Anthropic marketplaces and can only be used with GitHub sources from the '${L31}' organization.`;"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed background agent completion notifications missing the output file path, which made it difficult for parent agents to recover agent results after context compaction"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: N.set(\"User-Agent\", \"axios/\" + hq6, !1);",
+        "Command example: headers: { \"Content-Type\": \"application/json\", \"User-Agent\": mO(), ...K.headers },"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed the Read tool putting oversized images into context when image processing failed, breaking subsequent turns in long image-heavy sessions",
+        "Fixed background agent completion notifications missing the output file path, which made it difficult for parent agents to recover agent results after context compaction"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: sampling: Y4({ context: O0.optional(), tools: O0.optional() }).optional(),",
+        "Feature example: context: Y4({ arguments: z$(n1(), n1()).optional() }).optional(),"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Added `fmt`, `comm`, `cmp`, `numfmt`, `expr`, `test`, `printf`, `getconf`, `seq`, `tsort`, and `pr` to the bash auto-approval allowlist",
+        "Fixed false-positive permission prompts for compound bash commands containing heredoc commit messages",
+        "Fixed duplicate entries in `/permissions` Workspace tab when the same directory is added with and without a trailing slash"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: PERMISSION_DENIED: obA,",
+        "Config example: PERMISSION_MODES: () => hZ,"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed prompting for `cd <cwd> && git ...` on Windows when the model uses a mingw-style path"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: let z = q.model ?? b8(this, FD, \"f\").params.model,",
+        "Feature example: (SO3 = [\"claude-opus-4-6\"]));"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Added `voice:pushToTalk` keybinding to make the voice activation key rebindable in `keybindings.json` (default: space) — modifier+letter combos like `meta+k` have zero typing interference",
+        "Fixed a 5–8 second startup freeze for users with voice mode enabled, caused by CoreAudio initialization blocking the main thread after system wake",
+        "Fixed Chrome extension auto-detection getting permanently stuck on \"not installed\" after running on a machine without local Chrome"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: return u7() && u1.clientType !== \"claude-vscode\";",
+        "Feature example: theme: Tf([\"light\", \"dark\"]).optional(),"
+      ],
+      "sourceOnly": false
+    }
+  ],
   "sourceOnlyChanges": {
-    "slashCommands": [],
-    "envVars": [],
+    "slashCommands": [
+      {
+        "type": "added",
+        "name": "/heapdump"
+      }
+    ],
+    "envVars": [
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_DEBUG_LOG_LEVEL"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_TWO_STAGE_CLASSIFIER"
+      }
+    ],
     "settings": [],
     "tools": [],
-    "packageFiles": []
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 552282 -> 558284 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 33 -> 33 lines"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/ripgrep/arm64-darwin/ripgrep.node",
+        "detail": "binary, 5.9 MB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/ripgrep/arm64-linux/ripgrep.node",
+        "detail": "binary, 4.4 MB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/ripgrep/arm64-win32/ripgrep.node",
+        "detail": "binary, 3.8 MB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/ripgrep/x64-darwin/ripgrep.node",
+        "detail": "binary, 5.9 MB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/ripgrep/x64-linux/ripgrep.node",
+        "detail": "binary, 4.8 MB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/ripgrep/x64-win32/ripgrep.node",
+        "detail": "binary, 6.6 MB"
+      }
+    ]
   }
 }

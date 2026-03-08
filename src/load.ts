@@ -265,6 +265,14 @@ export function fetchPackage(version?: string): { packageDir: string; cleanup: (
   };
 }
 
+export function getPublishedVersions(): string[] {
+  const output = execFileSync("npm", ["view", "@anthropic-ai/claude-code", "versions", "--json"], {
+    encoding: "utf-8",
+  });
+  const parsed = JSON.parse(output) as string[];
+  return parsed.sort(compareVersions);
+}
+
 export function saveSnapshot(rootDir: string, source: SnapshotSource, signals: ExtractedSignals): string {
   const targetDir = join(rootDir, "snapshots", source.version);
   const compactTextFileContents = Object.fromEntries(
