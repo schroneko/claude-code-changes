@@ -1,0 +1,94 @@
+{
+  "version": "2.1.25",
+  "prevVersion": "2.1.23",
+  "buildTime": "",
+  "officialChangelogBullets": [],
+  "officialMentionedCommands": [],
+  "slashCommands": [],
+  "models": [],
+  "envVars": [],
+  "settings": [],
+  "tools": [],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "highlights": [],
+      "evidence": [
+        "Patch example: import { setTimeout as DtK } from \"node:timers/promises\";",
+        "Patch example: return (Bt6.prototype.pipe.call(this, A, K), this.resume(), A);"
+      ]
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "highlights": [],
+      "evidence": [
+        "Patch example: mcpLogs: (A) => frA(NrA.cache, TrA(BA().cwd()), `mcp-logs-${ns6(A)}`),",
+        "Patch example: YT8._addResourceSpans = qT8;"
+      ]
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "highlights": [],
+      "evidence": [
+        "Patch example: XA6.paginateListMarketplaceModelEndpoints = xG3;",
+        "Patch example: .describe(\"Path to command markdown file, relative to plugin root\"),"
+      ]
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "highlights": [],
+      "evidence": [
+        "Patch example: class lT8 extends cT8.Agent {",
+        "Patch example: iT8.Agent = lT8;"
+      ]
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "highlights": [],
+      "evidence": [
+        "Patch example: ? Coq(this._latestRoute.context)",
+        "Patch example: ? moq(K.context)"
+      ]
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "highlights": [],
+      "evidence": [
+        "Patch example: PERMISSION_DENIED: _T4,",
+        "Patch example: 'Permission mode for spawned teammate (e.g., \"plan\" to require plan approval).',"
+      ]
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "highlights": [],
+      "evidence": [
+        "Patch example: console.warn(`The model '${Y.model}' is deprecated and will reach end-of-life on ${ky8[Y.model]}",
+        "Patch example: console.warn(`The model '${A.model}' is deprecated and will reach end-of-life on ${hy8[A.model]}"
+      ]
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "highlights": [],
+      "evidence": [
+        "Patch example: (OJ.color.ansi = At6()),",
+        "Patch example: (OJ.color.ansi256 = Kt6()),"
+      ]
+    }
+  ]
+}
