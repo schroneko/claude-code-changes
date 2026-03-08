@@ -1,0 +1,370 @@
+{
+  "version": "1.0.5",
+  "prevVersion": "1.0.4",
+  "buildTime": "",
+  "officialChangelogBullets": [],
+  "officialMentionedCommands": [],
+  "slashCommands": [],
+  "currentSlashCommands": [
+    {
+      "name": "/allowed-tools",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bug",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/migrate-installer",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tasks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vibe",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 305253 -> 305317 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 29 -> 29 lines"
+    },
+    {
+      "type": "changed",
+      "name": "vendor/claude-code.vsix",
+      "detail": "binary 67.5 KB -> binary 67.5 KB"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: text: `${J} MCP server${J > 1 ? \"s\" : \"\"} failed to connect (see /mcp for info)`,",
+        "Command example: text: `${W} MCP server${W > 1 ? \"s\" : \"\"} failed to connect (see /mcp for info)`,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let Z = \"resource_exhausted\";",
+        "Feature example: A.ResourceExhausted = Z;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: CreateMarketplaceModelEndpointCommand: () => R90,",
+        "Config example: DeregisterMarketplaceModelEndpointCommand: () => m90,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: class LQA extends MQA.Agent {",
+        "Feature example: RQA.Agent = LQA;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: [wX.SEMANTIC_ATTRIBUTE_SENTRY_SOURCE]: this._latestRoute.context",
+        "Feature example: ? s19(this._latestRoute.context)"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: PERMISSION_DENIED: $J0,",
+        "Config example: permissions: Um9.optional(),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: let { action: G, model: D } = Q;",
+        "Config example: (I = EF[this.model].channels),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let A = K01.chrome,",
+        "Feature example: else if (VJ(\"color\") || VJ(\"colors\") || VJ(\"color=true\") || VJ(\"color=always\")) R91 = 1;"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 305253 -> 305317 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 29 -> 29 lines"
+      },
+      {
+        "type": "changed",
+        "name": "vendor/claude-code.vsix",
+        "detail": "binary 67.5 KB -> binary 67.5 KB"
+      }
+    ]
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "version": "0.2.42",
+  "prevVersion": "0.2.41",
+  "buildTime": "",
+  "officialChangelogBullets": [],
+  "officialMentionedCommands": [],
+  "slashCommands": [],
+  "currentSlashCommands": [
+    {
+      "name": "/allowed-tools",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bug",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/theme",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 227240 -> 227504 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 28 -> 28 lines"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [],
+      "sourceOnly": false
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: jT1._addResourceSpans = bT1;",
+        "Feature example: let Z = aB4.addPerformanceInstrumentationHandler(\"resource\", ({ entries: W }) => {"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: class Eb1 extends $b1.Agent {",
+        "Feature example: Sb1.Agent = Eb1;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: ? Xw4(this._latestRoute.context)",
+        "Feature example: data: { [W8.SEMANTIC_ATTRIBUTE_SENTRY_SOURCE]: G.context ? gw4(G.context) : \"url\" },"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: H5.PermissionDeniedError = ny;",
+        "Config example: t0.createElement(b, { bold: !0, color: $.permission }, \"Submit Bug Report\"),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: (W = zB[this.model].channels),",
+        "Config example: ((this.model = G || \"rgb\"), (W = zB[this.model].channels));"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let I = ck.chrome,",
+        "Feature example: else if (Gw(\"color\") || Gw(\"colors\") || Gw(\"color=true\") || Gw(\"color=always\")) yF = 1;"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 227240 -> 227504 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 28 -> 28 lines"
+      }
+    ]
+  }
+}

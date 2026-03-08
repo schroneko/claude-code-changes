@@ -1,0 +1,490 @@
+{
+  "version": "1.0.127",
+  "prevVersion": "1.0.126",
+  "buildTime": "",
+  "officialChangelogBullets": [],
+  "officialMentionedCommands": [],
+  "slashCommands": [],
+  "currentSlashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/agents",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bashes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/feedback",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "status-hint",
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/migrate-installer",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style:new",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/privacy-settings",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/security-review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/statusline",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/t",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/todos",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [
+    {
+      "type": "removed",
+      "name": "CLAUDE_CODE_DISABLE_AUTOCHECKPOINTING"
+    }
+  ],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 406336 -> 403704 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 32 -> 32 lines"
+    },
+    {
+      "type": "changed",
+      "name": "sdk.d.ts",
+      "detail": "text, 417 -> 417 lines"
+    },
+    {
+      "type": "changed",
+      "name": "sdk.mjs",
+      "detail": "text, 14158 -> 14158 lines"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: let z = `${K} ${c1.dim(\"· /permissions to manage\")}`;",
+        "Command example: B2.createElement(L, { dimColor: !0 }, \" · /mcp\"),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: NoAuthSigner: () => f69,",
+        "Feature example: return { partition: Z, service: G, region: Y, accountId: I, resourceId: J };"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: CreateMarketplaceModelEndpointCommand: () => ZjA,",
+        "Config example: DeleteMarketplaceModelEndpointCommand: () => DjA,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: return new P10.Agent({ keepAlive: !0, maxSockets: 50, ...I });",
+        "Feature example: return new j10.Agent({ keepAlive: !0, maxSockets: 50, ...W });"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: _6Q = Symbol.for(\"react.context\"),",
+        "Feature example: ((this.props = A), (this.context = B), (this.refs = s_0), (this.updater = Q || n_0));"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: PERMISSION_DENIED: NfB,",
+        "Config example: let G = { ...Q, permissions: { ...Q.permissions, [A.ruleBehavior]: Z.filter((I) => I !== B) } },"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: (Z = mH[this.model].channels),",
+        "Config example: ((this.model = B || \"rgb\"), (Z = mH[this.model].channels));"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: (D.color = Q.selectColor(F)),",
+        "Feature example: else if (kC(\"color\") || kC(\"colors\") || kC(\"color=true\") || kC(\"color=always\")) IK1 = 1;"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [
+      {
+        "type": "removed",
+        "name": "CLAUDE_CODE_DISABLE_AUTOCHECKPOINTING"
+      }
+    ],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 406336 -> 403704 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 32 -> 32 lines"
+      },
+      {
+        "type": "changed",
+        "name": "sdk.d.ts",
+        "detail": "text, 417 -> 417 lines"
+      },
+      {
+        "type": "changed",
+        "name": "sdk.mjs",
+        "detail": "text, 14158 -> 14158 lines"
+      }
+    ]
+  }
+}

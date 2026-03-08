@@ -104,6 +104,12 @@ npm run compare -- 2.1.27 2.1.71
 npm run backfill -- 2.1.27 2.1.71
 ```
 
+全公開版の穴埋め:
+
+```bash
+npm run backfill -- --all
+```
+
 最新追跡:
 
 ```bash

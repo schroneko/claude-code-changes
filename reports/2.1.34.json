@@ -1,0 +1,691 @@
+{
+  "version": "2.1.34",
+  "prevVersion": "2.1.33",
+  "buildTime": "",
+  "officialChangelogBullets": [
+    "Fixed a crash when agent teams setting changed between renders",
+    "Fixed a bug where commands excluded from sandboxing (via `sandbox.excludedCommands` or `dangerouslyDisableSandbox`) could bypass the Bash ask permission rule when `autoAllowBashIfSandboxed` was enabled"
+  ],
+  "officialMentionedCommands": [],
+  "slashCommands": [],
+  "currentSlashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/agents",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/btw",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/chrome",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/code-review",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/color",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/context",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/copy",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/extra-usage",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/feedback",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/fork",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/insights",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-slack-app",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/keybindings",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "status-hint",
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint",
+        "tips"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/mobile",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/passes",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plan",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plugin",
+      "sources": [
+        "status-hint",
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/privacy-settings",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rate-limit-options",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/remote-env",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rename",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rewind",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/sandbox",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/security-review",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/session",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/skills",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/stats",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/statusline",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/stickers",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tag",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tasks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/theme",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/think-back",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/thinkback-play",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/todos",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 518031 -> 518038 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 32 -> 32 lines"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: \"@babel/plugin-proposal-private-methods\": \"^7.18.6\",",
+        "Command example: REQUIREMENTS FOR SUMMARIZATION/ANALYSIS/REVIEW:"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: setOauthTokenFromFd: () => N11,",
+        "Feature example: getOauthTokenFromFd: () => Mk6,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: return `The name '${A}' is reserved for official Anthropic marketplaces. Only repositories from 'github.com/${Ya1}/' can use this name.`;",
+        "Feature example: return `The name '${A}' is reserved for official Anthropic marketplaces and can only be used with GitHub sources from the '${Ya1}' organization.`;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed a crash when agent teams setting changed between renders"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: T.set(\"User-Agent\", \"axios/\" + n11, !1);",
+        "Feature example: return new ga1.Agent({ keepAlive: !0, maxSockets: 50, ...w });"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: propertiesExtractor: (q, K) => ({ signingProperties: { config: q, context: K } }),",
+        "Feature example: kHTTPContext: Symbol(\"http context\"),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed a bug where commands excluded from sandboxing (via `sandbox.excludedCommands` or `dangerouslyDisableSandbox`) could bypass the Bash ask permission rule when `autoAllowBashIfSandboxed` was enabled"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: allow: b.array(qa1).optional().describe(\"List of permission rules for allowed operations\"),",
+        "Config example: deny: b.array(qa1).optional().describe(\"List of permission rules for denied operations\"),"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: { [t8]: [\"POST\", \"/custom-models/create-custom-model\", 202] },",
+        "Command example: { [t8]: [\"POST\", \"/model-customization/custom-model-deployments\", 202] },"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: else if (BE(\"color\") || BE(\"colors\") || BE(\"color=true\") || BE(\"color=always\")) Pn1 = 1;",
+        "Feature example: return IB6(A, \"remote\", \"origin\", \"url\");"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 518031 -> 518038 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 32 -> 32 lines"
+      }
+    ]
+  }
+}

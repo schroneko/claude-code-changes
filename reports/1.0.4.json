@@ -1,0 +1,418 @@
+{
+  "version": "1.0.4",
+  "prevVersion": "1.0.3",
+  "buildTime": "",
+  "officialChangelogBullets": [
+    "Fixed a bug where MCP tool errors weren't being parsed correctly"
+  ],
+  "officialMentionedCommands": [],
+  "slashCommands": [],
+  "currentSlashCommands": [
+    {
+      "name": "/allowed-tools",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bug",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/migrate-installer",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tasks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vibe",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_ENABLE_UNIFIED_READ_TOOL"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_IDE_HOST_OVERRIDE"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_IDE_SKIP_VALID_CHECK"
+    }
+  ],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "added",
+      "name": ".claude/settings.local.json",
+      "detail": "text, 41 B"
+    },
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 304597 -> 305253 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 29 -> 29 lines"
+    },
+    {
+      "type": "changed",
+      "name": "vendor/claude-code.vsix",
+      "detail": "binary 67.5 KB -> binary 67.5 KB"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: \"@babel/plugin-proposal-private-methods\": \"^7.18.6\",",
+        "Command example: \"@babel/plugin-proposal-private-methods\": \"^7.18.6\","
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed a bug where MCP tool errors weren't being parsed correctly"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let D = \"resource_exhausted\";",
+        "Feature example: A.ResourceExhausted = D;"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: \"audio/x-pn-realaudio-plugin\": { source: \"apache\", extensions: [\"rmp\"] },",
+        "Config example: CreateMarketplaceModelEndpointCommand: () => L90,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: class $QA extends NQA.Agent {",
+        "Feature example: qQA.Agent = $QA;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: [EX.SEMANTIC_ATTRIBUTE_SENTRY_SOURCE]: this._latestRoute.context",
+        "Feature example: ? r19(this._latestRoute.context)"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: \"Permissions\",",
+        "Config example: \"PermissionsGroup\","
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: let { action: G, model: Z } = Q;",
+        "Command example: \"application/vnd.1000minds.decision-model+xml\": {"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let A = C01.chrome,",
+        "Command example: \"application/remote-printing\": { source: \"iana\" },"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_ENABLE_UNIFIED_READ_TOOL"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_IDE_HOST_OVERRIDE"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_IDE_SKIP_VALID_CHECK"
+      }
+    ],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "added",
+        "name": ".claude/settings.local.json",
+        "detail": "text, 41 B"
+      },
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 304597 -> 305253 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 29 -> 29 lines"
+      },
+      {
+        "type": "changed",
+        "name": "vendor/claude-code.vsix",
+        "detail": "binary 67.5 KB -> binary 67.5 KB"
+      }
+    ]
+  }
+}

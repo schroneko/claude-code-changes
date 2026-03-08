@@ -1,0 +1,914 @@
+{
+  "version": "2.0.59",
+  "prevVersion": "2.0.58",
+  "buildTime": "",
+  "officialChangelogBullets": [
+    "Added --agent CLI flag to override the agent setting for the current session",
+    "Added `agent` setting to configure main thread with a specific agent's system prompt, tool restrictions, and model",
+    "VS Code: Fixed .claude.json config file being read from incorrect location"
+  ],
+  "officialMentionedCommands": [],
+  "slashCommands": [
+    {
+      "type": "removed",
+      "name": "/migrate-installer"
+    }
+  ],
+  "currentSlashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/agents",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/extra-usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/feedback",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "status-hint",
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint",
+        "tips"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/passes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plan",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plugin",
+      "sources": [
+        "status-hint",
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/privacy-settings",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rate-limit-options",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/remote-env",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rename",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rewind",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/sandbox",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/security-review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/statusline",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/stickers",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tasks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/theme",
+      "sources": [
+        "tips"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/todos",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [
+    {
+      "type": "added",
+      "name": "claude-code-jetbrains"
+    }
+  ],
+  "envVars": [
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_TEAMMATE_ID"
+    },
+    {
+      "type": "removed",
+      "name": "CLAUDE_CODE_ENABLE_GROWTHBOOK"
+    }
+  ],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 479014 -> 479996 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 32 -> 32 lines"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/annotations-23.0.0.jar",
+      "detail": "binary, 28.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.1.12-beta-searchableOptions.jar",
+      "detail": "binary, 849 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.1.12-beta.jar",
+      "detail": "binary, 266.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/config-1.4.3.jar",
+      "detail": "binary, 289.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/jansi-2.4.1.jar",
+      "detail": "binary, 251.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/kotlin-logging-jvm-7.0.0.jar",
+      "detail": "binary, 87.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/kotlin-reflect-2.0.21.jar",
+      "detail": "binary, 2.9 MB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/kotlin-sdk-jvm-0.4.0.jar",
+      "detail": "binary, 762.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/kotlin-stdlib-2.1.20.jar",
+      "detail": "binary, 1.6 MB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-coroutines-core-jvm-1.9.0.jar",
+      "detail": "binary, 1.4 MB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-coroutines-slf4j-1.9.0.jar",
+      "detail": "binary, 4.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-io-bytestring-jvm-0.5.4.jar",
+      "detail": "binary, 21.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-io-core-jvm-0.5.4.jar",
+      "detail": "binary, 147.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-serialization-core-jvm-1.8.1.jar",
+      "detail": "binary, 382.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-serialization-json-jvm-1.8.1.jar",
+      "detail": "binary, 270.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-client-cio-jvm-3.0.2.jar",
+      "detail": "binary, 108.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-client-core-jvm-3.0.2.jar",
+      "detail": "binary, 769.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-events-jvm-3.0.2.jar",
+      "detail": "binary, 6.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-http-cio-jvm-3.0.2.jar",
+      "detail": "binary, 119.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-http-jvm-3.0.2.jar",
+      "detail": "binary, 392.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-io-jvm-3.0.2.jar",
+      "detail": "binary, 233.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-network-jvm-3.0.2.jar",
+      "detail": "binary, 186.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-network-tls-jvm-3.0.2.jar",
+      "detail": "binary, 190.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-serialization-jvm-3.0.2.jar",
+      "detail": "binary, 21.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-server-cio-jvm-3.0.2.jar",
+      "detail": "binary, 98.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-server-core-jvm-3.0.2.jar",
+      "detail": "binary, 753.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-server-sse-jvm-3.0.2.jar",
+      "detail": "binary, 20.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-server-websockets-jvm-3.0.2.jar",
+      "detail": "binary, 47.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-sse-jvm-3.0.2.jar",
+      "detail": "binary, 4.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-utils-jvm-3.0.2.jar",
+      "detail": "binary, 322.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-websocket-serialization-jvm-3.0.2.jar",
+      "detail": "binary, 6.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-websockets-jvm-3.0.2.jar",
+      "detail": "binary, 164.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/slf4j-api-2.0.16.jar",
+      "detail": "binary, 67.8 KB"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: - Creating and using slash commands",
+        "Feature example: - Available slash commands (built-in and custom)"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: connector: function () {",
+        "Feature example: \".mcp.json\","
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: \"audio/x-pn-realaudio-plugin\": { source: \"apache\", extensions: [\"rmp\"] },",
+        "Config example: CreateMarketplaceModelEndpointCommand: () => whQ,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Added --agent CLI flag to override the agent setting for the current session",
+        "Added `agent` setting to configure main thread with a specific agent's system prompt, tool restrictions, and model"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: '  (global-name \"com.apple.trustd.agent\")',",
+        "Feature example: - When you are doing an open ended search that may require multiple rounds of globbing and grepping, use the Agent tool instead"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: illegalBy: { msg: O1.message, context: qA.slice(_1 - 100, _1 + 100), mode: O1.mode },",
+        "Feature example: \"; POSIX IPC - shared memory\","
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: let { permissions: B } = A,",
+        "Config example: let G = B.permissions[A.ruleBehavior];"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Added `agent` setting to configure main thread with a specific agent's system prompt, tool restrictions, and model"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: - Fetches content from a specified URL and processes it using an AI model",
+        "Config example: - Processes the content with the prompt using a small, fast model"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: return N6() && WQ.clientType !== \"claude-vscode\";",
+        "Feature example: (C.color = B.selectColor(V)),"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_TEAMMATE_ID"
+      },
+      {
+        "type": "removed",
+        "name": "CLAUDE_CODE_ENABLE_GROWTHBOOK"
+      }
+    ],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 479014 -> 479996 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 32 -> 32 lines"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/annotations-23.0.0.jar",
+        "detail": "binary, 28.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.1.12-beta-searchableOptions.jar",
+        "detail": "binary, 849 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.1.12-beta.jar",
+        "detail": "binary, 266.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/config-1.4.3.jar",
+        "detail": "binary, 289.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/jansi-2.4.1.jar",
+        "detail": "binary, 251.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/kotlin-logging-jvm-7.0.0.jar",
+        "detail": "binary, 87.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/kotlin-reflect-2.0.21.jar",
+        "detail": "binary, 2.9 MB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/kotlin-sdk-jvm-0.4.0.jar",
+        "detail": "binary, 762.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/kotlin-stdlib-2.1.20.jar",
+        "detail": "binary, 1.6 MB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-coroutines-core-jvm-1.9.0.jar",
+        "detail": "binary, 1.4 MB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-coroutines-slf4j-1.9.0.jar",
+        "detail": "binary, 4.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-io-bytestring-jvm-0.5.4.jar",
+        "detail": "binary, 21.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-io-core-jvm-0.5.4.jar",
+        "detail": "binary, 147.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-serialization-core-jvm-1.8.1.jar",
+        "detail": "binary, 382.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/kotlinx-serialization-json-jvm-1.8.1.jar",
+        "detail": "binary, 270.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-client-cio-jvm-3.0.2.jar",
+        "detail": "binary, 108.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-client-core-jvm-3.0.2.jar",
+        "detail": "binary, 769.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-events-jvm-3.0.2.jar",
+        "detail": "binary, 6.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-http-cio-jvm-3.0.2.jar",
+        "detail": "binary, 119.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-http-jvm-3.0.2.jar",
+        "detail": "binary, 392.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-io-jvm-3.0.2.jar",
+        "detail": "binary, 233.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-network-jvm-3.0.2.jar",
+        "detail": "binary, 186.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-network-tls-jvm-3.0.2.jar",
+        "detail": "binary, 190.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-serialization-jvm-3.0.2.jar",
+        "detail": "binary, 21.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-server-cio-jvm-3.0.2.jar",
+        "detail": "binary, 98.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-server-core-jvm-3.0.2.jar",
+        "detail": "binary, 753.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-server-sse-jvm-3.0.2.jar",
+        "detail": "binary, 20.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-server-websockets-jvm-3.0.2.jar",
+        "detail": "binary, 47.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-sse-jvm-3.0.2.jar",
+        "detail": "binary, 4.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-utils-jvm-3.0.2.jar",
+        "detail": "binary, 322.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-websocket-serialization-jvm-3.0.2.jar",
+        "detail": "binary, 6.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/ktor-websockets-jvm-3.0.2.jar",
+        "detail": "binary, 164.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/slf4j-api-2.0.16.jar",
+        "detail": "binary, 67.8 KB"
+      }
+    ]
+  }
+}

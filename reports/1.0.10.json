@@ -1,0 +1,394 @@
+{
+  "version": "1.0.10",
+  "prevVersion": "1.0.9",
+  "buildTime": "",
+  "officialChangelogBullets": [
+    "Added markdown table support",
+    "Improved streaming performance"
+  ],
+  "officialMentionedCommands": [],
+  "slashCommands": [
+    {
+      "type": "removed",
+      "name": "/mcp-auth"
+    }
+  ],
+  "currentSlashCommands": [
+    {
+      "name": "/bug",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/migrate-installer",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tasks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_MAX_OUTPUT_TOKENS"
+    }
+  ],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "README.md",
+      "detail": "text, 50 -> 42 lines"
+    },
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 307068 -> 308803 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 31 -> 31 lines"
+    },
+    {
+      "type": "changed",
+      "name": "vendor/claude-code.vsix",
+      "detail": "binary 67.5 KB -> binary 67.5 KB"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [
+        "Slash command removed: /mcp-auth"
+      ],
+      "evidence": [
+        "Command example: ? [uj, uj, ZA.dim(\"Run /mcp-auth to authenticate with servers that need authentication.\")]",
+        "Command example: ? [jj, jj, DA.dim(\"Run /mcp-auth to authenticate with servers that need authentication.\")]"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [
+        "Slash command removed: /mcp-auth"
+      ],
+      "evidence": [
+        "Feature example: k7A._addResourceSpans = y7A;",
+        "Feature example: let Q = k59.addPerformanceInstrumentationHandler(\"resource\", ({ entries: I }) => {"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: CreateMarketplaceModelEndpointCommand: () => E50,",
+        "Config example: DeleteMarketplaceModelEndpointCommand: () => S50,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: class $IA extends NIA.Agent {",
+        "Feature example: qIA.Agent = $IA;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: [jC.SEMANTIC_ATTRIBUTE_SENTRY_SOURCE]: this._latestRoute.context",
+        "Feature example: ? r59(this._latestRoute.context)"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: PERMISSION_DENIED: hV0,",
+        "Config example: permissions: Un9.optional(),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: _K0 = \"device.model.name\",",
+        "Config example: (I = SF[this.model].channels),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let A = n01.chrome,",
+        "Feature example: (E.color = Q.selectColor(J)),"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_MAX_OUTPUT_TOKENS"
+      }
+    ],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "README.md",
+        "detail": "text, 50 -> 42 lines"
+      },
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 307068 -> 308803 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 31 -> 31 lines"
+      },
+      {
+        "type": "changed",
+        "name": "vendor/claude-code.vsix",
+        "detail": "binary 67.5 KB -> binary 67.5 KB"
+      }
+    ]
+  }
+}

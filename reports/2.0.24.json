@@ -1,0 +1,586 @@
+{
+  "version": "2.0.24",
+  "prevVersion": "2.0.23",
+  "buildTime": "",
+  "officialChangelogBullets": [
+    "Fixed a bug where project-level skills were not loading when --setting-sources 'project' was specified",
+    "Claude Code Web: Support for Web -> CLI teleport",
+    "Sandbox: Releasing a sandbox mode for the BashTool on Linux & Mac",
+    "Bedrock: Display awsAuthRefresh output when auth is required"
+  ],
+  "officialMentionedCommands": [],
+  "slashCommands": [
+    {
+      "type": "added",
+      "name": "/sandbox"
+    }
+  ],
+  "currentSlashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/agents",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bashes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/feedback",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "status-hint",
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/migrate-installer",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style:new",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plugin",
+      "sources": [
+        "status-hint",
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/privacy-settings",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rewind",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/sandbox",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/security-review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/statusline",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/todos",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_HOST_HTTP_PROXY_PORT"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_HOST_SOCKS_PROXY_PORT"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_SESSION_ID"
+    }
+  ],
+  "settings": [],
+  "tools": [
+    {
+      "type": "changed",
+      "name": "BashInput",
+      "detail": "+dangerouslyOverrideSandbox?"
+    }
+  ],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "README.md",
+      "detail": "text, 44 -> 44 lines"
+    },
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 426356 -> 431421 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 32 -> 32 lines"
+    },
+    {
+      "type": "changed",
+      "name": "sdk-tools.d.ts",
+      "detail": "text, 272 -> 276 lines"
+    },
+    {
+      "type": "changed",
+      "name": "sdk.d.ts",
+      "detail": "text, 446 -> 447 lines"
+    },
+    {
+      "type": "changed",
+      "name": "sdk.mjs",
+      "detail": "text, 14841 -> 14841 lines"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: `User can configure via: /plugin → Manage plugins → ${A.name} → Configure`,",
+        "Command example: 'Change command to \"cmd\" with args [\"/c\", \"npx\", ...]. See: https://docs.claude.com/en/docs/claude-code/mcp#configure-mcp-servers',"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: return F2.oauthTokenFromFd;",
+        "Feature example: F2.oauthTokenFromFd = A;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: CreateMarketplaceModelEndpointCommand: () => krA,",
+        "Config example: DeleteMarketplaceModelEndpointCommand: () => lrA,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: T.set(\"User-Agent\", \"axios/\" + ic, !1);",
+        "Feature example: return new GG0.Agent({ keepAlive: !0, maxSockets: 50, ...J });"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: ((this.props = A), (this.context = B), (this.refs = CQA), (this.updater = Q || HQA));",
+        "Feature example: let J = R29(A, { context: \"initialize\", markers: G.slice(), statsigOptions: Z });"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Sandbox: Releasing a sandbox mode for the BashTool on Linux & Mac"
+      ],
+      "sourceHighlights": [
+        "Slash command added: /sandbox"
+      ],
+      "evidence": [
+        "Config example: let G = { ...Q, permissions: { ...Q.permissions, [A.ruleBehavior]: Z.filter((J) => J !== B) } },",
+        "Config example: let I = { ...G, permissions: { ...Y, [B]: [...J, ...X] } },"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: (Z = PU[this.model].channels),",
+        "Config example: ((this.model = B || \"rgb\"), (Z = PU[this.model].channels));"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: return F2.isNonInteractiveSession && F2.clientType !== \"claude-vscode\";",
+        "Feature example: else if (xq(\"color\") || xq(\"colors\") || xq(\"color=true\") || xq(\"color=always\")) rE1 = 1;"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [
+      {
+        "type": "added",
+        "name": "/sandbox"
+      }
+    ],
+    "envVars": [
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_HOST_HTTP_PROXY_PORT"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_HOST_SOCKS_PROXY_PORT"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_SESSION_ID"
+      }
+    ],
+    "settings": [],
+    "tools": [
+      {
+        "type": "changed",
+        "name": "BashInput",
+        "detail": "+dangerouslyOverrideSandbox?"
+      }
+    ],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "README.md",
+        "detail": "text, 44 -> 44 lines"
+      },
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 426356 -> 431421 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 32 -> 32 lines"
+      },
+      {
+        "type": "changed",
+        "name": "sdk-tools.d.ts",
+        "detail": "text, 272 -> 276 lines"
+      },
+      {
+        "type": "changed",
+        "name": "sdk.d.ts",
+        "detail": "text, 446 -> 447 lines"
+      },
+      {
+        "type": "changed",
+        "name": "sdk.mjs",
+        "detail": "text, 14841 -> 14841 lines"
+      }
+    ]
+  }
+}

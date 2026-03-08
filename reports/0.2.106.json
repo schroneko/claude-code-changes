@@ -1,0 +1,393 @@
+{
+  "version": "0.2.106",
+  "prevVersion": "0.2.105",
+  "buildTime": "",
+  "officialChangelogBullets": [
+    "MCP SSE server configs can now specify custom headers",
+    "Fixed a bug where MCP permission prompt didn't always show correctly"
+  ],
+  "officialMentionedCommands": [],
+  "slashCommands": [],
+  "currentSlashCommands": [
+    {
+      "name": "/allowed-tools",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bug",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/migrate-installer",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_SSE_PORT"
+    }
+  ],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 295911 -> 296445 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 31 -> 31 lines"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.0.5-alpha-searchableOptions.jar",
+      "detail": "binary, 583 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.0.5-alpha.jar",
+      "detail": "binary, 136.9 KB"
+    },
+    {
+      "type": "added",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.0.6-beta-searchableOptions.jar",
+      "detail": "binary, 587 B"
+    },
+    {
+      "type": "added",
+      "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.0.6-beta.jar",
+      "detail": "binary, 150.3 KB"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: # First, create/clear the snapshot file",
+        "Command example: h2.default.createElement(_, null, \"Continue/resume features are currently disabled.\"),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [
+        "MCP SSE server configs can now specify custom headers",
+        "Fixed a bug where MCP permission prompt didn't always show correctly"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: W30._addResourceSpans = D30;",
+        "Feature example: let D = wc6.addPerformanceInstrumentationHandler(\"resource\", ({ entries: W }) => {"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: await qy2(l0.terminal, xX1(Py2, \"vendor\", \"claude-code-jetbrains-plugin\"));",
+        "Feature example: await Fy2(l0.terminal, mX1($y2, \"vendor\", \"claude-code-jetbrains-plugin\"));"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: class l30 extends c30.Agent {",
+        "Feature example: i30.Agent = l30;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: [OI.SEMANTIC_ATTRIBUTE_SENTRY_SOURCE]: this._latestRoute.context",
+        "Feature example: ? kc6(this._latestRoute.context)"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed a bug where MCP permission prompt didn't always show correctly"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: PERMISSION_DENIED: Sa2,",
+        "Config example: permission: IG(G.permission),"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: (W = PJ[this.model].channels),",
+        "Config example: ((this.model = G || \"rgb\"), (W = PJ[this.model].channels));"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let Z = Ct.chrome,",
+        "Feature example: else if (kF(\"color\") || kF(\"colors\") || kF(\"color=true\") || kF(\"color=always\")) e01 = 1;"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_SSE_PORT"
+      }
+    ],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 295911 -> 296445 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 31 -> 31 lines"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.0.5-alpha-searchableOptions.jar",
+        "detail": "binary, 583 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.0.5-alpha.jar",
+        "detail": "binary, 136.9 KB"
+      },
+      {
+        "type": "added",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.0.6-beta-searchableOptions.jar",
+        "detail": "binary, 587 B"
+      },
+      {
+        "type": "added",
+        "name": "vendor/claude-code-jetbrains-plugin/lib/claude-code-jetbrains-plugin-0.0.6-beta.jar",
+        "detail": "binary, 150.3 KB"
+      }
+    ]
+  }
+}

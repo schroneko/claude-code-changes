@@ -1,0 +1,574 @@
+{
+  "version": "2.0.30",
+  "prevVersion": "2.0.29",
+  "buildTime": "",
+  "officialChangelogBullets": [
+    "Added helpful hint to run `security unlock-keychain` when encountering API key errors on macOS with locked keychain",
+    "Added `allowUnsandboxedCommands` sandbox setting to disable the dangerouslyDisableSandbox escape hatch at policy level",
+    "Added `disallowedTools` field to custom agent definitions for explicit tool blocking",
+    "Added prompt-based stop hooks",
+    "VSCode: Added respectGitIgnore configuration to include .gitignored files in file searches (defaults to true)",
+    "Enabled SSE MCP servers on native build",
+    "Deprecated output styles. Review options in `/output-style` and use --system-prompt-file, --system-prompt, --append-system-prompt, CLAUDE.md, or plugins instead",
+    "Removed support for custom ripgrep configuration, resolving an issue where Search returns no results and config discovery fails",
+    "Fixed Explore agent creating unwanted .md investigation files during codebase exploration",
+    "Fixed a bug where `/context` would sometimes fail with \"max_tokens must be greater than thinking.budget_tokens\" error message",
+    "Fixed `--mcp-config` flag to correctly override file-based MCP configurations",
+    "Fixed bug that saved session permissions to local settings",
+    "Fixed MCP tools not being available to sub-agents",
+    "Fixed hooks and plugins not executing when using --dangerously-skip-permissions flag",
+    "Fixed delay when navigating through typeahead suggestions with arrow keys",
+    "VSCode: Restored selection indicator in input footer showing current file or code selection status"
+  ],
+  "officialMentionedCommands": [
+    "/context",
+    "/output-style"
+  ],
+  "slashCommands": [
+    {
+      "type": "removed",
+      "name": "/output-style:new"
+    }
+  ],
+  "currentSlashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/agents",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bashes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/feedback",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "status-hint",
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/migrate-installer",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plugin",
+      "sources": [
+        "status-hint",
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/privacy-settings",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rewind",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/sandbox",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/security-review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/statusline",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/todos",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [
+    {
+      "type": "added",
+      "name": "claude-code-mcp-cli"
+    },
+    {
+      "type": "added",
+      "name": "claude-code-plugins"
+    },
+    {
+      "type": "added",
+      "name": "claude-code.git"
+    }
+  ],
+  "envVars": [
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_FORCE_HALLOWEEN"
+    }
+  ],
+  "settings": [],
+  "tools": [
+    {
+      "type": "added",
+      "name": "TimeMachineInput"
+    },
+    {
+      "type": "added",
+      "name": "MultipleChoiceQuestionInput"
+    }
+  ],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 434535 -> 440316 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 32 -> 32 lines"
+    },
+    {
+      "type": "changed",
+      "name": "sdk-tools.d.ts",
+      "detail": "text, 284 -> 1493 lines"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: r0.createElement(z, { dimColor: !0 }, \" · /mcp\"),",
+        "Feature example: content: QU({ inputString: `Unknown slash command: ${F}`, precedingInputBlocks: B }),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Enabled SSE MCP servers on native build",
+        "Fixed `--mcp-config` flag to correctly override file-based MCP configurations",
+        "Fixed MCP tools not being available to sub-agents"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: return IB.oauthTokenFromFd;",
+        "Feature example: IB.oauthTokenFromFd = A;"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: CreateMarketplaceModelEndpointCommand: () => vt0,",
+        "Config example: DeleteMarketplaceModelEndpointCommand: () => nt0,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Added `disallowedTools` field to custom agent definitions for explicit tool blocking",
+        "Fixed Explore agent creating unwanted .md investigation files during codebase exploration"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: P.set(\"User-Agent\", \"axios/\" + Op, !1);",
+        "Feature example: return new uZ1.Agent({ keepAlive: !0, maxSockets: 50, ...Y });"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed a bug where `/context` would sometimes fail with \"max_tokens must be greater than thinking.budget_tokens\" error message"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: ((this.props = A), (this.context = B), (this.refs = d40), (this.updater = Q || u40));",
+        "Feature example: let Y = b89(A, { context: \"initialize\", markers: G.slice(), statsigOptions: I });"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Added `allowUnsandboxedCommands` sandbox setting to disable the dangerouslyDisableSandbox escape hatch at policy level",
+        "Fixed bug that saved session permissions to local settings",
+        "Fixed hooks and plugins not executing when using --dangerously-skip-permissions flag"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: permissionDecision: k.enum([\"allow\", \"deny\", \"ask\"]).optional(),",
+        "Config example: permissionDecisionReason: k.string().optional(),"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: (I = bU[this.model].channels),",
+        "Config example: ((this.model = B || \"rgb\"), (I = bU[this.model].channels));"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [
+        "VSCode: Added respectGitIgnore configuration to include .gitignored files in file searches (defaults to true)",
+        "VSCode: Restored selection indicator in input footer showing current file or code selection status"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: return IB.isNonInteractiveSession && IB.clientType !== \"claude-vscode\";",
+        "Feature example: else if (A$(\"color\") || A$(\"colors\") || A$(\"color=true\") || A$(\"color=always\")) HNA = 1;"
+      ],
+      "sourceOnly": false
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_FORCE_HALLOWEEN"
+      }
+    ],
+    "settings": [],
+    "tools": [
+      {
+        "type": "added",
+        "name": "TimeMachineInput"
+      },
+      {
+        "type": "added",
+        "name": "MultipleChoiceQuestionInput"
+      }
+    ],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 434535 -> 440316 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 32 -> 32 lines"
+      },
+      {
+        "type": "changed",
+        "name": "sdk-tools.d.ts",
+        "detail": "text, 284 -> 1493 lines"
+      }
+    ]
+  }
+}

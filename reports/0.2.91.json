@@ -1,0 +1,361 @@
+{
+  "version": "0.2.91",
+  "prevVersion": "0.2.90",
+  "buildTime": "",
+  "officialChangelogBullets": [],
+  "officialMentionedCommands": [],
+  "slashCommands": [],
+  "currentSlashCommands": [
+    {
+      "name": "/allowed-tools",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bug",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/migrate-installer",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 289263 -> 289921 lines"
+    },
+    {
+      "type": "added",
+      "name": "migrations/0001_reflective_ulik.sql",
+      "detail": "text, 243 B"
+    },
+    {
+      "type": "added",
+      "name": "migrations/0002_daffy_masked_marvel.sql",
+      "detail": "text, 70 B"
+    },
+    {
+      "type": "added",
+      "name": "migrations/meta/0001_snapshot.json",
+      "detail": "text, 6.8 KB"
+    },
+    {
+      "type": "added",
+      "name": "migrations/meta/0002_snapshot.json",
+      "detail": "text, 7.0 KB"
+    },
+    {
+      "type": "changed",
+      "name": "migrations/meta/_journal.json",
+      "detail": "text, 13 -> 27 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 31 -> 31 lines"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: n2.createElement(f, { color: G.secondaryText, dimColor: !0 }, \" \", \"• /mcp\"),",
+        "Command example: n2.createElement(h, { color: G.secondaryText, dimColor: !0 }, \" \", \"• /mcp\"),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: x60._addResourceSpans = v60;",
+        "Feature example: let D = zd6.addPerformanceInstrumentationHandler(\"resource\", ({ entries: W }) => {"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: await d86(l0.terminal, qc1(m86, \"vendor\", \"claude-code-jetbrains-plugin\"));",
+        "Feature example: await U86(c0.terminal, Bc1(N86, \"vendor\", \"claude-code-jetbrains-plugin\"));"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: class L40 extends M40.Agent {",
+        "Feature example: E40.Agent = L40;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: [kI.SEMANTIC_ATTRIBUTE_SENTRY_SOURCE]: this._latestRoute.context",
+        "Feature example: ? _d6(this._latestRoute.context)"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: PERMISSION_DENIED: jO2,",
+        "Config example: permission: ZG(G.permission),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: (W = sV[this.model].channels),",
+        "Config example: ((this.model = G || \"rgb\"), (W = sV[this.model].channels));"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let Z = gs.chrome,",
+        "Feature example: else if (mJ(\"color\") || mJ(\"colors\") || mJ(\"color=true\") || mJ(\"color=always\")) ht = 1;"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 289263 -> 289921 lines"
+      },
+      {
+        "type": "added",
+        "name": "migrations/0001_reflective_ulik.sql",
+        "detail": "text, 243 B"
+      },
+      {
+        "type": "added",
+        "name": "migrations/0002_daffy_masked_marvel.sql",
+        "detail": "text, 70 B"
+      },
+      {
+        "type": "added",
+        "name": "migrations/meta/0001_snapshot.json",
+        "detail": "text, 6.8 KB"
+      },
+      {
+        "type": "added",
+        "name": "migrations/meta/0002_snapshot.json",
+        "detail": "text, 7.0 KB"
+      },
+      {
+        "type": "changed",
+        "name": "migrations/meta/_journal.json",
+        "detail": "text, 13 -> 27 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 31 -> 31 lines"
+      }
+    ]
+  }
+}

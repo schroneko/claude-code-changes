@@ -1,0 +1,832 @@
+{
+  "version": "2.1.32",
+  "prevVersion": "2.1.31",
+  "buildTime": "",
+  "officialChangelogBullets": [
+    "Claude Opus 4.6 is now available!",
+    "Added research preview agent teams feature for multi-agent collaboration (token-intensive feature, requires setting CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1)",
+    "Claude now automatically records and recalls memories as it works",
+    "Added \"Summarize from here\" to the message selector, allowing partial conversation summarization.",
+    "Skills defined in `.claude/skills/` within additional directories (`--add-dir`) are now loaded automatically.",
+    "Fixed `@` file completion showing incorrect relative paths when running from a subdirectory",
+    "Updated --resume to re-use --agent value specified in previous conversation by default.",
+    "Fixed: Bash tool no longer throws \"Bad substitution\" errors when heredocs contain JavaScript template literals like `${index + 1}`, which previously interrupted tool execution",
+    "Skill character budget now scales with context window (2% of context), so users with larger context windows can see more skill descriptions without truncation",
+    "Fixed Thai/Lao spacing vowels (สระ า, ำ) not rendering correctly in the input field",
+    "VSCode: Fixed slash commands incorrectly being executed when pressing Enter with preceding text in the input field",
+    "VSCode: Added spinner when loading past conversations list"
+  ],
+  "officialMentionedCommands": [
+    "/skills"
+  ],
+  "slashCommands": [
+    {
+      "type": "removed",
+      "name": "/discover"
+    },
+    {
+      "type": "removed",
+      "name": "/review"
+    },
+    {
+      "type": "removed",
+      "name": "/share"
+    },
+    {
+      "type": "removed",
+      "name": "/teleport"
+    }
+  ],
+  "currentSlashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/agents",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/btw",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/chrome",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/code-review",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/color",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/context",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/copy",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/extra-usage",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/feedback",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/fork",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/insights",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-slack-app",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/keybindings",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "status-hint",
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint",
+        "tips"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/mobile",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/passes",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plan",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plugin",
+      "sources": [
+        "status-hint",
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/privacy-settings",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rate-limit-options",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/remote-env",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rename",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rewind",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/sandbox",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/security-review",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/session",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/skills",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/stats",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/statusline",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/stickers",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tag",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tasks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/theme",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/think-back",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/thinkback-play",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/todos",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [
+    {
+      "type": "added",
+      "name": "claude-ai.staging.ant.dev"
+    },
+    {
+      "type": "added",
+      "name": "claude-opus-4-6"
+    },
+    {
+      "type": "added",
+      "name": "claude-opus-4-6-v1"
+    },
+    {
+      "type": "added",
+      "name": "claude-staging.fedstart.com"
+    },
+    {
+      "type": "removed",
+      "name": "claude-md-project"
+    },
+    {
+      "type": "removed",
+      "name": "claude-md-user"
+    }
+  ],
+  "envVars": [
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_CUSTOM_OAUTH_URL"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_EAGER_FLUSH"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_ENVIRONMENT_KIND"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_INCLUDE_PARTIAL_MESSAGES"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_IS_COWORK"
+    },
+    {
+      "type": "removed",
+      "name": "CLAUDE_CODE_AGENT_ID"
+    },
+    {
+      "type": "removed",
+      "name": "CLAUDE_CODE_AGENT_SWARMS"
+    },
+    {
+      "type": "removed",
+      "name": "CLAUDE_CODE_AGENT_TYPE"
+    }
+  ],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 516547 -> 516910 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 32 -> 32 lines"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [
+        "VSCode: Fixed slash commands incorrectly being executed when pressing Enter with preceding text in the input field"
+      ],
+      "sourceHighlights": [
+        "Slash command removed: /review"
+      ],
+      "evidence": [
+        "Command example: MCP_PROXY_URL: \"https://mcp-proxy.anthropic.com\",",
+        "Command example: 'Object mapping of command names to their metadata and source files. Command name becomes the slash command name (e.g., \"about\" → \"/plugin:about\")',"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [
+        "Env added: CLAUDE_CODE_CUSTOM_OAUTH_URL"
+      ],
+      "evidence": [
+        "Feature example: setOauthTokenFromFd: () => Z11,",
+        "Feature example: getOauthTokenFromFd: () => iE6,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: return `The name '${A}' is reserved for official Anthropic marketplaces. Only repositories from 'github.com/${Ra1}/' can use this name.`;",
+        "Feature example: return `The name '${A}' is reserved for official Anthropic marketplaces and can only be used with GitHub sources from the '${Ra1}' organization.`;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Added research preview agent teams feature for multi-agent collaboration (token-intensive feature, requires setting CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1)",
+        "Updated --resume to re-use --agent value specified in previous conversation by default.",
+        "Skill character budget now scales with context window (2% of context), so users with larger context windows can see more skill descriptions without truncation"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: U_ = \"teammate-message\",",
+        "Command example: T.set(\"User-Agent\", \"axios/\" + d11, !1);"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Skill character budget now scales with context window (2% of context), so users with larger context windows can see more skill descriptions without truncation"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: illegalBy: { msg: H6.message, context: e.slice(d6 - 100, d6 + 100), mode: H6.mode },",
+        "Feature example: let q = Nv1(\"context\", A.context),"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: allow: B.array(ka1).optional().describe(\"List of permission rules for allowed operations\"),",
+        "Config example: deny: B.array(ka1).optional().describe(\"List of permission rules for denied operations\"),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Claude Opus 4.6 is now available!"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: return q.includes(\"claude-sonnet-4\") || q.includes(\"opus-4-6\");",
+        "Config example: model: B.string()"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [
+        "VSCode: Fixed slash commands incorrectly being executed when pressing Enter with preceding text in the input field",
+        "VSCode: Added spinner when loading past conversations list"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: return X4() && i6.clientType !== \"claude-vscode\";",
+        "Feature example: (VO.color.close = \"\\x1B[39m\"),"
+      ],
+      "sourceOnly": false
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_CUSTOM_OAUTH_URL"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_EAGER_FLUSH"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_ENVIRONMENT_KIND"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_INCLUDE_PARTIAL_MESSAGES"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_IS_COWORK"
+      },
+      {
+        "type": "removed",
+        "name": "CLAUDE_CODE_AGENT_ID"
+      },
+      {
+        "type": "removed",
+        "name": "CLAUDE_CODE_AGENT_SWARMS"
+      },
+      {
+        "type": "removed",
+        "name": "CLAUDE_CODE_AGENT_TYPE"
+      }
+    ],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 516547 -> 516910 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 32 -> 32 lines"
+      }
+    ]
+  }
+}

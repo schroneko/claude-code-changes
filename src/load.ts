@@ -210,25 +210,24 @@ function loadPackageArtifactsFromSnapshot(sourceDir: string, cliContent: string,
 
 export function loadSnapshotSource(sourceDir: string, versionOverride?: string): SnapshotSource {
   const cliPath = join(sourceDir, "cli.js");
+  const cliMjsPath = join(sourceDir, "cli.mjs");
   const cliGzPath = join(sourceDir, "cli-formatted.js.gz");
   const sdkPath = join(sourceDir, "sdk-tools.d.ts");
-
-  if (!existsSync(sdkPath)) {
-    throw new Error(`sdk-tools.d.ts not found in ${sourceDir}`);
-  }
 
   let cliContent = "";
   if (existsSync(cliPath)) {
     cliContent = normalizeCli(readFileSync(cliPath, "utf-8"));
+  } else if (existsSync(cliMjsPath)) {
+    cliContent = normalizeCli(readFileSync(cliMjsPath, "utf-8"));
   } else if (existsSync(cliGzPath)) {
     cliContent = gunzipSync(readFileSync(cliGzPath)).toString("utf-8");
   } else {
-    throw new Error(`cli.js or cli-formatted.js.gz not found in ${sourceDir}`);
+    throw new Error(`cli.js, cli.mjs, or cli-formatted.js.gz not found in ${sourceDir}`);
   }
 
   const version = versionOverride ?? detectVersion(sourceDir);
   const buildTime = detectBuildTime(cliContent);
-  const sdkContent = readFileSync(sdkPath, "utf-8");
+  const sdkContent = existsSync(sdkPath) ? readFileSync(sdkPath, "utf-8") : "";
   const packageArtifacts = existsSync(join(sourceDir, PACKAGE_MANIFEST_FILENAME))
     || existsSync(cliGzPath)
     ? loadPackageArtifactsFromSnapshot(sourceDir, cliContent, sdkContent)

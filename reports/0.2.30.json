@@ -1,0 +1,4420 @@
+{
+  "version": "0.2.30",
+  "prevVersion": "0.2.29",
+  "buildTime": "",
+  "officialChangelogBullets": [
+    "Added ANSI color theme for better terminal compatibility",
+    "Fixed issue where slash command arguments weren't being sent properly",
+    "(Mac-only) API keys are now stored in macOS Keychain"
+  ],
+  "officialMentionedCommands": [],
+  "slashCommands": [],
+  "currentSlashCommands": [
+    {
+      "name": "/approved-tools",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bug",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/onboarding",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.mjs",
+      "detail": "text, 1416 -> 1168 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 32 -> 28 lines"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/CHANGELOG.md",
+      "detail": "text, 99.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/LICENSE",
+      "detail": "text, 1.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/README.md",
+      "detail": "text, 17.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/MultipartBody.d.ts",
+      "detail": "text, 251 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/MultipartBody.d.ts.map",
+      "detail": "text, 251 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/MultipartBody.js",
+      "detail": "text, 426 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/MultipartBody.js.map",
+      "detail": "text, 289 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/MultipartBody.mjs",
+      "detail": "text, 286 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/MultipartBody.mjs.map",
+      "detail": "text, 281 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/README.md",
+      "detail": "text, 2.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-bun.d.ts",
+      "detail": "text, 162 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-bun.d.ts.map",
+      "detail": "text, 163 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-bun.js",
+      "detail": "text, 935 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-bun.js.map",
+      "detail": "text, 167 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-bun.mjs",
+      "detail": "text, 76 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-bun.mjs.map",
+      "detail": "text, 130 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-node.d.ts",
+      "detail": "text, 164 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-node.d.ts.map",
+      "detail": "text, 165 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-node.js",
+      "detail": "text, 937 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-node.js.map",
+      "detail": "text, 169 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-node.mjs",
+      "detail": "text, 78 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime-node.mjs.map",
+      "detail": "text, 132 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime.d.ts",
+      "detail": "text, 158 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime.d.ts.map",
+      "detail": "text, 155 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime.js",
+      "detail": "text, 931 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime.js.map",
+      "detail": "text, 159 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime.mjs",
+      "detail": "text, 72 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/runtime.mjs.map",
+      "detail": "text, 122 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/types-node.d.ts",
+      "detail": "text, 160 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/types-node.d.ts.map",
+      "detail": "text, 159 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/types-node.js",
+      "detail": "text, 933 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/types-node.js.map",
+      "detail": "text, 165 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/types-node.mjs",
+      "detail": "text, 74 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/types-node.mjs.map",
+      "detail": "text, 128 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/types.d.ts",
+      "detail": "text, 2.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/types.js",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/auto/types.mjs",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/bun-runtime.d.ts",
+      "detail": "text, 216 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/bun-runtime.d.ts.map",
+      "detail": "text, 212 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/bun-runtime.js",
+      "detail": "text, 486 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/bun-runtime.js.map",
+      "detail": "text, 343 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/bun-runtime.mjs",
+      "detail": "text, 361 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/bun-runtime.mjs.map",
+      "detail": "text, 373 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/index.d.ts",
+      "detail": "text, 3.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/index.js",
+      "detail": "text, 401 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/index.mjs",
+      "detail": "text, 290 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/manual-types.d.ts",
+      "detail": "text, 355 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/manual-types.js",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/manual-types.mjs",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/node-runtime.d.ts",
+      "detail": "text, 131 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/node-runtime.d.ts.map",
+      "detail": "text, 205 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/node-runtime.js",
+      "detail": "text, 3.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/node-runtime.js.map",
+      "detail": "text, 1.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/node-runtime.mjs",
+      "detail": "text, 2.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/node-runtime.mjs.map",
+      "detail": "text, 2.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/node-types.d.ts",
+      "detail": "text, 1.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/node-types.js",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/node-types.mjs",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/registry.d.ts",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/registry.d.ts.map",
+      "detail": "text, 1.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/registry.js",
+      "detail": "text, 1.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/registry.js.map",
+      "detail": "text, 1.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/registry.mjs",
+      "detail": "text, 1.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/registry.mjs.map",
+      "detail": "text, 1.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/web-runtime.d.ts",
+      "detail": "text, 188 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/web-runtime.d.ts.map",
+      "detail": "text, 266 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/web-runtime.js",
+      "detail": "text, 2.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/web-runtime.js.map",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/web-runtime.mjs",
+      "detail": "text, 2.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/web-runtime.mjs.map",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/web-types.d.ts",
+      "detail": "text, 2.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/web-types.js",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_shims/web-types.mjs",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_vendor/partial-json-parser/parser.d.ts",
+      "detail": "text, 117 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_vendor/partial-json-parser/parser.d.ts.map",
+      "detail": "text, 214 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_vendor/partial-json-parser/parser.js",
+      "detail": "text, 6.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_vendor/partial-json-parser/parser.js.map",
+      "detail": "text, 5.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_vendor/partial-json-parser/parser.mjs",
+      "detail": "text, 6.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/_vendor/partial-json-parser/parser.mjs.map",
+      "detail": "text, 5.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/core.d.ts",
+      "detail": "text, 11.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/core.d.ts.map",
+      "detail": "text, 9.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/core.js",
+      "detail": "text, 37.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/core.js.map",
+      "detail": "text, 28.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/core.mjs",
+      "detail": "text, 35.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/core.mjs.map",
+      "detail": "text, 27.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/error.d.ts",
+      "detail": "text, 2.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/error.d.ts.map",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/error.js",
+      "detail": "text, 4.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/error.js.map",
+      "detail": "text, 3.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/error.mjs",
+      "detail": "text, 3.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/error.mjs.map",
+      "detail": "text, 3.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/index.d.mts",
+      "detail": "text, 12.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/index.d.ts",
+      "detail": "text, 12.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/index.d.ts.map",
+      "detail": "text, 6.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/index.js",
+      "detail": "text, 9.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/index.js.map",
+      "detail": "text, 3.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/index.mjs",
+      "detail": "text, 6.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/index.mjs.map",
+      "detail": "text, 3.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/jsonl.d.ts",
+      "detail": "text, 506 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/jsonl.d.ts.map",
+      "detail": "text, 520 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/jsonl.js",
+      "detail": "text, 1.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/jsonl.js.map",
+      "detail": "text, 983 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/jsonl.mjs",
+      "detail": "text, 1.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/jsonl.mjs.map",
+      "detail": "text, 992 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/line.d.ts",
+      "detail": "text, 664 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/line.d.ts.map",
+      "detail": "text, 468 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/line.js",
+      "detail": "text, 6.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/line.js.map",
+      "detail": "text, 3.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/line.mjs",
+      "detail": "text, 6.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/decoders/line.mjs.map",
+      "detail": "text, 3.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/stream-utils.d.ts",
+      "detail": "text, 427 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/stream-utils.d.ts.map",
+      "detail": "text, 223 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/stream-utils.js",
+      "detail": "text, 1.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/stream-utils.js.map",
+      "detail": "text, 848 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/stream-utils.mjs",
+      "detail": "text, 1.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/internal/stream-utils.mjs.map",
+      "detail": "text, 837 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/BetaMessageStream.d.ts",
+      "detail": "text, 6.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/BetaMessageStream.d.ts.map",
+      "detail": "text, 3.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/BetaMessageStream.js",
+      "detail": "text, 26.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/BetaMessageStream.js.map",
+      "detail": "text, 15.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/BetaMessageStream.mjs",
+      "detail": "text, 26.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/BetaMessageStream.mjs.map",
+      "detail": "text, 15.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/MessageStream.d.ts",
+      "detail": "text, 6.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/MessageStream.d.ts.map",
+      "detail": "text, 3.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/MessageStream.js",
+      "detail": "text, 26.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/MessageStream.js.map",
+      "detail": "text, 15.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/MessageStream.mjs",
+      "detail": "text, 26.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/lib/MessageStream.mjs.map",
+      "detail": "text, 15.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/LICENSE",
+      "detail": "text, 1.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/README.md",
+      "detail": "text, 2.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/assert.d.ts",
+      "detail": "text, 39.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/assert/strict.d.ts",
+      "detail": "text, 201 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/async_hooks.d.ts",
+      "detail": "text, 21.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/buffer.buffer.d.ts",
+      "detail": "text, 18.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/buffer.d.ts",
+      "detail": "text, 84.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/child_process.d.ts",
+      "detail": "text, 67.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/cluster.d.ts",
+      "detail": "text, 27.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/compatibility/disposable.d.ts",
+      "detail": "text, 328 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/compatibility/index.d.ts",
+      "detail": "text, 533 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/compatibility/indexable.d.ts",
+      "detail": "text, 990 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/compatibility/iterators.d.ts",
+      "detail": "text, 1.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/console.d.ts",
+      "detail": "text, 20.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/constants.d.ts",
+      "detail": "text, 623 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/crypto.d.ts",
+      "detail": "text, 183.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/dgram.d.ts",
+      "detail": "text, 27.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/diagnostics_channel.d.ts",
+      "detail": "text, 22.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/dns.d.ts",
+      "detail": "text, 33.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/dns/promises.d.ts",
+      "detail": "text, 20.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/dom-events.d.ts",
+      "detail": "text, 5.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/domain.d.ts",
+      "detail": "text, 7.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/events.d.ts",
+      "detail": "text, 36.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/fs.d.ts",
+      "detail": "text, 180.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/fs/promises.d.ts",
+      "detail": "text, 51.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/globals.d.ts",
+      "detail": "text, 15.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/globals.typedarray.d.ts",
+      "detail": "text, 777 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/http.d.ts",
+      "detail": "text, 80.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/http2.d.ts",
+      "detail": "text, 120.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/https.d.ts",
+      "detail": "text, 24.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/index.d.ts",
+      "detail": "text, 3.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/inspector.d.ts",
+      "detail": "text, 123.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/module.d.ts",
+      "detail": "text, 12.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/net.d.ts",
+      "detail": "text, 40.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/os.d.ts",
+      "detail": "text, 17.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/package.json",
+      "detail": "text, 6.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/path.d.ts",
+      "detail": "text, 7.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/perf_hooks.d.ts",
+      "detail": "text, 28.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/process.d.ts",
+      "detail": "text, 74.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/punycode.d.ts",
+      "detail": "text, 5.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/querystring.d.ts",
+      "detail": "text, 6.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/readline.d.ts",
+      "detail": "text, 28.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/readline/promises.d.ts",
+      "detail": "text, 6.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/repl.d.ts",
+      "detail": "text, 19.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/stream.d.ts",
+      "detail": "text, 85.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/stream/consumers.d.ts",
+      "detail": "text, 727 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/stream/promises.d.ts",
+      "detail": "text, 2.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/stream/web.d.ts",
+      "detail": "text, 24.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/string_decoder.d.ts",
+      "detail": "text, 2.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/test.d.ts",
+      "detail": "text, 49.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/timers.d.ts",
+      "detail": "text, 5.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/timers/promises.d.ts",
+      "detail": "text, 3.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/tls.d.ts",
+      "detail": "text, 54.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/trace_events.d.ts",
+      "detail": "text, 7.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/ts5.6/buffer.buffer.d.ts",
+      "detail": "text, 18.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/ts5.6/globals.typedarray.d.ts",
+      "detail": "text, 457 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/ts5.6/index.d.ts",
+      "detail": "text, 3.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/tty.d.ts",
+      "detail": "text, 9.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/url.d.ts",
+      "detail": "text, 41.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/util.d.ts",
+      "detail": "text, 80.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/v8.d.ts",
+      "detail": "text, 31.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/vm.d.ts",
+      "detail": "text, 27.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/wasi.d.ts",
+      "detail": "text, 7.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/worker_threads.d.ts",
+      "detail": "text, 33.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/@types/node/zlib.d.ts",
+      "detail": "text, 19.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/README.md",
+      "detail": "text, 455 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/agent.d.ts",
+      "detail": "text, 1.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/api.d.ts",
+      "detail": "text, 1.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/balanced-pool.d.ts",
+      "detail": "text, 609 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/cache.d.ts",
+      "detail": "text, 1.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/client.d.ts",
+      "detail": "text, 4.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/connector.d.ts",
+      "detail": "text, 1.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/content-type.d.ts",
+      "detail": "text, 561 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/cookies.d.ts",
+      "detail": "text, 635 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/diagnostics-channel.d.ts",
+      "detail": "text, 1.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/dispatcher.d.ts",
+      "detail": "text, 13.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/errors.d.ts",
+      "detail": "text, 3.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/fetch.d.ts",
+      "detail": "text, 5.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/file.d.ts",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/filereader.d.ts",
+      "detail": "text, 1.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/formdata.d.ts",
+      "detail": "text, 4.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/global-dispatcher.d.ts",
+      "detail": "text, 276 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/global-origin.d.ts",
+      "detail": "text, 175 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/handlers.d.ts",
+      "detail": "text, 387 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/header.d.ts",
+      "detail": "text, 133 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/index.d.ts",
+      "detail": "text, 2.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/interceptors.d.ts",
+      "detail": "text, 215 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/mock-agent.d.ts",
+      "detail": "text, 2.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/mock-client.d.ts",
+      "detail": "text, 1002 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/mock-errors.d.ts",
+      "detail": "text, 338 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/mock-interceptor.d.ts",
+      "detail": "text, 3.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/mock-pool.d.ts",
+      "detail": "text, 974 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/package.json",
+      "detail": "text, 1.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/patch.d.ts",
+      "detail": "text, 1.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/pool-stats.d.ts",
+      "detail": "text, 669 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/pool.d.ts",
+      "detail": "text, 1008 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/proxy-agent.d.ts",
+      "detail": "text, 836 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/readable.d.ts",
+      "detail": "text, 1.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/webidl.d.ts",
+      "detail": "text, 5.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/node_modules/undici-types/websocket.d.ts",
+      "detail": "text, 3.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/package.json",
+      "detail": "text, 2.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/pagination.d.ts",
+      "detail": "text, 881 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/pagination.d.ts.map",
+      "detail": "text, 948 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/pagination.js",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/pagination.js.map",
+      "detail": "text, 1.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/pagination.mjs",
+      "detail": "text, 1.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/pagination.mjs.map",
+      "detail": "text, 1.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resource.d.ts",
+      "detail": "text, 190 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resource.d.ts.map",
+      "detail": "text, 242 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resource.js",
+      "detail": "text, 350 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resource.js.map",
+      "detail": "text, 215 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resource.mjs",
+      "detail": "text, 216 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resource.mjs.map",
+      "detail": "text, 207 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/beta.d.ts",
+      "detail": "text, 7.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/beta.d.ts.map",
+      "detail": "text, 4.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/beta.js",
+      "detail": "text, 1.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/beta.js.map",
+      "detail": "text, 528 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/beta.mjs",
+      "detail": "text, 694 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/beta.mjs.map",
+      "detail": "text, 536 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/index.d.ts",
+      "detail": "text, 2.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/index.d.ts.map",
+      "detail": "text, 1.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/index.js",
+      "detail": "text, 866 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/index.js.map",
+      "detail": "text, 262 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/index.mjs",
+      "detail": "text, 266 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/index.mjs.map",
+      "detail": "text, 208 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/batches.d.ts",
+      "detail": "text, 11.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/batches.d.ts.map",
+      "detail": "text, 4.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/batches.js",
+      "detail": "text, 4.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/batches.js.map",
+      "detail": "text, 3.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/batches.mjs",
+      "detail": "text, 4.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/batches.mjs.map",
+      "detail": "text, 3.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/index.d.ts",
+      "detail": "text, 2.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/index.d.ts.map",
+      "detail": "text, 1.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/index.js",
+      "detail": "text, 731 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/index.js.map",
+      "detail": "text, 244 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/index.mjs",
+      "detail": "text, 231 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/index.mjs.map",
+      "detail": "text, 200 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/messages.d.ts",
+      "detail": "text, 39.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/messages.d.ts.map",
+      "detail": "text, 13.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/messages.js",
+      "detail": "text, 3.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/messages.js.map",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/messages.mjs",
+      "detail": "text, 2.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/messages/messages.mjs.map",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/models.d.ts",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/models.d.ts.map",
+      "detail": "text, 1.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/models.js",
+      "detail": "text, 1.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/models.js.map",
+      "detail": "text, 699 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/models.mjs",
+      "detail": "text, 950 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/beta/models.mjs.map",
+      "detail": "text, 700 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/completions.d.ts",
+      "detail": "text, 6.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/completions.d.ts.map",
+      "detail": "text, 2.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/completions.js",
+      "detail": "text, 610 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/completions.js.map",
+      "detail": "text, 437 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/completions.mjs",
+      "detail": "text, 466 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/completions.mjs.map",
+      "detail": "text, 434 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/index.d.ts",
+      "detail": "text, 2.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/index.d.ts.map",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/index.js",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/index.js.map",
+      "detail": "text, 314 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/index.mjs",
+      "detail": "text, 350 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/index.mjs.map",
+      "detail": "text, 218 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/batches.d.ts",
+      "detail": "text, 9.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/batches.d.ts.map",
+      "detail": "text, 3.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/batches.js",
+      "detail": "text, 4.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/batches.js.map",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/batches.mjs",
+      "detail": "text, 4.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/batches.mjs.map",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/index.d.ts",
+      "detail": "text, 2.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/index.d.ts.map",
+      "detail": "text, 1.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/index.js",
+      "detail": "text, 719 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/index.js.map",
+      "detail": "text, 233 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/index.mjs",
+      "detail": "text, 227 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/index.mjs.map",
+      "detail": "text, 191 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/messages.d.ts",
+      "detail": "text, 38.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/messages.d.ts.map",
+      "detail": "text, 13.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/messages.js",
+      "detail": "text, 3.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/messages.js.map",
+      "detail": "text, 1.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/messages.mjs",
+      "detail": "text, 2.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/messages/messages.mjs.map",
+      "detail": "text, 1.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/models.d.ts",
+      "detail": "text, 1.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/models.d.ts.map",
+      "detail": "text, 1009 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/models.js",
+      "detail": "text, 1.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/models.js.map",
+      "detail": "text, 680 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/models.mjs",
+      "detail": "text, 905 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/models.mjs.map",
+      "detail": "text, 681 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/shared.d.ts",
+      "detail": "text, 1.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/shared.d.ts.map",
+      "detail": "text, 1.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/shared.js",
+      "detail": "text, 198 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/shared.js.map",
+      "detail": "text, 126 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/shared.mjs",
+      "detail": "text, 133 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/shared.mjs.map",
+      "detail": "text, 126 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/top-level.d.ts",
+      "detail": "text, 50 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/top-level.d.ts.map",
+      "detail": "text, 141 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/top-level.js",
+      "detail": "text, 201 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/top-level.js.map",
+      "detail": "text, 132 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/top-level.mjs",
+      "detail": "text, 136 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/resources/top-level.mjs.map",
+      "detail": "text, 132 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/node.d.ts",
+      "detail": "text, 1.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/node.d.ts.map",
+      "detail": "text, 1.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/node.js",
+      "detail": "text, 1.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/node.js.map",
+      "detail": "text, 226 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/node.mjs",
+      "detail": "text, 216 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/node.mjs.map",
+      "detail": "text, 197 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/web.d.ts",
+      "detail": "text, 1.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/web.d.ts.map",
+      "detail": "text, 1.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/web.js",
+      "detail": "text, 1.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/web.js.map",
+      "detail": "text, 256 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/web.mjs",
+      "detail": "text, 239 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/shims/web.mjs.map",
+      "detail": "text, 227 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/MultipartBody.ts",
+      "detail": "text, 223 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/README.md",
+      "detail": "text, 2.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/auto/runtime-bun.ts",
+      "detail": "text, 121 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/auto/runtime-node.ts",
+      "detail": "text, 122 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/auto/runtime.ts",
+      "detail": "text, 121 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/auto/types-node.ts",
+      "detail": "text, 120 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/auto/types.d.ts",
+      "detail": "text, 2.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/auto/types.js",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/auto/types.mjs",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/bun-runtime.ts",
+      "detail": "text, 474 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/index.d.ts",
+      "detail": "text, 3.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/index.js",
+      "detail": "text, 401 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/index.mjs",
+      "detail": "text, 271 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/manual-types.d.ts",
+      "detail": "text, 355 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/manual-types.js",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/manual-types.mjs",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/node-runtime.ts",
+      "detail": "text, 3.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/node-types.d.ts",
+      "detail": "text, 1.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/node-types.js",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/node-types.mjs",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/registry.ts",
+      "detail": "text, 2.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/web-runtime.ts",
+      "detail": "text, 3.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/web-types.d.ts",
+      "detail": "text, 2.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/web-types.js",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_shims/web-types.mjs",
+      "detail": "text, 86 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_vendor/partial-json-parser/README.md",
+      "detail": "text, 118 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/_vendor/partial-json-parser/parser.ts",
+      "detail": "text, 5.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/core.ts",
+      "detail": "text, 39.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/error.ts",
+      "detail": "text, 4.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/index.ts",
+      "detail": "text, 15.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/internal/decoders/jsonl.ts",
+      "detail": "text, 1.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/internal/decoders/line.ts",
+      "detail": "text, 4.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/internal/stream-utils.ts",
+      "detail": "text, 1.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/lib/.keep",
+      "detail": "text, 225 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/lib/BetaMessageStream.ts",
+      "detail": "text, 21.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/lib/MessageStream.ts",
+      "detail": "text, 20.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/pagination.ts",
+      "detail": "text, 1.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resource.ts",
+      "detail": "text, 262 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/beta/beta.ts",
+      "detail": "text, 7.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/beta/index.ts",
+      "detail": "text, 2.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/beta/messages/batches.ts",
+      "detail": "text, 15.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/beta/messages/index.ts",
+      "detail": "text, 2.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/beta/messages/messages.ts",
+      "detail": "text, 40.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/beta/models.ts",
+      "detail": "text, 2.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/completions.ts",
+      "detail": "text, 6.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/index.ts",
+      "detail": "text, 2.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/messages/batches.ts",
+      "detail": "text, 11.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/messages/index.ts",
+      "detail": "text, 2.2 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/messages/messages.ts",
+      "detail": "text, 39.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/models.ts",
+      "detail": "text, 2.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/shared.ts",
+      "detail": "text, 1.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/resources/top-level.ts",
+      "detail": "text, 99 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/shims/node.ts",
+      "detail": "text, 1.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/shims/web.ts",
+      "detail": "text, 1.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/streaming.ts",
+      "detail": "text, 10.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/tsconfig.json",
+      "detail": "text, 322 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/uploads.ts",
+      "detail": "text, 8.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/src/version.ts",
+      "detail": "text, 61 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/streaming.d.ts",
+      "detail": "text, 1.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/streaming.d.ts.map",
+      "detail": "text, 1.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/streaming.js",
+      "detail": "text, 10.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/streaming.js.map",
+      "detail": "text, 8.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/streaming.mjs",
+      "detail": "text, 10.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/streaming.mjs.map",
+      "detail": "text, 8.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/uploads.d.ts",
+      "detail": "text, 3.9 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/uploads.d.ts.map",
+      "detail": "text, 1.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/uploads.js",
+      "detail": "text, 7.3 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/uploads.js.map",
+      "detail": "text, 5.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/uploads.mjs",
+      "detail": "text, 6.4 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/uploads.mjs.map",
+      "detail": "text, 5.7 KB"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/version.d.ts",
+      "detail": "text, 78 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/version.d.ts.map",
+      "detail": "text, 134 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/version.js",
+      "detail": "text, 194 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/version.js.map",
+      "detail": "text, 147 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/version.mjs",
+      "detail": "text, 97 B"
+    },
+    {
+      "type": "removed",
+      "name": "vendor/sdk/version.mjs.map",
+      "detail": "text, 155 B"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed issue where slash command arguments weren't being sent properly"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: \"Fixed issue where slash command arguments weren't being sent properly\",",
+        "Command example: \"Use the /compact command to clear the conversation history, and start a new conversation with the summary in context.\","
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let w = \"resource_exhausted\";",
+        "Feature example: I.ResourceExhausted = w;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: class oS1 extends sS1.Agent {",
+        "Feature example: eS1.Agent = oS1;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: [vW.SEMANTIC_ATTRIBUTE_SENTRY_SOURCE]: this._latestRoute.context",
+        "Feature example: ? Se2(this._latestRoute.context)"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: permission: \"rgb(87,105,247)\",",
+        "Config example: permission: \"#0000ee\","
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: let { action: W, model: B } = Z;",
+        "Config example: (d = qZ[this.model].channels),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Added ANSI color theme for better terminal compatibility"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let I = au.chrome,",
+        "Command example: var $1 = navigator.userAgent.match(/Chrome\\/(\\d+)/),"
+      ],
+      "sourceOnly": false
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.mjs",
+        "detail": "text, 1416 -> 1168 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 32 -> 28 lines"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/CHANGELOG.md",
+        "detail": "text, 99.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/LICENSE",
+        "detail": "text, 1.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/README.md",
+        "detail": "text, 17.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/MultipartBody.d.ts",
+        "detail": "text, 251 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/MultipartBody.d.ts.map",
+        "detail": "text, 251 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/MultipartBody.js",
+        "detail": "text, 426 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/MultipartBody.js.map",
+        "detail": "text, 289 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/MultipartBody.mjs",
+        "detail": "text, 286 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/MultipartBody.mjs.map",
+        "detail": "text, 281 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/README.md",
+        "detail": "text, 2.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-bun.d.ts",
+        "detail": "text, 162 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-bun.d.ts.map",
+        "detail": "text, 163 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-bun.js",
+        "detail": "text, 935 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-bun.js.map",
+        "detail": "text, 167 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-bun.mjs",
+        "detail": "text, 76 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-bun.mjs.map",
+        "detail": "text, 130 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-node.d.ts",
+        "detail": "text, 164 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-node.d.ts.map",
+        "detail": "text, 165 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-node.js",
+        "detail": "text, 937 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-node.js.map",
+        "detail": "text, 169 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-node.mjs",
+        "detail": "text, 78 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime-node.mjs.map",
+        "detail": "text, 132 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime.d.ts",
+        "detail": "text, 158 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime.d.ts.map",
+        "detail": "text, 155 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime.js",
+        "detail": "text, 931 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime.js.map",
+        "detail": "text, 159 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime.mjs",
+        "detail": "text, 72 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/runtime.mjs.map",
+        "detail": "text, 122 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/types-node.d.ts",
+        "detail": "text, 160 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/types-node.d.ts.map",
+        "detail": "text, 159 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/types-node.js",
+        "detail": "text, 933 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/types-node.js.map",
+        "detail": "text, 165 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/types-node.mjs",
+        "detail": "text, 74 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/types-node.mjs.map",
+        "detail": "text, 128 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/types.d.ts",
+        "detail": "text, 2.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/types.js",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/auto/types.mjs",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/bun-runtime.d.ts",
+        "detail": "text, 216 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/bun-runtime.d.ts.map",
+        "detail": "text, 212 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/bun-runtime.js",
+        "detail": "text, 486 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/bun-runtime.js.map",
+        "detail": "text, 343 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/bun-runtime.mjs",
+        "detail": "text, 361 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/bun-runtime.mjs.map",
+        "detail": "text, 373 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/index.d.ts",
+        "detail": "text, 3.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/index.js",
+        "detail": "text, 401 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/index.mjs",
+        "detail": "text, 290 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/manual-types.d.ts",
+        "detail": "text, 355 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/manual-types.js",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/manual-types.mjs",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/node-runtime.d.ts",
+        "detail": "text, 131 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/node-runtime.d.ts.map",
+        "detail": "text, 205 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/node-runtime.js",
+        "detail": "text, 3.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/node-runtime.js.map",
+        "detail": "text, 1.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/node-runtime.mjs",
+        "detail": "text, 2.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/node-runtime.mjs.map",
+        "detail": "text, 2.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/node-types.d.ts",
+        "detail": "text, 1.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/node-types.js",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/node-types.mjs",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/registry.d.ts",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/registry.d.ts.map",
+        "detail": "text, 1.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/registry.js",
+        "detail": "text, 1.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/registry.js.map",
+        "detail": "text, 1.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/registry.mjs",
+        "detail": "text, 1.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/registry.mjs.map",
+        "detail": "text, 1.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/web-runtime.d.ts",
+        "detail": "text, 188 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/web-runtime.d.ts.map",
+        "detail": "text, 266 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/web-runtime.js",
+        "detail": "text, 2.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/web-runtime.js.map",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/web-runtime.mjs",
+        "detail": "text, 2.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/web-runtime.mjs.map",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/web-types.d.ts",
+        "detail": "text, 2.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/web-types.js",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_shims/web-types.mjs",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_vendor/partial-json-parser/parser.d.ts",
+        "detail": "text, 117 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_vendor/partial-json-parser/parser.d.ts.map",
+        "detail": "text, 214 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_vendor/partial-json-parser/parser.js",
+        "detail": "text, 6.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_vendor/partial-json-parser/parser.js.map",
+        "detail": "text, 5.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_vendor/partial-json-parser/parser.mjs",
+        "detail": "text, 6.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/_vendor/partial-json-parser/parser.mjs.map",
+        "detail": "text, 5.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/core.d.ts",
+        "detail": "text, 11.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/core.d.ts.map",
+        "detail": "text, 9.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/core.js",
+        "detail": "text, 37.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/core.js.map",
+        "detail": "text, 28.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/core.mjs",
+        "detail": "text, 35.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/core.mjs.map",
+        "detail": "text, 27.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/error.d.ts",
+        "detail": "text, 2.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/error.d.ts.map",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/error.js",
+        "detail": "text, 4.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/error.js.map",
+        "detail": "text, 3.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/error.mjs",
+        "detail": "text, 3.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/error.mjs.map",
+        "detail": "text, 3.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/index.d.mts",
+        "detail": "text, 12.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/index.d.ts",
+        "detail": "text, 12.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/index.d.ts.map",
+        "detail": "text, 6.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/index.js",
+        "detail": "text, 9.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/index.js.map",
+        "detail": "text, 3.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/index.mjs",
+        "detail": "text, 6.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/index.mjs.map",
+        "detail": "text, 3.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/jsonl.d.ts",
+        "detail": "text, 506 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/jsonl.d.ts.map",
+        "detail": "text, 520 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/jsonl.js",
+        "detail": "text, 1.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/jsonl.js.map",
+        "detail": "text, 983 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/jsonl.mjs",
+        "detail": "text, 1.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/jsonl.mjs.map",
+        "detail": "text, 992 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/line.d.ts",
+        "detail": "text, 664 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/line.d.ts.map",
+        "detail": "text, 468 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/line.js",
+        "detail": "text, 6.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/line.js.map",
+        "detail": "text, 3.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/line.mjs",
+        "detail": "text, 6.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/decoders/line.mjs.map",
+        "detail": "text, 3.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/stream-utils.d.ts",
+        "detail": "text, 427 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/stream-utils.d.ts.map",
+        "detail": "text, 223 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/stream-utils.js",
+        "detail": "text, 1.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/stream-utils.js.map",
+        "detail": "text, 848 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/stream-utils.mjs",
+        "detail": "text, 1.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/internal/stream-utils.mjs.map",
+        "detail": "text, 837 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/BetaMessageStream.d.ts",
+        "detail": "text, 6.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/BetaMessageStream.d.ts.map",
+        "detail": "text, 3.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/BetaMessageStream.js",
+        "detail": "text, 26.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/BetaMessageStream.js.map",
+        "detail": "text, 15.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/BetaMessageStream.mjs",
+        "detail": "text, 26.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/BetaMessageStream.mjs.map",
+        "detail": "text, 15.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/MessageStream.d.ts",
+        "detail": "text, 6.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/MessageStream.d.ts.map",
+        "detail": "text, 3.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/MessageStream.js",
+        "detail": "text, 26.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/MessageStream.js.map",
+        "detail": "text, 15.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/MessageStream.mjs",
+        "detail": "text, 26.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/lib/MessageStream.mjs.map",
+        "detail": "text, 15.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/LICENSE",
+        "detail": "text, 1.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/README.md",
+        "detail": "text, 2.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/assert.d.ts",
+        "detail": "text, 39.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/assert/strict.d.ts",
+        "detail": "text, 201 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/async_hooks.d.ts",
+        "detail": "text, 21.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/buffer.buffer.d.ts",
+        "detail": "text, 18.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/buffer.d.ts",
+        "detail": "text, 84.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/child_process.d.ts",
+        "detail": "text, 67.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/cluster.d.ts",
+        "detail": "text, 27.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/compatibility/disposable.d.ts",
+        "detail": "text, 328 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/compatibility/index.d.ts",
+        "detail": "text, 533 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/compatibility/indexable.d.ts",
+        "detail": "text, 990 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/compatibility/iterators.d.ts",
+        "detail": "text, 1.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/console.d.ts",
+        "detail": "text, 20.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/constants.d.ts",
+        "detail": "text, 623 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/crypto.d.ts",
+        "detail": "text, 183.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/dgram.d.ts",
+        "detail": "text, 27.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/diagnostics_channel.d.ts",
+        "detail": "text, 22.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/dns.d.ts",
+        "detail": "text, 33.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/dns/promises.d.ts",
+        "detail": "text, 20.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/dom-events.d.ts",
+        "detail": "text, 5.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/domain.d.ts",
+        "detail": "text, 7.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/events.d.ts",
+        "detail": "text, 36.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/fs.d.ts",
+        "detail": "text, 180.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/fs/promises.d.ts",
+        "detail": "text, 51.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/globals.d.ts",
+        "detail": "text, 15.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/globals.typedarray.d.ts",
+        "detail": "text, 777 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/http.d.ts",
+        "detail": "text, 80.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/http2.d.ts",
+        "detail": "text, 120.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/https.d.ts",
+        "detail": "text, 24.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/index.d.ts",
+        "detail": "text, 3.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/inspector.d.ts",
+        "detail": "text, 123.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/module.d.ts",
+        "detail": "text, 12.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/net.d.ts",
+        "detail": "text, 40.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/os.d.ts",
+        "detail": "text, 17.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/package.json",
+        "detail": "text, 6.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/path.d.ts",
+        "detail": "text, 7.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/perf_hooks.d.ts",
+        "detail": "text, 28.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/process.d.ts",
+        "detail": "text, 74.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/punycode.d.ts",
+        "detail": "text, 5.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/querystring.d.ts",
+        "detail": "text, 6.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/readline.d.ts",
+        "detail": "text, 28.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/readline/promises.d.ts",
+        "detail": "text, 6.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/repl.d.ts",
+        "detail": "text, 19.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/stream.d.ts",
+        "detail": "text, 85.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/stream/consumers.d.ts",
+        "detail": "text, 727 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/stream/promises.d.ts",
+        "detail": "text, 2.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/stream/web.d.ts",
+        "detail": "text, 24.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/string_decoder.d.ts",
+        "detail": "text, 2.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/test.d.ts",
+        "detail": "text, 49.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/timers.d.ts",
+        "detail": "text, 5.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/timers/promises.d.ts",
+        "detail": "text, 3.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/tls.d.ts",
+        "detail": "text, 54.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/trace_events.d.ts",
+        "detail": "text, 7.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/ts5.6/buffer.buffer.d.ts",
+        "detail": "text, 18.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/ts5.6/globals.typedarray.d.ts",
+        "detail": "text, 457 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/ts5.6/index.d.ts",
+        "detail": "text, 3.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/tty.d.ts",
+        "detail": "text, 9.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/url.d.ts",
+        "detail": "text, 41.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/util.d.ts",
+        "detail": "text, 80.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/v8.d.ts",
+        "detail": "text, 31.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/vm.d.ts",
+        "detail": "text, 27.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/wasi.d.ts",
+        "detail": "text, 7.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/worker_threads.d.ts",
+        "detail": "text, 33.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/@types/node/zlib.d.ts",
+        "detail": "text, 19.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/README.md",
+        "detail": "text, 455 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/agent.d.ts",
+        "detail": "text, 1.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/api.d.ts",
+        "detail": "text, 1.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/balanced-pool.d.ts",
+        "detail": "text, 609 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/cache.d.ts",
+        "detail": "text, 1.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/client.d.ts",
+        "detail": "text, 4.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/connector.d.ts",
+        "detail": "text, 1.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/content-type.d.ts",
+        "detail": "text, 561 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/cookies.d.ts",
+        "detail": "text, 635 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/diagnostics-channel.d.ts",
+        "detail": "text, 1.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/dispatcher.d.ts",
+        "detail": "text, 13.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/errors.d.ts",
+        "detail": "text, 3.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/fetch.d.ts",
+        "detail": "text, 5.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/file.d.ts",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/filereader.d.ts",
+        "detail": "text, 1.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/formdata.d.ts",
+        "detail": "text, 4.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/global-dispatcher.d.ts",
+        "detail": "text, 276 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/global-origin.d.ts",
+        "detail": "text, 175 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/handlers.d.ts",
+        "detail": "text, 387 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/header.d.ts",
+        "detail": "text, 133 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/index.d.ts",
+        "detail": "text, 2.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/interceptors.d.ts",
+        "detail": "text, 215 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/mock-agent.d.ts",
+        "detail": "text, 2.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/mock-client.d.ts",
+        "detail": "text, 1002 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/mock-errors.d.ts",
+        "detail": "text, 338 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/mock-interceptor.d.ts",
+        "detail": "text, 3.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/mock-pool.d.ts",
+        "detail": "text, 974 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/package.json",
+        "detail": "text, 1.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/patch.d.ts",
+        "detail": "text, 1.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/pool-stats.d.ts",
+        "detail": "text, 669 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/pool.d.ts",
+        "detail": "text, 1008 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/proxy-agent.d.ts",
+        "detail": "text, 836 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/readable.d.ts",
+        "detail": "text, 1.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/webidl.d.ts",
+        "detail": "text, 5.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/node_modules/undici-types/websocket.d.ts",
+        "detail": "text, 3.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/package.json",
+        "detail": "text, 2.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/pagination.d.ts",
+        "detail": "text, 881 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/pagination.d.ts.map",
+        "detail": "text, 948 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/pagination.js",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/pagination.js.map",
+        "detail": "text, 1.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/pagination.mjs",
+        "detail": "text, 1.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/pagination.mjs.map",
+        "detail": "text, 1.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resource.d.ts",
+        "detail": "text, 190 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resource.d.ts.map",
+        "detail": "text, 242 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resource.js",
+        "detail": "text, 350 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resource.js.map",
+        "detail": "text, 215 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resource.mjs",
+        "detail": "text, 216 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resource.mjs.map",
+        "detail": "text, 207 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/beta.d.ts",
+        "detail": "text, 7.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/beta.d.ts.map",
+        "detail": "text, 4.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/beta.js",
+        "detail": "text, 1.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/beta.js.map",
+        "detail": "text, 528 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/beta.mjs",
+        "detail": "text, 694 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/beta.mjs.map",
+        "detail": "text, 536 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/index.d.ts",
+        "detail": "text, 2.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/index.d.ts.map",
+        "detail": "text, 1.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/index.js",
+        "detail": "text, 866 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/index.js.map",
+        "detail": "text, 262 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/index.mjs",
+        "detail": "text, 266 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/index.mjs.map",
+        "detail": "text, 208 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/batches.d.ts",
+        "detail": "text, 11.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/batches.d.ts.map",
+        "detail": "text, 4.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/batches.js",
+        "detail": "text, 4.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/batches.js.map",
+        "detail": "text, 3.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/batches.mjs",
+        "detail": "text, 4.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/batches.mjs.map",
+        "detail": "text, 3.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/index.d.ts",
+        "detail": "text, 2.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/index.d.ts.map",
+        "detail": "text, 1.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/index.js",
+        "detail": "text, 731 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/index.js.map",
+        "detail": "text, 244 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/index.mjs",
+        "detail": "text, 231 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/index.mjs.map",
+        "detail": "text, 200 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/messages.d.ts",
+        "detail": "text, 39.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/messages.d.ts.map",
+        "detail": "text, 13.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/messages.js",
+        "detail": "text, 3.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/messages.js.map",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/messages.mjs",
+        "detail": "text, 2.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/messages/messages.mjs.map",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/models.d.ts",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/models.d.ts.map",
+        "detail": "text, 1.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/models.js",
+        "detail": "text, 1.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/models.js.map",
+        "detail": "text, 699 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/models.mjs",
+        "detail": "text, 950 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/beta/models.mjs.map",
+        "detail": "text, 700 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/completions.d.ts",
+        "detail": "text, 6.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/completions.d.ts.map",
+        "detail": "text, 2.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/completions.js",
+        "detail": "text, 610 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/completions.js.map",
+        "detail": "text, 437 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/completions.mjs",
+        "detail": "text, 466 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/completions.mjs.map",
+        "detail": "text, 434 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/index.d.ts",
+        "detail": "text, 2.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/index.d.ts.map",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/index.js",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/index.js.map",
+        "detail": "text, 314 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/index.mjs",
+        "detail": "text, 350 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/index.mjs.map",
+        "detail": "text, 218 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/batches.d.ts",
+        "detail": "text, 9.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/batches.d.ts.map",
+        "detail": "text, 3.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/batches.js",
+        "detail": "text, 4.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/batches.js.map",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/batches.mjs",
+        "detail": "text, 4.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/batches.mjs.map",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/index.d.ts",
+        "detail": "text, 2.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/index.d.ts.map",
+        "detail": "text, 1.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/index.js",
+        "detail": "text, 719 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/index.js.map",
+        "detail": "text, 233 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/index.mjs",
+        "detail": "text, 227 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/index.mjs.map",
+        "detail": "text, 191 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/messages.d.ts",
+        "detail": "text, 38.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/messages.d.ts.map",
+        "detail": "text, 13.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/messages.js",
+        "detail": "text, 3.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/messages.js.map",
+        "detail": "text, 1.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/messages.mjs",
+        "detail": "text, 2.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/messages/messages.mjs.map",
+        "detail": "text, 1.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/models.d.ts",
+        "detail": "text, 1.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/models.d.ts.map",
+        "detail": "text, 1009 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/models.js",
+        "detail": "text, 1.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/models.js.map",
+        "detail": "text, 680 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/models.mjs",
+        "detail": "text, 905 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/models.mjs.map",
+        "detail": "text, 681 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/shared.d.ts",
+        "detail": "text, 1.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/shared.d.ts.map",
+        "detail": "text, 1.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/shared.js",
+        "detail": "text, 198 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/shared.js.map",
+        "detail": "text, 126 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/shared.mjs",
+        "detail": "text, 133 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/shared.mjs.map",
+        "detail": "text, 126 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/top-level.d.ts",
+        "detail": "text, 50 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/top-level.d.ts.map",
+        "detail": "text, 141 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/top-level.js",
+        "detail": "text, 201 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/top-level.js.map",
+        "detail": "text, 132 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/top-level.mjs",
+        "detail": "text, 136 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/resources/top-level.mjs.map",
+        "detail": "text, 132 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/node.d.ts",
+        "detail": "text, 1.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/node.d.ts.map",
+        "detail": "text, 1.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/node.js",
+        "detail": "text, 1.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/node.js.map",
+        "detail": "text, 226 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/node.mjs",
+        "detail": "text, 216 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/node.mjs.map",
+        "detail": "text, 197 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/web.d.ts",
+        "detail": "text, 1.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/web.d.ts.map",
+        "detail": "text, 1.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/web.js",
+        "detail": "text, 1.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/web.js.map",
+        "detail": "text, 256 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/web.mjs",
+        "detail": "text, 239 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/shims/web.mjs.map",
+        "detail": "text, 227 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/MultipartBody.ts",
+        "detail": "text, 223 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/README.md",
+        "detail": "text, 2.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/auto/runtime-bun.ts",
+        "detail": "text, 121 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/auto/runtime-node.ts",
+        "detail": "text, 122 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/auto/runtime.ts",
+        "detail": "text, 121 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/auto/types-node.ts",
+        "detail": "text, 120 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/auto/types.d.ts",
+        "detail": "text, 2.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/auto/types.js",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/auto/types.mjs",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/bun-runtime.ts",
+        "detail": "text, 474 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/index.d.ts",
+        "detail": "text, 3.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/index.js",
+        "detail": "text, 401 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/index.mjs",
+        "detail": "text, 271 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/manual-types.d.ts",
+        "detail": "text, 355 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/manual-types.js",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/manual-types.mjs",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/node-runtime.ts",
+        "detail": "text, 3.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/node-types.d.ts",
+        "detail": "text, 1.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/node-types.js",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/node-types.mjs",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/registry.ts",
+        "detail": "text, 2.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/web-runtime.ts",
+        "detail": "text, 3.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/web-types.d.ts",
+        "detail": "text, 2.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/web-types.js",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_shims/web-types.mjs",
+        "detail": "text, 86 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_vendor/partial-json-parser/README.md",
+        "detail": "text, 118 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/_vendor/partial-json-parser/parser.ts",
+        "detail": "text, 5.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/core.ts",
+        "detail": "text, 39.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/error.ts",
+        "detail": "text, 4.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/index.ts",
+        "detail": "text, 15.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/internal/decoders/jsonl.ts",
+        "detail": "text, 1.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/internal/decoders/line.ts",
+        "detail": "text, 4.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/internal/stream-utils.ts",
+        "detail": "text, 1.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/lib/.keep",
+        "detail": "text, 225 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/lib/BetaMessageStream.ts",
+        "detail": "text, 21.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/lib/MessageStream.ts",
+        "detail": "text, 20.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/pagination.ts",
+        "detail": "text, 1.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resource.ts",
+        "detail": "text, 262 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/beta/beta.ts",
+        "detail": "text, 7.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/beta/index.ts",
+        "detail": "text, 2.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/beta/messages/batches.ts",
+        "detail": "text, 15.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/beta/messages/index.ts",
+        "detail": "text, 2.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/beta/messages/messages.ts",
+        "detail": "text, 40.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/beta/models.ts",
+        "detail": "text, 2.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/completions.ts",
+        "detail": "text, 6.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/index.ts",
+        "detail": "text, 2.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/messages/batches.ts",
+        "detail": "text, 11.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/messages/index.ts",
+        "detail": "text, 2.2 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/messages/messages.ts",
+        "detail": "text, 39.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/models.ts",
+        "detail": "text, 2.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/shared.ts",
+        "detail": "text, 1.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/resources/top-level.ts",
+        "detail": "text, 99 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/shims/node.ts",
+        "detail": "text, 1.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/shims/web.ts",
+        "detail": "text, 1.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/streaming.ts",
+        "detail": "text, 10.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/tsconfig.json",
+        "detail": "text, 322 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/uploads.ts",
+        "detail": "text, 8.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/src/version.ts",
+        "detail": "text, 61 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/streaming.d.ts",
+        "detail": "text, 1.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/streaming.d.ts.map",
+        "detail": "text, 1.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/streaming.js",
+        "detail": "text, 10.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/streaming.js.map",
+        "detail": "text, 8.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/streaming.mjs",
+        "detail": "text, 10.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/streaming.mjs.map",
+        "detail": "text, 8.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/uploads.d.ts",
+        "detail": "text, 3.9 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/uploads.d.ts.map",
+        "detail": "text, 1.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/uploads.js",
+        "detail": "text, 7.3 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/uploads.js.map",
+        "detail": "text, 5.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/uploads.mjs",
+        "detail": "text, 6.4 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/uploads.mjs.map",
+        "detail": "text, 5.7 KB"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/version.d.ts",
+        "detail": "text, 78 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/version.d.ts.map",
+        "detail": "text, 134 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/version.js",
+        "detail": "text, 194 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/version.js.map",
+        "detail": "text, 147 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/version.mjs",
+        "detail": "text, 97 B"
+      },
+      {
+        "type": "removed",
+        "name": "vendor/sdk/version.mjs.map",
+        "detail": "text, 155 B"
+      }
+    ]
+  }
+}

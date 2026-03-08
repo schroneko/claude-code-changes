@@ -23,6 +23,7 @@ function usage(): never {
   console.error("  npm run compare -- <prevSnapshotOrDir> <currSnapshotOrDir>");
   console.error("  npm run list");
   console.error("  npm run backfill -- <fromVersion> <toVersion>");
+  console.error("  npm run backfill -- --all");
   process.exit(1);
 }
 
@@ -181,36 +182,35 @@ async function backfill(fromVersion: string, toVersion: string): Promise<void> {
 
   console.log(`Backfilling ${targetVersions.length} version(s): ${targetVersions[0]} -> ${targetVersions[targetVersions.length - 1]}`);
 
-  const snapshotSources = new Map<string, ReturnType<typeof loadSnapshotSource>>();
+  let previousSource: ReturnType<typeof loadSnapshotSource> | null = null;
 
   for (const version of targetVersions) {
     const snapshotDir = join(ROOT_DIR, "snapshots", version);
+    let currentSource: ReturnType<typeof loadSnapshotSource>;
+
     if (existsSync(snapshotDir)) {
-      snapshotSources.set(version, loadSnapshotSource(snapshotDir, version));
+      currentSource = loadSnapshotSource(snapshotDir, version);
       console.log(`Using existing snapshot: ${version}`);
-      continue;
+    } else {
+      const fetched = fetchPackage(version);
+      try {
+        const source = loadSnapshotSource(fetched.packageDir, version);
+        const signals = extractSignals(source);
+        saveSnapshot(ROOT_DIR, source, signals);
+        currentSource = loadSnapshotSource(join(ROOT_DIR, "snapshots", version), version);
+        console.log(`Saved snapshot: ${version}`);
+      } finally {
+        fetched.cleanup();
+      }
     }
 
-    const fetched = fetchPackage(version);
-    try {
-      const source = loadSnapshotSource(fetched.packageDir, version);
-      const signals = extractSignals(source);
-      saveSnapshot(ROOT_DIR, source, signals);
-      snapshotSources.set(version, loadSnapshotSource(join(ROOT_DIR, "snapshots", version), version));
-      console.log(`Saved snapshot: ${version}`);
-    } finally {
-      fetched.cleanup();
+    if (previousSource) {
+      const result = buildReport(previousSource, currentSource, officialChangelog);
+      copyReportArtifacts(join(ROOT_DIR, "reports"), result.version, result.markdown, result.json);
+      console.log(`Built report: ${previousSource.version} -> ${currentSource.version}`);
     }
-  }
 
-  for (let index = 1; index < targetVersions.length; index += 1) {
-    const prevVersion = targetVersions[index - 1];
-    const currVersion = targetVersions[index];
-    const prevSource = snapshotSources.get(prevVersion)!;
-    const currSource = snapshotSources.get(currVersion)!;
-    const result = buildReport(prevSource, currSource, officialChangelog);
-    copyReportArtifacts(join(ROOT_DIR, "reports"), result.version, result.markdown, result.json);
-    console.log(`Built report: ${prevVersion} -> ${currVersion}`);
+    previousSource = currentSource;
   }
 
   console.log("Backfill complete.");
@@ -244,6 +244,11 @@ async function main(): Promise<void> {
   }
 
   if (command === "backfill") {
+    if (args.length === 1 && args[0] === "--all") {
+      const publishedVersions = getPublishedVersions();
+      await backfill(publishedVersions[0]!, publishedVersions[publishedVersions.length - 1]!);
+      return;
+    }
     if (args.length < 2) {
       usage();
     }

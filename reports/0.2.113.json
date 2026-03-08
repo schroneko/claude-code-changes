@@ -1,0 +1,455 @@
+{
+  "version": "0.2.113",
+  "prevVersion": "0.2.109",
+  "buildTime": "",
+  "officialChangelogBullets": [],
+  "officialMentionedCommands": [],
+  "slashCommands": [],
+  "currentSlashCommands": [
+    {
+      "name": "/allowed-tools",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bug",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/migrate-installer",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [],
+  "settings": [],
+  "tools": [],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 296294 -> 284935 lines"
+    },
+    {
+      "type": "removed",
+      "name": "migrations/0000_daffy_genesis.sql",
+      "detail": "text, 1.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "migrations/0001_reflective_ulik.sql",
+      "detail": "text, 243 B"
+    },
+    {
+      "type": "removed",
+      "name": "migrations/0002_daffy_masked_marvel.sql",
+      "detail": "text, 70 B"
+    },
+    {
+      "type": "removed",
+      "name": "migrations/0003_dusty_ezekiel_stane.sql",
+      "detail": "text, 253 B"
+    },
+    {
+      "type": "removed",
+      "name": "migrations/0004_secret_iron_patriot.sql",
+      "detail": "text, 136 B"
+    },
+    {
+      "type": "removed",
+      "name": "migrations/meta/0000_snapshot.json",
+      "detail": "text, 5.6 KB"
+    },
+    {
+      "type": "removed",
+      "name": "migrations/meta/0001_snapshot.json",
+      "detail": "text, 6.8 KB"
+    },
+    {
+      "type": "removed",
+      "name": "migrations/meta/0002_snapshot.json",
+      "detail": "text, 7.0 KB"
+    },
+    {
+      "type": "removed",
+      "name": "migrations/meta/0003_snapshot.json",
+      "detail": "text, 7.1 KB"
+    },
+    {
+      "type": "removed",
+      "name": "migrations/meta/0004_snapshot.json",
+      "detail": "text, 7.5 KB"
+    },
+    {
+      "type": "removed",
+      "name": "migrations/meta/_journal.json",
+      "detail": "text, 787 B"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 31 -> 29 lines"
+    },
+    {
+      "type": "changed",
+      "name": "vendor/claude-code.vsix",
+      "detail": "binary 518.7 KB -> binary 518.7 KB"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: let O = `https://github.com/apps/claude/installations/new/permissions?suggested_target_id=${P.id}`;",
+        "Command example: let S = `https://github.com/apps/claude/installations/new/permissions?suggested_target_id=${O.id}`;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let X = \"resource_exhausted\";",
+        "Feature example: Z.ResourceExhausted = X;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: \"audio/x-pn-realaudio-plugin\": { source: \"apache\", extensions: [\"rmp\"] },",
+        "Feature example: await aH2(p0.terminal, gG1(Gz2, \"vendor\", \"claude-code-jetbrains-plugin\"));"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: class ft1 extends xt1.Agent {",
+        "Feature example: vt1.Agent = ft1;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: [kQ.SEMANTIC_ATTRIBUTE_SENTRY_SOURCE]: this._latestRoute.context",
+        "Feature example: ? DR6(this._latestRoute.context)"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: let W = \"permission_denied\";",
+        "Config example: Z.PermissionDenied = W;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: let { action: W, model: Y } = D;",
+        "Config example: (G.cpu_description = W.model),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let Z = Xr.chrome,",
+        "Feature example: ($.color = D.selectColor(Q)),"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [],
+    "settings": [],
+    "tools": [],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 296294 -> 284935 lines"
+      },
+      {
+        "type": "removed",
+        "name": "migrations/0000_daffy_genesis.sql",
+        "detail": "text, 1.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "migrations/0001_reflective_ulik.sql",
+        "detail": "text, 243 B"
+      },
+      {
+        "type": "removed",
+        "name": "migrations/0002_daffy_masked_marvel.sql",
+        "detail": "text, 70 B"
+      },
+      {
+        "type": "removed",
+        "name": "migrations/0003_dusty_ezekiel_stane.sql",
+        "detail": "text, 253 B"
+      },
+      {
+        "type": "removed",
+        "name": "migrations/0004_secret_iron_patriot.sql",
+        "detail": "text, 136 B"
+      },
+      {
+        "type": "removed",
+        "name": "migrations/meta/0000_snapshot.json",
+        "detail": "text, 5.6 KB"
+      },
+      {
+        "type": "removed",
+        "name": "migrations/meta/0001_snapshot.json",
+        "detail": "text, 6.8 KB"
+      },
+      {
+        "type": "removed",
+        "name": "migrations/meta/0002_snapshot.json",
+        "detail": "text, 7.0 KB"
+      },
+      {
+        "type": "removed",
+        "name": "migrations/meta/0003_snapshot.json",
+        "detail": "text, 7.1 KB"
+      },
+      {
+        "type": "removed",
+        "name": "migrations/meta/0004_snapshot.json",
+        "detail": "text, 7.5 KB"
+      },
+      {
+        "type": "removed",
+        "name": "migrations/meta/_journal.json",
+        "detail": "text, 787 B"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 31 -> 29 lines"
+      },
+      {
+        "type": "changed",
+        "name": "vendor/claude-code.vsix",
+        "detail": "binary 518.7 KB -> binary 518.7 KB"
+      }
+    ]
+  }
+}

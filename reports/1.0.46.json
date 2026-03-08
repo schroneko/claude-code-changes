@@ -1,0 +1,579 @@
+{
+  "version": "1.0.46",
+  "prevVersion": "1.0.45",
+  "buildTime": "",
+  "officialChangelogBullets": [],
+  "officialMentionedCommands": [],
+  "slashCommands": [],
+  "currentSlashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bashes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bug",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/migrate-installer",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [],
+  "settings": [],
+  "tools": [
+    {
+      "type": "added",
+      "name": "AgentInput"
+    },
+    {
+      "type": "added",
+      "name": "BashInput"
+    },
+    {
+      "type": "added",
+      "name": "BashOutputInput"
+    },
+    {
+      "type": "added",
+      "name": "ExitPlanModeInput"
+    },
+    {
+      "type": "added",
+      "name": "FileEditInput"
+    },
+    {
+      "type": "added",
+      "name": "FileMultiEditInput"
+    },
+    {
+      "type": "added",
+      "name": "FileReadInput"
+    },
+    {
+      "type": "added",
+      "name": "FileWriteInput"
+    },
+    {
+      "type": "added",
+      "name": "GlobInput"
+    },
+    {
+      "type": "added",
+      "name": "GrepInput"
+    },
+    {
+      "type": "added",
+      "name": "KillShellInput"
+    },
+    {
+      "type": "added",
+      "name": "ListMcpResourcesInput"
+    },
+    {
+      "type": "added",
+      "name": "LsInput"
+    },
+    {
+      "type": "added",
+      "name": "NotebookEditInput"
+    },
+    {
+      "type": "added",
+      "name": "NotebookReadInput"
+    },
+    {
+      "type": "added",
+      "name": "ReadMcpResourceInput"
+    },
+    {
+      "type": "added",
+      "name": "TodoWriteInput"
+    },
+    {
+      "type": "added",
+      "name": "WebFetchInput"
+    },
+    {
+      "type": "added",
+      "name": "WebSearchInput"
+    }
+  ],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 328034 -> 328191 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 33 -> 33 lines"
+    },
+    {
+      "type": "added",
+      "name": "sdk-tools.d.ts",
+      "detail": "text, 8.7 KB"
+    },
+    {
+      "type": "changed",
+      "name": "sdk.mjs",
+      "detail": "text, 330 -> 331 lines"
+    },
+    {
+      "type": "changed",
+      "name": "vendor/claude-code.vsix",
+      "detail": "binary 98.0 KB -> binary 98.3 KB"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: text: `MCP Server ${WA.bold(C.name)} needs authentication · ${WA.dim(\"/mcp to authenticate\")}`,",
+        "Command example: text: `MCP Server ${CA.bold(C.name)} needs authentication · ${CA.dim(\"/mcp to authenticate\")}`,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [
+        "Tool added: ListMcpResourcesInput",
+        "Tool added: ReadMcpResourceInput"
+      ],
+      "evidence": [
+        "Feature example: PYA._addResourceSpans = TYA;",
+        "Feature example: let Q = $WB.addPerformanceInstrumentationHandler(\"resource\", ({ entries: D }) => {"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: CreateMarketplaceModelEndpointCommand: () => PF0,",
+        "Config example: DeleteMarketplaceModelEndpointCommand: () => hF0,"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: class HWA extends EWA.Agent {",
+        "Feature example: zWA.Agent = HWA;"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: ? hWB(this._latestRoute.context)",
+        "Feature example: data: { [G7.SEMANTIC_ATTRIBUTE_SENTRY_SOURCE]: B.context ? sWB(B.context) : \"url\" },"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: PERMISSION_DENIED: cS0,",
+        "Config example: permissions: S39.optional(),"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: k_0 = \"device.model.identifier\",",
+        "Config example: x_0 = \"device.model.name\","
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: let A = S91.chrome,",
+        "Feature example: else if (PC(\"color\") || PC(\"colors\") || PC(\"color=true\") || PC(\"color=always\")) u61 = 1;"
+      ],
+      "sourceOnly": true
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [],
+    "envVars": [],
+    "settings": [],
+    "tools": [
+      {
+        "type": "added",
+        "name": "AgentInput"
+      },
+      {
+        "type": "added",
+        "name": "BashInput"
+      },
+      {
+        "type": "added",
+        "name": "BashOutputInput"
+      },
+      {
+        "type": "added",
+        "name": "ExitPlanModeInput"
+      },
+      {
+        "type": "added",
+        "name": "FileEditInput"
+      },
+      {
+        "type": "added",
+        "name": "FileMultiEditInput"
+      },
+      {
+        "type": "added",
+        "name": "FileReadInput"
+      },
+      {
+        "type": "added",
+        "name": "FileWriteInput"
+      },
+      {
+        "type": "added",
+        "name": "GlobInput"
+      },
+      {
+        "type": "added",
+        "name": "GrepInput"
+      },
+      {
+        "type": "added",
+        "name": "KillShellInput"
+      },
+      {
+        "type": "added",
+        "name": "ListMcpResourcesInput"
+      },
+      {
+        "type": "added",
+        "name": "LsInput"
+      },
+      {
+        "type": "added",
+        "name": "NotebookEditInput"
+      },
+      {
+        "type": "added",
+        "name": "NotebookReadInput"
+      },
+      {
+        "type": "added",
+        "name": "ReadMcpResourceInput"
+      },
+      {
+        "type": "added",
+        "name": "TodoWriteInput"
+      },
+      {
+        "type": "added",
+        "name": "WebFetchInput"
+      },
+      {
+        "type": "added",
+        "name": "WebSearchInput"
+      }
+    ],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 328034 -> 328191 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 33 -> 33 lines"
+      },
+      {
+        "type": "added",
+        "name": "sdk-tools.d.ts",
+        "detail": "text, 8.7 KB"
+      },
+      {
+        "type": "changed",
+        "name": "sdk.mjs",
+        "detail": "text, 330 -> 331 lines"
+      },
+      {
+        "type": "changed",
+        "name": "vendor/claude-code.vsix",
+        "detail": "binary 98.0 KB -> binary 98.3 KB"
+      }
+    ]
+  }
+}

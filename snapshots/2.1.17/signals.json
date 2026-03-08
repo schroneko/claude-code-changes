@@ -1,0 +1,885 @@
+{
+  "version": "2.1.17",
+  "buildTime": "",
+  "slashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/agents",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/btw",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/chrome",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/code-review",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/color",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "status-hint",
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "tips",
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/context",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/discover",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/extra-usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/feedback",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/fork",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "status-hint",
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "tips",
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-slack-app",
+      "sources": [
+        "tips",
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/keybindings",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "status-hint",
+        "tryItPrompt",
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint",
+        "tips"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/mobile",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/passes",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plan",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plugin",
+      "sources": [
+        "status-hint",
+        "tryItPrompt",
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/privacy-settings",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rate-limit-options",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/remote-env",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rename",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "tryItPrompt"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/rewind",
+      "sources": [
+        "tryItPrompt",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/sandbox",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/security-review",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/session",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/share",
+      "sources": [
+        "tryItPrompt"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/skills",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/stats",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/statusline",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/stickers",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tag",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tasks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/teleport",
+      "sources": [
+        "tryItPrompt"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/theme",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/think-back",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/thinkback-play",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/todos",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "tryItPrompt",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "tools": {
+    "AgentInput": [
+      "description",
+      "prompt",
+      "subagent_type",
+      "model?",
+      "resume?",
+      "run_in_background?",
+      "max_turns?",
+      "name?",
+      "team_name?",
+      "mode?"
+    ],
+    "BashInput": [
+      "command",
+      "timeout?"
+    ],
+    "TaskOutputInput": [
+      "task_id",
+      "block",
+      "timeout"
+    ],
+    "ExitPlanModeInput": [
+      "allowedPrompts?",
+      "tool",
+      "prompt"
+    ],
+    "FileEditInput": [
+      "file_path",
+      "old_string",
+      "new_string",
+      "replace_all?"
+    ],
+    "FileReadInput": [
+      "file_path",
+      "offset?",
+      "limit?"
+    ],
+    "FileWriteInput": [
+      "file_path",
+      "content"
+    ],
+    "GlobInput": [
+      "pattern",
+      "path?"
+    ],
+    "GrepInput": [
+      "pattern",
+      "path?"
+    ],
+    "KillShellInput": [
+      "shell_id"
+    ],
+    "ListMcpResourcesInput": [
+      "server?"
+    ],
+    "NotebookEditInput": [
+      "notebook_path",
+      "cell_id?",
+      "new_source",
+      "cell_type?",
+      "edit_mode?"
+    ],
+    "ReadMcpResourceInput": [
+      "server",
+      "uri"
+    ],
+    "TodoWriteInput": [
+      "todos",
+      "content",
+      "status",
+      "activeForm"
+    ],
+    "WebFetchInput": [
+      "url",
+      "prompt"
+    ],
+    "WebSearchInput": [
+      "query",
+      "allowed_domains?",
+      "blocked_domains?"
+    ],
+    "AskUserQuestionInput": [
+      "questions",
+      "question",
+      "header",
+      "options",
+      "label",
+      "description"
+    ],
+    "ConfigInput": [
+      "setting",
+      "value?"
+    ]
+  },
+  "models": [
+    "claude-1.3",
+    "claude-1.3-100k",
+    "claude-2.0",
+    "claude-2.1",
+    "claude-3-5-haiku",
+    "claude-3-5-haiku-20241022",
+    "claude-3-5-haiku-20241022-v1",
+    "claude-3-5-sonnet",
+    "claude-3-5-sonnet-20241022",
+    "claude-3-5-sonnet-20241022-v2",
+    "claude-3-5-sonnet-v2",
+    "claude-3-7-sonnet",
+    "claude-3-7-sonnet-20250219",
+    "claude-3-7-sonnet-20250219-v1",
+    "claude-3-7-sonnet-latest",
+    "claude-3-haiku",
+    "claude-3-opus",
+    "claude-3-opus-20240229",
+    "claude-3-sonnet",
+    "claude-3-sonnet-20240229",
+    "claude-4-opus-20250514",
+    "claude-ai-external-token",
+    "claude-by-anthropic",
+    "claude-cli",
+    "claude-code-20250219",
+    "claude-code-action",
+    "claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819",
+    "claude-code-github-action",
+    "claude-code-guest-passes",
+    "claude-code-guide",
+    "claude-code-jetbrains",
+    "claude-code-jetbrains-plugin",
+    "claude-code-keybindings",
+    "claude-code-marketplace",
+    "claude-code-mcp-cli",
+    "claude-code-plugins",
+    "claude-code-releases",
+    "claude-code-review.yml",
+    "claude-code-screenshots",
+    "claude-code-settings.json",
+    "claude-code-user",
+    "claude-code.git",
+    "claude-context",
+    "claude-desktop",
+    "claude-folder",
+    "claude-haiku-3-5",
+    "claude-haiku-4",
+    "claude-haiku-4-5",
+    "claude-haiku-4-5-20251001",
+    "claude-haiku-4-5-20251001-v1",
+    "claude-hidden",
+    "claude-in-chrome",
+    "claude-in-chrome-default-enabled",
+    "claude-in-chrome-mcp",
+    "claude-instant-1.1",
+    "claude-instant-1.1-100k",
+    "claude-instant-1.2",
+    "claude-local",
+    "claude-md-project",
+    "claude-md-user",
+    "claude-opus-4",
+    "claude-opus-4-0",
+    "claude-opus-4-1",
+    "claude-opus-4-1-20250805",
+    "claude-opus-4-1-20250805-v1",
+    "claude-opus-4-20250514",
+    "claude-opus-4-20250514-v1",
+    "claude-opus-4-5",
+    "claude-opus-4-5-20251101",
+    "claude-opus-4-5-20251101-v1",
+    "claude-plan",
+    "claude-plugin",
+    "claude-plugin-directory",
+    "claude-plugins-official",
+    "claude-prompt",
+    "claude-remote-container-id",
+    "claude-remote-session-id",
+    "claude-review",
+    "claude-settings",
+    "claude-sonnet-3-7",
+    "claude-sonnet-4",
+    "claude-sonnet-4-20250514",
+    "claude-sonnet-4-20250514-v1",
+    "claude-sonnet-4-5",
+    "claude-sonnet-4-5-20250929",
+    "claude-sonnet-4-5-20250929-v1",
+    "claude-swarm",
+    "claude-vscode"
+  ],
+  "envVars": [
+    "CLAUDE_AGENT_SDK_MCP_NO_PREFIX",
+    "CLAUDE_AGENT_SDK_VERSION",
+    "CLAUDE_AI_AUTHORIZE_URL",
+    "CLAUDE_API_KEY",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR",
+    "CLAUDE_BASH_NO_LOGIN",
+    "CLAUDE_CODE_ACCESSIBILITY",
+    "CLAUDE_CODE_ACTION",
+    "CLAUDE_CODE_ADDITIONAL_PROTECTION",
+    "CLAUDE_CODE_AGENT_ID",
+    "CLAUDE_CODE_AGENT_NAME",
+    "CLAUDE_CODE_AGENT_SWARMS",
+    "CLAUDE_CODE_AGENT_TYPE",
+    "CLAUDE_CODE_API_BASE_URL",
+    "CLAUDE_CODE_API_KEY_FILE_DESCRIPTOR",
+    "CLAUDE_CODE_API_KEY_HELPER_TTL_MS",
+    "CLAUDE_CODE_ATTRIBUTION_HEADER",
+    "CLAUDE_CODE_AUTO_CONNECT_IDE",
+    "CLAUDE_CODE_BASE_REF",
+    "CLAUDE_CODE_BASH_SANDBOX_SHOW_INDICATOR",
+    "CLAUDE_CODE_BLOCKING_LIMIT_OVERRIDE",
+    "CLAUDE_CODE_BUBBLEWRAP",
+    "CLAUDE_CODE_CLIENT_CERT",
+    "CLAUDE_CODE_CLIENT_KEY",
+    "CLAUDE_CODE_CLIENT_KEY_PASSPHRASE",
+    "CLAUDE_CODE_CONTAINER_ID",
+    "CLAUDE_CODE_DEBUG_LOGS_DIR",
+    "CLAUDE_CODE_DIAGNOSTICS_FILE",
+    "CLAUDE_CODE_DISABLE_ATTACHMENTS",
+    "CLAUDE_CODE_DISABLE_BACKGROUND_TASKS",
+    "CLAUDE_CODE_DISABLE_CLAUDE_MDS",
+    "CLAUDE_CODE_DISABLE_COMMAND_INJECTION_CHECK",
+    "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY",
+    "CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC",
+    "CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE",
+    "CLAUDE_CODE_DONT_INHERIT_ENV",
+    "CLAUDE_CODE_EFFORT_LEVEL",
+    "CLAUDE_CODE_ENABLE_CFC",
+    "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION",
+    "CLAUDE_CODE_ENABLE_SDK_FILE_CHECKPOINTING",
+    "CLAUDE_CODE_ENABLE_TELEMETRY",
+    "CLAUDE_CODE_ENABLE_TOKEN_USAGE_ATTACHMENT",
+    "CLAUDE_CODE_ENHANCED_TELEMETRY_BETA",
+    "CLAUDE_CODE_ENTRYPOINT",
+    "CLAUDE_CODE_ENVIRONMENT_RUNNER_VERSION",
+    "CLAUDE_CODE_EXIT_AFTER_STOP_DELAY",
+    "CLAUDE_CODE_EXTRA_BODY",
+    "CLAUDE_CODE_FILE_READ_MAX_OUTPUT_TOKENS",
+    "CLAUDE_CODE_FORCE_FULL_LOGO",
+    "CLAUDE_CODE_GIT_BASH_PATH",
+    "CLAUDE_CODE_GLOB_HIDDEN",
+    "CLAUDE_CODE_GLOB_NO_IGNORE",
+    "CLAUDE_CODE_GLOB_TIMEOUT_SECONDS",
+    "CLAUDE_CODE_HOST_HTTP_PROXY_PORT",
+    "CLAUDE_CODE_HOST_SOCKS_PROXY_PORT",
+    "CLAUDE_CODE_IDE_HOST_OVERRIDE",
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL",
+    "CLAUDE_CODE_IDE_SKIP_VALID_CHECK",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS",
+    "CLAUDE_CODE_MAX_RETRIES",
+    "CLAUDE_CODE_MAX_TOOL_USE_CONCURRENCY",
+    "CLAUDE_CODE_OAUTH_CLIENT_ID",
+    "CLAUDE_CODE_OAUTH_TOKEN",
+    "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR",
+    "CLAUDE_CODE_OTEL_FLUSH_TIMEOUT_MS",
+    "CLAUDE_CODE_OTEL_HEADERS_HELPER_DEBOUNCE_MS",
+    "CLAUDE_CODE_OTEL_SHUTDOWN_TIMEOUT_MS",
+    "CLAUDE_CODE_PERFETTO_TRACE",
+    "CLAUDE_CODE_PLAN_MODE_INTERVIEW_PHASE",
+    "CLAUDE_CODE_PLAN_MODE_REQUIRED",
+    "CLAUDE_CODE_PLAN_V2_AGENT_COUNT",
+    "CLAUDE_CODE_PLAN_V2_EXPLORE_AGENT_COUNT",
+    "CLAUDE_CODE_PROFILE_QUERY",
+    "CLAUDE_CODE_PROFILE_STARTUP",
+    "CLAUDE_CODE_PROXY_RESOLVES_HOSTS",
+    "CLAUDE_CODE_REMOTE",
+    "CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE",
+    "CLAUDE_CODE_REMOTE_SESSION_ID",
+    "CLAUDE_CODE_SESSION_ACCESS_TOKEN",
+    "CLAUDE_CODE_SESSION_ID",
+    "CLAUDE_CODE_SHELL",
+    "CLAUDE_CODE_SHELL_PREFIX",
+    "CLAUDE_CODE_SKIP_BEDROCK_AUTH",
+    "CLAUDE_CODE_SKIP_FOUNDRY_AUTH",
+    "CLAUDE_CODE_SKIP_PROMPT_HISTORY",
+    "CLAUDE_CODE_SKIP_VERTEX_AUTH",
+    "CLAUDE_CODE_SM_COMPACT",
+    "CLAUDE_CODE_SSE_PORT",
+    "CLAUDE_CODE_SUBAGENT_MODEL",
+    "CLAUDE_CODE_SYNTAX_HIGHLIGHT",
+    "CLAUDE_CODE_TAGS",
+    "CLAUDE_CODE_TASK_LIST_ID",
+    "CLAUDE_CODE_TEAMMATE_COMMAND",
+    "CLAUDE_CODE_TEAM_NAME",
+    "CLAUDE_CODE_TEST_FIXTURES_ROOT",
+    "CLAUDE_CODE_TMPDIR",
+    "CLAUDE_CODE_TMUX_PREFIX",
+    "CLAUDE_CODE_TMUX_PREFIX_CONFLICTS",
+    "CLAUDE_CODE_TMUX_SESSION",
+    "CLAUDE_CODE_USE_BEDROCK",
+    "CLAUDE_CODE_USE_COWORK_PLUGINS",
+    "CLAUDE_CODE_USE_FOUNDRY",
+    "CLAUDE_CODE_USE_NATIVE_FILE_SEARCH",
+    "CLAUDE_CODE_USE_VERTEX",
+    "CLAUDE_CODE_WEBSOCKET_AUTH_FILE_DESCRIPTOR",
+    "CLAUDE_CONFIG_DIR",
+    "CLAUDE_DEBUG",
+    "CLAUDE_ENV_FILE",
+    "CLAUDE_FORCE_DISPLAY_SURVEY",
+    "CLAUDE_HAIKU_4_5",
+    "CLAUDE_PLUGIN_ROOT",
+    "CLAUDE_PROJECT_DIR",
+    "CLAUDE_REPL_MODE",
+    "CLAUDE_SESSION_ID",
+    "CLAUDE_TMPDIR"
+  ],
+  "settings": {}
+}

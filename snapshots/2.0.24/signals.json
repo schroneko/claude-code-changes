@@ -1,0 +1,559 @@
+{
+  "version": "2.0.24",
+  "buildTime": "",
+  "slashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/agents",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/bashes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/feedback",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "status-hint",
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/migrate-installer",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style:new",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plugin",
+      "sources": [
+        "status-hint",
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/privacy-settings",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rewind",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/sandbox",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/security-review",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/statusline",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/todos",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "tools": {
+    "AgentInput": [
+      "description",
+      "prompt",
+      "subagent_type"
+    ],
+    "BashInput": [
+      "command",
+      "timeout?",
+      "description?",
+      "run_in_background?",
+      "dangerouslyOverrideSandbox?"
+    ],
+    "BashOutputInput": [
+      "bash_id",
+      "filter?"
+    ],
+    "ExitPlanModeInput": [
+      "plan"
+    ],
+    "FileEditInput": [
+      "file_path",
+      "old_string",
+      "new_string",
+      "replace_all?"
+    ],
+    "FileReadInput": [
+      "file_path",
+      "offset?",
+      "limit?"
+    ],
+    "FileWriteInput": [
+      "file_path",
+      "content"
+    ],
+    "GlobInput": [
+      "pattern",
+      "path?"
+    ],
+    "GrepInput": [
+      "pattern",
+      "path?"
+    ],
+    "KillShellInput": [
+      "shell_id"
+    ],
+    "ListMcpResourcesInput": [
+      "server?"
+    ],
+    "NotebookEditInput": [
+      "notebook_path",
+      "cell_id?",
+      "new_source",
+      "cell_type?",
+      "edit_mode?"
+    ],
+    "ReadMcpResourceInput": [
+      "server",
+      "uri"
+    ],
+    "TodoWriteInput": [
+      "todos",
+      "content",
+      "status",
+      "activeForm"
+    ],
+    "WebFetchInput": [
+      "url",
+      "prompt"
+    ],
+    "WebSearchInput": [
+      "query",
+      "allowed_domains?",
+      "blocked_domains?"
+    ]
+  },
+  "models": [
+    "claude-1.3",
+    "claude-1.3-100k",
+    "claude-2.0",
+    "claude-2.1",
+    "claude-3-5-haiku",
+    "claude-3-5-haiku-20241022",
+    "claude-3-5-haiku-20241022-v1",
+    "claude-3-5-sonnet",
+    "claude-3-5-sonnet-20240620",
+    "claude-3-5-sonnet-20241022",
+    "claude-3-5-sonnet-20241022-v2",
+    "claude-3-5-sonnet-v2",
+    "claude-3-7-sonnet",
+    "claude-3-7-sonnet-20250219",
+    "claude-3-7-sonnet-20250219-v1",
+    "claude-3-opus-20240229",
+    "claude-3-sonnet-20240229",
+    "claude-4-opus-20250514",
+    "claude-ai-external-token",
+    "claude-cli",
+    "claude-code-20250219",
+    "claude-code-action",
+    "claude-code-cost",
+    "claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819",
+    "claude-code-github-action",
+    "claude-code-jetbrains",
+    "claude-code-jetbrains-plugin",
+    "claude-code-mcp",
+    "claude-code-releases",
+    "claude-code-review.yml",
+    "claude-code-security",
+    "claude-code-settings.json",
+    "claude-code-user",
+    "claude-desktop",
+    "claude-haiku-4-5",
+    "claude-haiku-4-5-20251001",
+    "claude-haiku-4-5-20251001-v1",
+    "claude-instant-1.1",
+    "claude-instant-1.1-100k",
+    "claude-instant-1.2",
+    "claude-local",
+    "claude-opus-4",
+    "claude-opus-4-0",
+    "claude-opus-4-1",
+    "claude-opus-4-1-20250805",
+    "claude-opus-4-1-20250805-v1",
+    "claude-opus-4-20250514",
+    "claude-opus-4-20250514-v1",
+    "claude-plugin",
+    "claude-prompt",
+    "claude-remote-container-id",
+    "claude-review",
+    "claude-settings",
+    "claude-sonnet-4",
+    "claude-sonnet-4-20250514",
+    "claude-sonnet-4-20250514-v1",
+    "claude-sonnet-4-5",
+    "claude-sonnet-4-5-20250929",
+    "claude-sonnet-4-5-20250929-v1",
+    "claude-vscode"
+  ],
+  "envVars": [
+    "CLAUDE_AGENT_SDK_VERSION",
+    "CLAUDE_AI_AUTHORIZE_URL",
+    "CLAUDE_API_KEY",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR",
+    "CLAUDE_BASH_NO_LOGIN",
+    "CLAUDE_CODE_ACTION",
+    "CLAUDE_CODE_ADDITIONAL_PROTECTION",
+    "CLAUDE_CODE_API_KEY_FILE_DESCRIPTOR",
+    "CLAUDE_CODE_API_KEY_HELPER_TTL_MS",
+    "CLAUDE_CODE_AUTO_CONNECT_IDE",
+    "CLAUDE_CODE_BASH_SANDBOX_SHOW_INDICATOR",
+    "CLAUDE_CODE_CLIENT_CERT",
+    "CLAUDE_CODE_CLIENT_KEY",
+    "CLAUDE_CODE_CLIENT_KEY_PASSPHRASE",
+    "CLAUDE_CODE_CONTAINER_ID",
+    "CLAUDE_CODE_DEBUG_LOGS_DIR",
+    "CLAUDE_CODE_DISABLE_ATTACHMENTS",
+    "CLAUDE_CODE_DISABLE_AUTOCHECKPOINTING",
+    "CLAUDE_CODE_DISABLE_CLAUDE_MDS",
+    "CLAUDE_CODE_DISABLE_COMMAND_INJECTION_CHECK",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY",
+    "CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING",
+    "CLAUDE_CODE_DISABLE_FINE_GRAINED_TOOL_STREAMING",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE",
+    "CLAUDE_CODE_DONT_INHERIT_ENV",
+    "CLAUDE_CODE_ENABLE_TELEMETRY",
+    "CLAUDE_CODE_ENABLE_TOKEN_USAGE_ATTACHMENT",
+    "CLAUDE_CODE_ENTRYPOINT",
+    "CLAUDE_CODE_EXTRA_BODY",
+    "CLAUDE_CODE_FORCE_FULL_LOGO",
+    "CLAUDE_CODE_GIT_BASH_PATH",
+    "CLAUDE_CODE_HOST_HTTP_PROXY_PORT",
+    "CLAUDE_CODE_HOST_SOCKS_PROXY_PORT",
+    "CLAUDE_CODE_IDE_HOST_OVERRIDE",
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL",
+    "CLAUDE_CODE_IDE_SKIP_VALID_CHECK",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS",
+    "CLAUDE_CODE_MAX_RETRIES",
+    "CLAUDE_CODE_OAUTH_TOKEN",
+    "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR",
+    "CLAUDE_CODE_OTEL_FLUSH_TIMEOUT_MS",
+    "CLAUDE_CODE_OTEL_SHUTDOWN_TIMEOUT_MS",
+    "CLAUDE_CODE_REMOTE",
+    "CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE",
+    "CLAUDE_CODE_SANDBOX",
+    "CLAUDE_CODE_SESSION_ACCESS_TOKEN",
+    "CLAUDE_CODE_SESSION_ID",
+    "CLAUDE_CODE_SHELL_PREFIX",
+    "CLAUDE_CODE_SKIP_BEDROCK_AUTH",
+    "CLAUDE_CODE_SKIP_VERTEX_AUTH",
+    "CLAUDE_CODE_SSE_PORT",
+    "CLAUDE_CODE_SUBAGENT_MODEL",
+    "CLAUDE_CODE_TEST_FIXTURES_ROOT",
+    "CLAUDE_CODE_USE_BEDROCK",
+    "CLAUDE_CODE_USE_VERTEX",
+    "CLAUDE_CODE_WEBSOCKET_AUTH_FILE_DESCRIPTOR",
+    "CLAUDE_CONFIG_DIR",
+    "CLAUDE_DEBUG",
+    "CLAUDE_ENV_FILE",
+    "CLAUDE_FORCE_DISPLAY_SURVEY",
+    "CLAUDE_HAIKU_4_5",
+    "CLAUDE_PLUGIN_ROOT",
+    "CLAUDE_PROJECT_DIR"
+  ],
+  "settings": {}
+}

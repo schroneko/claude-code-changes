@@ -98,6 +98,12 @@ npm run list
 npm run backfill -- 2.1.27 2.1.71
 ```
 
+公開されている全バージョンをまとめて取得して、連続する差分レポートを全部作る:
+
+```bash
+npm run backfill -- --all
+```
+
 型チェック:
 
 ```bash

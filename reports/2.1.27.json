@@ -1,6 +1,6 @@
 {
   "version": "2.1.27",
-  "prevVersion": "2.1.25",
+  "prevVersion": "2.1.26",
   "buildTime": "",
   "officialChangelogBullets": [
     "Added tool call failures and denials to debug logs",
@@ -607,15 +607,15 @@
     },
     {
       "type": "added",
-      "name": "CLAUDE_CHROME_PERMISSION_MODE"
-    },
-    {
-      "type": "added",
       "name": "CLAUDE_CODE_EXIT_AFTER_FIRST_RENDER"
     },
     {
       "type": "added",
       "name": "CLAUDE_CODE_POST_FOR_SESSION_INGRESS_V2"
+    },
+    {
+      "type": "removed",
+      "name": "CLAUDE_CODE_POST_FOR_SESSION_INGRESS"
     }
   ],
   "settings": [],
@@ -624,7 +624,12 @@
     {
       "type": "changed",
       "name": "cli.js",
-      "detail": "text, 581907 -> 562501 lines"
+      "detail": "text, 525504 -> 510577 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 32 -> 32 lines"
     }
   ],
   "capabilitySignals": [
@@ -688,7 +693,7 @@
       ],
       "sourceHighlights": [],
       "evidence": [
-        "Feature example: context: D1.slice(zA - 100, zA + 100),",
+        "Config example: illegalBy: { msg: H6.message, context: D1.slice(zA - 100, zA + 100), mode: H6.mode },",
         "Feature example: \"TTL caching without ttlAutopurge, max, or maxSize can result in unbounded memory consumption.\","
       ],
       "sourceOnly": false
@@ -700,8 +705,8 @@
       "officialHighlights": [],
       "sourceHighlights": [],
       "evidence": [
-        "Feature example: \"acceptEdits\",",
-        "Config example: error: \"WebFetch permissions use domain format, not URLs\","
+        "Config example: error: \"WebFetch permissions use domain format, not URLs\",",
+        "Config example: error: 'WebFetch permissions must use \"domain:\" prefix',"
       ],
       "sourceOnly": true
     },
@@ -741,15 +746,15 @@
       },
       {
         "type": "added",
-        "name": "CLAUDE_CHROME_PERMISSION_MODE"
-      },
-      {
-        "type": "added",
         "name": "CLAUDE_CODE_EXIT_AFTER_FIRST_RENDER"
       },
       {
         "type": "added",
         "name": "CLAUDE_CODE_POST_FOR_SESSION_INGRESS_V2"
+      },
+      {
+        "type": "removed",
+        "name": "CLAUDE_CODE_POST_FOR_SESSION_INGRESS"
       }
     ],
     "settings": [],
@@ -758,7 +763,12 @@
       {
         "type": "changed",
         "name": "cli.js",
-        "detail": "text, 581907 -> 562501 lines"
+        "detail": "text, 525504 -> 510577 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 32 -> 32 lines"
       }
     ]
   }

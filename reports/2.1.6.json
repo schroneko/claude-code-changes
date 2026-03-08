@@ -1,0 +1,800 @@
+{
+  "version": "2.1.6",
+  "prevVersion": "2.1.5",
+  "buildTime": "",
+  "officialChangelogBullets": [
+    "Added search functionality to `/config` command for quickly filtering settings",
+    "Added Updates section to `/doctor` showing auto-update channel and available npm versions (stable/latest)",
+    "Added date range filtering to `/stats` command - press `r` to cycle between Last 7 days, Last 30 days, and All time",
+    "Added automatic discovery of skills from nested `.claude/skills` directories when working with files in subdirectories",
+    "Added `context_window.used_percentage` and `context_window.remaining_percentage` fields to status line input for easier context window display",
+    "Added an error display when the editor fails during Ctrl+G",
+    "Fixed permission bypass via shell line continuation that could allow blocked commands to execute",
+    "Fixed false \"File has been unexpectedly modified\" errors when file watchers touch files without changing content",
+    "Fixed text styling (bold, colors) getting progressively misaligned in multi-line responses",
+    "Fixed the feedback panel closing unexpectedly when typing 'n' in the description field",
+    "Fixed rate limit warning appearing at low usage after weekly reset (now requires 70% usage)",
+    "Fixed rate limit options menu incorrectly auto-opening when resuming a previous session",
+    "Fixed numpad keys outputting escape sequences instead of characters in Kitty keyboard protocol terminals",
+    "Fixed Option+Return not inserting newlines in Kitty keyboard protocol terminals",
+    "Fixed corrupted config backup files accumulating in the home directory (now only one backup is created per config file)",
+    "Fixed `mcp list` and `mcp get` commands leaving orphaned MCP server processes",
+    "Fixed visual artifacts in ink2 mode when nodes become hidden via `display:none`",
+    "Improved the external CLAUDE.md imports approval dialog to show which files are being imported and from where",
+    "Improved the `/tasks` dialog to go directly to task details when there's only one background task running",
+    "Improved @ autocomplete with icons for different suggestion types and single-line formatting",
+    "Updated \"Help improve Claude\" setting fetch to refresh OAuth and retry when it fails due to a stale OAuth token",
+    "Changed task notification display to cap at 3 lines with overflow summary when multiple background tasks complete simultaneously",
+    "Changed terminal title to \"Claude Code\" on startup for better window identification",
+    "Removed ability to @-mention MCP servers to enable/disable - use `/mcp enable <name>` instead",
+    "[VSCode] Fixed usage indicator not updating after manual compact"
+  ],
+  "officialMentionedCommands": [
+    "/config",
+    "/disable",
+    "/doctor",
+    "/latest",
+    "/mcp",
+    "/skills",
+    "/stats",
+    "/tasks"
+  ],
+  "slashCommands": [
+    {
+      "type": "added",
+      "name": "/btw"
+    },
+    {
+      "type": "added",
+      "name": "/keybindings"
+    }
+  ],
+  "currentSlashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/agents",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/btw",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/chrome",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/code-review",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "status-hint",
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "tips",
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/context",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/discover",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/extra-usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/feedback",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "status-hint",
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "tips",
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-slack-app",
+      "sources": [
+        "tips",
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/keybindings",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "status-hint",
+        "tryItPrompt",
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint",
+        "tips"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/mobile",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/passes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plan",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/plugin",
+      "sources": [
+        "status-hint",
+        "tryItPrompt",
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/privacy-settings",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rate-limit-options",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/remote-env",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rename",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "tryItPrompt",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "tryItPrompt"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/rewind",
+      "sources": [
+        "tryItPrompt",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/sandbox",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/security-review",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin"
+    },
+    {
+      "name": "/share",
+      "sources": [
+        "tryItPrompt"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/skills",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/stats",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/statusline",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/stickers",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tag",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tasks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/teleport",
+      "sources": [
+        "tryItPrompt"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/theme",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/think-back",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/thinkback-play",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/todos",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "tryItPrompt",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    }
+  ],
+  "models": [],
+  "envVars": [
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_ENVIRONMENT_RUNNER_VERSION"
+    },
+    {
+      "type": "added",
+      "name": "CLAUDE_CODE_LOOPY_MODE"
+    },
+    {
+      "type": "removed",
+      "name": "CLAUDE_CODE_POST_COMPACT_MIN_MESSAGE_TOKENS"
+    }
+  ],
+  "settings": [],
+  "tools": [
+    {
+      "type": "added",
+      "name": "ExitPlanModeInput"
+    }
+  ],
+  "packageFiles": [
+    {
+      "type": "changed",
+      "name": "cli.js",
+      "detail": "text, 492535 -> 494367 lines"
+    },
+    {
+      "type": "changed",
+      "name": "package.json",
+      "detail": "text, 32 -> 32 lines"
+    },
+    {
+      "type": "changed",
+      "name": "sdk-tools.d.ts",
+      "detail": "text, 1517 -> 1530 lines"
+    }
+  ],
+  "capabilitySignals": [
+    {
+      "id": "slash-and-workflows",
+      "label": "Slash / Workflows",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Removed ability to @-mention MCP servers to enable/disable - use `/mcp enable <name>` instead"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: tryItPrompt: \"Type /resume to continue a past conversation\",",
+        "Command example: tryItPrompt: \"Type /clear for a fresh conversation\","
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "mcp-and-connectors",
+      "label": "MCP / Connectors",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed `mcp list` and `mcp get` commands leaving orphaned MCP server processes",
+        "Updated \"Help improve Claude\" setting fetch to refresh OAuth and retry when it fails due to a stale OAuth token",
+        "Removed ability to @-mention MCP servers to enable/disable - use `/mcp enable <name>` instead"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: return u0.oauthTokenFromFd;",
+        "Feature example: u0.oauthTokenFromFd = A;"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "plugins-and-marketplace",
+      "label": "Plugins / Marketplace",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: P_6 = \"GetMarketplaceModelEndpoint\",",
+        "Config example: S_6 = \"GetMarketplaceModelEndpointRequest\","
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "agents-and-skills",
+      "label": "Agents / Skills",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: _.set(\"User-Agent\", \"axios/\" + G1A, !1);",
+        "Feature example: class LDQ extends wDQ.Agent {"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "memory-and-context",
+      "label": "Memory / Context",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Added `context_window.used_percentage` and `context_window.remaining_percentage` fields to status line input for easier context window display",
+        "[VSCode] Fixed usage indicator not updating after manual compact"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: illegalBy: { msg: U1.message, context: OA.slice(y1 - 100, y1 + 100), mode: U1.mode },",
+        "Feature example: ((this.props = A), (this.context = Q), (this.refs = bBQ), (this.updater = B || vBQ));"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "permissions-and-sandbox",
+      "label": "Permissions / Sandbox",
+      "changeType": "changed",
+      "officialHighlights": [
+        "Fixed permission bypass via shell line continuation that could allow blocked commands to execute"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Config example: \"Permissions-Policy\",",
+        "Config example: let { permissionMode: Q, mainLoopModel: B, exceeds200kTokens: G = !1 } = A;"
+      ],
+      "sourceOnly": false
+    },
+    {
+      "id": "models-and-effort",
+      "label": "Models / Effort",
+      "changeType": "changed",
+      "officialHighlights": [],
+      "sourceHighlights": [],
+      "evidence": [
+        "Command example: { [$B]: [\"POST\", \"/custom-models/create-custom-model\", 202] },",
+        "Command example: { [$B]: [\"POST\", \"/model-customization/custom-model-deployments\", 202] },"
+      ],
+      "sourceOnly": true
+    },
+    {
+      "id": "ide-ui-voice-remote",
+      "label": "IDE / UI / Voice / Remote",
+      "changeType": "changed",
+      "officialHighlights": [
+        "[VSCode] Fixed usage indicator not updating after manual compact"
+      ],
+      "sourceHighlights": [],
+      "evidence": [
+        "Feature example: return c2() && u0.clientType !== \"claude-vscode\";",
+        "Feature example: else if (CM(\"color\") || CM(\"colors\") || CM(\"color=true\") || CM(\"color=always\")) HpA = 1;"
+      ],
+      "sourceOnly": false
+    }
+  ],
+  "sourceOnlyChanges": {
+    "slashCommands": [
+      {
+        "type": "added",
+        "name": "/btw"
+      },
+      {
+        "type": "added",
+        "name": "/keybindings"
+      }
+    ],
+    "envVars": [
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_ENVIRONMENT_RUNNER_VERSION"
+      },
+      {
+        "type": "added",
+        "name": "CLAUDE_CODE_LOOPY_MODE"
+      },
+      {
+        "type": "removed",
+        "name": "CLAUDE_CODE_POST_COMPACT_MIN_MESSAGE_TOKENS"
+      }
+    ],
+    "settings": [],
+    "tools": [
+      {
+        "type": "added",
+        "name": "ExitPlanModeInput"
+      }
+    ],
+    "packageFiles": [
+      {
+        "type": "changed",
+        "name": "cli.js",
+        "detail": "text, 492535 -> 494367 lines"
+      },
+      {
+        "type": "changed",
+        "name": "package.json",
+        "detail": "text, 32 -> 32 lines"
+      },
+      {
+        "type": "changed",
+        "name": "sdk-tools.d.ts",
+        "detail": "text, 1517 -> 1530 lines"
+      }
+    ]
+  }
+}
