@@ -41,9 +41,19 @@ jobs:
             npm run track
           fi
 
-      - name: Publish Report Summary
+      - name: Detect Artifacts
+        id: artifacts
         run: |
           report_file="$(git status --porcelain reports | awk '{print $2}' | grep '\.md$' | tail -n 1 || true)"
+          report_json="$(git status --porcelain reports | awk '{print $2}' | grep '\.json$' | tail -n 1 || true)"
+          snapshot_dir="$(git status --porcelain snapshots | awk '{print $2}' | cut -d/ -f1-2 | tail -n 1 || true)"
+          echo "report_file=$report_file" >> "$GITHUB_OUTPUT"
+          echo "report_json=$report_json" >> "$GITHUB_OUTPUT"
+          echo "snapshot_dir=$snapshot_dir" >> "$GITHUB_OUTPUT"
+
+      - name: Publish Report Summary
+        run: |
+          report_file="${{ steps.artifacts.outputs.report_file }}"
           if [ -n "$report_file" ] && [ -f "$report_file" ]; then
             {
               echo "# Claude Code Changes"
@@ -55,7 +65,7 @@ jobs:
             exit 0
           fi
 
-          snapshot_dir="$(git status --porcelain snapshots | awk '{print $2}' | cut -d/ -f1-2 | tail -n 1 || true)"
+          snapshot_dir="${{ steps.artifacts.outputs.snapshot_dir }}"
           {
             echo "# Claude Code Changes"
             echo
@@ -65,6 +75,74 @@ jobs:
               echo "No report or snapshot changes detected."
             fi
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Notify Discord
+        if: ${{ secrets.DISCORD_WEBHOOK_URL != '' && (steps.artifacts.outputs.report_json != '' || steps.artifacts.outputs.snapshot_dir != '') }}
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          REPORT_JSON: ${{ steps.artifacts.outputs.report_json }}
+          SNAPSHOT_DIR: ${{ steps.artifacts.outputs.snapshot_dir }}
+          REPOSITORY: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          report_json = os.environ.get("REPORT_JSON", "")
+          snapshot_dir = os.environ.get("SNAPSHOT_DIR", "")
+          repo = os.environ["REPOSITORY"]
+          run_url = os.environ["RUN_URL"]
+
+          if report_json and os.path.exists(report_json):
+            with open(report_json, "r", encoding="utf-8") as f:
+              report = json.load(f)
+
+            slash_changes = report.get("slashCommands", [])
+            slash_lines = []
+            for entry in slash_changes[:10]:
+              detail = f" ({entry['detail']})" if entry.get("detail") else ""
+              slash_lines.append(f"- {entry['type']}: {entry['name']}{detail}")
+
+            source_only = report.get("sourceOnlyChanges", {})
+            source_only_count = sum(len(source_only.get(key, [])) for key in [
+              "packageFiles", "slashCommands", "envVars", "settings", "tools"
+            ])
+
+            content_lines = [
+              f"Claude Code change tracked for `{repo}`",
+              f"Version: `{report['prevVersion']} -> {report['version']}`",
+              f"Source-only items: `{source_only_count}`",
+            ]
+
+            if slash_lines:
+              content_lines.append("")
+              content_lines.append("Slash command changes:")
+              content_lines.extend(slash_lines)
+
+            content_lines.append("")
+            content_lines.append(run_url)
+            content = "\n".join(content_lines)
+          else:
+            content = "\n".join([
+              f"Claude Code snapshot updated for `{repo}`",
+              f"Snapshot: `{snapshot_dir}`" if snapshot_dir else "Snapshot saved",
+              "",
+              run_url,
+            ])
+
+          payload = json.dumps({"content": content[:1900]}).encode("utf-8")
+          req = urllib.request.Request(
+            os.environ["DISCORD_WEBHOOK_URL"],
+            data=payload,
+            headers={"Content-Type": "application/json"},
+            method="POST",
+          )
+          with urllib.request.urlopen(req) as resp:
+            if resp.status >= 300:
+              raise RuntimeError(f"Discord webhook failed: {resp.status}")
+          PY
 
       - name: Commit changes
         run: |

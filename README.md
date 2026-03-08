@@ -191,6 +191,7 @@ GitHub Actions で自動運用する場合:
 - 新版が見つかったときだけ `.github/workflows/track.yml` を `repository_dispatch` で起動します
 - `reports/` と `snapshots/` に差分があれば commit / push します
 - run の `Step Summary` に最新 report の Markdown 本文を出すので、`Slash Commands` の差分も GitHub UI 上でそのまま読めます
+- `DISCORD_WEBHOOK_URL` secret が設定されていれば、差分が出た run だけ Discord に要約を送ります
 
 ## 注意点
 
