@@ -1,14 +1,14 @@
 name: Track Claude Code Changes
 
 on:
-  schedule:
-    - cron: "0 */6 * * *"
   workflow_dispatch:
     inputs:
       version:
         description: "Specific Claude Code version to fetch"
         required: false
         type: string
+  repository_dispatch:
+    types: [npm_release]
 
 permissions:
   contents: write
@@ -33,7 +33,13 @@ jobs:
         run: npm ci
 
       - name: Track release
-        run: npm run track -- ${{ inputs.version }}
+        run: |
+          VERSION_INPUT="${{ github.event.inputs.version || github.event.client_payload.version || '' }}"
+          if [ -n "$VERSION_INPUT" ]; then
+            npm run track -- "$VERSION_INPUT"
+          else
+            npm run track
+          fi
 
       - name: Publish Report Summary
         run: |

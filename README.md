@@ -187,7 +187,8 @@ npm run typecheck
 
 GitHub Actions で自動運用する場合:
 
-- `.github/workflows/track.yml` が 6 時間ごとに `npm run track` を実行します
+- `.github/workflows/watch-npm-release.yml` が 15 分ごとに npm の最新公開版を軽量チェックします
+- 新版が見つかったときだけ `.github/workflows/track.yml` を `repository_dispatch` で起動します
 - `reports/` と `snapshots/` に差分があれば commit / push します
 - run の `Step Summary` に最新 report の Markdown 本文を出すので、`Slash Commands` の差分も GitHub UI 上でそのまま読めます
 

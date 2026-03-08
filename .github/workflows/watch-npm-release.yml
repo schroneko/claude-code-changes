@@ -1,0 +1,77 @@
+name: Watch NPM Release
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: watch-npm-release
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Version State
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            state/latest-version.txt
+
+      - name: Determine Current Tracked Version
+        id: tracked
+        run: |
+          if [ -f state/latest-version.txt ]; then
+            echo "version=$(tr -d '\n' < state/latest-version.txt)" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fetch Latest Published Version
+        id: npm
+        run: |
+          latest="$(curl -fsSL https://registry.npmjs.org/@anthropic-ai%2fclaude-code/latest | python3 -c 'import json,sys; print(json.load(sys.stdin)["version"])')"
+          echo "version=$latest" >> "$GITHUB_OUTPUT"
+
+      - name: Check Running Track Jobs
+        id: running
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count="$(gh run list --workflow track.yml --status in_progress --json databaseId --jq 'length' --limit 20)"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+
+      - name: Dispatch Tracking Workflow
+        if: steps.npm.outputs.version != steps.tracked.outputs.version && steps.running.outputs.count == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/${{ github.repository }}/dispatches \
+            --method POST \
+            -f event_type='npm_release' \
+            -F client_payload[version]="${{ steps.npm.outputs.version }}"
+
+      - name: Publish Watch Summary
+        run: |
+          {
+            echo "# NPM Release Watch"
+            echo
+            echo "- Tracked version: \`${{ steps.tracked.outputs.version || 'none' }}\`"
+            echo "- Latest npm version: \`${{ steps.npm.outputs.version }}\`"
+            echo "- Running track jobs: \`${{ steps.running.outputs.count }}\`"
+            if [ "${{ steps.npm.outputs.version }}" != "${{ steps.tracked.outputs.version }}" ] && [ "${{ steps.running.outputs.count }}" = "0" ]; then
+              echo "- Action: dispatched tracking workflow"
+            elif [ "${{ steps.npm.outputs.version }}" != "${{ steps.tracked.outputs.version }}" ]; then
+              echo "- Action: skipped dispatch because a tracking workflow is already running"
+            else
+              echo "- Action: no new npm release detected"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -1,5 +1,5 @@
 import { cwd } from "node:process";
-import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, join } from "node:path";
 import { extractCommandsFromBullets, getOfficialChangelog, parseChangelogEntry } from "./changelog.js";
 import { extractSignals } from "./extract.js";
@@ -16,6 +16,8 @@ import { buildComparisonReport, renderMarkdown } from "./report.js";
 
 const ROOT_DIR = decodeURIComponent(new URL("..", import.meta.url).pathname);
 const CHANGELOG_CACHE_PATH = join(ROOT_DIR, ".tmp", "official-changelog.md");
+const STATE_DIR = join(ROOT_DIR, "state");
+const LATEST_VERSION_STATE_PATH = join(STATE_DIR, "latest-version.txt");
 
 function usage(): never {
   console.error("Usage:");
@@ -32,6 +34,11 @@ function reportPaths(version: string): { markdownPath: string; jsonPath: string 
     markdownPath: join(ROOT_DIR, "reports", `${version}.md`),
     jsonPath: join(ROOT_DIR, "reports", `${version}.json`),
   };
+}
+
+function writeLatestVersionState(version: string): void {
+  mkdirSync(STATE_DIR, { recursive: true });
+  writeFileSync(LATEST_VERSION_STATE_PATH, `${version}\n`);
 }
 
 function reportsIndexPath(): string {
@@ -66,6 +73,7 @@ function printList(): void {
     ? readdirSync(reportsDir)
         .filter((name) => name.endsWith(".md"))
         .map((name) => basename(name, ".md"))
+        .filter((name) => name !== "INDEX")
         .sort(compareVersions)
     : [];
 
@@ -249,6 +257,7 @@ async function track(version?: string): Promise<void> {
     const source = loadSnapshotSource(fetched.packageDir, version);
     const signals = extractSignals(source);
     saveSnapshot(ROOT_DIR, source, signals);
+    writeLatestVersionState(signals.version);
 
     const savedSnapshotDirs = getSavedSnapshotDirs(ROOT_DIR)
       .filter((dir) => !dir.endsWith(`/${signals.version}`))
@@ -299,6 +308,7 @@ async function backfill(fromVersion: string, toVersion: string): Promise<void> {
         const source = loadSnapshotSource(fetched.packageDir, version);
         const signals = extractSignals(source);
         saveSnapshot(ROOT_DIR, source, signals);
+        writeLatestVersionState(version);
         currentSource = loadSnapshotSource(join(ROOT_DIR, "snapshots", version), version);
         console.log(`Saved snapshot: ${version}`);
       } finally {
@@ -316,6 +326,7 @@ async function backfill(fromVersion: string, toVersion: string): Promise<void> {
   }
 
   console.log("Backfill complete.");
+  writeLatestVersionState(targetVersions[targetVersions.length - 1]!);
   updateReportsIndex();
 }
 
