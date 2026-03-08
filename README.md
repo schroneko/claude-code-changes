@@ -34,6 +34,9 @@ npm run track
 
 - 人間向け: `reports/<version>.md`
 - 機械処理向け: `reports/<version>.json`
+- 全体の見出し: `reports/INDEX.md`
+
+最初の差分と最新の差分をすぐ見たい場合は、まず `reports/INDEX.md` を見てください。
 
 Markdown レポートでは、特に次を見れば十分です。
 

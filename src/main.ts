@@ -1,5 +1,5 @@
 import { cwd } from "node:process";
-import { existsSync, readdirSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, join } from "node:path";
 import { extractCommandsFromBullets, getOfficialChangelog, parseChangelogEntry } from "./changelog.js";
 import { extractSignals } from "./extract.js";
@@ -34,6 +34,10 @@ function reportPaths(version: string): { markdownPath: string; jsonPath: string 
   };
 }
 
+function reportsIndexPath(): string {
+  return join(ROOT_DIR, "reports", "INDEX.md");
+}
+
 function resolveSnapshotOrDir(input: string): string {
   if (input.startsWith("/")) {
     return input;
@@ -53,6 +57,7 @@ function resolveSnapshotOrDir(input: string): string {
 }
 
 function printList(): void {
+  updateReportsIndex();
   const snapshotVersions = getSavedSnapshotDirs(ROOT_DIR)
     .map((dir) => basename(dir))
     .sort(compareVersions);
@@ -94,6 +99,102 @@ function printList(): void {
   console.log(`- report-only: ${reportOnly.length > 0 ? reportOnly.join(", ") : "none"}`);
 }
 
+function updateReportsIndex(): void {
+  const snapshots = getSavedSnapshotDirs(ROOT_DIR)
+    .map((dir) => basename(dir))
+    .sort(compareVersions);
+  const reportsDir = join(ROOT_DIR, "reports");
+  if (!existsSync(reportsDir)) {
+    return;
+  }
+
+  const reportVersions = readdirSync(reportsDir)
+    .filter((name) => name.endsWith(".json"))
+    .map((name) => basename(name, ".json"))
+    .sort(compareVersions);
+
+  const summaries = reportVersions.map((version) => {
+    const jsonPath = join(reportsDir, `${version}.json`);
+    const parsed = JSON.parse(readFileSync(jsonPath, "utf-8")) as {
+      version: string;
+      prevVersion: string;
+      sourceOnlyChanges?: {
+        slashCommands?: unknown[];
+        envVars?: unknown[];
+        settings?: unknown[];
+        tools?: unknown[];
+        packageFiles?: unknown[];
+      };
+    };
+    const sourceOnlyCount =
+      (parsed.sourceOnlyChanges?.slashCommands?.length ?? 0) +
+      (parsed.sourceOnlyChanges?.envVars?.length ?? 0) +
+      (parsed.sourceOnlyChanges?.settings?.length ?? 0) +
+      (parsed.sourceOnlyChanges?.tools?.length ?? 0) +
+      (parsed.sourceOnlyChanges?.packageFiles?.length ?? 0);
+
+    return {
+      version: parsed.version,
+      prevVersion: parsed.prevVersion,
+      sourceOnlyCount,
+    };
+  });
+
+  const firstReport = summaries[0];
+  const latestReport = summaries[summaries.length - 1];
+  const latestReports = summaries.slice(-10).reverse();
+  const earliestReports = summaries.slice(0, 10);
+
+  const lines: string[] = [];
+  lines.push("# Reports Index");
+  lines.push("");
+  lines.push("このファイルは `reports/` の見出しです。");
+  lines.push("");
+  lines.push("## Summary");
+  lines.push("");
+  lines.push(`- Snapshots: ${snapshots.length}`);
+  lines.push(`- Reports: ${summaries.length}`);
+  lines.push(`- First snapshot: \`${snapshots[0] ?? "none"}\``);
+  lines.push(`- Latest snapshot: \`${snapshots[snapshots.length - 1] ?? "none"}\``);
+  if (firstReport) {
+    lines.push(`- First comparable change: [${firstReport.version}](./${firstReport.version}.md) (\`${firstReport.prevVersion} -> ${firstReport.version}\`)`);
+  }
+  if (latestReport) {
+    lines.push(`- Latest comparable change: [${latestReport.version}](./${latestReport.version}.md) (\`${latestReport.prevVersion} -> ${latestReport.version}\`)`);
+  }
+  lines.push("");
+  lines.push("## Where To Look");
+  lines.push("");
+  lines.push("- 公式 changelog より詳しく見たい場合は、各 report の `Source-Only Highlights` を見てください。");
+  lines.push("- パッケージ全体の増減は `0. Package Files` を見てください。");
+  lines.push("- slash command の在庫差分は `1. Slash Commands` を見てください。");
+  lines.push("- env vars / settings / sdk surface は `2. Public Surface` を見てください。");
+  lines.push("- 機能カテゴリ別の荒い整理は `3. Capability Signals` を見てください。");
+  lines.push("");
+  lines.push("## First Reports");
+  lines.push("");
+  if (earliestReports.length === 0) {
+    lines.push("- none");
+  } else {
+    for (const report of earliestReports) {
+      lines.push(`- [${report.version}](./${report.version}.md) (\`${report.prevVersion} -> ${report.version}\`, source-only: ${report.sourceOnlyCount})`);
+    }
+  }
+  lines.push("");
+  lines.push("## Latest Reports");
+  lines.push("");
+  if (latestReports.length === 0) {
+    lines.push("- none");
+  } else {
+    for (const report of latestReports) {
+      lines.push(`- [${report.version}](./${report.version}.md) (\`${report.prevVersion} -> ${report.version}\`, source-only: ${report.sourceOnlyCount})`);
+    }
+  }
+  lines.push("");
+
+  writeFileSync(reportsIndexPath(), lines.join("\n"));
+}
+
 function buildReport(
   prevSource: ReturnType<typeof loadSnapshotSource>,
   currSource: ReturnType<typeof loadSnapshotSource>,
@@ -126,6 +227,7 @@ function buildReport(
 
 function saveAndPrintReport(result: { markdown: string; json: string; version: string }): void {
   copyReportArtifacts(join(ROOT_DIR, "reports"), result.version, result.markdown, result.json);
+  updateReportsIndex();
   console.log(result.markdown);
   const paths = reportPaths(result.version);
   console.log(`Saved report: ${paths.markdownPath}`);
@@ -214,6 +316,7 @@ async function backfill(fromVersion: string, toVersion: string): Promise<void> {
   }
 
   console.log("Backfill complete.");
+  updateReportsIndex();
 }
 
 async function main(): Promise<void> {
