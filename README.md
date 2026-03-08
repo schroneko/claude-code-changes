@@ -189,6 +189,7 @@ GitHub Actions で自動運用する場合:
 
 - `.github/workflows/track.yml` が 6 時間ごとに `npm run track` を実行します
 - `reports/` と `snapshots/` に差分があれば commit / push します
+- run の `Step Summary` に最新 report の Markdown 本文を出すので、`Slash Commands` の差分も GitHub UI 上でそのまま読めます
 
 ## 注意点
 

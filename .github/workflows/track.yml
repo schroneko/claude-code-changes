@@ -35,6 +35,31 @@ jobs:
       - name: Track release
         run: npm run track -- ${{ inputs.version }}
 
+      - name: Publish Report Summary
+        run: |
+          report_file="$(git status --porcelain reports | awk '{print $2}' | grep '\.md$' | tail -n 1 || true)"
+          if [ -n "$report_file" ] && [ -f "$report_file" ]; then
+            {
+              echo "# Claude Code Changes"
+              echo
+              echo "Latest generated report: \`$report_file\`"
+              echo
+              cat "$report_file"
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          snapshot_dir="$(git status --porcelain snapshots | awk '{print $2}' | cut -d/ -f1-2 | tail -n 1 || true)"
+          {
+            echo "# Claude Code Changes"
+            echo
+            if [ -n "$snapshot_dir" ]; then
+              echo "Saved snapshot only: \`$snapshot_dir\`"
+            else
+              echo "No report or snapshot changes detected."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Commit changes
         run: |
           git add reports snapshots
