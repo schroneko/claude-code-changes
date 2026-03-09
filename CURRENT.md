@@ -1,0 +1,576 @@
+# Claude Code Current
+
+Latest version: `2.1.71`
+
+## 1. CLI Commands
+### Arguments
+- claude [prompt] - Your prompt
+
+### Options
+- claude --add-dir <directories...> - Additional directories to allow tool access to
+- claude --agent <agent> - Agent for the current session. Overrides the 'agent' setting.
+- claude --agent-color <color> [hidden] - Teammate UI color
+- claude --agent-id <id> [hidden] - Teammate agent ID
+- claude --agent-name <name> [hidden] - Teammate display name
+- claude --agent-type <type> [hidden] - Custom agent type for this teammate
+- claude --agents <json> - JSON object defining custom agents (e.g. '{"reviewer": {"description": "Reviews code", "prompt": "You are a code reviewer"}}')
+- claude --allow-dangerously-skip-permissions - Enable bypassing all permission checks as an option, without it being enabled by default. Recommended only for sandboxes with no internet access.
+- claude --allowedTools, --allowed-tools <tools...> - Comma or space-separated list of tool names to allow (e.g. "Bash(git:*) Edit")
+- claude --append-system-prompt <prompt> - Append a system prompt to the default system prompt
+- claude --append-system-prompt-file <file> [hidden] - Read system prompt from a file and append to the default system prompt
+- claude --available - Include available plugins from marketplaces (requires --json)
+- claude --betas <betas...> - Beta headers to include in API requests (API key users only)
+- claude --chrome - Enable Claude in Chrome integration
+- claude --client-secret - Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)
+- claude --cowork [hidden] - Use cowork_plugins directory
+- claude --dangerously-skip-permissions - Bypass all permission checks. Recommended only for sandboxes with no internet access.
+- claude --debug-file <path> - Write debug logs to a specific file path (implicitly enables debug mode)
+- claude --disable-slash-commands - Disable all skills
+- claude --disallowedTools, --disallowed-tools <tools...> - Comma or space-separated list of tool names to deny (e.g. "Bash(git:*) Edit")
+- claude --effort <level> - Effort level for the current session (low, medium, high)
+- claude --email <email> - Pre-populate email address on the login page
+- claude --enable-auth-status [hidden] - Enable auth status messages in SDK mode
+- claude --enable-auto-mode [hidden] - Opt in to auto mode
+- claude --fallback-model <model> - Enable automatic fallback to specified model when default model is overloaded (only works with --print)
+- claude --file <specs...> - File resources to download at startup. Format: file_id:relative_path (e.g., --file file_abc:doc.txt file_def:img.png)
+- claude --fork-session - When resuming, create a new session ID instead of reusing the original (use with --resume or --continue)
+- claude --from-pr [value] - Resume a session linked to a PR by PR number/URL, or open interactive picker with optional search term
+- claude --ide - Automatically connect to IDE on startup if exactly one valid IDE is available
+- claude --include-partial-messages - Include partial message chunks as they arrive (only works with --print and --output-format=stream-json)
+- claude --init [hidden] - Run Setup hooks with init trigger, then continue
+- claude --init-only [hidden] - Run Setup and SessionStart:startup hooks, then exit
+- claude --input-format <format> - Input format (only works with --print): "text" (default), or "stream-json" (realtime streaming input)
+- claude --json - Output as JSON (default)
+- claude --json-schema <schema> - JSON Schema for structured output validation. Example: {"type":"object","properties":{"name":{"type":"string"}},"required":["name"]}
+- claude --maintenance [hidden] - Run Setup hooks with maintenance trigger, then continue
+- claude --max-budget-usd <amount> - Maximum dollar amount to spend on API calls (only works with --print)
+- claude --max-thinking-tokens <tokens> [hidden] - [DEPRECATED. Use --thinking instead for newer models] Maximum number of thinking tokens (only works with --print)
+- claude --max-turns <turns> [hidden] - Maximum number of agentic turns in non-interactive mode. This will early exit the conversation after the specified number of turns. (only works with --print)
+- claude --mcp-config <configs...> - Load MCP servers from JSON files or strings (space-separated)
+- claude --mcp-debug - [DEPRECATED. Use --debug instead] Enable MCP debug mode (shows MCP server errors)
+- claude --model <model> - Model for the current session. Provide an alias for the latest model (e.g. 'sonnet' or 'opus') or a model's full name (e.g. 'claude-sonnet-4-6').
+- claude --no-chrome - Disable Claude in Chrome integration
+- claude --no-session-persistence - Disable session persistence - sessions will not be saved to disk and cannot be resumed (only works with --print)
+- claude --output-format <format> - Output format (only works with --print): "text" (default), "json" (single result), or "stream-json" (realtime streaming)
+- claude --parent-session-id <id> [hidden] - Parent session ID for analytics correlation
+- claude --permission-mode <mode> - Permission mode to use for the session
+- claude --permission-prompt-tool <tool> [hidden] - MCP tool to use for permission prompts (only works with --print)
+- claude --plan-mode-required [hidden] - Require plan mode before implementation
+- claude --plugin-dir <paths...> - Load plugins from directories for this session only (repeatable)
+- claude --prefill <text> [hidden] - Pre-fill the prompt input with text without submitting it
+- claude --remote [description] [hidden] - Create a remote session with the given description
+- claude --replay-user-messages - Re-emit user messages from stdin back on stdout for acknowledgment (only works with --input-format=stream-json and --output-format=stream-json)
+- claude --resume-session-at <message id> [hidden] - When resuming, only messages up to and including the assistant message with <message.id> (use with --resume in print mode)
+- claude --rewind-files <user-message-id> [hidden] - Restore files to state at the specified user message and exit (requires --resume)
+- claude --scope <scope> - Where to declare the marketplace: user (default), project, or local
+- claude --sdk-url <url> [hidden] - Use remote WebSocket endpoint for SDK I/O streaming (only with -p and stream-json format)
+- claude --session-id <uuid> - Use a specific session ID for the conversation (must be a valid UUID)
+- claude --setting-sources <sources> - Comma-separated list of setting sources to load (user, project, local).
+- claude --settings <file-or-json> - Path to a settings JSON file or a JSON string to load additional settings from
+- claude --sparse <paths...> - Limit checkout to specific directories via git sparse-checkout (for monorepos). Example: --sparse .claude-plugin plugins
+- claude --sso - Force SSO login flow
+- claude --strict-mcp-config - Only use MCP servers from --mcp-config, ignoring all other MCP configurations
+- claude --system-prompt <prompt> - System prompt to use for the session
+- claude --system-prompt-file <file> [hidden] - Read system prompt from a file
+- claude --team-name <name> [hidden] - Team name for swarm coordination
+- claude --teammate-mode <mode> [hidden] - How to spawn teammates: "tmux", "in-process", or "auto"
+- claude --teleport [session] [hidden] - Resume a teleport session, optionally specify session ID
+- claude --text - Output as human-readable text
+- claude --thinking <mode> [hidden] - Thinking mode: enabled (equivalent to adaptive), disabled
+- claude --tmux - Create a tmux session for the worktree (requires --worktree). Uses iTerm2 native panes when available; use --tmux=classic for traditional tmux.
+- claude --tools <tools...> - Specify the list of available tools from the built-in set. Use "" to disable all tools, "default" to use all tools, or specify tool names (e.g. "Bash,Edit,Read").
+- claude --verbose - Override verbose mode setting from config
+- claude --workload <tag> [hidden] - Workload tag for billing-header attribution (cc_workload). Process-scoped; set by SDK daemon callers that spawn subprocesses for cron work. (only works with --print)
+- claude -a, --all - Disable all enabled plugins
+- claude -c, --continue - Continue the most recent conversation in the current directory
+- claude -d, --debug - Enable debug mode
+- claude -d, --debug [filter] - Enable debug mode with optional category filtering (e.g., "api,hooks" or "!1p,!file")
+- claude -d2e, --debug-to-stderr [hidden] - Enable debug mode (to stderr)
+- claude -h, --help - Display help for command
+- claude -p, --print - Print response and exit (useful for pipes). Note: The workspace trust dialog is skipped when Claude is run with the -p mode. Only use this flag in directories you trust.
+- claude -r, --resume [value] - Resume a conversation by session ID, or open interactive picker with optional search term
+- claude -s, --scope <scope> - Configuration scope (local, user, or project) - if not specified, removes from whichever scope it exists in
+- claude -v, --version - Output the version number
+- claude -w, --worktree [name] - Create a new git worktree for this session (optionally specify a name)
+- claude agents --setting-sources <sources> - Comma-separated list of setting sources to load (user, project, local).
+- claude agents -h, --help - Display help for command
+- claude auth -h, --help - Display help for command
+- claude auth login --email <email> - Pre-populate email address on the login page
+- claude auth login --sso - Force SSO login flow
+- claude auth login -h, --help - Display help for command
+- claude auth logout -h, --help - Display help for command
+- claude auth status --json - Output as JSON (default)
+- claude auth status --text - Output as human-readable text
+- claude auth status -h, --help - Display help for command
+- claude doctor -h, --help - Display help for command
+- claude install [target] --force - Force installation even if already installed
+- claude install [target] -h, --help - Display help for command
+- claude mcp -h, --help - Display help for command
+- claude mcp add <name> <commandOrUrl> [args...] --callback-port <port> - Fixed port for OAuth callback (for servers requiring pre-registered redirect URIs)
+- claude mcp add <name> <commandOrUrl> [args...] --client-id <clientId> - OAuth client ID for HTTP/SSE servers
+- claude mcp add <name> <commandOrUrl> [args...] --client-secret - Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)
+- claude mcp add <name> <commandOrUrl> [args...] -e, --env <env...> - Set environment variables (e.g. -e KEY=value)
+- claude mcp add <name> <commandOrUrl> [args...] -H, --header <header...> - Set WebSocket headers (e.g. -H "X-Api-Key: abc123" -H "X-Custom: value")
+- claude mcp add <name> <commandOrUrl> [args...] -h, --help - Display help for command
+- claude mcp add <name> <commandOrUrl> [args...] -s, --scope <scope> - Configuration scope (local, user, or project)
+- claude mcp add <name> <commandOrUrl> [args...] -t, --transport <transport> - Transport type (stdio, sse, http). Defaults to stdio if not specified.
+- claude mcp add-from-claude-desktop -h, --help - Display help for command
+- claude mcp add-from-claude-desktop -s, --scope <scope> - Configuration scope (local, user, or project)
+- claude mcp add-json <name> <json> --client-secret - Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)
+- claude mcp add-json <name> <json> -h, --help - Display help for command
+- claude mcp add-json <name> <json> -s, --scope <scope> - Configuration scope (local, user, or project)
+- claude mcp get <name> -h, --help - Display help for command
+- claude mcp list -h, --help - Display help for command
+- claude mcp remove <name> -h, --help - Display help for command
+- claude mcp remove <name> -s, --scope <scope> - Configuration scope (local, user, or project) - if not specified, removes from whichever scope it exists in
+- claude mcp reset-project-choices -h, --help - Display help for command
+- claude mcp serve --verbose - Override verbose mode setting from config
+- claude mcp serve -d, --debug - Enable debug mode
+- claude mcp serve -h, --help - Display help for command
+- claude plugin -h, --help - Display help for command
+- claude plugin disable [plugin] --cowork [hidden] - Use cowork_plugins directory
+- claude plugin disable [plugin] -a, --all - Disable all enabled plugins
+- claude plugin disable [plugin] -h, --help - Display help for command
+- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${eW.join(", ")} (default: auto-detect)
+- claude plugin enable <plugin> --cowork [hidden] - Use cowork_plugins directory
+- claude plugin enable <plugin> -h, --help - Display help for command
+- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${eW.join(", ")} (default: auto-detect)
+- claude plugin install <plugin> --cowork [hidden] - Use cowork_plugins directory
+- claude plugin install <plugin> -h, --help - Display help for command
+- claude plugin install <plugin> -s, --scope <scope> - Installation scope: user, project, or local
+- claude plugin list --available - Include available plugins from marketplaces (requires --json)
+- claude plugin list --cowork [hidden] - Use cowork_plugins directory
+- claude plugin list --json - Output as JSON
+- claude plugin list -h, --help - Display help for command
+- claude plugin marketplace -h, --help - Display help for command
+- claude plugin marketplace add <source> --cowork [hidden] - Use cowork_plugins directory
+- claude plugin marketplace add <source> --scope <scope> - Where to declare the marketplace: user (default), project, or local
+- claude plugin marketplace add <source> --sparse <paths...> - Limit checkout to specific directories via git sparse-checkout (for monorepos). Example: --sparse .claude-plugin plugins
+- claude plugin marketplace add <source> -h, --help - Display help for command
+- claude plugin marketplace list --cowork [hidden] - Use cowork_plugins directory
+- claude plugin marketplace list --json - Output as JSON
+- claude plugin marketplace list -h, --help - Display help for command
+- claude plugin marketplace remove <name> --cowork [hidden] - Use cowork_plugins directory
+- claude plugin marketplace remove <name> -h, --help - Display help for command
+- claude plugin marketplace update [name] --cowork [hidden] - Use cowork_plugins directory
+- claude plugin marketplace update [name] -h, --help - Display help for command
+- claude plugin uninstall <plugin> --cowork [hidden] - Use cowork_plugins directory
+- claude plugin uninstall <plugin> -h, --help - Display help for command
+- claude plugin uninstall <plugin> -s, --scope <scope> - Uninstall from scope: user, project, or local
+- claude plugin update <plugin> --cowork [hidden] - Use cowork_plugins directory
+- claude plugin update <plugin> -h, --help - Display help for command
+- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${u_6.join(", ")} (default: user)
+- claude plugin validate <path> --cowork [hidden] - Use cowork_plugins directory
+- claude plugin validate <path> -h, --help - Display help for command
+- claude remote-control -h, --help - Display help for command
+- claude setup-token -h, --help - Display help for command
+- claude update -h, --help - Display help for command
+
+### Changes
+- No changes detected
+
+### Current Inventory
+- Top-level (9): claude agents [options], claude auth, claude doctor, claude install [options] [target], claude mcp, claude plugin, claude remote-control (hidden; aliases: claude rc), claude setup-token, claude update (aliases: claude upgrade)
+- auth (3): claude auth login [options], claude auth logout, claude auth status [options]
+- mcp (8): claude mcp add [options] <name> <commandOrUrl> [args...], claude mcp add-from-claude-desktop [options], claude mcp add-json [options] <name> <json>, claude mcp get <name>, claude mcp list, claude mcp remove [options] <name>, claude mcp reset-project-choices, claude mcp serve [options]
+- plugin (8): claude plugin disable [options] [plugin], claude plugin enable [options] <plugin>, claude plugin install [options] <plugin> (aliases: claude plugin i <plugin>), claude plugin list [options], claude plugin marketplace, claude plugin uninstall [options] <plugin> (aliases: claude plugin remove <plugin>, claude plugin rm <plugin>), claude plugin update [options] <plugin>, claude plugin validate [options] <path>
+- plugin marketplace (4): claude plugin marketplace add [options] <source>, claude plugin marketplace list [options], claude plugin marketplace remove [options] <name> (aliases: claude plugin marketplace rm <name>), claude plugin marketplace update [options] [name]
+
+## 2. Slash Commands
+### Changes
+- ADDED: `/heapdump` [source-only]
+- ADDED: `/loop` [official]
+
+### Current Inventory
+Built-in (68)
+  - /add-dir - Add a new working directory
+  - /agents - Manage agent configurations
+  - /btw - Ask a quick side question without interrupting the main conversation
+  - /chrome - Claude in Chrome (Beta) settings
+  - /clear - Clear conversation history and free up context
+  - /color - Set the prompt bar color for this session
+  - /commit - Create a git commit
+  - /commit-push-pr - Commit, push, and open a PR
+  - /compact - Clear conversation history but keep a summary in context. Optional: /compact [instructions for summarization]
+  - /config - Open config panel
+  - /context - Show current context usage
+  - /copy - Copy Claude's last response or a code block to clipboard
+  - /cost - Show the total cost and duration of the current session
+  - /desktop - Continue the current session in Claude Desktop
+  - /doctor - Diagnose and verify your Claude Code installation and settings
+  - /exit - Exit the REPL
+  - /export - Export the current conversation to a file or clipboard
+  - /extra-usage - Configure extra usage to keep working when limits are hit
+  - /fast
+  - /feedback - Submit feedback about Claude Code
+  - /files - List all files currently in context
+  - /fork - Create a fork of the current conversation at this point
+  - /heapdump - Dump the JS heap to ~/Desktop
+  - /help - Show help and available commands
+  - /hooks - Manage hook configurations for tool events
+  - /ide - Manage IDE integrations and show status
+  - /init - Initialize a new CLAUDE.md file with codebase documentation
+  - /init-verifiers - Create verifier skill(s) for automated verification of code changes
+  - /insights
+  - /install-github-app - Set up Claude GitHub Actions for a repository
+  - /install-slack-app - Install the Claude Slack app
+  - /keybindings - Open or create your keybindings configuration file
+  - /login - Open or create your keybindings configuration file
+  - /logout - Sign out from your Anthropic account
+  - /mcp - Manage MCP servers
+  - /mobile - Show QR code to download the Claude mobile app
+  - /model
+  - /output-style
+  - /passes
+  - /permissions - Manage allow & deny tool permission rules
+  - /plan - Enable plan mode or view the current session plan
+  - /plugin - Manage Claude Code plugins
+  - /privacy-settings - View and update your privacy settings
+  - /rate-limit-options
+  - /release-notes - View release notes
+  - /reload-plugins - Activate pending plugin changes in the current session
+  - /remote-control - Connect this terminal for remote-control sessions
+  - /remote-env
+  - /rename - Rename the current conversation
+  - /resume - Resume a previous conversation
+  - /rewind - Restore the code and/or conversation to a previous point
+  - /sandbox
+  - /session - Show remote session URL and QR code
+  - /skills - List available skills
+  - /stats - Show your Claude Code usage statistics and activity
+  - /status - Show Claude Code status including version, model, account, API connectivity, and tool statuses
+  - /statusline - Set up Claude Code's status line UI
+  - /stickers - Order Claude Code stickers
+  - /tag
+  - /tasks - List and manage background tasks
+  - /terminal-setup - Edit Claude memory files
+  - /theme - Change the theme
+  - /think-back - Your 2025 Claude Code Year in Review
+  - /thinkback-play - Play the thinkback animation
+  - /upgrade - Upgrade to Max for higher rate limits and more Opus
+  - /usage - Show plan usage limits
+  - /vim - Toggle between Vim and Normal editing modes
+  - /voice - Toggle voice mode
+Plugin-backed (3)
+  - /code-review - Review a pull request
+  - /pr-comments - Get comments from a GitHub pull request
+  - /security-review - Complete a security review of the pending changes on the current branch
+Inferred (2)
+  - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
+  - /memory [inferred/medium]
+
+## 3. Environment Variables (179)
+- CLAUDE_AFTER_LAST_COMPACT
+- CLAUDE_AGENT_SDK_CLIENT_APP
+- CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
+- CLAUDE_AGENT_SDK_MCP_NO_PREFIX
+- CLAUDE_AGENT_SDK_VERSION
+- CLAUDE_AI_AUTHORIZE_URL
+- CLAUDE_AI_INFERENCE_SCOPE
+- CLAUDE_AI_OAUTH_SCOPES
+- CLAUDE_AI_PROFILE_SCOPE
+- CLAUDE_API_KEY
+- CLAUDE_AUTOCOMPACT_PCT_OVERRIDE
+- CLAUDE_AUTO_BACKGROUND_TASKS
+- CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR
+- CLAUDE_BRIDGE_USE_CCR_V2
+- CLAUDE_CHROME_PERMISSION_MODE
+- CLAUDE_CODE_ACCESSIBILITY
+- CLAUDE_CODE_ACCOUNT_UUID
+- CLAUDE_CODE_ACTION
+- CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD
+- CLAUDE_CODE_ADDITIONAL_PROTECTION
+- CLAUDE_CODE_AGENT_NAME
+- CLAUDE_CODE_ALWAYS_ENABLE_EFFORT
+- CLAUDE_CODE_API_BASE_URL
+- CLAUDE_CODE_API_KEY_FILE_DESCRIPTOR
+- CLAUDE_CODE_API_KEY_HELPER_TTL_MS
+- CLAUDE_CODE_ATTRIBUTION_HEADER
+- CLAUDE_CODE_AUTO_CONNECT_IDE
+- CLAUDE_CODE_BASE_REF
+- CLAUDE_CODE_BASH_SANDBOX_SHOW_INDICATOR
+- CLAUDE_CODE_BLOCKING_LIMIT_OVERRIDE
+- CLAUDE_CODE_BUBBLEWRAP
+- CLAUDE_CODE_CLIENT_CERT
+- CLAUDE_CODE_CLIENT_KEY
+- CLAUDE_CODE_CLIENT_KEY_PASSPHRASE
+- CLAUDE_CODE_CONTAINER_ID
+- CLAUDE_CODE_CUSTOM_OAUTH_URL
+- CLAUDE_CODE_DATADOG_FLUSH_INTERVAL_MS
+- CLAUDE_CODE_DEBUG_LOGS_DIR
+- CLAUDE_CODE_DEBUG_LOG_LEVEL
+- CLAUDE_CODE_DIAGNOSTICS_FILE
+- CLAUDE_CODE_DISABLE_1M_CONTEXT
+- CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING
+- CLAUDE_CODE_DISABLE_ATTACHMENTS
+- CLAUDE_CODE_DISABLE_AUTO_MEMORY
+- CLAUDE_CODE_DISABLE_BACKGROUND_TASKS
+- CLAUDE_CODE_DISABLE_CLAUDE_MDS
+- CLAUDE_CODE_DISABLE_COMMAND_INJECTION_CHECK
+- CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS
+- CLAUDE_CODE_DISABLE_FAST_MODE
+- CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY
+- CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING
+- CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS
+- CLAUDE_CODE_DISABLE_LEGACY_MODEL_REMAP
+- CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC
+- CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL
+- CLAUDE_CODE_DISABLE_PRECOMPACT_SKIP
+- CLAUDE_CODE_DISABLE_TERMINAL_TITLE
+- CLAUDE_CODE_DISABLE_THINKING
+- CLAUDE_CODE_DONT_INHERIT_ENV
+- CLAUDE_CODE_EAGER_FLUSH
+- CLAUDE_CODE_EFFORT_LEVEL
+- CLAUDE_CODE_EMIT_TOOL_USE_SUMMARIES
+- CLAUDE_CODE_ENABLE_CFC
+- CLAUDE_CODE_ENABLE_FINE_GRAINED_TOOL_STREAMING
+- CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION
+- CLAUDE_CODE_ENABLE_SDK_FILE_CHECKPOINTING
+- CLAUDE_CODE_ENABLE_TASKS
+- CLAUDE_CODE_ENABLE_TELEMETRY
+- CLAUDE_CODE_ENABLE_TOKEN_USAGE_ATTACHMENT
+- CLAUDE_CODE_ENHANCED_TELEMETRY_BETA
+- CLAUDE_CODE_ENTRYPOINT
+- CLAUDE_CODE_ENVIRONMENT_KIND
+- CLAUDE_CODE_ENVIRONMENT_RUNNER_VERSION
+- CLAUDE_CODE_EXIT_AFTER_FIRST_RENDER
+- CLAUDE_CODE_EXIT_AFTER_STOP_DELAY
+- CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS
+- CLAUDE_CODE_EXTRA_BODY
+- CLAUDE_CODE_FILE_READ_MAX_OUTPUT_TOKENS
+- CLAUDE_CODE_FORCE_FULL_LOGO
+- CLAUDE_CODE_FORCE_GLOBAL_CACHE
+- CLAUDE_CODE_FORCE_SANDBOX
+- CLAUDE_CODE_GB_BASE_URL
+- CLAUDE_CODE_GIT_BASH_PATH
+- CLAUDE_CODE_GLOB_HIDDEN
+- CLAUDE_CODE_GLOB_NO_IGNORE
+- CLAUDE_CODE_GLOB_TIMEOUT_SECONDS
+- CLAUDE_CODE_HOST_HTTP_PROXY_PORT
+- CLAUDE_CODE_HOST_PLATFORM
+- CLAUDE_CODE_HOST_SOCKS_PROXY_PORT
+- CLAUDE_CODE_IDE_HOST_OVERRIDE
+- CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL
+- CLAUDE_CODE_IDE_SKIP_VALID_CHECK
+- CLAUDE_CODE_INCLUDE_PARTIAL_MESSAGES
+- CLAUDE_CODE_IS_COWORK
+- CLAUDE_CODE_MAX_OUTPUT_TOKENS
+- CLAUDE_CODE_MAX_RETRIES
+- CLAUDE_CODE_MAX_TOOL_USE_CONCURRENCY
+- CLAUDE_CODE_MCP_INSTR_DELTA
+- CLAUDE_CODE_OAUTH_CLIENT_ID
+- CLAUDE_CODE_OAUTH_REFRESH_TOKEN
+- CLAUDE_CODE_OAUTH_SCOPES
+- CLAUDE_CODE_OAUTH_TOKEN
+- CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR
+- CLAUDE_CODE_ORGANIZATION_UUID
+- CLAUDE_CODE_OTEL_FLUSH_TIMEOUT_MS
+- CLAUDE_CODE_OTEL_HEADERS_HELPER_DEBOUNCE_MS
+- CLAUDE_CODE_OTEL_SHUTDOWN_TIMEOUT_MS
+- CLAUDE_CODE_PERFETTO_TRACE
+- CLAUDE_CODE_PLAN_MODE_INTERVIEW_PHASE
+- CLAUDE_CODE_PLAN_MODE_REQUIRED
+- CLAUDE_CODE_PLAN_V2_AGENT_COUNT
+- CLAUDE_CODE_PLAN_V2_EXPLORE_AGENT_COUNT
+- CLAUDE_CODE_PLUGIN_CACHE_DIR
+- CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS
+- CLAUDE_CODE_PLUGIN_SEED_DIR
+- CLAUDE_CODE_PLUGIN_USE_ZIP_CACHE
+- CLAUDE_CODE_POST_FOR_SESSION_INGRESS_V2
+- CLAUDE_CODE_PROFILE_QUERY
+- CLAUDE_CODE_PROFILE_STARTUP
+- CLAUDE_CODE_PROXY_RESOLVES_HOSTS
+- CLAUDE_CODE_QUESTION_PREVIEW_FORMAT
+- CLAUDE_CODE_REMOTE
+- CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE
+- CLAUDE_CODE_REMOTE_MEMORY_DIR
+- CLAUDE_CODE_REMOTE_SEND_KEEPALIVES
+- CLAUDE_CODE_REMOTE_SESSION_ID
+- CLAUDE_CODE_RESUME_INTERRUPTED_TURN
+- CLAUDE_CODE_SAVE_HOOK_ADDITIONAL_CONTEXT
+- CLAUDE_CODE_SEARCH_HINTS_IN_LIST
+- CLAUDE_CODE_SESSION_ACCESS_TOKEN
+- CLAUDE_CODE_SHELL
+- CLAUDE_CODE_SHELL_PREFIX
+- CLAUDE_CODE_SIMPLE
+- CLAUDE_CODE_SKIP_BEDROCK_AUTH
+- CLAUDE_CODE_SKIP_FOUNDRY_AUTH
+- CLAUDE_CODE_SKIP_PROMPT_HISTORY
+- CLAUDE_CODE_SKIP_VERTEX_AUTH
+- CLAUDE_CODE_SLOW_OPERATION_THRESHOLD_MS
+- CLAUDE_CODE_SM_COMPACT
+- CLAUDE_CODE_SSE_PORT
+- CLAUDE_CODE_STALL_TIMEOUT_MS_FOR_TESTING
+- CLAUDE_CODE_STREAMING_TEXT
+- CLAUDE_CODE_SUBAGENT_MODEL
+- CLAUDE_CODE_SYNC_PLUGIN_INSTALL
+- CLAUDE_CODE_SYNC_PLUGIN_INSTALL_TIMEOUT_MS
+- CLAUDE_CODE_SYNTAX_HIGHLIGHT
+- CLAUDE_CODE_TAGS
+- CLAUDE_CODE_TASK_LIST_ID
+- CLAUDE_CODE_TEAMMATE_COMMAND
+- CLAUDE_CODE_TEAM_NAME
+- CLAUDE_CODE_TEST_FIXTURES_ROOT
+- CLAUDE_CODE_TMPDIR
+- CLAUDE_CODE_TMUX_PREFIX
+- CLAUDE_CODE_TMUX_PREFIX_CONFLICTS
+- CLAUDE_CODE_TMUX_SESSION
+- CLAUDE_CODE_TWO_STAGE_CLASSIFIER
+- CLAUDE_CODE_USER_EMAIL
+- CLAUDE_CODE_USE_BEDROCK
+- CLAUDE_CODE_USE_CCR_V2
+- CLAUDE_CODE_USE_COWORK_PLUGINS
+- CLAUDE_CODE_USE_FOUNDRY
+- CLAUDE_CODE_USE_NATIVE_FILE_SEARCH
+- CLAUDE_CODE_USE_VERTEX
+- CLAUDE_CODE_WEBSOCKET_AUTH_FILE_DESCRIPTOR
+- CLAUDE_CODE_WORKER_EPOCH
+- CLAUDE_CONFIG_DIR
+- CLAUDE_COWORK_MEMORY_PATH_OVERRIDE
+- CLAUDE_DEBUG
+- CLAUDE_ENABLE_STREAM_WATCHDOG
+- CLAUDE_ENV_FILE
+- CLAUDE_FORCE_DISPLAY_SURVEY
+- CLAUDE_HAIKU_4_5
+- CLAUDE_OPUS_4_6
+- CLAUDE_PLUGIN_ROOT
+- CLAUDE_PROJECT_DIR
+- CLAUDE_REPL_MODE
+- CLAUDE_SESSION_ID
+- CLAUDE_SKILL_DIR
+- CLAUDE_TMPDIR
+
+## 4. Models (105)
+- claude-1.3
+- claude-1.3-100k
+- claude-2.0
+- claude-2.1
+- claude-3-5-haiku
+- claude-3-5-haiku-20241022
+- claude-3-5-haiku-20241022-v1
+- claude-3-5-haiku-latest
+- claude-3-5-sonnet
+- claude-3-5-sonnet-20240620
+- claude-3-5-sonnet-20241022
+- claude-3-5-sonnet-20241022-v2
+- claude-3-5-sonnet-v2
+- claude-3-7-sonnet
+- claude-3-7-sonnet-20250219
+- claude-3-7-sonnet-20250219-v1
+- claude-3-7-sonnet-latest
+- claude-3-haiku
+- claude-3-haiku-20240307
+- claude-3-opus
+- claude-3-opus-20240229
+- claude-3-sonnet
+- claude-3-sonnet-20240229
+- claude-4-opus-20250514
+- claude-agent-sdk
+- claude-agent-sdk-python
+- claude-agent-sdk-typescript
+- claude-ai-external-token
+- claude-ai.staging.ant.dev
+- claude-api
+- claude-api.md
+- claude-by-anthropic
+- claude-cli
+- claude-code-20250219
+- claude-code-action
+- claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819
+- claude-code-github-action
+- claude-code-guest-passes
+- claude-code-guide
+- claude-code-jetbrains
+- claude-code-jetbrains-plugin
+- claude-code-keybindings.json
+- claude-code-marketplace
+- claude-code-plugins
+- claude-code-releases
+- claude-code-review.yml
+- claude-code-screenshots
+- claude-code-settings.json
+- claude-code-user
+- claude-code.git
+- claude-context
+- claude-desktop
+- claude-dev
+- claude-folder
+- claude-haiku
+- claude-haiku-3-5
+- claude-haiku-4
+- claude-haiku-4-5
+- claude-haiku-4-5-20251001
+- claude-haiku-4-5-20251001-v1
+- claude-hidden
+- claude-in-chrome
+- claude-in-chrome-default-enabled
+- claude-in-chrome-mcp
+- claude-instant-1.1
+- claude-instant-1.1-100k
+- claude-instant-1.2
+- claude-local
+- claude-md-actions
+- claude-md-item
+- claude-md-section
+- claude-opus-4
+- claude-opus-4-0
+- claude-opus-4-1
+- claude-opus-4-1-20250805
+- claude-opus-4-1-20250805-v1
+- claude-opus-4-20250514
+- claude-opus-4-20250514-v1
+- claude-opus-4-5
+- claude-opus-4-5-20251101
+- claude-opus-4-5-20251101-v1
+- claude-opus-4-6
+- claude-opus-4-6-v1
+- claude-plugin
+- claude-plugin-directory
+- claude-plugins-official
+- claude-prompt
+- claude-remote-container-id
+- claude-remote-session-id
+- claude-review
+- claude-settings
+- claude-sonnet-3-7
+- claude-sonnet-4
+- claude-sonnet-4-0
+- claude-sonnet-4-20250514
+- claude-sonnet-4-20250514-v1
+- claude-sonnet-4-5
+- claude-sonnet-4-5-20250514
+- claude-sonnet-4-5-20250929
+- claude-sonnet-4-5-20250929-v1
+- claude-sonnet-4-6
+- claude-sonnet-4.6
+- claude-staging.fedstart.com
+- claude-swarm
+- claude-vscode
+
+## 5. SDK Tools (23)
+- AgentInput: description, prompt, subagent_type?, resume?, run_in_background?, name?, team_name?, mode?, isolation?
+- AskUserQuestionInput: questions, question, header, options, label, description, preview?
+- BashInput: command, timeout?
+- ConfigInput: setting, value?
+- EnterWorktreeInput: name?
+- ExitPlanModeInput: allowedPrompts?, tool, prompt
+- FileEditInput: file_path, old_string, new_string, replace_all?
+- FileReadInput: file_path, offset?, limit?, pages?
+- FileWriteInput: file_path, content
+- GlobInput: pattern, path?
+- GrepInput: pattern, path?
+- ListMcpResourcesInput: server?
+- NotebookEditInput: notebook_path, cell_id?, new_source, cell_type?, edit_mode?
+- ReadMcpResourceInput: server, uri
+- SubscribeMcpResourceInput: server, uri, reason?
+- SubscribePollingInput: type, server, toolName?, arguments?
+- TaskOutputInput: task_id, block, timeout
+- TaskStopInput: task_id?, shell_id?
+- TodoWriteInput: todos, content, status, activeForm
+- UnsubscribeMcpResourceInput: server?, uri?, subscriptionId?
+- UnsubscribePollingInput: subscriptionId?, server?, target?
+- WebFetchInput: url, prompt
+- WebSearchInput: query, allowed_domains?, blocked_domains?
+
+## 6. Settings (0)
+- none
