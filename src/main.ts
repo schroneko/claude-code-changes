@@ -2,6 +2,7 @@ import { cwd } from "node:process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, join } from "node:path";
 import { extractCommandsFromBullets, getOfficialChangelog, parseChangelogEntry } from "./changelog.js";
+import { formatCliCommandSummary, groupCliCommands } from "./cli-commands.js";
 import { extractSignals } from "./extract.js";
 import {
   compareVersions,
@@ -23,6 +24,7 @@ function usage(): never {
   console.error("Usage:");
   console.error("  npm run track -- [version]");
   console.error("  npm run compare -- <prevSnapshotOrDir> <currSnapshotOrDir>");
+  console.error("  npm run commands -- [versionOrSnapshotDir]");
   console.error("  npm run list");
   console.error("  npm run backfill -- <fromVersion> <toVersion>");
   console.error("  npm run backfill -- --all");
@@ -127,6 +129,7 @@ function updateReportsIndex(): void {
       version: string;
       prevVersion: string;
       sourceOnlyChanges?: {
+        cliCommands?: unknown[];
         slashCommands?: unknown[];
         envVars?: unknown[];
         settings?: unknown[];
@@ -135,6 +138,7 @@ function updateReportsIndex(): void {
       };
     };
     const sourceOnlyCount =
+      (parsed.sourceOnlyChanges?.cliCommands?.length ?? 0) +
       (parsed.sourceOnlyChanges?.slashCommands?.length ?? 0) +
       (parsed.sourceOnlyChanges?.envVars?.length ?? 0) +
       (parsed.sourceOnlyChanges?.settings?.length ?? 0) +
@@ -175,9 +179,10 @@ function updateReportsIndex(): void {
   lines.push("");
   lines.push("- 公式 changelog より詳しく見たい場合は、各 report の `Source-Only Highlights` を見てください。");
   lines.push("- パッケージ全体の増減は `0. Package Files` を見てください。");
-  lines.push("- slash command の在庫差分は `1. Slash Commands` を見てください。");
-  lines.push("- env vars / settings / sdk surface は `2. Public Surface` を見てください。");
-  lines.push("- 機能カテゴリ別の荒い整理は `3. Capability Signals` を見てください。");
+  lines.push("- `claude xxx` の在庫差分は `1. CLI Commands` を見てください。");
+  lines.push("- slash command の在庫差分は `2. Slash Commands` を見てください。");
+  lines.push("- env vars / settings / sdk surface は `3. Public Surface` を見てください。");
+  lines.push("- 機能カテゴリ別の荒い整理は `4. Capability Signals` を見てください。");
   lines.push("");
   lines.push("## First Reports");
   lines.push("");
@@ -231,6 +236,68 @@ function buildReport(
     markdown: renderMarkdown(report),
     json: JSON.stringify(report, null, 2),
   };
+}
+
+function loadSourceForInventory(input?: string): { source: ReturnType<typeof loadSnapshotSource>; cleanup: () => void } {
+  if (input) {
+    const resolved = resolveSnapshotOrDir(input);
+    if (existsSync(resolved)) {
+      return {
+        source: loadSnapshotSource(resolved),
+        cleanup: () => {},
+      };
+    }
+
+    const fetched = fetchPackage(input);
+    return {
+      source: loadSnapshotSource(fetched.packageDir, input),
+      cleanup: fetched.cleanup,
+    };
+  }
+
+  const savedSnapshotDirs = getSavedSnapshotDirs(ROOT_DIR);
+  if (savedSnapshotDirs.length > 0) {
+    return {
+      source: loadSnapshotSource(savedSnapshotDirs[0]!),
+      cleanup: () => {},
+    };
+  }
+
+  const fetched = fetchPackage();
+  return {
+    source: loadSnapshotSource(fetched.packageDir),
+    cleanup: fetched.cleanup,
+  };
+}
+
+function printCliCommands(versionOrDir?: string): void {
+  const loaded = loadSourceForInventory(versionOrDir);
+
+  try {
+    const signals = extractSignals(loaded.source);
+    const groups = groupCliCommands(signals.cliCommands);
+    const hiddenCount = signals.cliCommands.filter((command) => command.hidden).length;
+
+    console.log(`Version: ${signals.version}`);
+    console.log(`CLI commands: ${signals.cliCommands.length}`);
+    console.log(`Hidden commands: ${hiddenCount}`);
+    console.log("");
+
+    if (groups.length === 0) {
+      console.log("No CLI commands detected.");
+      return;
+    }
+
+    for (const group of groups) {
+      console.log(`${group.label} (${group.commands.length})`);
+      for (const command of group.commands) {
+        console.log(`- ${formatCliCommandSummary(command, true)}`);
+      }
+      console.log("");
+    }
+  } finally {
+    loaded.cleanup();
+  }
 }
 
 function saveAndPrintReport(result: { markdown: string; json: string; version: string }): void {
@@ -349,6 +416,11 @@ async function main(): Promise<void> {
       resolveSnapshotOrDir(args[0]),
       resolveSnapshotOrDir(args[1]),
     );
+    return;
+  }
+
+  if (command === "commands") {
+    printCliCommands(args[0]);
     return;
   }
 

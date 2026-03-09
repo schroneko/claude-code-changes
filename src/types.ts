@@ -5,6 +5,16 @@ export interface SlashCommand {
   kind: "builtin" | "plugin" | "inferred";
 }
 
+export interface CliCommand {
+  path: string;
+  parentPath: string;
+  command: string;
+  aliases: string[];
+  invocations: string[];
+  description: string;
+  hidden: boolean;
+}
+
 export interface ToolDefinition {
   [toolName: string]: string[];
 }
@@ -12,6 +22,7 @@ export interface ToolDefinition {
 export interface ExtractedSignals {
   version: string;
   buildTime: string;
+  cliCommands: CliCommand[];
   slashCommands: SlashCommand[];
   tools: ToolDefinition;
   models: string[];
@@ -53,6 +64,7 @@ export interface CapabilitySignal {
 }
 
 export interface SourceOnlyChanges {
+  cliCommands: ChangeEntry[];
   slashCommands: ChangeEntry[];
   envVars: ChangeEntry[];
   settings: ChangeEntry[];
@@ -66,6 +78,8 @@ export interface ComparisonReport {
   buildTime: string;
   officialChangelogBullets: string[];
   officialMentionedCommands: string[];
+  cliCommands: ChangeEntry[];
+  currentCliCommands: CliCommand[];
   slashCommands: ChangeEntry[];
   currentSlashCommands: SlashCommand[];
   models: ChangeEntry[];

@@ -1,3 +1,4 @@
+import { extractCliCommands } from "./cli-commands.js";
 import type { ExtractedSignals, SlashCommand, SnapshotSource, ToolDefinition } from "./types.js";
 
 function extractModels(cliContent: string): string[] {
@@ -182,6 +183,7 @@ export function extractSignals(source: SnapshotSource): ExtractedSignals {
   return {
     version: source.version,
     buildTime: source.buildTime,
+    cliCommands: extractCliCommands(source.cliContent),
     slashCommands: extractSlashCommands(source.cliContent),
     tools: extractTools(source.sdkContent),
     models: extractModels(source.cliContent),

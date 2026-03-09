@@ -15,9 +15,10 @@
 
 - 公式 changelog より詳しく見たい場合は、各 report の `Source-Only Highlights` を見てください。
 - パッケージ全体の増減は `0. Package Files` を見てください。
-- slash command の在庫差分は `1. Slash Commands` を見てください。
-- env vars / settings / sdk surface は `2. Public Surface` を見てください。
-- 機能カテゴリ別の荒い整理は `3. Capability Signals` を見てください。
+- `claude xxx` の在庫差分は `1. CLI Commands` を見てください。
+- slash command の在庫差分は `2. Slash Commands` を見てください。
+- env vars / settings / sdk surface は `3. Public Surface` を見てください。
+- 機能カテゴリ別の荒い整理は `4. Capability Signals` を見てください。
 
 ## First Reports
 

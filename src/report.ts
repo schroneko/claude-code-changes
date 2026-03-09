@@ -1,5 +1,7 @@
+import { formatCliCommandSummary, groupCliCommands } from "./cli-commands.js";
 import type {
   ChangeEntry,
+  CliCommand,
   ComparisonReport,
   ExtractedSignals,
   PackageFileRecord,
@@ -95,6 +97,72 @@ function diffSlashCommands(prev: ExtractedSignals["slashCommands"], curr: Extrac
   return diffArrays(prevNames, currNames);
 }
 
+function diffCliCommands(prev: CliCommand[], curr: CliCommand[]): ChangeEntry[] {
+  const entries: ChangeEntry[] = [];
+  const prevMap = new Map(prev.map((command) => [command.path, command]));
+  const currMap = new Map(curr.map((command) => [command.path, command]));
+  const allPaths = new Set([...prevMap.keys(), ...currMap.keys()]);
+
+  for (const path of [...allPaths].sort()) {
+    const prevCommand = prevMap.get(path);
+    const currCommand = currMap.get(path);
+
+    if (!prevCommand && currCommand) {
+      entries.push({
+        type: "added",
+        name: path,
+        detail: formatCliCommandSummary(currCommand, true)
+          .replace(`${currCommand.path}`, "")
+          .replace(/^\s*\((.*)\)\s*$/, "$1"),
+      });
+      continue;
+    }
+    if (prevCommand && !currCommand) {
+      entries.push({
+        type: "removed",
+        name: path,
+        detail: formatCliCommandSummary(prevCommand, true)
+          .replace(`${prevCommand.path}`, "")
+          .replace(/^\s*\((.*)\)\s*$/, "$1"),
+      });
+      continue;
+    }
+    if (!prevCommand || !currCommand) {
+      continue;
+    }
+
+    const details: string[] = [];
+    if (prevCommand.hidden !== currCommand.hidden) {
+      details.push(`hidden: ${prevCommand.hidden} -> ${currCommand.hidden}`);
+    }
+
+    const prevAliases = new Set(prevCommand.invocations.slice(1));
+    const currAliases = new Set(currCommand.invocations.slice(1));
+    const addedAliases = currCommand.invocations.slice(1).filter((alias) => !prevAliases.has(alias));
+    const removedAliases = prevCommand.invocations.slice(1).filter((alias) => !currAliases.has(alias));
+    if (addedAliases.length > 0) {
+      details.push(`+aliases: ${addedAliases.join(", ")}`);
+    }
+    if (removedAliases.length > 0) {
+      details.push(`-aliases: ${removedAliases.join(", ")}`);
+    }
+
+    if (prevCommand.description !== currCommand.description) {
+      details.push("description changed");
+    }
+
+    if (details.length > 0) {
+      entries.push({
+        type: "changed",
+        name: path,
+        detail: details.join("; "),
+      });
+    }
+  }
+
+  return entries;
+}
+
 function formatBytes(bytes: number): string {
   if (bytes < 1024) {
     return `${bytes} B`;
@@ -169,6 +237,7 @@ function diffPackageFiles(
 }
 
 function buildSourceOnlyChanges(input: {
+  cliCommands: ChangeEntry[];
   slashCommands: ChangeEntry[];
   envVars: ChangeEntry[];
   settings: ChangeEntry[];
@@ -177,6 +246,7 @@ function buildSourceOnlyChanges(input: {
   officialMentionedCommands: string[];
 }): ComparisonReport["sourceOnlyChanges"] {
   return {
+    cliCommands: input.cliCommands.filter((entry) => entry.type === "added"),
     slashCommands: input.slashCommands.filter(
       (entry) => entry.type === "added" && !input.officialMentionedCommands.includes(entry.name),
     ),
@@ -199,6 +269,7 @@ export function buildComparisonReport(input: {
   officialChangelogBullets: string[];
   officialMentionedCommands: string[];
 }): ComparisonReport {
+  const cliCommands = diffCliCommands(input.prevSignals.cliCommands, input.currSignals.cliCommands);
   const slashCommands = diffSlashCommands(input.prevSignals.slashCommands, input.currSignals.slashCommands);
   const models = diffArrays(input.prevSignals.models, input.currSignals.models);
   const envVars = diffArrays(input.prevSignals.envVars, input.currSignals.envVars);
@@ -211,6 +282,7 @@ export function buildComparisonReport(input: {
     input.currTextFileContents,
   );
   const sourceOnlyChanges = buildSourceOnlyChanges({
+    cliCommands,
     slashCommands,
     envVars,
     settings,
@@ -219,6 +291,7 @@ export function buildComparisonReport(input: {
     officialMentionedCommands: input.officialMentionedCommands,
   });
   const hasAnyDetectedChange = [
+    cliCommands,
     slashCommands,
     models,
     envVars,
@@ -245,6 +318,8 @@ export function buildComparisonReport(input: {
     buildTime: input.currSignals.buildTime,
     officialChangelogBullets: input.officialChangelogBullets,
     officialMentionedCommands: input.officialMentionedCommands,
+    cliCommands,
+    currentCliCommands: input.currSignals.cliCommands,
     slashCommands,
     currentSlashCommands: input.currSignals.slashCommands,
     models,
@@ -319,9 +394,21 @@ function renderSlashCommandInventory(report: ComparisonReport): string[] {
   return lines;
 }
 
+function renderCliCommandInventory(report: ComparisonReport): string[] {
+  const groups = groupCliCommands(report.currentCliCommands);
+  if (groups.length === 0) {
+    return ["- No CLI commands detected"];
+  }
+
+  return groups.map((group) =>
+    `${group.label} (${group.commands.length}): ${group.commands.map((command) => formatCliCommandSummary(command)).join(", ")}`,
+  );
+}
+
 function renderSourceOnlyHighlights(report: ComparisonReport): string[] {
   const sections: Array<{ label: string; entries: ChangeEntry[] }> = [
     { label: "Package Files", entries: report.sourceOnlyChanges.packageFiles },
+    { label: "CLI Commands", entries: report.sourceOnlyChanges.cliCommands },
     { label: "Slash Commands", entries: report.sourceOnlyChanges.slashCommands },
     { label: "Environment Variables", entries: report.sourceOnlyChanges.envVars },
     { label: "Settings", entries: report.sourceOnlyChanges.settings },
@@ -357,7 +444,16 @@ export function renderMarkdown(report: ComparisonReport): string {
   lines.push("## 0. Package Files");
   lines.push(...renderChangeList(report.packageFiles, []));
   lines.push("");
-  lines.push("## 1. Slash Commands");
+  lines.push("## 1. CLI Commands");
+  lines.push("### Changes");
+  lines.push(...renderChangeList(report.cliCommands, []));
+  lines.push("");
+  lines.push("### Current Inventory");
+  for (const line of renderCliCommandInventory(report)) {
+    lines.push(`- ${line}`);
+  }
+  lines.push("");
+  lines.push("## 2. Slash Commands");
   lines.push("### Changes");
   lines.push(...renderChangeList(report.slashCommands, report.officialMentionedCommands));
   lines.push("");
@@ -366,7 +462,7 @@ export function renderMarkdown(report: ComparisonReport): string {
     lines.push(`- ${line}`);
   }
   lines.push("");
-  lines.push("## 2. Public Surface");
+  lines.push("## 3. Public Surface");
   lines.push("### Models");
   lines.push(...renderChangeList(report.models, []));
   lines.push("");
@@ -379,7 +475,7 @@ export function renderMarkdown(report: ComparisonReport): string {
   lines.push("### SDK Tools");
   lines.push(...renderChangeList(report.tools, []));
   lines.push("");
-  lines.push("## 3. Capability Signals");
+  lines.push("## 4. Capability Signals");
   lines.push(...renderCapabilitySignals(report));
   lines.push("");
   lines.push("## Official Changelog");
