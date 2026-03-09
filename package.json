@@ -7,6 +7,7 @@
     "track": "node --import tsx src/main.ts track",
     "compare": "node --import tsx src/main.ts compare",
     "commands": "node --import tsx src/main.ts commands",
+    "current": "node --import tsx src/main.ts current",
     "list": "node --import tsx src/main.ts list",
     "backfill": "node --import tsx src/main.ts backfill",
     "compare:fixture": "node --import tsx src/main.ts compare ../claude-code-analysis/versions/2.1.25 ../claude-code-analysis/versions/2.1.27",

@@ -1,4 +1,4 @@
-import type { CliCommand } from "./types.js";
+import type { CliArgument, CliCommand, CliOption } from "./types.js";
 
 interface CommandContext {
   path: string;
@@ -22,6 +22,13 @@ interface HelperDefinition {
 
 function normalizeWhitespace(value: string): string {
   return value.replace(/\s+/g, " ").trim();
+}
+
+function sanitizeDescription(value: string): string {
+  return normalizeWhitespace(value)
+    .replace(/\bq\.(option|addOption|helpOption)\($/, "")
+    .replace(/\.(addOption|option)\($/, "")
+    .trim();
 }
 
 function replaceLeadingToken(command: string, replacement: string): string {
@@ -192,7 +199,156 @@ function buildCommand(
   };
 }
 
-export function extractCliCommands(cliContent: string): CliCommand[] {
+function parseNames(raw: string): string[] {
+  return raw
+    .split(",")
+    .map((part) => normalizeWhitespace(part))
+    .filter(Boolean);
+}
+
+function parseArguments(segment: string, scopePath: string): CliArgument[] {
+  const argumentsList: CliArgument[] = [];
+  const pattern = /\.argument\(\s*(["'`])([\s\S]*?)\1\s*,\s*(["'`])([\s\S]*?)\3/g;
+
+  for (const match of segment.matchAll(pattern)) {
+    const name = normalizeWhitespace(match[2]!);
+    argumentsList.push({
+      scopePath,
+      name,
+      description: sanitizeDescription(match[4]!),
+      required: name.startsWith("<"),
+    });
+  }
+
+  return argumentsList;
+}
+
+function parseOptions(segment: string, scopePath: string): CliOption[] {
+  const options: CliOption[] = [];
+
+  for (const match of segment.matchAll(/\.helpOption\(\s*(["'`])([\s\S]*?)\1\s*,\s*(["'`])([\s\S]*?)\3/g)) {
+    options.push({
+      scopePath,
+      names: parseNames(match[2]!),
+      description: sanitizeDescription(match[4]!),
+      hidden: false,
+    });
+  }
+
+  for (const match of segment.matchAll(/\.version\(\s*(["'`])[\s\S]*?\1\s*,\s*(["'`])([\s\S]*?)\2\s*,\s*(["'`])([\s\S]*?)\4/g)) {
+    options.push({
+      scopePath,
+      names: parseNames(match[3]!),
+      description: sanitizeDescription(match[5]!),
+      hidden: false,
+    });
+  }
+
+  for (const match of segment.matchAll(/\.option\(\s*(["'`])([\s\S]*?)\1\s*,\s*(["'`])([\s\S]*?)\3/g)) {
+    options.push({
+      scopePath,
+      names: parseNames(match[2]!),
+      description: sanitizeDescription(match[4]!),
+      hidden: false,
+    });
+  }
+
+  for (const match of segment.matchAll(/\.addOption\(/g)) {
+    const start = match.index ?? 0;
+    const candidates = [
+      segment.indexOf(".addOption(", start + 1),
+      segment.indexOf(".option(", start + 1),
+      segment.indexOf(".command(", start + 1),
+      segment.indexOf(".action(", start + 1),
+      segment.indexOf(".helpOption(", start + 1),
+      segment.indexOf(".version(", start + 1),
+    ].filter((index) => index !== -1);
+    const end = candidates.length > 0 ? Math.min(...candidates) : Math.min(segment.length, start + 1200);
+    const window = segment.slice(start, end);
+    const optionMatch = window.match(/new \w+\(\s*(["'`])([\s\S]*?)\1\s*,\s*(["'`])([\s\S]*?)\3/);
+    if (!optionMatch) {
+      continue;
+    }
+
+    options.push({
+      scopePath,
+      names: parseNames(optionMatch[2]!),
+      description: sanitizeDescription(optionMatch[4]!),
+      hidden: window.includes(".hideHelp("),
+    });
+  }
+
+  return options;
+}
+
+function uniqueOptions(options: CliOption[]): CliOption[] {
+  const seen = new Map<string, CliOption>();
+  for (const option of options) {
+    const key = `${option.scopePath}::${option.names.join("|")}`;
+    if (!seen.has(key)) {
+      seen.set(key, option);
+    }
+  }
+  return [...seen.values()].sort((a, b) => {
+    const scopeCompare = a.scopePath.localeCompare(b.scopePath);
+    if (scopeCompare !== 0) return scopeCompare;
+    return a.names.join(", ").localeCompare(b.names.join(", "));
+  });
+}
+
+function uniqueArguments(argumentsList: CliArgument[]): CliArgument[] {
+  const seen = new Map<string, CliArgument>();
+  for (const argument of argumentsList) {
+    const key = `${argument.scopePath}::${argument.name}`;
+    if (!seen.has(key)) {
+      seen.set(key, argument);
+    }
+  }
+  return [...seen.values()].sort((a, b) => {
+    const scopeCompare = a.scopePath.localeCompare(b.scopePath);
+    if (scopeCompare !== 0) return scopeCompare;
+    return a.name.localeCompare(b.name);
+  });
+}
+
+function extractRootSegment(scope: string): string {
+  const rootStart = scope.indexOf('.name("claude")');
+  if (rootStart === -1) {
+    return "";
+  }
+
+  const actionIndex = scope.indexOf(".action(async (_, $) => {", rootStart);
+  const initialSegment = actionIndex === -1 ? scope.slice(rootStart) : scope.slice(rootStart, actionIndex);
+  const trailingSegments: string[] = [];
+
+  for (const match of scope.matchAll(/\bq\.(option|addOption|helpOption)\(/g)) {
+    const start = match.index ?? 0;
+    const candidates = [
+      scope.indexOf("q.option(", start + 1),
+      scope.indexOf("q.addOption(", start + 1),
+      scope.indexOf("q.helpOption(", start + 1),
+      scope.indexOf("q.command(", start + 1),
+      scope.indexOf("await q.parseAsync(process.argv)", start + 1),
+    ].filter((index) => index !== -1);
+    const end = candidates.length > 0 ? Math.min(...candidates) : scope.length;
+    trailingSegments.push(scope.slice(start, end));
+  }
+
+  const versionIndex = scope.indexOf(".version(", rootStart);
+  if (versionIndex !== -1) {
+    const candidates = [
+      scope.indexOf("q.option(", versionIndex + 1),
+      scope.indexOf("q.addOption(", versionIndex + 1),
+      scope.indexOf("await q.parseAsync(process.argv)", versionIndex + 1),
+    ].filter((index) => index !== -1);
+    const end = candidates.length > 0 ? Math.min(...candidates) : Math.min(scope.length, versionIndex + 400);
+    trailingSegments.push(scope.slice(versionIndex, end));
+  }
+
+  return [initialSegment, ...trailingSegments].join("\n");
+}
+
+function extractCommandSegments(cliContent: string): Array<{ command: CliCommand; segment: string }> {
   const scope = getCommandScope(cliContent);
   if (!scope) {
     return [];
@@ -203,7 +359,7 @@ export function extractCliCommands(cliContent: string): CliCommand[] {
   const contexts = new Map<string, CommandContext>([
     ["q", { path: "claude", invocations: ["claude"], hidden: false }],
   ]);
-  const commands: CliCommand[] = [];
+  const commandSegments: Array<{ command: CliCommand; segment: string }> = [];
   const events: Array<
     | { kind: "command"; index: number; match: CommandMatch; nextIndex: number }
     | { kind: "helper"; index: number; helperName: string; parentVar: string }
@@ -237,7 +393,7 @@ export function extractCliCommands(cliContent: string): CliCommand[] {
 
       const segment = scope.slice(event.match.index, event.nextIndex);
       const built = buildCommand(parent, event.match, segment);
-      commands.push(built.command);
+      commandSegments.push({ command: built.command, segment });
 
       if (event.match.assignedVar) {
         contexts.set(event.match.assignedVar, built.context);
@@ -262,7 +418,7 @@ export function extractCliCommands(cliContent: string): CliCommand[] {
       const nextIndex = helper.matches[index + 1]?.index ?? helper.body.length;
       const segment = helper.body.slice(match.index, nextIndex);
       const built = buildCommand(helperParent, match, segment);
-      commands.push(built.command);
+      commandSegments.push({ command: built.command, segment });
 
       if (match.assignedVar) {
         localContexts.set(match.assignedVar, built.context);
@@ -270,8 +426,51 @@ export function extractCliCommands(cliContent: string): CliCommand[] {
     }
   }
 
+  return commandSegments;
+}
+
+export function extractCliCommands(cliContent: string): CliCommand[] {
+  const commands = extractCommandSegments(cliContent).map(({ command }) => command);
   return [...new Map(commands.map((command) => [command.path, command])).values()]
     .sort((a, b) => a.path.localeCompare(b.path));
+}
+
+export function extractCliOptions(cliContent: string): CliOption[] {
+  const scope = getCommandScope(cliContent);
+  if (!scope) {
+    return [];
+  }
+
+  const options: CliOption[] = [];
+  const rootSegment = extractRootSegment(scope);
+  if (rootSegment) {
+    options.push(...parseOptions(rootSegment, "claude"));
+  }
+
+  for (const { command, segment } of extractCommandSegments(cliContent)) {
+    options.push(...parseOptions(segment, command.path));
+  }
+
+  return uniqueOptions(options);
+}
+
+export function extractCliArguments(cliContent: string): CliArgument[] {
+  const scope = getCommandScope(cliContent);
+  if (!scope) {
+    return [];
+  }
+
+  const argumentsList: CliArgument[] = [];
+  const rootSegment = extractRootSegment(scope);
+  if (rootSegment) {
+    argumentsList.push(...parseArguments(rootSegment, "claude"));
+  }
+
+  for (const { command, segment } of extractCommandSegments(cliContent)) {
+    argumentsList.push(...parseArguments(segment, command.path));
+  }
+
+  return uniqueArguments(argumentsList);
 }
 
 export function formatCliCommandSummary(command: CliCommand, includeDescription = false): string {

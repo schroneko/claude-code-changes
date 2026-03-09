@@ -339,9 +339,7 @@ export function copyReportArtifacts(
   reportDir: string,
   version: string,
   markdown: string,
-  json: string,
 ): void {
   mkdirSync(reportDir, { recursive: true });
   writeFileSync(join(reportDir, `${version}.md`), markdown);
-  writeFileSync(join(reportDir, `${version}.json`), json);
 }

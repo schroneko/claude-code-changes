@@ -1,4 +1,4 @@
-import { extractCliCommands } from "./cli-commands.js";
+import { extractCliArguments, extractCliCommands, extractCliOptions } from "./cli-commands.js";
 import type { ExtractedSignals, SlashCommand, SnapshotSource, ToolDefinition } from "./types.js";
 
 function extractModels(cliContent: string): string[] {
@@ -75,6 +75,14 @@ function normalizeCommandName(value: string): string | null {
   return /^\/[a-z][a-z0-9:-]*$/.test(command) ? command : null;
 }
 
+function findNearestDescription(cliContent: string, index: number): string | undefined {
+  const windowStart = Math.max(0, index - 1200);
+  const window = cliContent.slice(windowStart, index);
+  const matches = [...window.matchAll(/description:\s*(["'`])([\s\S]*?)\1\s*,?/g)];
+  const last = matches[matches.length - 1];
+  return last ? last[2].replace(/\s+/g, " ").trim() : undefined;
+}
+
 function upgradeKind(current: SlashCommand["kind"] | undefined, next: SlashCommand["kind"]): SlashCommand["kind"] {
   const priority: Record<SlashCommand["kind"], number> = {
     plugin: 3,
@@ -88,7 +96,11 @@ function upgradeKind(current: SlashCommand["kind"] | undefined, next: SlashComma
 }
 
 function extractSlashCommands(cliContent: string): SlashCommand[] {
-  const commandSources = new Map<string, { sources: Set<string>; kind?: SlashCommand["kind"] }>();
+  const commandSources = new Map<string, {
+    sources: Set<string>;
+    kind?: SlashCommand["kind"];
+    description?: string;
+  }>();
   const patterns: Array<{
     label: string;
     regex: RegExp;
@@ -144,11 +156,18 @@ function extractSlashCommands(cliContent: string): SlashCommand[] {
         continue;
       }
       if (!commandSources.has(command)) {
-        commandSources.set(command, { sources: new Set(), kind: pattern.kind });
+        commandSources.set(command, {
+          sources: new Set(),
+          kind: pattern.kind,
+          description: findNearestDescription(cliContent, match.index ?? 0),
+        });
       }
       const entry = commandSources.get(command)!;
       entry.sources.add(pattern.label);
       entry.kind = upgradeKind(entry.kind, pattern.kind);
+      if (!entry.description) {
+        entry.description = findNearestDescription(cliContent, match.index ?? 0);
+      }
     }
   }
 
@@ -174,6 +193,7 @@ function extractSlashCommands(cliContent: string): SlashCommand[] {
         sources,
         confidence,
         kind: entry.kind ?? "inferred",
+        description: entry.description,
       };
     })
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -183,7 +203,9 @@ export function extractSignals(source: SnapshotSource): ExtractedSignals {
   return {
     version: source.version,
     buildTime: source.buildTime,
+    cliArguments: extractCliArguments(source.cliContent),
     cliCommands: extractCliCommands(source.cliContent),
+    cliOptions: extractCliOptions(source.cliContent),
     slashCommands: extractSlashCommands(source.cliContent),
     tools: extractTools(source.sdkContent),
     models: extractModels(source.cliContent),

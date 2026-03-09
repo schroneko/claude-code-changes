@@ -1,7 +1,9 @@
 import { formatCliCommandSummary, groupCliCommands } from "./cli-commands.js";
 import type {
   ChangeEntry,
+  CliArgument,
   CliCommand,
+  CliOption,
   ComparisonReport,
   ExtractedSignals,
   PackageFileRecord,
@@ -97,6 +99,13 @@ function diffSlashCommands(prev: ExtractedSignals["slashCommands"], curr: Extrac
   return diffArrays(prevNames, currNames);
 }
 
+function diffCliArguments(prev: CliArgument[], curr: CliArgument[]): ChangeEntry[] {
+  return diffArrays(
+    prev.map((argument) => `${argument.scopePath} ${argument.name}`),
+    curr.map((argument) => `${argument.scopePath} ${argument.name}`),
+  );
+}
+
 function diffCliCommands(prev: CliCommand[], curr: CliCommand[]): ChangeEntry[] {
   const entries: ChangeEntry[] = [];
   const prevMap = new Map(prev.map((command) => [command.path, command]));
@@ -155,6 +164,58 @@ function diffCliCommands(prev: CliCommand[], curr: CliCommand[]): ChangeEntry[] 
       entries.push({
         type: "changed",
         name: path,
+        detail: details.join("; "),
+      });
+    }
+  }
+
+  return entries;
+}
+
+function diffCliOptions(prev: CliOption[], curr: CliOption[]): ChangeEntry[] {
+  const entries: ChangeEntry[] = [];
+  const keyOf = (option: CliOption) => `${option.scopePath}::${option.names.join("|")}`;
+  const prevMap = new Map(prev.map((option) => [keyOf(option), option]));
+  const currMap = new Map(curr.map((option) => [keyOf(option), option]));
+  const allKeys = new Set([...prevMap.keys(), ...currMap.keys()]);
+
+  for (const key of [...allKeys].sort()) {
+    const prevOption = prevMap.get(key);
+    const currOption = currMap.get(key);
+    const displayName = (currOption ?? prevOption)!.names.join(", ");
+
+    if (!prevOption && currOption) {
+      entries.push({
+        type: "added",
+        name: `${currOption.scopePath} ${displayName}`,
+        detail: currOption.description,
+      });
+      continue;
+    }
+    if (prevOption && !currOption) {
+      entries.push({
+        type: "removed",
+        name: `${prevOption.scopePath} ${displayName}`,
+        detail: prevOption.description,
+      });
+      continue;
+    }
+    if (!prevOption || !currOption) {
+      continue;
+    }
+
+    const details: string[] = [];
+    if (prevOption.hidden !== currOption.hidden) {
+      details.push(`hidden: ${prevOption.hidden} -> ${currOption.hidden}`);
+    }
+    if (prevOption.description !== currOption.description) {
+      details.push("description changed");
+    }
+
+    if (details.length > 0) {
+      entries.push({
+        type: "changed",
+        name: `${currOption.scopePath} ${displayName}`,
         detail: details.join("; "),
       });
     }
@@ -237,7 +298,9 @@ function diffPackageFiles(
 }
 
 function buildSourceOnlyChanges(input: {
+  cliArguments: ChangeEntry[];
   cliCommands: ChangeEntry[];
+  cliOptions: ChangeEntry[];
   slashCommands: ChangeEntry[];
   envVars: ChangeEntry[];
   settings: ChangeEntry[];
@@ -246,7 +309,9 @@ function buildSourceOnlyChanges(input: {
   officialMentionedCommands: string[];
 }): ComparisonReport["sourceOnlyChanges"] {
   return {
+    cliArguments: input.cliArguments.filter((entry) => entry.type === "added"),
     cliCommands: input.cliCommands.filter((entry) => entry.type === "added"),
+    cliOptions: input.cliOptions.filter((entry) => entry.type === "added"),
     slashCommands: input.slashCommands.filter(
       (entry) => entry.type === "added" && !input.officialMentionedCommands.includes(entry.name),
     ),
@@ -269,7 +334,9 @@ export function buildComparisonReport(input: {
   officialChangelogBullets: string[];
   officialMentionedCommands: string[];
 }): ComparisonReport {
+  const cliArguments = diffCliArguments(input.prevSignals.cliArguments, input.currSignals.cliArguments);
   const cliCommands = diffCliCommands(input.prevSignals.cliCommands, input.currSignals.cliCommands);
+  const cliOptions = diffCliOptions(input.prevSignals.cliOptions, input.currSignals.cliOptions);
   const slashCommands = diffSlashCommands(input.prevSignals.slashCommands, input.currSignals.slashCommands);
   const models = diffArrays(input.prevSignals.models, input.currSignals.models);
   const envVars = diffArrays(input.prevSignals.envVars, input.currSignals.envVars);
@@ -282,7 +349,9 @@ export function buildComparisonReport(input: {
     input.currTextFileContents,
   );
   const sourceOnlyChanges = buildSourceOnlyChanges({
+    cliArguments,
     cliCommands,
+    cliOptions,
     slashCommands,
     envVars,
     settings,
@@ -291,7 +360,9 @@ export function buildComparisonReport(input: {
     officialMentionedCommands: input.officialMentionedCommands,
   });
   const hasAnyDetectedChange = [
+    cliArguments,
     cliCommands,
+    cliOptions,
     slashCommands,
     models,
     envVars,
@@ -318,8 +389,12 @@ export function buildComparisonReport(input: {
     buildTime: input.currSignals.buildTime,
     officialChangelogBullets: input.officialChangelogBullets,
     officialMentionedCommands: input.officialMentionedCommands,
+    cliArguments,
+    currentCliArguments: input.currSignals.cliArguments,
     cliCommands,
     currentCliCommands: input.currSignals.cliCommands,
+    cliOptions,
+    currentCliOptions: input.currSignals.cliOptions,
     slashCommands,
     currentSlashCommands: input.currSignals.slashCommands,
     models,
@@ -371,25 +446,36 @@ function renderCapabilitySignals(report: ComparisonReport): string[] {
 }
 
 function renderSlashCommandInventory(report: ComparisonReport): string[] {
-  const builtin = report.currentSlashCommands
-    .filter((command) => command.confidence === "high" && command.kind === "builtin")
-    .map((command) => command.name);
-  const plugin = report.currentSlashCommands
-    .filter((command) => command.confidence === "high" && command.kind === "plugin")
-    .map((command) => command.name);
-  const inferred = report.currentSlashCommands
-    .filter((command) => command.confidence !== "high")
-    .map((command) => `${command.name} [${command.kind}/${command.confidence}]`);
+  const sections: Array<{ label: string; commands: typeof report.currentSlashCommands }> = [
+    {
+      label: `Built-in (${report.currentSlashCommands.filter((command) => command.confidence === "high" && command.kind === "builtin").length})`,
+      commands: report.currentSlashCommands.filter((command) => command.confidence === "high" && command.kind === "builtin"),
+    },
+    {
+      label: `Plugin-backed (${report.currentSlashCommands.filter((command) => command.confidence === "high" && command.kind === "plugin").length})`,
+      commands: report.currentSlashCommands.filter((command) => command.confidence === "high" && command.kind === "plugin"),
+    },
+    {
+      label: `Inferred (${report.currentSlashCommands.filter((command) => command.confidence !== "high").length})`,
+      commands: report.currentSlashCommands.filter((command) => command.confidence !== "high"),
+    },
+  ];
 
   const lines: string[] = [];
-  if (builtin.length > 0) {
-    lines.push(`Built-in (${builtin.length}): ${builtin.join(", ")}`);
-  }
-  if (plugin.length > 0) {
-    lines.push(`Plugin-backed (${plugin.length}): ${plugin.join(", ")}`);
-  }
-  if (inferred.length > 0) {
-    lines.push(`Inferred (${inferred.length}): ${inferred.join(", ")}`);
+  for (const section of sections) {
+    lines.push(section.label);
+    if (section.commands.length === 0) {
+      lines.push("  - none");
+      continue;
+    }
+    for (const command of section.commands) {
+      const detail = command.description
+        ? `${command.name} - ${command.description}`
+        : command.confidence !== "high"
+          ? `${command.name} [${command.kind}/${command.confidence}]`
+          : command.name;
+      lines.push(`  - ${detail}`);
+    }
   }
   return lines;
 }
@@ -400,15 +486,57 @@ function renderCliCommandInventory(report: ComparisonReport): string[] {
     return ["- No CLI commands detected"];
   }
 
+  const hasNonHelpOptions = (path: string): boolean =>
+    report.currentCliOptions.some((option) =>
+      option.scopePath === path && option.names.join(", ") !== "-h, --help",
+    );
+  const withOptionsMarker = (command: CliCommand): string => {
+    if (!hasNonHelpOptions(command.path) || command.command.includes("[options]")) {
+      return formatCliCommandSummary(command);
+    }
+
+    const [firstToken, ...rest] = command.command.split(" ");
+    const commandWithOptions = [firstToken, "[options]", ...rest].join(" ");
+    const displayCommand: CliCommand = {
+      ...command,
+      path: `${command.parentPath} ${commandWithOptions}`.trim(),
+      command: commandWithOptions,
+    };
+    return formatCliCommandSummary(displayCommand);
+  };
+
   return groups.map((group) =>
-    `${group.label} (${group.commands.length}): ${group.commands.map((command) => formatCliCommandSummary(command)).join(", ")}`,
+    `${group.label} (${group.commands.length}): ${group.commands.map((command) => withOptionsMarker(command)).join(", ")}`,
   );
+}
+
+function renderCliArgumentInventory(report: ComparisonReport): string[] {
+  if (report.currentCliArguments.length === 0) {
+    return ["- No CLI arguments detected"];
+  }
+
+  return report.currentCliArguments.map((argument) =>
+    `- ${argument.scopePath} ${argument.name} - ${argument.description}`,
+  );
+}
+
+function renderCliOptionInventory(report: ComparisonReport): string[] {
+  if (report.currentCliOptions.length === 0) {
+    return ["- No CLI options detected"];
+  }
+
+  return report.currentCliOptions.map((option) => {
+    const hidden = option.hidden ? " [hidden]" : "";
+    return `- ${option.scopePath} ${option.names.join(", ")}${hidden} - ${option.description}`;
+  });
 }
 
 function renderSourceOnlyHighlights(report: ComparisonReport): string[] {
   const sections: Array<{ label: string; entries: ChangeEntry[] }> = [
     { label: "Package Files", entries: report.sourceOnlyChanges.packageFiles },
+    { label: "CLI Arguments", entries: report.sourceOnlyChanges.cliArguments },
     { label: "CLI Commands", entries: report.sourceOnlyChanges.cliCommands },
+    { label: "CLI Options", entries: report.sourceOnlyChanges.cliOptions },
     { label: "Slash Commands", entries: report.sourceOnlyChanges.slashCommands },
     { label: "Environment Variables", entries: report.sourceOnlyChanges.envVars },
     { label: "Settings", entries: report.sourceOnlyChanges.settings },
@@ -445,6 +573,12 @@ export function renderMarkdown(report: ComparisonReport): string {
   lines.push(...renderChangeList(report.packageFiles, []));
   lines.push("");
   lines.push("## 1. CLI Commands");
+  lines.push("### Arguments");
+  lines.push(...renderCliArgumentInventory(report));
+  lines.push("");
+  lines.push("### Options");
+  lines.push(...renderCliOptionInventory(report));
+  lines.push("");
   lines.push("### Changes");
   lines.push(...renderChangeList(report.cliCommands, []));
   lines.push("");
@@ -458,9 +592,7 @@ export function renderMarkdown(report: ComparisonReport): string {
   lines.push(...renderChangeList(report.slashCommands, report.officialMentionedCommands));
   lines.push("");
   lines.push("### Current Inventory");
-  for (const line of renderSlashCommandInventory(report)) {
-    lines.push(`- ${line}`);
-  }
+  lines.push(...renderSlashCommandInventory(report));
   lines.push("");
   lines.push("## 3. Public Surface");
   lines.push("### Models");

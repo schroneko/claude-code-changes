@@ -3,6 +3,7 @@ export interface SlashCommand {
   sources: string[];
   confidence: "high" | "medium" | "low";
   kind: "builtin" | "plugin" | "inferred";
+  description?: string;
 }
 
 export interface CliCommand {
@@ -15,6 +16,20 @@ export interface CliCommand {
   hidden: boolean;
 }
 
+export interface CliOption {
+  scopePath: string;
+  names: string[];
+  description: string;
+  hidden: boolean;
+}
+
+export interface CliArgument {
+  scopePath: string;
+  name: string;
+  description: string;
+  required: boolean;
+}
+
 export interface ToolDefinition {
   [toolName: string]: string[];
 }
@@ -22,7 +37,9 @@ export interface ToolDefinition {
 export interface ExtractedSignals {
   version: string;
   buildTime: string;
+  cliArguments: CliArgument[];
   cliCommands: CliCommand[];
+  cliOptions: CliOption[];
   slashCommands: SlashCommand[];
   tools: ToolDefinition;
   models: string[];
@@ -64,7 +81,9 @@ export interface CapabilitySignal {
 }
 
 export interface SourceOnlyChanges {
+  cliArguments: ChangeEntry[];
   cliCommands: ChangeEntry[];
+  cliOptions: ChangeEntry[];
   slashCommands: ChangeEntry[];
   envVars: ChangeEntry[];
   settings: ChangeEntry[];
@@ -78,8 +97,12 @@ export interface ComparisonReport {
   buildTime: string;
   officialChangelogBullets: string[];
   officialMentionedCommands: string[];
+  cliArguments: ChangeEntry[];
+  currentCliArguments: CliArgument[];
   cliCommands: ChangeEntry[];
   currentCliCommands: CliCommand[];
+  cliOptions: ChangeEntry[];
+  currentCliOptions: CliOption[];
   slashCommands: ChangeEntry[];
   currentSlashCommands: SlashCommand[];
   models: ChangeEntry[];

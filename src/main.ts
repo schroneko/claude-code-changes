@@ -1,9 +1,10 @@
 import { cwd } from "node:process";
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, writeFileSync } from "node:fs";
 import { basename, join } from "node:path";
 import { extractCommandsFromBullets, getOfficialChangelog, parseChangelogEntry } from "./changelog.js";
 import { formatCliCommandSummary, groupCliCommands } from "./cli-commands.js";
 import { extractSignals } from "./extract.js";
+import { saveCurrentArtifact } from "./inventory.js";
 import {
   compareVersions,
   copyReportArtifacts,
@@ -25,17 +26,15 @@ function usage(): never {
   console.error("  npm run track -- [version]");
   console.error("  npm run compare -- <prevSnapshotOrDir> <currSnapshotOrDir>");
   console.error("  npm run commands -- [versionOrSnapshotDir]");
+  console.error("  npm run current -- [versionOrSnapshotDir]");
   console.error("  npm run list");
   console.error("  npm run backfill -- <fromVersion> <toVersion>");
   console.error("  npm run backfill -- --all");
   process.exit(1);
 }
 
-function reportPaths(version: string): { markdownPath: string; jsonPath: string } {
-  return {
-    markdownPath: join(ROOT_DIR, "reports", `${version}.md`),
-    jsonPath: join(ROOT_DIR, "reports", `${version}.json`),
-  };
+function reportPath(version: string): string {
+  return join(ROOT_DIR, "reports", `${version}.md`);
 }
 
 function writeLatestVersionState(version: string): void {
@@ -119,43 +118,14 @@ function updateReportsIndex(): void {
   }
 
   const reportVersions = readdirSync(reportsDir)
-    .filter((name) => name.endsWith(".json"))
-    .map((name) => basename(name, ".json"))
+    .filter((name) => name.endsWith(".md"))
+    .map((name) => basename(name, ".md"))
+    .filter((name) => name !== "INDEX")
     .sort(compareVersions);
-
-  const summaries = reportVersions.map((version) => {
-    const jsonPath = join(reportsDir, `${version}.json`);
-    const parsed = JSON.parse(readFileSync(jsonPath, "utf-8")) as {
-      version: string;
-      prevVersion: string;
-      sourceOnlyChanges?: {
-        cliCommands?: unknown[];
-        slashCommands?: unknown[];
-        envVars?: unknown[];
-        settings?: unknown[];
-        tools?: unknown[];
-        packageFiles?: unknown[];
-      };
-    };
-    const sourceOnlyCount =
-      (parsed.sourceOnlyChanges?.cliCommands?.length ?? 0) +
-      (parsed.sourceOnlyChanges?.slashCommands?.length ?? 0) +
-      (parsed.sourceOnlyChanges?.envVars?.length ?? 0) +
-      (parsed.sourceOnlyChanges?.settings?.length ?? 0) +
-      (parsed.sourceOnlyChanges?.tools?.length ?? 0) +
-      (parsed.sourceOnlyChanges?.packageFiles?.length ?? 0);
-
-    return {
-      version: parsed.version,
-      prevVersion: parsed.prevVersion,
-      sourceOnlyCount,
-    };
-  });
-
-  const firstReport = summaries[0];
-  const latestReport = summaries[summaries.length - 1];
-  const latestReports = summaries.slice(-10).reverse();
-  const earliestReports = summaries.slice(0, 10);
+  const firstReportVersion = reportVersions[0];
+  const latestReportVersion = reportVersions[reportVersions.length - 1];
+  const latestReports = reportVersions.slice(-10).reverse();
+  const earliestReports = reportVersions.slice(0, 10);
 
   const lines: string[] = [];
   lines.push("# Reports Index");
@@ -165,14 +135,17 @@ function updateReportsIndex(): void {
   lines.push("## Summary");
   lines.push("");
   lines.push(`- Snapshots: ${snapshots.length}`);
-  lines.push(`- Reports: ${summaries.length}`);
+  lines.push(`- Reports: ${reportVersions.length}`);
   lines.push(`- First snapshot: \`${snapshots[0] ?? "none"}\``);
   lines.push(`- Latest snapshot: \`${snapshots[snapshots.length - 1] ?? "none"}\``);
-  if (firstReport) {
-    lines.push(`- First comparable change: [${firstReport.version}](./${firstReport.version}.md) (\`${firstReport.prevVersion} -> ${firstReport.version}\`)`);
+  lines.push(`- Current full reference: [CURRENT.md](../CURRENT.md)`);
+  if (firstReportVersion) {
+    const prevVersion = snapshots[snapshots.indexOf(firstReportVersion) - 1];
+    lines.push(`- First comparable change: [${firstReportVersion}](./${firstReportVersion}.md) (\`${prevVersion} -> ${firstReportVersion}\`)`);
   }
-  if (latestReport) {
-    lines.push(`- Latest comparable change: [${latestReport.version}](./${latestReport.version}.md) (\`${latestReport.prevVersion} -> ${latestReport.version}\`)`);
+  if (latestReportVersion) {
+    const prevVersion = snapshots[snapshots.indexOf(latestReportVersion) - 1];
+    lines.push(`- Latest comparable change: [${latestReportVersion}](./${latestReportVersion}.md) (\`${prevVersion} -> ${latestReportVersion}\`)`);
   }
   lines.push("");
   lines.push("## Where To Look");
@@ -189,8 +162,9 @@ function updateReportsIndex(): void {
   if (earliestReports.length === 0) {
     lines.push("- none");
   } else {
-    for (const report of earliestReports) {
-      lines.push(`- [${report.version}](./${report.version}.md) (\`${report.prevVersion} -> ${report.version}\`, source-only: ${report.sourceOnlyCount})`);
+    for (const version of earliestReports) {
+      const prevVersion = snapshots[snapshots.indexOf(version) - 1];
+      lines.push(`- [${version}](./${version}.md) (\`${prevVersion} -> ${version}\`)`);
     }
   }
   lines.push("");
@@ -199,8 +173,9 @@ function updateReportsIndex(): void {
   if (latestReports.length === 0) {
     lines.push("- none");
   } else {
-    for (const report of latestReports) {
-      lines.push(`- [${report.version}](./${report.version}.md) (\`${report.prevVersion} -> ${report.version}\`, source-only: ${report.sourceOnlyCount})`);
+    for (const version of latestReports) {
+      const prevVersion = snapshots[snapshots.indexOf(version) - 1];
+      lines.push(`- [${version}](./${version}.md) (\`${prevVersion} -> ${version}\`)`);
     }
   }
   lines.push("");
@@ -212,7 +187,7 @@ function buildReport(
   prevSource: ReturnType<typeof loadSnapshotSource>,
   currSource: ReturnType<typeof loadSnapshotSource>,
   officialChangelog: string,
-): { markdown: string; json: string; version: string } {
+): { markdown: string; version: string } {
   const prevSignals = extractSignals(prevSource);
   const currSignals = extractSignals(currSource);
   const officialChangelogBullets = parseChangelogEntry(officialChangelog, currSignals.version);
@@ -234,7 +209,6 @@ function buildReport(
   return {
     version: report.version,
     markdown: renderMarkdown(report),
-    json: JSON.stringify(report, null, 2),
   };
 }
 
@@ -300,13 +274,28 @@ function printCliCommands(versionOrDir?: string): void {
   }
 }
 
-function saveAndPrintReport(result: { markdown: string; json: string; version: string }): void {
-  copyReportArtifacts(join(ROOT_DIR, "reports"), result.version, result.markdown, result.json);
+function saveCurrent(versionOrDir?: string): void {
+  const loaded = loadSourceForInventory(versionOrDir);
+
+  try {
+    const signals = extractSignals(loaded.source);
+    const path = saveCurrentArtifact(ROOT_DIR, signals);
+    console.log(`Saved current reference: ${path}`);
+    console.log(`CLI commands: ${signals.cliCommands.length}`);
+    console.log(`Slash commands: ${signals.slashCommands.length}`);
+    console.log(`Environment variables: ${signals.envVars.length}`);
+    console.log(`Models: ${signals.models.length}`);
+    console.log(`SDK tools: ${Object.keys(signals.tools).length}`);
+  } finally {
+    loaded.cleanup();
+  }
+}
+
+function saveAndPrintReport(result: { markdown: string; version: string }): void {
+  copyReportArtifacts(join(ROOT_DIR, "reports"), result.version, result.markdown);
   updateReportsIndex();
   console.log(result.markdown);
-  const paths = reportPaths(result.version);
-  console.log(`Saved report: ${paths.markdownPath}`);
-  console.log(`Saved JSON: ${paths.jsonPath}`);
+  console.log(`Saved report: ${reportPath(result.version)}`);
 }
 
 async function compareDirs(prevDir: string, currDir: string): Promise<void> {
@@ -325,6 +314,7 @@ async function track(version?: string): Promise<void> {
     const signals = extractSignals(source);
     saveSnapshot(ROOT_DIR, source, signals);
     writeLatestVersionState(signals.version);
+    saveCurrentArtifact(ROOT_DIR, signals);
 
     const savedSnapshotDirs = getSavedSnapshotDirs(ROOT_DIR)
       .filter((dir) => !dir.endsWith(`/${signals.version}`))
@@ -376,6 +366,7 @@ async function backfill(fromVersion: string, toVersion: string): Promise<void> {
         const signals = extractSignals(source);
         saveSnapshot(ROOT_DIR, source, signals);
         writeLatestVersionState(version);
+        saveCurrentArtifact(ROOT_DIR, signals);
         currentSource = loadSnapshotSource(join(ROOT_DIR, "snapshots", version), version);
         console.log(`Saved snapshot: ${version}`);
       } finally {
@@ -385,7 +376,7 @@ async function backfill(fromVersion: string, toVersion: string): Promise<void> {
 
     if (previousSource) {
       const result = buildReport(previousSource, currentSource, officialChangelog);
-      copyReportArtifacts(join(ROOT_DIR, "reports"), result.version, result.markdown, result.json);
+      copyReportArtifacts(join(ROOT_DIR, "reports"), result.version, result.markdown);
       console.log(`Built report: ${previousSource.version} -> ${currentSource.version}`);
     }
 
@@ -394,6 +385,9 @@ async function backfill(fromVersion: string, toVersion: string): Promise<void> {
 
   console.log("Backfill complete.");
   writeLatestVersionState(targetVersions[targetVersions.length - 1]!);
+  if (previousSource) {
+    saveCurrentArtifact(ROOT_DIR, extractSignals(previousSource));
+  }
   updateReportsIndex();
 }
 
@@ -421,6 +415,11 @@ async function main(): Promise<void> {
 
   if (command === "commands") {
     printCliCommands(args[0]);
+    return;
+  }
+
+  if (command === "current") {
+    saveCurrent(args[0]);
     return;
   }
 

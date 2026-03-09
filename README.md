@@ -21,9 +21,9 @@ npm run track
 ```
 
 - まだ snapshot が 1 つもない場合:
-  現在バージョンの snapshot を `snapshots/<version>/` に保存します
+  現在バージョンの snapshot を `snapshots/<version>/` に保存し、`CURRENT.md` を更新します
 - すでに古い snapshot がある場合:
-  最新 snapshot と比較して `reports/<version>.md` と `reports/<version>.json` を生成します
+  最新 snapshot と比較して `reports/<version>.md` を生成し、`CURRENT.md` を更新します
 
 初回実行だけでは比較相手がないので、通常は「次のリリースが出たあとにもう一度 `npm run track`」でレポートができます。
 
@@ -34,8 +34,8 @@ npm run track
 普段見るのは基本的に `reports/` です。
 
 - 人間向け: `reports/<version>.md`
-- 機械処理向け: `reports/<version>.json`
 - 全体の見出し: `reports/INDEX.md`
+- 現在の全量一覧: `CURRENT.md`
 
 最初の差分と最新の差分をすぐ見たい場合は、まず `reports/INDEX.md` を見てください。
 
@@ -98,6 +98,12 @@ npm run compare:fixture
 npm run commands -- 2.1.71
 ```
 
+現在版または指定版の現在全量一覧を `CURRENT.md` に保存:
+
+```bash
+npm run current -- 2.1.71
+```
+
 保存済み snapshot と report の一覧を表示:
 
 ```bash
@@ -136,7 +142,10 @@ npm run typecheck
 `reports/`:
 
 - `reports/<version>.md`
-- `reports/<version>.json`
+
+ルート:
+
+- `CURRENT.md`
 
 `npm run list` の見方:
 
@@ -151,8 +160,6 @@ npm run typecheck
 - npm 配布パッケージ内の全ファイルを manifest 化
 - 追加・削除・変更を比較
 - テキストは内容を保存、バイナリは hash / size で比較
-
-### 1. Slash Commands
 
 ### 1. CLI Commands
 
