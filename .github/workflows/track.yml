@@ -116,7 +116,7 @@ jobs:
           req = urllib.request.Request(
             os.environ["DISCORD_WEBHOOK_URL"],
             data=payload,
-            headers={"Content-Type": "application/json"},
+            headers={"Content-Type": "application/json", "User-Agent": "claude-code-changes"},
             method="POST",
           )
           with urllib.request.urlopen(req) as resp:
