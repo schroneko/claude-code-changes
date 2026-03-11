@@ -93,7 +93,10 @@ function diffTools(prev: ToolDefinition, curr: ToolDefinition): ChangeEntry[] {
   return entries;
 }
 
-function diffSlashCommands(prev: ExtractedSignals["slashCommands"], curr: ExtractedSignals["slashCommands"]): ChangeEntry[] {
+function diffSlashCommands(
+  prev: ExtractedSignals["slashCommands"],
+  curr: ExtractedSignals["slashCommands"],
+): ChangeEntry[] {
   const prevNames = prev.map((command) => command.name);
   const currNames = curr.map((command) => command.name);
   return diffArrays(prevNames, currNames);
@@ -147,8 +150,12 @@ function diffCliCommands(prev: CliCommand[], curr: CliCommand[]): ChangeEntry[] 
 
     const prevAliases = new Set(prevCommand.invocations.slice(1));
     const currAliases = new Set(currCommand.invocations.slice(1));
-    const addedAliases = currCommand.invocations.slice(1).filter((alias) => !prevAliases.has(alias));
-    const removedAliases = prevCommand.invocations.slice(1).filter((alias) => !currAliases.has(alias));
+    const addedAliases = currCommand.invocations
+      .slice(1)
+      .filter((alias) => !prevAliases.has(alias));
+    const removedAliases = prevCommand.invocations
+      .slice(1)
+      .filter((alias) => !currAliases.has(alias));
     if (addedAliases.length > 0) {
       details.push(`+aliases: ${addedAliases.join(", ")}`);
     }
@@ -334,10 +341,16 @@ export function buildComparisonReport(input: {
   officialChangelogBullets: string[];
   officialMentionedCommands: string[];
 }): ComparisonReport {
-  const cliArguments = diffCliArguments(input.prevSignals.cliArguments, input.currSignals.cliArguments);
+  const cliArguments = diffCliArguments(
+    input.prevSignals.cliArguments,
+    input.currSignals.cliArguments,
+  );
   const cliCommands = diffCliCommands(input.prevSignals.cliCommands, input.currSignals.cliCommands);
   const cliOptions = diffCliOptions(input.prevSignals.cliOptions, input.currSignals.cliOptions);
-  const slashCommands = diffSlashCommands(input.prevSignals.slashCommands, input.currSignals.slashCommands);
+  const slashCommands = diffSlashCommands(
+    input.prevSignals.slashCommands,
+    input.currSignals.slashCommands,
+  );
   const models = diffArrays(input.prevSignals.models, input.currSignals.models);
   const envVars = diffArrays(input.prevSignals.envVars, input.currSignals.envVars);
   const settings = diffSettings(input.prevSignals.settings, input.currSignals.settings);
@@ -431,7 +444,9 @@ function renderCapabilitySignals(report: ComparisonReport): string[] {
 
   const lines: string[] = [];
   for (const signal of report.capabilitySignals) {
-    lines.push(`- ${signal.label} (${signal.changeType})${signal.sourceOnly ? " [source-only]" : ""}`);
+    lines.push(
+      `- ${signal.label} (${signal.changeType})${signal.sourceOnly ? " [source-only]" : ""}`,
+    );
     for (const highlight of signal.officialHighlights.slice(0, 2)) {
       lines.push(`  - Official: ${highlight}`);
     }
@@ -449,11 +464,15 @@ function renderSlashCommandInventory(report: ComparisonReport): string[] {
   const sections: Array<{ label: string; commands: typeof report.currentSlashCommands }> = [
     {
       label: `Built-in (${report.currentSlashCommands.filter((command) => command.confidence === "high" && command.kind === "builtin").length})`,
-      commands: report.currentSlashCommands.filter((command) => command.confidence === "high" && command.kind === "builtin"),
+      commands: report.currentSlashCommands.filter(
+        (command) => command.confidence === "high" && command.kind === "builtin",
+      ),
     },
     {
       label: `Plugin-backed (${report.currentSlashCommands.filter((command) => command.confidence === "high" && command.kind === "plugin").length})`,
-      commands: report.currentSlashCommands.filter((command) => command.confidence === "high" && command.kind === "plugin"),
+      commands: report.currentSlashCommands.filter(
+        (command) => command.confidence === "high" && command.kind === "plugin",
+      ),
     },
     {
       label: `Inferred (${report.currentSlashCommands.filter((command) => command.confidence !== "high").length})`,
@@ -487,8 +506,8 @@ function renderCliCommandInventory(report: ComparisonReport): string[] {
   }
 
   const hasNonHelpOptions = (path: string): boolean =>
-    report.currentCliOptions.some((option) =>
-      option.scopePath === path && option.names.join(", ") !== "-h, --help",
+    report.currentCliOptions.some(
+      (option) => option.scopePath === path && option.names.join(", ") !== "-h, --help",
     );
   const withOptionsMarker = (command: CliCommand): string => {
     if (!hasNonHelpOptions(command.path) || command.command.includes("[options]")) {
@@ -505,8 +524,9 @@ function renderCliCommandInventory(report: ComparisonReport): string[] {
     return formatCliCommandSummary(displayCommand);
   };
 
-  return groups.map((group) =>
-    `${group.label} (${group.commands.length}): ${group.commands.map((command) => withOptionsMarker(command)).join(", ")}`,
+  return groups.map(
+    (group) =>
+      `${group.label} (${group.commands.length}): ${group.commands.map((command) => withOptionsMarker(command)).join(", ")}`,
   );
 }
 
@@ -515,8 +535,8 @@ function renderCliArgumentInventory(report: ComparisonReport): string[] {
     return ["- No CLI arguments detected"];
   }
 
-  return report.currentCliArguments.map((argument) =>
-    `- ${argument.scopePath} ${argument.name} - ${argument.description}`,
+  return report.currentCliArguments.map(
+    (argument) => `- ${argument.scopePath} ${argument.name} - ${argument.description}`,
   );
 }
 
@@ -573,26 +593,16 @@ export function renderMarkdown(report: ComparisonReport): string {
   lines.push(...renderChangeList(report.packageFiles, []));
   lines.push("");
   lines.push("## 1. CLI Commands");
-  lines.push("### Arguments");
-  lines.push(...renderCliArgumentInventory(report));
-  lines.push("");
-  lines.push("### Options");
-  lines.push(...renderCliOptionInventory(report));
-  lines.push("");
-  lines.push("### Changes");
   lines.push(...renderChangeList(report.cliCommands, []));
   lines.push("");
-  lines.push("### Current Inventory");
-  for (const line of renderCliCommandInventory(report)) {
-    lines.push(`- ${line}`);
-  }
+  lines.push("### CLI Arguments");
+  lines.push(...renderChangeList(report.cliArguments, []));
+  lines.push("");
+  lines.push("### CLI Options");
+  lines.push(...renderChangeList(report.cliOptions, report.officialMentionedCommands));
   lines.push("");
   lines.push("## 2. Slash Commands");
-  lines.push("### Changes");
   lines.push(...renderChangeList(report.slashCommands, report.officialMentionedCommands));
-  lines.push("");
-  lines.push("### Current Inventory");
-  lines.push(...renderSlashCommandInventory(report));
   lines.push("");
   lines.push("## 3. Public Surface");
   lines.push("### Models");
