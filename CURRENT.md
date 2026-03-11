@@ -1,8 +1,15 @@
-# Claude Code Current
+# Claude Code Inventory 2.1.73
 
-Latest version: `2.1.71`
+## Summary
+- CLI commands: 35
+- Hidden CLI commands: 1
+- Slash commands: 75
+- Environment variables: 184
+- Models: 106
+- SDK tools: 24
+- Settings: 0
 
-## 1. CLI Commands
+## CLI Commands
 ### Arguments
 - claude [prompt] - Your prompt
 
@@ -20,6 +27,7 @@ Latest version: `2.1.71`
 - claude --append-system-prompt-file <file> [hidden] - Read system prompt from a file and append to the default system prompt
 - claude --available - Include available plugins from marketplaces (requires --json)
 - claude --betas <betas...> - Beta headers to include in API requests (API key users only)
+- claude --brief - Enable SendUserMessage tool for agent-to-user communication
 - claude --chrome - Enable Claude in Chrome integration
 - claude --client-secret - Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)
 - claude --cowork [hidden] - Use cowork_plugins directory
@@ -27,12 +35,13 @@ Latest version: `2.1.71`
 - claude --debug-file <path> - Write debug logs to a specific file path (implicitly enables debug mode)
 - claude --disable-slash-commands - Disable all skills
 - claude --disallowedTools, --disallowed-tools <tools...> - Comma or space-separated list of tool names to deny (e.g. "Bash(git:*) Edit")
-- claude --effort <level> - Effort level for the current session (low, medium, high)
+- claude --effort <level> - Effort level for the current session (low, medium, high, max)
 - claude --email <email> - Pre-populate email address on the login page
 - claude --enable-auth-status [hidden] - Enable auth status messages in SDK mode
 - claude --enable-auto-mode [hidden] - Opt in to auto mode
 - claude --fallback-model <model> - Enable automatic fallback to specified model when default model is overloaded (only works with --print)
 - claude --file <specs...> - File resources to download at startup. Format: file_id:relative_path (e.g., --file file_abc:doc.txt file_def:img.png)
+- claude --force - Force installation even if already installed
 - claude --fork-session - When resuming, create a new session ID instead of reusing the original (use with --resume or --continue)
 - claude --from-pr [value] - Resume a session linked to a PR by PR number/URL, or open interactive picker with optional search term
 - claude --ide - Automatically connect to IDE on startup if exactly one valid IDE is available
@@ -58,7 +67,9 @@ Latest version: `2.1.71`
 - claude --plan-mode-required [hidden] - Require plan mode before implementation
 - claude --plugin-dir <paths...> - Load plugins from directories for this session only (repeatable)
 - claude --prefill <text> [hidden] - Pre-fill the prompt input with text without submitting it
+- claude --rc [name] [hidden] - Alias for --remote-control
 - claude --remote [description] [hidden] - Create a remote session with the given description
+- claude --remote-control [name] [hidden] - Start an interactive session with Remote Control enabled (optionally named)
 - claude --replay-user-messages - Re-emit user messages from stdin back on stdout for acknowledgment (only works with --input-format=stream-json and --output-format=stream-json)
 - claude --resume-session-at <message id> [hidden] - When resuming, only messages up to and including the assistant message with <message.id> (use with --resume in print mode)
 - claude --rewind-files <user-message-id> [hidden] - Restore files to state at the specified user message and exit (requires --resume)
@@ -102,6 +113,9 @@ Latest version: `2.1.71`
 - claude auth status --json - Output as JSON (default)
 - claude auth status --text - Output as human-readable text
 - claude auth status -h, --help - Display help for command
+- claude auto-mode -h, --help - Display help for command
+- claude auto-mode config -h, --help - Display help for command
+- claude auto-mode defaults -h, --help - Display help for command
 - claude doctor -h, --help - Display help for command
 - claude install [target] --force - Force installation even if already installed
 - claude install [target] -h, --help - Display help for command
@@ -131,10 +145,10 @@ Latest version: `2.1.71`
 - claude plugin disable [plugin] --cowork [hidden] - Use cowork_plugins directory
 - claude plugin disable [plugin] -a, --all - Disable all enabled plugins
 - claude plugin disable [plugin] -h, --help - Display help for command
-- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${eW.join(", ")} (default: auto-detect)
+- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${Q0.join(", ")} (default: auto-detect)
 - claude plugin enable <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin enable <plugin> -h, --help - Display help for command
-- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${eW.join(", ")} (default: auto-detect)
+- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${Q0.join(", ")} (default: auto-detect)
 - claude plugin install <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin install <plugin> -h, --help - Display help for command
 - claude plugin install <plugin> -s, --scope <scope> - Installation scope: user, project, or local
@@ -159,107 +173,143 @@ Latest version: `2.1.71`
 - claude plugin uninstall <plugin> -s, --scope <scope> - Uninstall from scope: user, project, or local
 - claude plugin update <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin update <plugin> -h, --help - Display help for command
-- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${u_6.join(", ")} (default: user)
+- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${fz6.join(", ")} (default: user)
 - claude plugin validate <path> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin validate <path> -h, --help - Display help for command
 - claude remote-control -h, --help - Display help for command
 - claude setup-token -h, --help - Display help for command
 - claude update -h, --help - Display help for command
 
-### Changes
-- No changes detected
+### Top-level (10)
+- claude agents (List configured agents)
+- claude auth (Manage authentication)
+- claude auto-mode (Inspect auto mode classifier configuration)
+- claude doctor (Check the health of your Claude Code auto-updater)
+- claude install [target] (Install Claude Code native build. Use [target] to specify version (stable, latest, or specific version))
+- claude mcp (Configure and manage MCP servers)
+- claude plugin (aliases: claude plugins; Manage Claude Code plugins)
+- claude remote-control (hidden; aliases: claude rc; Connect your local environment for remote-control sessions via claude.ai/code)
+- claude setup-token (Set up a long-lived authentication token (requires Claude subscription))
+- claude update (aliases: claude upgrade; Check for updates and install if available)
 
-### Current Inventory
-- Top-level (9): claude agents [options], claude auth, claude doctor, claude install [options] [target], claude mcp, claude plugin, claude remote-control (hidden; aliases: claude rc), claude setup-token, claude update (aliases: claude upgrade)
-- auth (3): claude auth login [options], claude auth logout, claude auth status [options]
-- mcp (8): claude mcp add [options] <name> <commandOrUrl> [args...], claude mcp add-from-claude-desktop [options], claude mcp add-json [options] <name> <json>, claude mcp get <name>, claude mcp list, claude mcp remove [options] <name>, claude mcp reset-project-choices, claude mcp serve [options]
-- plugin (8): claude plugin disable [options] [plugin], claude plugin enable [options] <plugin>, claude plugin install [options] <plugin> (aliases: claude plugin i <plugin>), claude plugin list [options], claude plugin marketplace, claude plugin uninstall [options] <plugin> (aliases: claude plugin remove <plugin>, claude plugin rm <plugin>), claude plugin update [options] <plugin>, claude plugin validate [options] <path>
-- plugin marketplace (4): claude plugin marketplace add [options] <source>, claude plugin marketplace list [options], claude plugin marketplace remove [options] <name> (aliases: claude plugin marketplace rm <name>), claude plugin marketplace update [options] [name]
+### auth (3)
+- claude auth login (Sign in to your Anthropic account)
+- claude auth logout (Log out from your Anthropic account)
+- claude auth status (Show authentication status)
 
-## 2. Slash Commands
-### Changes
-- ADDED: `/heapdump` [source-only]
-- ADDED: `/loop` [official]
+### auto-mode (2)
+- claude auto-mode config (Print the effective auto mode config as JSON: your settings where set, defaults otherwise)
+- claude auto-mode defaults (Print the default auto mode environment, allow, and deny rules as JSON)
 
-### Current Inventory
-Built-in (68)
-  - /add-dir - Add a new working directory
-  - /agents - Manage agent configurations
-  - /btw - Ask a quick side question without interrupting the main conversation
-  - /chrome - Claude in Chrome (Beta) settings
-  - /clear - Clear conversation history and free up context
-  - /color - Set the prompt bar color for this session
-  - /commit - Create a git commit
-  - /commit-push-pr - Commit, push, and open a PR
-  - /compact - Clear conversation history but keep a summary in context. Optional: /compact [instructions for summarization]
-  - /config - Open config panel
-  - /context - Show current context usage
-  - /copy - Copy Claude's last response or a code block to clipboard
-  - /cost - Show the total cost and duration of the current session
-  - /desktop - Continue the current session in Claude Desktop
-  - /doctor - Diagnose and verify your Claude Code installation and settings
-  - /exit - Exit the REPL
-  - /export - Export the current conversation to a file or clipboard
-  - /extra-usage - Configure extra usage to keep working when limits are hit
-  - /fast
-  - /feedback - Submit feedback about Claude Code
-  - /files - List all files currently in context
-  - /fork - Create a fork of the current conversation at this point
-  - /heapdump - Dump the JS heap to ~/Desktop
-  - /help - Show help and available commands
-  - /hooks - Manage hook configurations for tool events
-  - /ide - Manage IDE integrations and show status
-  - /init - Initialize a new CLAUDE.md file with codebase documentation
-  - /init-verifiers - Create verifier skill(s) for automated verification of code changes
-  - /insights
-  - /install-github-app - Set up Claude GitHub Actions for a repository
-  - /install-slack-app - Install the Claude Slack app
-  - /keybindings - Open or create your keybindings configuration file
-  - /login - Open or create your keybindings configuration file
-  - /logout - Sign out from your Anthropic account
-  - /mcp - Manage MCP servers
-  - /mobile - Show QR code to download the Claude mobile app
-  - /model
-  - /output-style
-  - /passes
-  - /permissions - Manage allow & deny tool permission rules
-  - /plan - Enable plan mode or view the current session plan
-  - /plugin - Manage Claude Code plugins
-  - /privacy-settings - View and update your privacy settings
-  - /rate-limit-options
-  - /release-notes - View release notes
-  - /reload-plugins - Activate pending plugin changes in the current session
-  - /remote-control - Connect this terminal for remote-control sessions
-  - /remote-env
-  - /rename - Rename the current conversation
-  - /resume - Resume a previous conversation
-  - /rewind - Restore the code and/or conversation to a previous point
-  - /sandbox
-  - /session - Show remote session URL and QR code
-  - /skills - List available skills
-  - /stats - Show your Claude Code usage statistics and activity
-  - /status - Show Claude Code status including version, model, account, API connectivity, and tool statuses
-  - /statusline - Set up Claude Code's status line UI
-  - /stickers - Order Claude Code stickers
-  - /tag
-  - /tasks - List and manage background tasks
-  - /terminal-setup - Edit Claude memory files
-  - /theme - Change the theme
-  - /think-back - Your 2025 Claude Code Year in Review
-  - /thinkback-play - Play the thinkback animation
-  - /upgrade - Upgrade to Max for higher rate limits and more Opus
-  - /usage - Show plan usage limits
-  - /vim - Toggle between Vim and Normal editing modes
-  - /voice - Toggle voice mode
-Plugin-backed (3)
-  - /code-review - Review a pull request
-  - /pr-comments - Get comments from a GitHub pull request
-  - /security-review - Complete a security review of the pending changes on the current branch
-Inferred (2)
-  - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
-  - /memory [inferred/medium]
+### mcp (8)
+- claude mcp add <name> <commandOrUrl> [args...] (Add an MCP server to Claude Code. Examples: # Add HTTP server: claude mcp add --transport http sentry https://mcp.sentry.dev/mcp # Add HTTP server with headers: claude mcp add --transport http corridor https://app.corridor.dev/api/mcp --header "Authorization: Bearer ..." # Add stdio server with environment variables: claude mcp add -e API_KEY=xxx my-server -- npx my-mcp-server # Add stdio server with subprocess flags: claude mcp add my-server -- my-command --some-flag arg1)
+- claude mcp add-from-claude-desktop (Import MCP servers from Claude Desktop (Mac and WSL only))
+- claude mcp add-json <name> <json> (Add an MCP server (stdio or SSE) with a JSON string)
+- claude mcp get <name> (Get details about an MCP server)
+- claude mcp list (List configured MCP servers)
+- claude mcp remove <name> (Remove an MCP server)
+- claude mcp reset-project-choices (Reset all approved and rejected project-scoped (.mcp.json) servers within this project)
+- claude mcp serve (Start the Claude Code MCP server)
 
-## 3. Environment Variables (179)
+### plugin (8)
+- claude plugin disable [plugin] (aliases: claude plugins disable [plugin]; Disable an enabled plugin)
+- claude plugin enable <plugin> (aliases: claude plugins enable <plugin>; Enable a disabled plugin)
+- claude plugin install <plugin> (aliases: claude plugin i <plugin>, claude plugins install <plugin>, claude plugins i <plugin>; Install a plugin from available marketplaces (use plugin@marketplace for specific marketplace))
+- claude plugin list (aliases: claude plugins list; List installed plugins)
+- claude plugin marketplace (aliases: claude plugins marketplace; Manage Claude Code marketplaces)
+- claude plugin uninstall <plugin> (aliases: claude plugin remove <plugin>, claude plugin rm <plugin>, claude plugins uninstall <plugin>, claude plugins remove <plugin>, claude plugins rm <plugin>; Uninstall an installed plugin)
+- claude plugin update <plugin> (aliases: claude plugins update <plugin>; Update a plugin to the latest version (restart required to apply))
+- claude plugin validate <path> (aliases: claude plugins validate <path>; Validate a plugin or marketplace manifest)
+
+### plugin marketplace (4)
+- claude plugin marketplace add <source> (aliases: claude plugins marketplace add <source>; Add a marketplace from a URL, path, or GitHub repo)
+- claude plugin marketplace list (aliases: claude plugins marketplace list; List all configured marketplaces)
+- claude plugin marketplace remove <name> (aliases: claude plugin marketplace rm <name>, claude plugins marketplace remove <name>, claude plugins marketplace rm <name>; Remove a configured marketplace)
+- claude plugin marketplace update [name] (aliases: claude plugins marketplace update [name]; Update marketplace(s) from their source - updates all if no name specified)
+
+## Slash Commands
+### Built-in (69)
+- /add-dir - Add a new working directory
+- /agents - Manage agent configurations
+- /brief - Toggle brief-only mode
+- /btw - Ask a quick side question without interrupting the main conversation
+- /chrome - Claude in Chrome (Beta) settings
+- /clear - Clear conversation history and free up context
+- /color - Set the prompt bar color for this session
+- /commit - Create a git commit
+- /commit-push-pr - Commit, push, and open a PR
+- /compact - Clear conversation history but keep a summary in context. Optional: /compact [instructions for summarization]
+- /config - Open config panel
+- /context - Show current context usage
+- /copy - Copy Claude's last response or a code block to clipboard
+- /cost - Show the total cost and duration of the current session
+- /desktop - Continue the current session in Claude Desktop
+- /doctor - Diagnose and verify your Claude Code installation and settings
+- /exit - Exit the REPL
+- /export - Export the current conversation to a file or clipboard
+- /extra-usage - Configure extra usage to keep working when limits are hit
+- /fast
+- /feedback - Submit feedback about Claude Code
+- /files - List all files currently in context
+- /fork - Create a fork of the current conversation at this point
+- /heapdump - Dump the JS heap to ~/Desktop
+- /help - Show help and available commands
+- /hooks - Manage hook configurations for tool events
+- /ide - Manage IDE integrations and show status
+- /init - Initialize a new CLAUDE.md file with codebase documentation
+- /init-verifiers - Create verifier skill(s) for automated verification of code changes
+- /insights
+- /install-github-app - Set up Claude GitHub Actions for a repository
+- /install-slack-app - Install the Claude Slack app
+- /keybindings - Open or create your keybindings configuration file
+- /login - Open or create your keybindings configuration file
+- /logout - Sign out from your Anthropic account
+- /mcp - Manage MCP servers
+- /mobile - Show QR code to download the Claude mobile app
+- /model
+- /output-style - Toggle a searchable tag on the current session
+- /passes
+- /permissions - Manage allow & deny tool permission rules
+- /plan - Enable plan mode or view the current session plan
+- /plugin - Manage Claude Code plugins
+- /privacy-settings - View and update your privacy settings
+- /rate-limit-options
+- /release-notes - View release notes
+- /reload-plugins - Activate pending plugin changes in the current session
+- /remote-control - Connect this terminal for remote-control sessions
+- /remote-env
+- /rename - Rename the current conversation
+- /resume - Resume a previous conversation
+- /rewind - Restore the code and/or conversation to a previous point
+- /sandbox
+- /session - Show remote session URL and QR code
+- /skills - List available skills
+- /stats - Show your Claude Code usage statistics and activity
+- /status - Show Claude Code status including version, model, account, API connectivity, and tool statuses
+- /statusline - Set up Claude Code's status line UI
+- /stickers - Order Claude Code stickers
+- /tag
+- /tasks - List and manage background tasks
+- /terminal-setup - Edit Claude memory files
+- /theme - Change the theme
+- /think-back - Your 2025 Claude Code Year in Review
+- /thinkback-play - Play the thinkback animation
+- /upgrade - Upgrade to Max for higher rate limits and more Opus
+- /usage - Show plan usage limits
+- /vim - Toggle between Vim and Normal editing modes
+- /voice - Toggle voice mode
+
+### Plugin-backed (3)
+- /code-review - Review a pull request
+- /pr-comments - Get comments from a GitHub pull request
+- /security-review - Complete a security review of the pending changes on the current branch
+
+### Inferred (3)
+- /effort [inferred/low]
+- /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
+- /memory [inferred/medium]
+
+## Environment Variables (184)
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -290,6 +340,8 @@ Inferred (2)
 - CLAUDE_CODE_BASE_REF
 - CLAUDE_CODE_BASH_SANDBOX_SHOW_INDICATOR
 - CLAUDE_CODE_BLOCKING_LIMIT_OVERRIDE
+- CLAUDE_CODE_BRIEF
+- CLAUDE_CODE_BRIEF_UPLOAD
 - CLAUDE_CODE_BUBBLEWRAP
 - CLAUDE_CODE_CLIENT_CERT
 - CLAUDE_CODE_CLIENT_KEY
@@ -307,6 +359,7 @@ Inferred (2)
 - CLAUDE_CODE_DISABLE_BACKGROUND_TASKS
 - CLAUDE_CODE_DISABLE_CLAUDE_MDS
 - CLAUDE_CODE_DISABLE_COMMAND_INJECTION_CHECK
+- CLAUDE_CODE_DISABLE_CRON
 - CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS
 - CLAUDE_CODE_DISABLE_FAST_MODE
 - CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY
@@ -318,6 +371,7 @@ Inferred (2)
 - CLAUDE_CODE_DISABLE_PRECOMPACT_SKIP
 - CLAUDE_CODE_DISABLE_TERMINAL_TITLE
 - CLAUDE_CODE_DISABLE_THINKING
+- CLAUDE_CODE_DISABLE_VIRTUAL_SCROLL
 - CLAUDE_CODE_DONT_INHERIT_ENV
 - CLAUDE_CODE_EAGER_FLUSH
 - CLAUDE_CODE_EFFORT_LEVEL
@@ -438,9 +492,10 @@ Inferred (2)
 - CLAUDE_REPL_MODE
 - CLAUDE_SESSION_ID
 - CLAUDE_SKILL_DIR
+- CLAUDE_SONNET_4_6
 - CLAUDE_TMPDIR
 
-## 4. Models (105)
+## Models (106)
 - claude-1.3
 - claude-1.3-100k
 - claude-2.0
@@ -495,6 +550,7 @@ Inferred (2)
 - claude-desktop
 - claude-dev
 - claude-folder
+- claude-for-hiring
 - claude-haiku
 - claude-haiku-3-5
 - claude-haiku-4
@@ -547,13 +603,14 @@ Inferred (2)
 - claude-swarm
 - claude-vscode
 
-## 5. SDK Tools (23)
-- AgentInput: description, prompt, subagent_type?, resume?, run_in_background?, name?, team_name?, mode?, isolation?
+## SDK Tools (24)
+- AgentInput: description, prompt, subagent_type?, model?, resume?, run_in_background?, name?, team_name?, mode?, isolation?
 - AskUserQuestionInput: questions, question, header, options, label, description, preview?
 - BashInput: command, timeout?
 - ConfigInput: setting, value?
 - EnterWorktreeInput: name?
 - ExitPlanModeInput: allowedPrompts?, tool, prompt
+- ExitWorktreeInput: action, discard_changes?
 - FileEditInput: file_path, old_string, new_string, replace_all?
 - FileReadInput: file_path, offset?, limit?, pages?
 - FileWriteInput: file_path, content
@@ -572,5 +629,5 @@ Inferred (2)
 - WebFetchInput: url, prompt
 - WebSearchInput: query, allowed_domains?, blocked_domains?
 
-## 6. Settings (0)
+## Settings (0)
 - none
