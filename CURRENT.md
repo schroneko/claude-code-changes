@@ -1,10 +1,10 @@
-# Claude Code Inventory 2.1.74
+# Claude Code Inventory 2.1.75
 
 ## Summary
 - CLI commands: 35
 - Hidden CLI commands: 1
 - Slash commands: 75
-- Environment variables: 185
+- Environment variables: 187
 - Models: 107
 - SDK tools: 24
 - Settings: 0
@@ -145,10 +145,10 @@
 - claude plugin disable [plugin] --cowork [hidden] - Use cowork_plugins directory
 - claude plugin disable [plugin] -a, --all - Disable all enabled plugins
 - claude plugin disable [plugin] -h, --help - Display help for command
-- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${r0.join(", ")} (default: auto-detect)
+- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${a0.join(", ")} (default: auto-detect)
 - claude plugin enable <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin enable <plugin> -h, --help - Display help for command
-- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${r0.join(", ")} (default: auto-detect)
+- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${a0.join(", ")} (default: auto-detect)
 - claude plugin install <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin install <plugin> -h, --help - Display help for command
 - claude plugin install <plugin> -s, --scope <scope> - Installation scope: user, project, or local
@@ -173,7 +173,7 @@
 - claude plugin uninstall <plugin> -s, --scope <scope> - Uninstall from scope: user, project, or local
 - claude plugin update <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin update <plugin> -h, --help - Display help for command
-- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${bz6.join(", ")} (default: user)
+- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${nz6.join(", ")} (default: user)
 - claude plugin validate <path> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin validate <path> -h, --help - Display help for command
 - claude remote-control -h, --help - Display help for command
@@ -309,7 +309,7 @@
 - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
 - /memory [inferred/medium]
 
-## Environment Variables (185)
+## Environment Variables (187)
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -336,6 +336,7 @@
 - CLAUDE_CODE_API_KEY_FILE_DESCRIPTOR
 - CLAUDE_CODE_API_KEY_HELPER_TTL_MS
 - CLAUDE_CODE_ATTRIBUTION_HEADER
+- CLAUDE_CODE_AUTO_COMPACT_WINDOW
 - CLAUDE_CODE_AUTO_CONNECT_IDE
 - CLAUDE_CODE_BASE_REF
 - CLAUDE_CODE_BASH_SANDBOX_SHOW_INDICATOR
@@ -488,6 +489,7 @@
 - CLAUDE_FORCE_DISPLAY_SURVEY
 - CLAUDE_HAIKU_4_5
 - CLAUDE_OPUS_4_6
+- CLAUDE_PLUGIN_OPTION_
 - CLAUDE_PLUGIN_ROOT
 - CLAUDE_PROJECT_DIR
 - CLAUDE_REPL_MODE
@@ -606,7 +608,7 @@
 - claude-vscode
 
 ## SDK Tools (24)
-- AgentInput: description, prompt, subagent_type?, model?, resume?, run_in_background?, name?, team_name?, mode?, isolation?
+- AgentInput: description, prompt, subagent_type?, model?, resume?, run_in_background?
 - AskUserQuestionInput: questions, question, header, options, label, description, preview?
 - BashInput: command, timeout?
 - ConfigInput: setting, value?
