@@ -1,10 +1,10 @@
-# Claude Code Inventory 2.1.75
+# Claude Code Inventory 2.1.76
 
 ## Summary
 - CLI commands: 35
 - Hidden CLI commands: 1
-- Slash commands: 75
-- Environment variables: 187
+- Slash commands: 76
+- Environment variables: 189
 - Models: 107
 - SDK tools: 24
 - Settings: 0
@@ -33,6 +33,7 @@
 - claude --cowork [hidden] - Use cowork_plugins directory
 - claude --dangerously-skip-permissions - Bypass all permission checks. Recommended only for sandboxes with no internet access.
 - claude --debug-file <path> - Write debug logs to a specific file path (implicitly enables debug mode)
+- claude --deep-link-origin [hidden] - Signal that this session was launched from a deep link
 - claude --disable-slash-commands - Disable all skills
 - claude --disallowedTools, --disallowed-tools <tools...> - Comma or space-separated list of tool names to deny (e.g. "Bash(git:*) Edit")
 - claude --effort <level> - Effort level for the current session (low, medium, high, max)
@@ -65,7 +66,7 @@
 - claude --permission-mode <mode> - Permission mode to use for the session
 - claude --permission-prompt-tool <tool> [hidden] - MCP tool to use for permission prompts (only works with --print)
 - claude --plan-mode-required [hidden] - Require plan mode before implementation
-- claude --plugin-dir <paths...> - Load plugins from directories for this session only (repeatable)
+- claude --plugin-dir <path> - Load plugins from a directory for this session only (repeatable: --plugin-dir A --plugin-dir B)
 - claude --prefill <text> [hidden] - Pre-fill the prompt input with text without submitting it
 - claude --rc [name] [hidden] - Alias for --remote-control
 - claude --remote [description] [hidden] - Create a remote session with the given description
@@ -98,6 +99,7 @@
 - claude -d, --debug [filter] - Enable debug mode with optional category filtering (e.g., "api,hooks" or "!1p,!file")
 - claude -d2e, --debug-to-stderr [hidden] - Enable debug mode (to stderr)
 - claude -h, --help - Display help for command
+- claude -n, --name <name> - Set a display name for this session (shown in /resume and terminal title)
 - claude -p, --print - Print response and exit (useful for pipes). Note: The workspace trust dialog is skipped when Claude is run with the -p mode. Only use this flag in directories you trust.
 - claude -r, --resume [value] - Resume a conversation by session ID, or open interactive picker with optional search term
 - claude -s, --scope <scope> - Configuration scope (local, user, or project) - if not specified, removes from whichever scope it exists in
@@ -145,10 +147,10 @@
 - claude plugin disable [plugin] --cowork [hidden] - Use cowork_plugins directory
 - claude plugin disable [plugin] -a, --all - Disable all enabled plugins
 - claude plugin disable [plugin] -h, --help - Display help for command
-- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${a0.join(", ")} (default: auto-detect)
+- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${i0.join(", ")} (default: auto-detect)
 - claude plugin enable <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin enable <plugin> -h, --help - Display help for command
-- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${a0.join(", ")} (default: auto-detect)
+- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${i0.join(", ")} (default: auto-detect)
 - claude plugin install <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin install <plugin> -h, --help - Display help for command
 - claude plugin install <plugin> -s, --scope <scope> - Installation scope: user, project, or local
@@ -173,7 +175,7 @@
 - claude plugin uninstall <plugin> -s, --scope <scope> - Uninstall from scope: user, project, or local
 - claude plugin update <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin update <plugin> -h, --help - Display help for command
-- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${nz6.join(", ")} (default: user)
+- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${O_6.join(", ")} (default: user)
 - claude plugin validate <path> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin validate <path> -h, --help - Display help for command
 - claude remote-control -h, --help - Display help for command
@@ -228,9 +230,10 @@
 - claude plugin marketplace update [name] (aliases: claude plugins marketplace update [name]; Update marketplace(s) from their source - updates all if no name specified)
 
 ## Slash Commands
-### Built-in (69)
+### Built-in (71)
 - /add-dir - Add a new working directory
 - /agents - Manage agent configurations
+- /bridge-kick - Inject bridge failure states for manual recovery testing
 - /brief - Toggle brief-only mode
 - /btw - Ask a quick side question without interrupting the main conversation
 - /chrome - Claude in Chrome (Beta) settings
@@ -245,6 +248,7 @@
 - /cost - Show the total cost and duration of the current session
 - /desktop - Continue the current session in Claude Desktop
 - /doctor - Diagnose and verify your Claude Code installation and settings
+- /effort - Set effort level for model usage
 - /exit - Exit the REPL
 - /export - Export the current conversation to a file or clipboard
 - /extra-usage - Configure extra usage to keep working when limits are hit
@@ -254,7 +258,7 @@
 - /fork - Create a fork of the current conversation at this point
 - /heapdump - Dump the JS heap to ~/Desktop
 - /help - Show help and available commands
-- /hooks - Manage hook configurations for tool events
+- /hooks - View hook configurations for tool events
 - /ide - Manage IDE integrations and show status
 - /init - Initialize a new CLAUDE.md file with codebase documentation
 - /init-verifiers - Create verifier skill(s) for automated verification of code changes
@@ -304,12 +308,11 @@
 - /pr-comments - Get comments from a GitHub pull request
 - /security-review - Complete a security review of the pending changes on the current branch
 
-### Inferred (3)
-- /effort [inferred/low]
+### Inferred (2)
 - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
 - /memory [inferred/medium]
 
-## Environment Variables (187)
+## Environment Variables (189)
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -326,6 +329,7 @@
 - CLAUDE_BRIDGE_USE_CCR_V2
 - CLAUDE_CHROME_PERMISSION_MODE
 - CLAUDE_CODE_ACCESSIBILITY
+- CLAUDE_CODE_ACCOUNT_TAGGED_ID
 - CLAUDE_CODE_ACCOUNT_UUID
 - CLAUDE_CODE_ACTION
 - CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD
@@ -397,7 +401,6 @@
 - CLAUDE_CODE_FORCE_GLOBAL_CACHE
 - CLAUDE_CODE_FORCE_SANDBOX
 - CLAUDE_CODE_FRAME_TIMING_LOG
-- CLAUDE_CODE_GB_BASE_URL
 - CLAUDE_CODE_GIT_BASH_PATH
 - CLAUDE_CODE_GLOB_HIDDEN
 - CLAUDE_CODE_GLOB_NO_IGNORE
@@ -451,6 +454,7 @@
 - CLAUDE_CODE_SHELL_PREFIX
 - CLAUDE_CODE_SIMPLE
 - CLAUDE_CODE_SKIP_BEDROCK_AUTH
+- CLAUDE_CODE_SKIP_FAST_MODE_NETWORK_ERRORS
 - CLAUDE_CODE_SKIP_FOUNDRY_AUTH
 - CLAUDE_CODE_SKIP_PROMPT_HISTORY
 - CLAUDE_CODE_SKIP_VERTEX_AUTH
@@ -481,6 +485,7 @@
 - CLAUDE_CODE_USE_VERTEX
 - CLAUDE_CODE_WEBSOCKET_AUTH_FILE_DESCRIPTOR
 - CLAUDE_CODE_WORKER_EPOCH
+- CLAUDE_CODE_WORKSPACE_HOST_PATHS
 - CLAUDE_CONFIG_DIR
 - CLAUDE_COWORK_MEMORY_PATH_OVERRIDE
 - CLAUDE_DEBUG
