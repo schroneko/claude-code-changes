@@ -1,10 +1,10 @@
-# Claude Code Inventory 2.1.77
+# Claude Code Inventory 2.1.78
 
 ## Summary
 - CLI commands: 35
 - Hidden CLI commands: 1
 - Slash commands: 76
-- Environment variables: 191
+- Environment variables: 192
 - Models: 108
 - SDK tools: 24
 - Settings: 0
@@ -52,6 +52,7 @@
 - claude --input-format <format> - Input format (only works with --print): "text" (default), or "stream-json" (realtime streaming input)
 - claude --json - Output as JSON (default)
 - claude --json-schema <schema> - JSON Schema for structured output validation. Example: {"type":"object","properties":{"name":{"type":"string"}},"required":["name"]}
+- claude --keep-data - Preserve the plugin's persistent data directory (~/.claude/plugins/data/{id}/)
 - claude --maintenance [hidden] - Run Setup hooks with maintenance trigger, then continue
 - claude --max-budget-usd <amount> - Maximum dollar amount to spend on API calls (only works with --print)
 - claude --max-thinking-tokens <tokens> [hidden] - [DEPRECATED. Use --thinking instead for newer models] Maximum number of thinking tokens (only works with --print)
@@ -147,10 +148,10 @@
 - claude plugin disable [plugin] --cowork [hidden] - Use cowork_plugins directory
 - claude plugin disable [plugin] -a, --all - Disable all enabled plugins
 - claude plugin disable [plugin] -h, --help - Display help for command
-- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${c0.join(", ")} (default: auto-detect)
+- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${e0.join(", ")} (default: auto-detect)
 - claude plugin enable <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin enable <plugin> -h, --help - Display help for command
-- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${c0.join(", ")} (default: auto-detect)
+- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${e0.join(", ")} (default: auto-detect)
 - claude plugin install <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin install <plugin> -h, --help - Display help for command
 - claude plugin install <plugin> -s, --scope <scope> - Installation scope: user, project, or local
@@ -171,11 +172,12 @@
 - claude plugin marketplace update [name] --cowork [hidden] - Use cowork_plugins directory
 - claude plugin marketplace update [name] -h, --help - Display help for command
 - claude plugin uninstall <plugin> --cowork [hidden] - Use cowork_plugins directory
+- claude plugin uninstall <plugin> --keep-data - Preserve the plugin's persistent data directory (~/.claude/plugins/data/{id}/)
 - claude plugin uninstall <plugin> -h, --help - Display help for command
 - claude plugin uninstall <plugin> -s, --scope <scope> - Uninstall from scope: user, project, or local
 - claude plugin update <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin update <plugin> -h, --help - Display help for command
-- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${N_6.join(", ")} (default: user)
+- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${I_6.join(", ")} (default: user)
 - claude plugin validate <path> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin validate <path> -h, --help - Display help for command
 - claude remote-control -h, --help - Display help for command
@@ -312,7 +314,7 @@
 - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
 - /memory [inferred/medium]
 
-## Environment Variables (191)
+## Environment Variables (192)
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -396,6 +398,7 @@
 - CLAUDE_CODE_EXIT_AFTER_STOP_DELAY
 - CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS
 - CLAUDE_CODE_EXTRA_BODY
+- CLAUDE_CODE_EXTRA_METADATA
 - CLAUDE_CODE_FILE_READ_MAX_OUTPUT_TOKENS
 - CLAUDE_CODE_FORCE_FULL_LOGO
 - CLAUDE_CODE_FORCE_GLOBAL_CACHE
@@ -463,7 +466,6 @@
 - CLAUDE_CODE_SM_COMPACT
 - CLAUDE_CODE_SSE_PORT
 - CLAUDE_CODE_STALL_TIMEOUT_MS_FOR_TESTING
-- CLAUDE_CODE_STREAMING_TEXT
 - CLAUDE_CODE_SUBAGENT_MODEL
 - CLAUDE_CODE_SYNC_PLUGIN_INSTALL
 - CLAUDE_CODE_SYNC_PLUGIN_INSTALL_TIMEOUT_MS
@@ -496,6 +498,7 @@
 - CLAUDE_FORCE_DISPLAY_SURVEY
 - CLAUDE_HAIKU_4_5
 - CLAUDE_OPUS_4_6
+- CLAUDE_PLUGIN_DATA
 - CLAUDE_PLUGIN_OPTION_
 - CLAUDE_PLUGIN_ROOT
 - CLAUDE_PROJECT_DIR
