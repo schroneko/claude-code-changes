@@ -1,0 +1,2972 @@
+{
+  "version": "2.1.77",
+  "buildTime": "",
+  "cliArguments": [
+    {
+      "scopePath": "claude",
+      "name": "[prompt]",
+      "description": "Your prompt",
+      "required": false
+    }
+  ],
+  "cliCommands": [
+    {
+      "path": "claude agents",
+      "parentPath": "claude",
+      "command": "agents",
+      "aliases": [],
+      "invocations": [
+        "claude agents"
+      ],
+      "description": "List configured agents",
+      "hidden": false
+    },
+    {
+      "path": "claude auth",
+      "parentPath": "claude",
+      "command": "auth",
+      "aliases": [],
+      "invocations": [
+        "claude auth"
+      ],
+      "description": "Manage authentication",
+      "hidden": false
+    },
+    {
+      "path": "claude auth login",
+      "parentPath": "claude auth",
+      "command": "login",
+      "aliases": [],
+      "invocations": [
+        "claude auth login"
+      ],
+      "description": "Sign in to your Anthropic account",
+      "hidden": false
+    },
+    {
+      "path": "claude auth logout",
+      "parentPath": "claude auth",
+      "command": "logout",
+      "aliases": [],
+      "invocations": [
+        "claude auth logout"
+      ],
+      "description": "Log out from your Anthropic account",
+      "hidden": false
+    },
+    {
+      "path": "claude auth status",
+      "parentPath": "claude auth",
+      "command": "status",
+      "aliases": [],
+      "invocations": [
+        "claude auth status"
+      ],
+      "description": "Show authentication status",
+      "hidden": false
+    },
+    {
+      "path": "claude auto-mode",
+      "parentPath": "claude",
+      "command": "auto-mode",
+      "aliases": [],
+      "invocations": [
+        "claude auto-mode"
+      ],
+      "description": "Inspect auto mode classifier configuration",
+      "hidden": false
+    },
+    {
+      "path": "claude auto-mode config",
+      "parentPath": "claude auto-mode",
+      "command": "config",
+      "aliases": [],
+      "invocations": [
+        "claude auto-mode config"
+      ],
+      "description": "Print the effective auto mode config as JSON: your settings where set, defaults otherwise",
+      "hidden": false
+    },
+    {
+      "path": "claude auto-mode defaults",
+      "parentPath": "claude auto-mode",
+      "command": "defaults",
+      "aliases": [],
+      "invocations": [
+        "claude auto-mode defaults"
+      ],
+      "description": "Print the default auto mode environment, allow, and deny rules as JSON",
+      "hidden": false
+    },
+    {
+      "path": "claude doctor",
+      "parentPath": "claude",
+      "command": "doctor",
+      "aliases": [],
+      "invocations": [
+        "claude doctor"
+      ],
+      "description": "Check the health of your Claude Code auto-updater",
+      "hidden": false
+    },
+    {
+      "path": "claude install [target]",
+      "parentPath": "claude",
+      "command": "install [target]",
+      "aliases": [],
+      "invocations": [
+        "claude install [target]"
+      ],
+      "description": "Install Claude Code native build. Use [target] to specify version (stable, latest, or specific version)",
+      "hidden": false
+    },
+    {
+      "path": "claude mcp",
+      "parentPath": "claude",
+      "command": "mcp",
+      "aliases": [],
+      "invocations": [
+        "claude mcp"
+      ],
+      "description": "Configure and manage MCP servers",
+      "hidden": false
+    },
+    {
+      "path": "claude mcp add <name> <commandOrUrl> [args...]",
+      "parentPath": "claude mcp",
+      "command": "add <name> <commandOrUrl> [args...]",
+      "aliases": [],
+      "invocations": [
+        "claude mcp add <name> <commandOrUrl> [args...]"
+      ],
+      "description": "Add an MCP server to Claude Code. Examples: # Add HTTP server: claude mcp add --transport http sentry https://mcp.sentry.dev/mcp # Add HTTP server with headers: claude mcp add --transport http corridor https://app.corridor.dev/api/mcp --header \"Authorization: Bearer ...\" # Add stdio server with environment variables: claude mcp add -e API_KEY=xxx my-server -- npx my-mcp-server # Add stdio server with subprocess flags: claude mcp add my-server -- my-command --some-flag arg1",
+      "hidden": false
+    },
+    {
+      "path": "claude mcp add-from-claude-desktop",
+      "parentPath": "claude mcp",
+      "command": "add-from-claude-desktop",
+      "aliases": [],
+      "invocations": [
+        "claude mcp add-from-claude-desktop"
+      ],
+      "description": "Import MCP servers from Claude Desktop (Mac and WSL only)",
+      "hidden": false
+    },
+    {
+      "path": "claude mcp add-json <name> <json>",
+      "parentPath": "claude mcp",
+      "command": "add-json <name> <json>",
+      "aliases": [],
+      "invocations": [
+        "claude mcp add-json <name> <json>"
+      ],
+      "description": "Add an MCP server (stdio or SSE) with a JSON string",
+      "hidden": false
+    },
+    {
+      "path": "claude mcp get <name>",
+      "parentPath": "claude mcp",
+      "command": "get <name>",
+      "aliases": [],
+      "invocations": [
+        "claude mcp get <name>"
+      ],
+      "description": "Get details about an MCP server",
+      "hidden": false
+    },
+    {
+      "path": "claude mcp list",
+      "parentPath": "claude mcp",
+      "command": "list",
+      "aliases": [],
+      "invocations": [
+        "claude mcp list"
+      ],
+      "description": "List configured MCP servers",
+      "hidden": false
+    },
+    {
+      "path": "claude mcp remove <name>",
+      "parentPath": "claude mcp",
+      "command": "remove <name>",
+      "aliases": [],
+      "invocations": [
+        "claude mcp remove <name>"
+      ],
+      "description": "Remove an MCP server",
+      "hidden": false
+    },
+    {
+      "path": "claude mcp reset-project-choices",
+      "parentPath": "claude mcp",
+      "command": "reset-project-choices",
+      "aliases": [],
+      "invocations": [
+        "claude mcp reset-project-choices"
+      ],
+      "description": "Reset all approved and rejected project-scoped (.mcp.json) servers within this project",
+      "hidden": false
+    },
+    {
+      "path": "claude mcp serve",
+      "parentPath": "claude mcp",
+      "command": "serve",
+      "aliases": [],
+      "invocations": [
+        "claude mcp serve"
+      ],
+      "description": "Start the Claude Code MCP server",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin",
+      "parentPath": "claude",
+      "command": "plugin",
+      "aliases": [
+        "plugins"
+      ],
+      "invocations": [
+        "claude plugin",
+        "claude plugins"
+      ],
+      "description": "Manage Claude Code plugins",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin disable [plugin]",
+      "parentPath": "claude plugin",
+      "command": "disable [plugin]",
+      "aliases": [],
+      "invocations": [
+        "claude plugin disable [plugin]",
+        "claude plugins disable [plugin]"
+      ],
+      "description": "Disable an enabled plugin",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin enable <plugin>",
+      "parentPath": "claude plugin",
+      "command": "enable <plugin>",
+      "aliases": [],
+      "invocations": [
+        "claude plugin enable <plugin>",
+        "claude plugins enable <plugin>"
+      ],
+      "description": "Enable a disabled plugin",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin install <plugin>",
+      "parentPath": "claude plugin",
+      "command": "install <plugin>",
+      "aliases": [
+        "i"
+      ],
+      "invocations": [
+        "claude plugin install <plugin>",
+        "claude plugin i <plugin>",
+        "claude plugins install <plugin>",
+        "claude plugins i <plugin>"
+      ],
+      "description": "Install a plugin from available marketplaces (use plugin@marketplace for specific marketplace)",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin list",
+      "parentPath": "claude plugin",
+      "command": "list",
+      "aliases": [],
+      "invocations": [
+        "claude plugin list",
+        "claude plugins list"
+      ],
+      "description": "List installed plugins",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin marketplace",
+      "parentPath": "claude plugin",
+      "command": "marketplace",
+      "aliases": [],
+      "invocations": [
+        "claude plugin marketplace",
+        "claude plugins marketplace"
+      ],
+      "description": "Manage Claude Code marketplaces",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin marketplace add <source>",
+      "parentPath": "claude plugin marketplace",
+      "command": "add <source>",
+      "aliases": [],
+      "invocations": [
+        "claude plugin marketplace add <source>",
+        "claude plugins marketplace add <source>"
+      ],
+      "description": "Add a marketplace from a URL, path, or GitHub repo",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin marketplace list",
+      "parentPath": "claude plugin marketplace",
+      "command": "list",
+      "aliases": [],
+      "invocations": [
+        "claude plugin marketplace list",
+        "claude plugins marketplace list"
+      ],
+      "description": "List all configured marketplaces",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin marketplace remove <name>",
+      "parentPath": "claude plugin marketplace",
+      "command": "remove <name>",
+      "aliases": [
+        "rm"
+      ],
+      "invocations": [
+        "claude plugin marketplace remove <name>",
+        "claude plugin marketplace rm <name>",
+        "claude plugins marketplace remove <name>",
+        "claude plugins marketplace rm <name>"
+      ],
+      "description": "Remove a configured marketplace",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin marketplace update [name]",
+      "parentPath": "claude plugin marketplace",
+      "command": "update [name]",
+      "aliases": [],
+      "invocations": [
+        "claude plugin marketplace update [name]",
+        "claude plugins marketplace update [name]"
+      ],
+      "description": "Update marketplace(s) from their source - updates all if no name specified",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin uninstall <plugin>",
+      "parentPath": "claude plugin",
+      "command": "uninstall <plugin>",
+      "aliases": [
+        "remove",
+        "rm"
+      ],
+      "invocations": [
+        "claude plugin uninstall <plugin>",
+        "claude plugin remove <plugin>",
+        "claude plugin rm <plugin>",
+        "claude plugins uninstall <plugin>",
+        "claude plugins remove <plugin>",
+        "claude plugins rm <plugin>"
+      ],
+      "description": "Uninstall an installed plugin",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin update <plugin>",
+      "parentPath": "claude plugin",
+      "command": "update <plugin>",
+      "aliases": [],
+      "invocations": [
+        "claude plugin update <plugin>",
+        "claude plugins update <plugin>"
+      ],
+      "description": "Update a plugin to the latest version (restart required to apply)",
+      "hidden": false
+    },
+    {
+      "path": "claude plugin validate <path>",
+      "parentPath": "claude plugin",
+      "command": "validate <path>",
+      "aliases": [],
+      "invocations": [
+        "claude plugin validate <path>",
+        "claude plugins validate <path>"
+      ],
+      "description": "Validate a plugin or marketplace manifest",
+      "hidden": false
+    },
+    {
+      "path": "claude remote-control",
+      "parentPath": "claude",
+      "command": "remote-control",
+      "aliases": [
+        "rc"
+      ],
+      "invocations": [
+        "claude remote-control",
+        "claude rc"
+      ],
+      "description": "Connect your local environment for remote-control sessions via claude.ai/code",
+      "hidden": true
+    },
+    {
+      "path": "claude setup-token",
+      "parentPath": "claude",
+      "command": "setup-token",
+      "aliases": [],
+      "invocations": [
+        "claude setup-token"
+      ],
+      "description": "Set up a long-lived authentication token (requires Claude subscription)",
+      "hidden": false
+    },
+    {
+      "path": "claude update",
+      "parentPath": "claude",
+      "command": "update",
+      "aliases": [
+        "upgrade"
+      ],
+      "invocations": [
+        "claude update",
+        "claude upgrade"
+      ],
+      "description": "Check for updates and install if available",
+      "hidden": false
+    }
+  ],
+  "cliOptions": [
+    {
+      "scopePath": "claude",
+      "names": [
+        "--add-dir <directories...>"
+      ],
+      "description": "Additional directories to allow tool access to",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--agent <agent>"
+      ],
+      "description": "Agent for the current session. Overrides the 'agent' setting.",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--agent-color <color>"
+      ],
+      "description": "Teammate UI color",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--agent-id <id>"
+      ],
+      "description": "Teammate agent ID",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--agent-name <name>"
+      ],
+      "description": "Teammate display name",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--agent-type <type>"
+      ],
+      "description": "Custom agent type for this teammate",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--agents <json>"
+      ],
+      "description": "JSON object defining custom agents (e.g. '{\"reviewer\": {\"description\": \"Reviews code\", \"prompt\": \"You are a code reviewer\"}}')",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--allow-dangerously-skip-permissions"
+      ],
+      "description": "Enable bypassing all permission checks as an option, without it being enabled by default. Recommended only for sandboxes with no internet access.",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--allowedTools",
+        "--allowed-tools <tools...>"
+      ],
+      "description": "Comma or space-separated list of tool names to allow (e.g. \"Bash(git:*) Edit\")",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--append-system-prompt <prompt>"
+      ],
+      "description": "Append a system prompt to the default system prompt",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--append-system-prompt-file <file>"
+      ],
+      "description": "Read system prompt from a file and append to the default system prompt",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--available"
+      ],
+      "description": "Include available plugins from marketplaces (requires --json)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--betas <betas...>"
+      ],
+      "description": "Beta headers to include in API requests (API key users only)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--brief"
+      ],
+      "description": "Enable SendUserMessage tool for agent-to-user communication",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--chrome"
+      ],
+      "description": "Enable Claude in Chrome integration",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--client-secret"
+      ],
+      "description": "Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--dangerously-skip-permissions"
+      ],
+      "description": "Bypass all permission checks. Recommended only for sandboxes with no internet access.",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--debug-file <path>"
+      ],
+      "description": "Write debug logs to a specific file path (implicitly enables debug mode)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--deep-link-origin"
+      ],
+      "description": "Signal that this session was launched from a deep link",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--disable-slash-commands"
+      ],
+      "description": "Disable all skills",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--disallowedTools",
+        "--disallowed-tools <tools...>"
+      ],
+      "description": "Comma or space-separated list of tool names to deny (e.g. \"Bash(git:*) Edit\")",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--effort <level>"
+      ],
+      "description": "Effort level for the current session (low, medium, high, max)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--email <email>"
+      ],
+      "description": "Pre-populate email address on the login page",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--enable-auth-status"
+      ],
+      "description": "Enable auth status messages in SDK mode",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--enable-auto-mode"
+      ],
+      "description": "Opt in to auto mode",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--fallback-model <model>"
+      ],
+      "description": "Enable automatic fallback to specified model when default model is overloaded (only works with --print)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--file <specs...>"
+      ],
+      "description": "File resources to download at startup. Format: file_id:relative_path (e.g., --file file_abc:doc.txt file_def:img.png)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--force"
+      ],
+      "description": "Force installation even if already installed",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--fork-session"
+      ],
+      "description": "When resuming, create a new session ID instead of reusing the original (use with --resume or --continue)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--from-pr [value]"
+      ],
+      "description": "Resume a session linked to a PR by PR number/URL, or open interactive picker with optional search term",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--ide"
+      ],
+      "description": "Automatically connect to IDE on startup if exactly one valid IDE is available",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--include-partial-messages"
+      ],
+      "description": "Include partial message chunks as they arrive (only works with --print and --output-format=stream-json)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--init"
+      ],
+      "description": "Run Setup hooks with init trigger, then continue",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--init-only"
+      ],
+      "description": "Run Setup and SessionStart:startup hooks, then exit",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--input-format <format>"
+      ],
+      "description": "Input format (only works with --print): \"text\" (default), or \"stream-json\" (realtime streaming input)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--json"
+      ],
+      "description": "Output as JSON (default)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--json-schema <schema>"
+      ],
+      "description": "JSON Schema for structured output validation. Example: {\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"}},\"required\":[\"name\"]}",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--maintenance"
+      ],
+      "description": "Run Setup hooks with maintenance trigger, then continue",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--max-budget-usd <amount>"
+      ],
+      "description": "Maximum dollar amount to spend on API calls (only works with --print)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--max-thinking-tokens <tokens>"
+      ],
+      "description": "[DEPRECATED. Use --thinking instead for newer models] Maximum number of thinking tokens (only works with --print)",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--max-turns <turns>"
+      ],
+      "description": "Maximum number of agentic turns in non-interactive mode. This will early exit the conversation after the specified number of turns. (only works with --print)",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--mcp-config <configs...>"
+      ],
+      "description": "Load MCP servers from JSON files or strings (space-separated)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--mcp-debug"
+      ],
+      "description": "[DEPRECATED. Use --debug instead] Enable MCP debug mode (shows MCP server errors)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--model <model>"
+      ],
+      "description": "Model for the current session. Provide an alias for the latest model (e.g. 'sonnet' or 'opus') or a model's full name (e.g. 'claude-sonnet-4-6').",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--no-chrome"
+      ],
+      "description": "Disable Claude in Chrome integration",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--no-session-persistence"
+      ],
+      "description": "Disable session persistence - sessions will not be saved to disk and cannot be resumed (only works with --print)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--output-format <format>"
+      ],
+      "description": "Output format (only works with --print): \"text\" (default), \"json\" (single result), or \"stream-json\" (realtime streaming)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--parent-session-id <id>"
+      ],
+      "description": "Parent session ID for analytics correlation",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--permission-mode <mode>"
+      ],
+      "description": "Permission mode to use for the session",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--permission-prompt-tool <tool>"
+      ],
+      "description": "MCP tool to use for permission prompts (only works with --print)",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--plan-mode-required"
+      ],
+      "description": "Require plan mode before implementation",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--plugin-dir <path>"
+      ],
+      "description": "Load plugins from a directory for this session only (repeatable: --plugin-dir A --plugin-dir B)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--prefill <text>"
+      ],
+      "description": "Pre-fill the prompt input with text without submitting it",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--rc [name]"
+      ],
+      "description": "Alias for --remote-control",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--remote [description]"
+      ],
+      "description": "Create a remote session with the given description",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--remote-control [name]"
+      ],
+      "description": "Start an interactive session with Remote Control enabled (optionally named)",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--replay-user-messages"
+      ],
+      "description": "Re-emit user messages from stdin back on stdout for acknowledgment (only works with --input-format=stream-json and --output-format=stream-json)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--resume-session-at <message id>"
+      ],
+      "description": "When resuming, only messages up to and including the assistant message with <message.id> (use with --resume in print mode)",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--rewind-files <user-message-id>"
+      ],
+      "description": "Restore files to state at the specified user message and exit (requires --resume)",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--scope <scope>"
+      ],
+      "description": "Where to declare the marketplace: user (default), project, or local",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--sdk-url <url>"
+      ],
+      "description": "Use remote WebSocket endpoint for SDK I/O streaming (only with -p and stream-json format)",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--session-id <uuid>"
+      ],
+      "description": "Use a specific session ID for the conversation (must be a valid UUID)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--setting-sources <sources>"
+      ],
+      "description": "Comma-separated list of setting sources to load (user, project, local).",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--settings <file-or-json>"
+      ],
+      "description": "Path to a settings JSON file or a JSON string to load additional settings from",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--sparse <paths...>"
+      ],
+      "description": "Limit checkout to specific directories via git sparse-checkout (for monorepos). Example: --sparse .claude-plugin plugins",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--sso"
+      ],
+      "description": "Force SSO login flow",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--strict-mcp-config"
+      ],
+      "description": "Only use MCP servers from --mcp-config, ignoring all other MCP configurations",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--system-prompt <prompt>"
+      ],
+      "description": "System prompt to use for the session",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--system-prompt-file <file>"
+      ],
+      "description": "Read system prompt from a file",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--team-name <name>"
+      ],
+      "description": "Team name for swarm coordination",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--teammate-mode <mode>"
+      ],
+      "description": "How to spawn teammates: \"tmux\", \"in-process\", or \"auto\"",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--teleport [session]"
+      ],
+      "description": "Resume a teleport session, optionally specify session ID",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--text"
+      ],
+      "description": "Output as human-readable text",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--thinking <mode>"
+      ],
+      "description": "Thinking mode: enabled (equivalent to adaptive), disabled",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--tmux"
+      ],
+      "description": "Create a tmux session for the worktree (requires --worktree). Uses iTerm2 native panes when available; use --tmux=classic for traditional tmux.",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--tools <tools...>"
+      ],
+      "description": "Specify the list of available tools from the built-in set. Use \"\" to disable all tools, \"default\" to use all tools, or specify tool names (e.g. \"Bash,Edit,Read\").",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--verbose"
+      ],
+      "description": "Override verbose mode setting from config",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "--workload <tag>"
+      ],
+      "description": "Workload tag for billing-header attribution (cc_workload). Process-scoped; set by SDK daemon callers that spawn subprocesses for cron work. (only works with --print)",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-a",
+        "--all"
+      ],
+      "description": "Disable all enabled plugins",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-c",
+        "--continue"
+      ],
+      "description": "Continue the most recent conversation in the current directory",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-d",
+        "--debug"
+      ],
+      "description": "Enable debug mode",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-d",
+        "--debug [filter]"
+      ],
+      "description": "Enable debug mode with optional category filtering (e.g., \"api,hooks\" or \"!1p,!file\")",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-d2e",
+        "--debug-to-stderr"
+      ],
+      "description": "Enable debug mode (to stderr)",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-n",
+        "--name <name>"
+      ],
+      "description": "Set a display name for this session (shown in /resume and terminal title)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-p",
+        "--print"
+      ],
+      "description": "Print response and exit (useful for pipes). Note: The workspace trust dialog is skipped when Claude is run with the -p mode. Only use this flag in directories you trust.",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-r",
+        "--resume [value]"
+      ],
+      "description": "Resume a conversation by session ID, or open interactive picker with optional search term",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-s",
+        "--scope <scope>"
+      ],
+      "description": "Configuration scope (local, user, or project) - if not specified, removes from whichever scope it exists in",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-v",
+        "--version"
+      ],
+      "description": "Output the version number",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude",
+      "names": [
+        "-w",
+        "--worktree [name]"
+      ],
+      "description": "Create a new git worktree for this session (optionally specify a name)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude agents",
+      "names": [
+        "--setting-sources <sources>"
+      ],
+      "description": "Comma-separated list of setting sources to load (user, project, local).",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude agents",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude auth",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude auth login",
+      "names": [
+        "--email <email>"
+      ],
+      "description": "Pre-populate email address on the login page",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude auth login",
+      "names": [
+        "--sso"
+      ],
+      "description": "Force SSO login flow",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude auth login",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude auth logout",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude auth status",
+      "names": [
+        "--json"
+      ],
+      "description": "Output as JSON (default)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude auth status",
+      "names": [
+        "--text"
+      ],
+      "description": "Output as human-readable text",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude auth status",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude auto-mode",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude auto-mode config",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude auto-mode defaults",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude doctor",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude install [target]",
+      "names": [
+        "--force"
+      ],
+      "description": "Force installation even if already installed",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude install [target]",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add <name> <commandOrUrl> [args...]",
+      "names": [
+        "--callback-port <port>"
+      ],
+      "description": "Fixed port for OAuth callback (for servers requiring pre-registered redirect URIs)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add <name> <commandOrUrl> [args...]",
+      "names": [
+        "--client-id <clientId>"
+      ],
+      "description": "OAuth client ID for HTTP/SSE servers",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add <name> <commandOrUrl> [args...]",
+      "names": [
+        "--client-secret"
+      ],
+      "description": "Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add <name> <commandOrUrl> [args...]",
+      "names": [
+        "-e",
+        "--env <env...>"
+      ],
+      "description": "Set environment variables (e.g. -e KEY=value)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add <name> <commandOrUrl> [args...]",
+      "names": [
+        "-H",
+        "--header <header...>"
+      ],
+      "description": "Set WebSocket headers (e.g. -H \"X-Api-Key: abc123\" -H \"X-Custom: value\")",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add <name> <commandOrUrl> [args...]",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add <name> <commandOrUrl> [args...]",
+      "names": [
+        "-s",
+        "--scope <scope>"
+      ],
+      "description": "Configuration scope (local, user, or project)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add <name> <commandOrUrl> [args...]",
+      "names": [
+        "-t",
+        "--transport <transport>"
+      ],
+      "description": "Transport type (stdio, sse, http). Defaults to stdio if not specified.",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add-from-claude-desktop",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add-from-claude-desktop",
+      "names": [
+        "-s",
+        "--scope <scope>"
+      ],
+      "description": "Configuration scope (local, user, or project)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add-json <name> <json>",
+      "names": [
+        "--client-secret"
+      ],
+      "description": "Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add-json <name> <json>",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp add-json <name> <json>",
+      "names": [
+        "-s",
+        "--scope <scope>"
+      ],
+      "description": "Configuration scope (local, user, or project)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp get <name>",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp list",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp remove <name>",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp remove <name>",
+      "names": [
+        "-s",
+        "--scope <scope>"
+      ],
+      "description": "Configuration scope (local, user, or project) - if not specified, removes from whichever scope it exists in",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp reset-project-choices",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp serve",
+      "names": [
+        "--verbose"
+      ],
+      "description": "Override verbose mode setting from config",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp serve",
+      "names": [
+        "-d",
+        "--debug"
+      ],
+      "description": "Enable debug mode",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude mcp serve",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin disable [plugin]",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude plugin disable [plugin]",
+      "names": [
+        "-a",
+        "--all"
+      ],
+      "description": "Disable all enabled plugins",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin disable [plugin]",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin disable [plugin]",
+      "names": [
+        "-s",
+        "--scope <scope>"
+      ],
+      "description": "Installation scope: ${c0.join(\", \")} (default: auto-detect)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin enable <plugin>",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude plugin enable <plugin>",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin enable <plugin>",
+      "names": [
+        "-s",
+        "--scope <scope>"
+      ],
+      "description": "Installation scope: ${c0.join(\", \")} (default: auto-detect)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin install <plugin>",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude plugin install <plugin>",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin install <plugin>",
+      "names": [
+        "-s",
+        "--scope <scope>"
+      ],
+      "description": "Installation scope: user, project, or local",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin list",
+      "names": [
+        "--available"
+      ],
+      "description": "Include available plugins from marketplaces (requires --json)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin list",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude plugin list",
+      "names": [
+        "--json"
+      ],
+      "description": "Output as JSON",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin list",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin marketplace",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin marketplace add <source>",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude plugin marketplace add <source>",
+      "names": [
+        "--scope <scope>"
+      ],
+      "description": "Where to declare the marketplace: user (default), project, or local",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin marketplace add <source>",
+      "names": [
+        "--sparse <paths...>"
+      ],
+      "description": "Limit checkout to specific directories via git sparse-checkout (for monorepos). Example: --sparse .claude-plugin plugins",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin marketplace add <source>",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin marketplace list",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude plugin marketplace list",
+      "names": [
+        "--json"
+      ],
+      "description": "Output as JSON",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin marketplace list",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin marketplace remove <name>",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude plugin marketplace remove <name>",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin marketplace update [name]",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude plugin marketplace update [name]",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin uninstall <plugin>",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude plugin uninstall <plugin>",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin uninstall <plugin>",
+      "names": [
+        "-s",
+        "--scope <scope>"
+      ],
+      "description": "Uninstall from scope: user, project, or local",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin update <plugin>",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude plugin update <plugin>",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin update <plugin>",
+      "names": [
+        "-s",
+        "--scope <scope>"
+      ],
+      "description": "Installation scope: ${N_6.join(\", \")} (default: user)",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude plugin validate <path>",
+      "names": [
+        "--cowork"
+      ],
+      "description": "Use cowork_plugins directory",
+      "hidden": true
+    },
+    {
+      "scopePath": "claude plugin validate <path>",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude remote-control",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude setup-token",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    },
+    {
+      "scopePath": "claude update",
+      "names": [
+        "-h",
+        "--help"
+      ],
+      "description": "Display help for command",
+      "hidden": false
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Add a new working directory"
+    },
+    {
+      "name": "/agents",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage agent configurations"
+    },
+    {
+      "name": "/branch",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Create a branch of the current conversation at this point"
+    },
+    {
+      "name": "/bridge-kick",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Inject bridge failure states for manual recovery testing"
+    },
+    {
+      "name": "/brief",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle brief-only mode"
+    },
+    {
+      "name": "/btw",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Ask a quick side question without interrupting the main conversation"
+    },
+    {
+      "name": "/chrome",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Claude in Chrome (Beta) settings"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Clear conversation history and free up context"
+    },
+    {
+      "name": "/code-review",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin",
+      "description": "Review a pull request"
+    },
+    {
+      "name": "/color",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set the prompt bar color for this session"
+    },
+    {
+      "name": "/commit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Create a git commit"
+    },
+    {
+      "name": "/commit-push-pr",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Commit, push, and open a PR"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Clear conversation history but keep a summary in context. Optional: /compact [instructions for summarization]"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Open config panel"
+    },
+    {
+      "name": "/context",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show current context usage"
+    },
+    {
+      "name": "/copy",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Copy Claude's last response to clipboard (or /copy N for the Nth-latest)"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show the total cost and duration of the current session"
+    },
+    {
+      "name": "/desktop",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Continue the current session in Claude Desktop"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Diagnose and verify your Claude Code installation and settings"
+    },
+    {
+      "name": "/effort",
+      "sources": [
+        "status-hint",
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set effort level for model usage"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Exit the REPL"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Export the current conversation to a file or clipboard"
+    },
+    {
+      "name": "/extra-usage",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Configure extra usage to keep working when limits are hit"
+    },
+    {
+      "name": "/fast",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/feedback",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Submit feedback about Claude Code"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "List all files currently in context"
+    },
+    {
+      "name": "/heapdump",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Dump the JS heap to ~/Desktop"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show help and available commands"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "View hook configurations for tool events"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage IDE integrations and show status"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init-verifiers",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Create verifier skill(s) for automated verification of code changes"
+    },
+    {
+      "name": "/insights",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set up Claude GitHub Actions for a repository"
+    },
+    {
+      "name": "/install-slack-app",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Install the Claude Slack app"
+    },
+    {
+      "name": "/keybindings",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Open or create your keybindings configuration file"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Open or create your keybindings configuration file"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Sign out from your Anthropic account"
+    },
+    {
+      "name": "/loop",
+      "sources": [
+        "usage"
+      ],
+      "confidence": "medium",
+      "kind": "inferred",
+      "description": "Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "status-hint",
+        "userFacingName",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage MCP servers"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "status-hint",
+        "tips"
+      ],
+      "confidence": "medium",
+      "kind": "inferred"
+    },
+    {
+      "name": "/mobile",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show QR code to download the Claude mobile app"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle a searchable tag on the current session"
+    },
+    {
+      "name": "/passes",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "status-hint",
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage allow & deny tool permission rules"
+    },
+    {
+      "name": "/plan",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Enable plan mode or view the current session plan"
+    },
+    {
+      "name": "/plugin",
+      "sources": [
+        "status-hint",
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage Claude Code plugins"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin",
+      "description": "Get comments from a GitHub pull request"
+    },
+    {
+      "name": "/privacy-settings",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "View and update your privacy settings"
+    },
+    {
+      "name": "/rate-limit-options",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "View release notes"
+    },
+    {
+      "name": "/reload-plugins",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Activate pending plugin changes in the current session"
+    },
+    {
+      "name": "/remote-control",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Connect this terminal for remote-control sessions"
+    },
+    {
+      "name": "/remote-env",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/rename",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Rename the current conversation"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Resume a previous conversation"
+    },
+    {
+      "name": "/rewind",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Restore the code and/or conversation to a previous point"
+    },
+    {
+      "name": "/sandbox",
+      "sources": [
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/security-review",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin",
+      "description": "Complete a security review of the pending changes on the current branch"
+    },
+    {
+      "name": "/session",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show remote session URL and QR code"
+    },
+    {
+      "name": "/skills",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "List available skills"
+    },
+    {
+      "name": "/stats",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show your Claude Code usage statistics and activity"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show Claude Code status including version, model, account, API connectivity, and tool statuses"
+    },
+    {
+      "name": "/statusline",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set up Claude Code's status line UI"
+    },
+    {
+      "name": "/stickers",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Order Claude Code stickers"
+    },
+    {
+      "name": "/tag",
+      "sources": [
+        "usage",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/tasks",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "List and manage background tasks"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Edit Claude memory files"
+    },
+    {
+      "name": "/theme",
+      "sources": [
+        "tips",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Change the theme"
+    },
+    {
+      "name": "/think-back",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Your 2025 Claude Code Year in Review"
+    },
+    {
+      "name": "/thinkback-play",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Play the thinkback animation"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Upgrade to Max for higher rate limits and more Opus"
+    },
+    {
+      "name": "/usage",
+      "sources": [
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show plan usage limits"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle between Vim and Normal editing modes"
+    },
+    {
+      "name": "/voice",
+      "sources": [
+        "status-hint",
+        "userFacingName"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle voice mode"
+    }
+  ],
+  "tools": {
+    "AgentInput": [
+      "description",
+      "prompt",
+      "subagent_type?",
+      "model?",
+      "run_in_background?"
+    ],
+    "BashInput": [
+      "command",
+      "timeout?"
+    ],
+    "TaskOutputInput": [
+      "task_id",
+      "block",
+      "timeout"
+    ],
+    "ExitPlanModeInput": [
+      "allowedPrompts?",
+      "tool",
+      "prompt"
+    ],
+    "FileEditInput": [
+      "file_path",
+      "old_string",
+      "new_string",
+      "replace_all?"
+    ],
+    "FileReadInput": [
+      "file_path",
+      "offset?",
+      "limit?",
+      "pages?"
+    ],
+    "FileWriteInput": [
+      "file_path",
+      "content"
+    ],
+    "GlobInput": [
+      "pattern",
+      "path?"
+    ],
+    "GrepInput": [
+      "pattern",
+      "path?"
+    ],
+    "TaskStopInput": [
+      "task_id?",
+      "shell_id?"
+    ],
+    "ListMcpResourcesInput": [
+      "server?"
+    ],
+    "NotebookEditInput": [
+      "notebook_path",
+      "cell_id?",
+      "new_source",
+      "cell_type?",
+      "edit_mode?"
+    ],
+    "ReadMcpResourceInput": [
+      "server",
+      "uri"
+    ],
+    "SubscribeMcpResourceInput": [
+      "server",
+      "uri",
+      "reason?"
+    ],
+    "UnsubscribeMcpResourceInput": [
+      "server?",
+      "uri?",
+      "subscriptionId?"
+    ],
+    "SubscribePollingInput": [
+      "type",
+      "server",
+      "toolName?",
+      "arguments?"
+    ],
+    "UnsubscribePollingInput": [
+      "subscriptionId?",
+      "server?",
+      "target?"
+    ],
+    "TodoWriteInput": [
+      "todos",
+      "content",
+      "status",
+      "activeForm"
+    ],
+    "WebFetchInput": [
+      "url",
+      "prompt"
+    ],
+    "WebSearchInput": [
+      "query",
+      "allowed_domains?",
+      "blocked_domains?"
+    ],
+    "AskUserQuestionInput": [
+      "questions",
+      "question",
+      "header",
+      "options",
+      "label",
+      "description",
+      "preview?"
+    ],
+    "ConfigInput": [
+      "setting",
+      "value?"
+    ],
+    "EnterWorktreeInput": [
+      "name?"
+    ],
+    "ExitWorktreeInput": [
+      "action",
+      "discard_changes?"
+    ]
+  },
+  "models": [
+    "claude-1.3",
+    "claude-1.3-100k",
+    "claude-2.0",
+    "claude-2.1",
+    "claude-3-5-haiku",
+    "claude-3-5-haiku-20241022",
+    "claude-3-5-haiku-20241022-v1",
+    "claude-3-5-haiku-latest",
+    "claude-3-5-sonnet",
+    "claude-3-5-sonnet-20240620",
+    "claude-3-5-sonnet-20241022",
+    "claude-3-5-sonnet-20241022-v2",
+    "claude-3-5-sonnet-v2",
+    "claude-3-7-sonnet",
+    "claude-3-7-sonnet-20250219",
+    "claude-3-7-sonnet-20250219-v1",
+    "claude-3-7-sonnet-latest",
+    "claude-3-haiku",
+    "claude-3-haiku-20240307",
+    "claude-3-opus",
+    "claude-3-opus-20240229",
+    "claude-3-sonnet",
+    "claude-3-sonnet-20240229",
+    "claude-4-opus-20250514",
+    "claude-agent-sdk",
+    "claude-agent-sdk-python",
+    "claude-agent-sdk-typescript",
+    "claude-ai-external-token",
+    "claude-ai.staging.ant.dev",
+    "claude-api",
+    "claude-api.md",
+    "claude-by-anthropic",
+    "claude-cli",
+    "claude-code-20250219",
+    "claude-code-action",
+    "claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819",
+    "claude-code-feedback",
+    "claude-code-github-action",
+    "claude-code-guest-passes",
+    "claude-code-guide",
+    "claude-code-jetbrains",
+    "claude-code-jetbrains-plugin",
+    "claude-code-keybindings.json",
+    "claude-code-marketplace",
+    "claude-code-plugins",
+    "claude-code-releases",
+    "claude-code-review.yml",
+    "claude-code-screenshots",
+    "claude-code-settings.json",
+    "claude-code-user",
+    "claude-code.git",
+    "claude-context",
+    "claude-desktop",
+    "claude-dev",
+    "claude-folder",
+    "claude-for-hiring",
+    "claude-haiku",
+    "claude-haiku-3-5",
+    "claude-haiku-4",
+    "claude-haiku-4-5",
+    "claude-haiku-4-5-20251001",
+    "claude-haiku-4-5-20251001-v1",
+    "claude-hidden",
+    "claude-hook-check.txt",
+    "claude-in-chrome",
+    "claude-in-chrome-default-enabled",
+    "claude-in-chrome-mcp",
+    "claude-instant-1.1",
+    "claude-instant-1.1-100k",
+    "claude-instant-1.2",
+    "claude-local",
+    "claude-md-actions",
+    "claude-md-item",
+    "claude-md-section",
+    "claude-opus-4",
+    "claude-opus-4-0",
+    "claude-opus-4-1",
+    "claude-opus-4-1-20250805",
+    "claude-opus-4-1-20250805-v1",
+    "claude-opus-4-20250514",
+    "claude-opus-4-20250514-v1",
+    "claude-opus-4-5",
+    "claude-opus-4-5-20251101",
+    "claude-opus-4-5-20251101-v1",
+    "claude-opus-4-6",
+    "claude-opus-4-6-v1",
+    "claude-plugin",
+    "claude-plugin-directory",
+    "claude-plugins-official",
+    "claude-prompt",
+    "claude-remote-container-id",
+    "claude-remote-session-id",
+    "claude-review",
+    "claude-settings",
+    "claude-sonnet-3-7",
+    "claude-sonnet-4",
+    "claude-sonnet-4-0",
+    "claude-sonnet-4-20250514",
+    "claude-sonnet-4-20250514-v1",
+    "claude-sonnet-4-5",
+    "claude-sonnet-4-5-20250514",
+    "claude-sonnet-4-5-20250929",
+    "claude-sonnet-4-5-20250929-v1",
+    "claude-sonnet-4-6",
+    "claude-sonnet-4.6",
+    "claude-staging.fedstart.com",
+    "claude-swarm",
+    "claude-vscode"
+  ],
+  "envVars": [
+    "CLAUDE_AFTER_LAST_COMPACT",
+    "CLAUDE_AGENT_SDK_CLIENT_APP",
+    "CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS",
+    "CLAUDE_AGENT_SDK_MCP_NO_PREFIX",
+    "CLAUDE_AGENT_SDK_VERSION",
+    "CLAUDE_AI_AUTHORIZE_URL",
+    "CLAUDE_AI_INFERENCE_SCOPE",
+    "CLAUDE_AI_OAUTH_SCOPES",
+    "CLAUDE_AI_PROFILE_SCOPE",
+    "CLAUDE_API_KEY",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE",
+    "CLAUDE_AUTO_BACKGROUND_TASKS",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR",
+    "CLAUDE_BRIDGE_USE_CCR_V2",
+    "CLAUDE_CHROME_PERMISSION_MODE",
+    "CLAUDE_CODE_ACCESSIBILITY",
+    "CLAUDE_CODE_ACCOUNT_TAGGED_ID",
+    "CLAUDE_CODE_ACCOUNT_UUID",
+    "CLAUDE_CODE_ACTION",
+    "CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD",
+    "CLAUDE_CODE_ADDITIONAL_PROTECTION",
+    "CLAUDE_CODE_AGENT_NAME",
+    "CLAUDE_CODE_ALWAYS_ENABLE_EFFORT",
+    "CLAUDE_CODE_API_BASE_URL",
+    "CLAUDE_CODE_API_KEY_FILE_DESCRIPTOR",
+    "CLAUDE_CODE_API_KEY_HELPER_TTL_MS",
+    "CLAUDE_CODE_ATTRIBUTION_HEADER",
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW",
+    "CLAUDE_CODE_AUTO_CONNECT_IDE",
+    "CLAUDE_CODE_BASE_REF",
+    "CLAUDE_CODE_BASH_SANDBOX_SHOW_INDICATOR",
+    "CLAUDE_CODE_BLOCKING_LIMIT_OVERRIDE",
+    "CLAUDE_CODE_BRIEF",
+    "CLAUDE_CODE_BRIEF_UPLOAD",
+    "CLAUDE_CODE_BUBBLEWRAP",
+    "CLAUDE_CODE_CLIENT_CERT",
+    "CLAUDE_CODE_CLIENT_KEY",
+    "CLAUDE_CODE_CLIENT_KEY_PASSPHRASE",
+    "CLAUDE_CODE_CONTAINER_ID",
+    "CLAUDE_CODE_CUSTOM_OAUTH_URL",
+    "CLAUDE_CODE_DATADOG_FLUSH_INTERVAL_MS",
+    "CLAUDE_CODE_DEBUG_LOGS_DIR",
+    "CLAUDE_CODE_DEBUG_LOG_LEVEL",
+    "CLAUDE_CODE_DIAGNOSTICS_FILE",
+    "CLAUDE_CODE_DISABLE_1M_CONTEXT",
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING",
+    "CLAUDE_CODE_DISABLE_ATTACHMENTS",
+    "CLAUDE_CODE_DISABLE_AUTO_MEMORY",
+    "CLAUDE_CODE_DISABLE_BACKGROUND_TASKS",
+    "CLAUDE_CODE_DISABLE_CLAUDE_MDS",
+    "CLAUDE_CODE_DISABLE_COMMAND_INJECTION_CHECK",
+    "CLAUDE_CODE_DISABLE_CRON",
+    "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS",
+    "CLAUDE_CODE_DISABLE_FAST_MODE",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY",
+    "CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING",
+    "CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS",
+    "CLAUDE_CODE_DISABLE_LEGACY_MODEL_REMAP",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC",
+    "CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL",
+    "CLAUDE_CODE_DISABLE_PRECOMPACT_SKIP",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE",
+    "CLAUDE_CODE_DISABLE_THINKING",
+    "CLAUDE_CODE_DISABLE_VIRTUAL_SCROLL",
+    "CLAUDE_CODE_DONT_INHERIT_ENV",
+    "CLAUDE_CODE_EAGER_FLUSH",
+    "CLAUDE_CODE_EFFORT_LEVEL",
+    "CLAUDE_CODE_EMIT_TOOL_USE_SUMMARIES",
+    "CLAUDE_CODE_ENABLE_CFC",
+    "CLAUDE_CODE_ENABLE_FINE_GRAINED_TOOL_STREAMING",
+    "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION",
+    "CLAUDE_CODE_ENABLE_SDK_FILE_CHECKPOINTING",
+    "CLAUDE_CODE_ENABLE_TASKS",
+    "CLAUDE_CODE_ENABLE_TELEMETRY",
+    "CLAUDE_CODE_ENABLE_TOKEN_USAGE_ATTACHMENT",
+    "CLAUDE_CODE_ENHANCED_TELEMETRY_BETA",
+    "CLAUDE_CODE_ENTRYPOINT",
+    "CLAUDE_CODE_ENVIRONMENT_KIND",
+    "CLAUDE_CODE_ENVIRONMENT_RUNNER_VERSION",
+    "CLAUDE_CODE_EXIT_AFTER_FIRST_RENDER",
+    "CLAUDE_CODE_EXIT_AFTER_STOP_DELAY",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS",
+    "CLAUDE_CODE_EXTRA_BODY",
+    "CLAUDE_CODE_FILE_READ_MAX_OUTPUT_TOKENS",
+    "CLAUDE_CODE_FORCE_FULL_LOGO",
+    "CLAUDE_CODE_FORCE_GLOBAL_CACHE",
+    "CLAUDE_CODE_FORCE_SANDBOX",
+    "CLAUDE_CODE_FRAME_TIMING_LOG",
+    "CLAUDE_CODE_GIT_BASH_PATH",
+    "CLAUDE_CODE_GLOB_HIDDEN",
+    "CLAUDE_CODE_GLOB_NO_IGNORE",
+    "CLAUDE_CODE_GLOB_TIMEOUT_SECONDS",
+    "CLAUDE_CODE_HOST_HTTP_PROXY_PORT",
+    "CLAUDE_CODE_HOST_PLATFORM",
+    "CLAUDE_CODE_HOST_SOCKS_PROXY_PORT",
+    "CLAUDE_CODE_IDE_HOST_OVERRIDE",
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL",
+    "CLAUDE_CODE_IDE_SKIP_VALID_CHECK",
+    "CLAUDE_CODE_INCLUDE_PARTIAL_MESSAGES",
+    "CLAUDE_CODE_IS_COWORK",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS",
+    "CLAUDE_CODE_MAX_RETRIES",
+    "CLAUDE_CODE_MAX_TOOL_USE_CONCURRENCY",
+    "CLAUDE_CODE_MCP_INSTR_DELTA",
+    "CLAUDE_CODE_NEW_INIT",
+    "CLAUDE_CODE_OAUTH_CLIENT_ID",
+    "CLAUDE_CODE_OAUTH_REFRESH_TOKEN",
+    "CLAUDE_CODE_OAUTH_SCOPES",
+    "CLAUDE_CODE_OAUTH_TOKEN",
+    "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR",
+    "CLAUDE_CODE_ORGANIZATION_UUID",
+    "CLAUDE_CODE_OTEL_FLUSH_TIMEOUT_MS",
+    "CLAUDE_CODE_OTEL_HEADERS_HELPER_DEBOUNCE_MS",
+    "CLAUDE_CODE_OTEL_SHUTDOWN_TIMEOUT_MS",
+    "CLAUDE_CODE_PERFETTO_TRACE",
+    "CLAUDE_CODE_PLAN_MODE_INTERVIEW_PHASE",
+    "CLAUDE_CODE_PLAN_MODE_REQUIRED",
+    "CLAUDE_CODE_PLAN_V2_AGENT_COUNT",
+    "CLAUDE_CODE_PLAN_V2_EXPLORE_AGENT_COUNT",
+    "CLAUDE_CODE_PLUGIN_CACHE_DIR",
+    "CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS",
+    "CLAUDE_CODE_PLUGIN_SEED_DIR",
+    "CLAUDE_CODE_PLUGIN_USE_ZIP_CACHE",
+    "CLAUDE_CODE_POST_FOR_SESSION_INGRESS_V2",
+    "CLAUDE_CODE_PROFILE_QUERY",
+    "CLAUDE_CODE_PROFILE_STARTUP",
+    "CLAUDE_CODE_PROXY_RESOLVES_HOSTS",
+    "CLAUDE_CODE_QUESTION_PREVIEW_FORMAT",
+    "CLAUDE_CODE_REMOTE",
+    "CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE",
+    "CLAUDE_CODE_REMOTE_MEMORY_DIR",
+    "CLAUDE_CODE_REMOTE_SEND_KEEPALIVES",
+    "CLAUDE_CODE_REMOTE_SESSION_ID",
+    "CLAUDE_CODE_RESUME_INTERRUPTED_TURN",
+    "CLAUDE_CODE_SAVE_HOOK_ADDITIONAL_CONTEXT",
+    "CLAUDE_CODE_SEARCH_HINTS_IN_LIST",
+    "CLAUDE_CODE_SESSIONEND_HOOKS_TIMEOUT_MS",
+    "CLAUDE_CODE_SESSION_ACCESS_TOKEN",
+    "CLAUDE_CODE_SHELL",
+    "CLAUDE_CODE_SHELL_PREFIX",
+    "CLAUDE_CODE_SIMPLE",
+    "CLAUDE_CODE_SKIP_BEDROCK_AUTH",
+    "CLAUDE_CODE_SKIP_FAST_MODE_NETWORK_ERRORS",
+    "CLAUDE_CODE_SKIP_FOUNDRY_AUTH",
+    "CLAUDE_CODE_SKIP_PROMPT_HISTORY",
+    "CLAUDE_CODE_SKIP_VERTEX_AUTH",
+    "CLAUDE_CODE_SLOW_OPERATION_THRESHOLD_MS",
+    "CLAUDE_CODE_SM_COMPACT",
+    "CLAUDE_CODE_SSE_PORT",
+    "CLAUDE_CODE_STALL_TIMEOUT_MS_FOR_TESTING",
+    "CLAUDE_CODE_STREAMING_TEXT",
+    "CLAUDE_CODE_SUBAGENT_MODEL",
+    "CLAUDE_CODE_SYNC_PLUGIN_INSTALL",
+    "CLAUDE_CODE_SYNC_PLUGIN_INSTALL_TIMEOUT_MS",
+    "CLAUDE_CODE_SYNTAX_HIGHLIGHT",
+    "CLAUDE_CODE_TAGS",
+    "CLAUDE_CODE_TASK_LIST_ID",
+    "CLAUDE_CODE_TEAMMATE_COMMAND",
+    "CLAUDE_CODE_TEAM_NAME",
+    "CLAUDE_CODE_TEST_FIXTURES_ROOT",
+    "CLAUDE_CODE_TMPDIR",
+    "CLAUDE_CODE_TMUX_PREFIX",
+    "CLAUDE_CODE_TMUX_PREFIX_CONFLICTS",
+    "CLAUDE_CODE_TMUX_SESSION",
+    "CLAUDE_CODE_USER_EMAIL",
+    "CLAUDE_CODE_USE_BEDROCK",
+    "CLAUDE_CODE_USE_CCR_V2",
+    "CLAUDE_CODE_USE_COWORK_PLUGINS",
+    "CLAUDE_CODE_USE_FOUNDRY",
+    "CLAUDE_CODE_USE_NATIVE_FILE_SEARCH",
+    "CLAUDE_CODE_USE_VERTEX",
+    "CLAUDE_CODE_WEBSOCKET_AUTH_FILE_DESCRIPTOR",
+    "CLAUDE_CODE_WORKER_EPOCH",
+    "CLAUDE_CODE_WORKSPACE_HOST_PATHS",
+    "CLAUDE_CONFIG_DIR",
+    "CLAUDE_COWORK_MEMORY_EXTRA_GUIDELINES",
+    "CLAUDE_COWORK_MEMORY_PATH_OVERRIDE",
+    "CLAUDE_DEBUG",
+    "CLAUDE_ENABLE_STREAM_WATCHDOG",
+    "CLAUDE_ENV_FILE",
+    "CLAUDE_FORCE_DISPLAY_SURVEY",
+    "CLAUDE_HAIKU_4_5",
+    "CLAUDE_OPUS_4_6",
+    "CLAUDE_PLUGIN_OPTION_",
+    "CLAUDE_PLUGIN_ROOT",
+    "CLAUDE_PROJECT_DIR",
+    "CLAUDE_REPL_MODE",
+    "CLAUDE_SESSION_ID",
+    "CLAUDE_SKILL_DIR",
+    "CLAUDE_SONNET_4_6",
+    "CLAUDE_TMPDIR"
+  ],
+  "settings": {}
+}

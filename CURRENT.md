@@ -1,11 +1,11 @@
-# Claude Code Inventory 2.1.76
+# Claude Code Inventory 2.1.77
 
 ## Summary
 - CLI commands: 35
 - Hidden CLI commands: 1
 - Slash commands: 76
-- Environment variables: 189
-- Models: 107
+- Environment variables: 191
+- Models: 108
 - SDK tools: 24
 - Settings: 0
 
@@ -147,10 +147,10 @@
 - claude plugin disable [plugin] --cowork [hidden] - Use cowork_plugins directory
 - claude plugin disable [plugin] -a, --all - Disable all enabled plugins
 - claude plugin disable [plugin] -h, --help - Display help for command
-- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${i0.join(", ")} (default: auto-detect)
+- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${c0.join(", ")} (default: auto-detect)
 - claude plugin enable <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin enable <plugin> -h, --help - Display help for command
-- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${i0.join(", ")} (default: auto-detect)
+- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${c0.join(", ")} (default: auto-detect)
 - claude plugin install <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin install <plugin> -h, --help - Display help for command
 - claude plugin install <plugin> -s, --scope <scope> - Installation scope: user, project, or local
@@ -175,7 +175,7 @@
 - claude plugin uninstall <plugin> -s, --scope <scope> - Uninstall from scope: user, project, or local
 - claude plugin update <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin update <plugin> -h, --help - Display help for command
-- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${O_6.join(", ")} (default: user)
+- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${N_6.join(", ")} (default: user)
 - claude plugin validate <path> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin validate <path> -h, --help - Display help for command
 - claude remote-control -h, --help - Display help for command
@@ -233,6 +233,7 @@
 ### Built-in (71)
 - /add-dir - Add a new working directory
 - /agents - Manage agent configurations
+- /branch - Create a branch of the current conversation at this point
 - /bridge-kick - Inject bridge failure states for manual recovery testing
 - /brief - Toggle brief-only mode
 - /btw - Ask a quick side question without interrupting the main conversation
@@ -244,7 +245,7 @@
 - /compact - Clear conversation history but keep a summary in context. Optional: /compact [instructions for summarization]
 - /config - Open config panel
 - /context - Show current context usage
-- /copy - Copy Claude's last response or a code block to clipboard
+- /copy - Copy Claude's last response to clipboard (or /copy N for the Nth-latest)
 - /cost - Show the total cost and duration of the current session
 - /desktop - Continue the current session in Claude Desktop
 - /doctor - Diagnose and verify your Claude Code installation and settings
@@ -255,12 +256,11 @@
 - /fast
 - /feedback - Submit feedback about Claude Code
 - /files - List all files currently in context
-- /fork - Create a fork of the current conversation at this point
 - /heapdump - Dump the JS heap to ~/Desktop
 - /help - Show help and available commands
 - /hooks - View hook configurations for tool events
 - /ide - Manage IDE integrations and show status
-- /init - Initialize a new CLAUDE.md file with codebase documentation
+- /init
 - /init-verifiers - Create verifier skill(s) for automated verification of code changes
 - /insights
 - /install-github-app - Set up Claude GitHub Actions for a repository
@@ -312,7 +312,7 @@
 - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
 - /memory [inferred/medium]
 
-## Environment Variables (189)
+## Environment Variables (191)
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -417,6 +417,7 @@
 - CLAUDE_CODE_MAX_RETRIES
 - CLAUDE_CODE_MAX_TOOL_USE_CONCURRENCY
 - CLAUDE_CODE_MCP_INSTR_DELTA
+- CLAUDE_CODE_NEW_INIT
 - CLAUDE_CODE_OAUTH_CLIENT_ID
 - CLAUDE_CODE_OAUTH_REFRESH_TOKEN
 - CLAUDE_CODE_OAUTH_SCOPES
@@ -487,6 +488,7 @@
 - CLAUDE_CODE_WORKER_EPOCH
 - CLAUDE_CODE_WORKSPACE_HOST_PATHS
 - CLAUDE_CONFIG_DIR
+- CLAUDE_COWORK_MEMORY_EXTRA_GUIDELINES
 - CLAUDE_COWORK_MEMORY_PATH_OVERRIDE
 - CLAUDE_DEBUG
 - CLAUDE_ENABLE_STREAM_WATCHDOG
@@ -503,7 +505,7 @@
 - CLAUDE_SONNET_4_6
 - CLAUDE_TMPDIR
 
-## Models (107)
+## Models (108)
 - claude-1.3
 - claude-1.3-100k
 - claude-2.0
@@ -567,6 +569,7 @@
 - claude-haiku-4-5-20251001
 - claude-haiku-4-5-20251001-v1
 - claude-hidden
+- claude-hook-check.txt
 - claude-in-chrome
 - claude-in-chrome-default-enabled
 - claude-in-chrome-mcp
@@ -613,7 +616,7 @@
 - claude-vscode
 
 ## SDK Tools (24)
-- AgentInput: description, prompt, subagent_type?, model?, resume?, run_in_background?
+- AgentInput: description, prompt, subagent_type?, model?, run_in_background?
 - AskUserQuestionInput: questions, question, header, options, label, description, preview?
 - BashInput: command, timeout?
 - ConfigInput: setting, value?
