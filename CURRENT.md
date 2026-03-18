@@ -1,10 +1,10 @@
-# Claude Code Inventory 2.1.78
+# Claude Code Inventory 2.1.79
 
 ## Summary
 - CLI commands: 35
 - Hidden CLI commands: 1
-- Slash commands: 76
-- Environment variables: 192
+- Slash commands: 77
+- Environment variables: 193
 - Models: 108
 - SDK tools: 24
 - Settings: 0
@@ -29,7 +29,9 @@
 - claude --betas <betas...> - Beta headers to include in API requests (API key users only)
 - claude --brief - Enable SendUserMessage tool for agent-to-user communication
 - claude --chrome - Enable Claude in Chrome integration
+- claude --claudeai - Use Claude subscription (default)
 - claude --client-secret - Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)
+- claude --console - Use Anthropic Console (API usage billing) instead of Claude subscription
 - claude --cowork [hidden] - Use cowork_plugins directory
 - claude --dangerously-skip-permissions - Bypass all permission checks. Recommended only for sandboxes with no internet access.
 - claude --debug-file <path> - Write debug logs to a specific file path (implicitly enables debug mode)
@@ -109,6 +111,8 @@
 - claude agents --setting-sources <sources> - Comma-separated list of setting sources to load (user, project, local).
 - claude agents -h, --help - Display help for command
 - claude auth -h, --help - Display help for command
+- claude auth login --claudeai - Use Claude subscription (default)
+- claude auth login --console - Use Anthropic Console (API usage billing) instead of Claude subscription
 - claude auth login --email <email> - Pre-populate email address on the login page
 - claude auth login --sso - Force SSO login flow
 - claude auth login -h, --help - Display help for command
@@ -148,10 +152,10 @@
 - claude plugin disable [plugin] --cowork [hidden] - Use cowork_plugins directory
 - claude plugin disable [plugin] -a, --all - Disable all enabled plugins
 - claude plugin disable [plugin] -h, --help - Display help for command
-- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${e0.join(", ")} (default: auto-detect)
+- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${qW.join(", ")} (default: auto-detect)
 - claude plugin enable <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin enable <plugin> -h, --help - Display help for command
-- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${e0.join(", ")} (default: auto-detect)
+- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${qW.join(", ")} (default: auto-detect)
 - claude plugin install <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin install <plugin> -h, --help - Display help for command
 - claude plugin install <plugin> -s, --scope <scope> - Installation scope: user, project, or local
@@ -177,7 +181,7 @@
 - claude plugin uninstall <plugin> -s, --scope <scope> - Uninstall from scope: user, project, or local
 - claude plugin update <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin update <plugin> -h, --help - Display help for command
-- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${I_6.join(", ")} (default: user)
+- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${Hw6.join(", ")} (default: user)
 - claude plugin validate <path> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin validate <path> -h, --help - Display help for command
 - claude remote-control -h, --help - Display help for command
@@ -232,7 +236,7 @@
 - claude plugin marketplace update [name] (aliases: claude plugins marketplace update [name]; Update marketplace(s) from their source - updates all if no name specified)
 
 ## Slash Commands
-### Built-in (71)
+### Built-in (72)
 - /add-dir - Add a new working directory
 - /agents - Manage agent configurations
 - /branch - Create a branch of the current conversation at this point
@@ -304,6 +308,7 @@
 - /usage - Show plan usage limits
 - /vim - Toggle between Vim and Normal editing modes
 - /voice - Toggle voice mode
+- /web-setup - Setup Claude Code on the web (requires connecting your GitHub account)
 
 ### Plugin-backed (3)
 - /code-review - Review a pull request
@@ -314,7 +319,7 @@
 - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
 - /memory [inferred/medium]
 
-## Environment Variables (192)
+## Environment Variables (193)
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -467,6 +472,7 @@
 - CLAUDE_CODE_SSE_PORT
 - CLAUDE_CODE_STALL_TIMEOUT_MS_FOR_TESTING
 - CLAUDE_CODE_SUBAGENT_MODEL
+- CLAUDE_CODE_SUBPROCESS_ENV_SCRUB
 - CLAUDE_CODE_SYNC_PLUGIN_INSTALL
 - CLAUDE_CODE_SYNC_PLUGIN_INSTALL_TIMEOUT_MS
 - CLAUDE_CODE_SYNTAX_HIGHLIGHT
