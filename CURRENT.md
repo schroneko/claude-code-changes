@@ -1,11 +1,11 @@
-# Claude Code Inventory 2.1.79
+# Claude Code Inventory 2.1.80
 
 ## Summary
-- CLI commands: 35
+- CLI commands: 34
 - Hidden CLI commands: 1
 - Slash commands: 77
-- Environment variables: 193
-- Models: 108
+- Environment variables: 195
+- Models: 109
 - SDK tools: 24
 - Settings: 0
 
@@ -28,11 +28,13 @@
 - claude --available - Include available plugins from marketplaces (requires --json)
 - claude --betas <betas...> - Beta headers to include in API requests (API key users only)
 - claude --brief - Enable SendUserMessage tool for agent-to-user communication
+- claude --channels <servers...> [hidden] - MCP servers whose channel notifications (inbound push) should register this session. Space-separated server names.
 - claude --chrome - Enable Claude in Chrome integration
 - claude --claudeai - Use Claude subscription (default)
 - claude --client-secret - Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)
 - claude --console - Use Anthropic Console (API usage billing) instead of Claude subscription
 - claude --cowork [hidden] - Use cowork_plugins directory
+- claude --dangerously-load-development-channels <servers...> [hidden] - Load channel servers not on the approved allowlist. For local channel development only. Shows a confirmation dialog at startup.
 - claude --dangerously-skip-permissions - Bypass all permission checks. Recommended only for sandboxes with no internet access.
 - claude --debug-file <path> - Write debug logs to a specific file path (implicitly enables debug mode)
 - claude --deep-link-origin [hidden] - Signal that this session was launched from a deep link
@@ -127,14 +129,6 @@
 - claude install [target] --force - Force installation even if already installed
 - claude install [target] -h, --help - Display help for command
 - claude mcp -h, --help - Display help for command
-- claude mcp add <name> <commandOrUrl> [args...] --callback-port <port> - Fixed port for OAuth callback (for servers requiring pre-registered redirect URIs)
-- claude mcp add <name> <commandOrUrl> [args...] --client-id <clientId> - OAuth client ID for HTTP/SSE servers
-- claude mcp add <name> <commandOrUrl> [args...] --client-secret - Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)
-- claude mcp add <name> <commandOrUrl> [args...] -e, --env <env...> - Set environment variables (e.g. -e KEY=value)
-- claude mcp add <name> <commandOrUrl> [args...] -H, --header <header...> - Set WebSocket headers (e.g. -H "X-Api-Key: abc123" -H "X-Custom: value")
-- claude mcp add <name> <commandOrUrl> [args...] -h, --help - Display help for command
-- claude mcp add <name> <commandOrUrl> [args...] -s, --scope <scope> - Configuration scope (local, user, or project)
-- claude mcp add <name> <commandOrUrl> [args...] -t, --transport <transport> - Transport type (stdio, sse, http). Defaults to stdio if not specified.
 - claude mcp add-from-claude-desktop -h, --help - Display help for command
 - claude mcp add-from-claude-desktop -s, --scope <scope> - Configuration scope (local, user, or project)
 - claude mcp add-json <name> <json> --client-secret - Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)
@@ -152,10 +146,10 @@
 - claude plugin disable [plugin] --cowork [hidden] - Use cowork_plugins directory
 - claude plugin disable [plugin] -a, --all - Disable all enabled plugins
 - claude plugin disable [plugin] -h, --help - Display help for command
-- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${qW.join(", ")} (default: auto-detect)
+- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${XW.join(", ")} (default: auto-detect)
 - claude plugin enable <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin enable <plugin> -h, --help - Display help for command
-- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${qW.join(", ")} (default: auto-detect)
+- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${XW.join(", ")} (default: auto-detect)
 - claude plugin install <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin install <plugin> -h, --help - Display help for command
 - claude plugin install <plugin> -s, --scope <scope> - Installation scope: user, project, or local
@@ -181,7 +175,7 @@
 - claude plugin uninstall <plugin> -s, --scope <scope> - Uninstall from scope: user, project, or local
 - claude plugin update <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin update <plugin> -h, --help - Display help for command
-- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${Hw6.join(", ")} (default: user)
+- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${bw6.join(", ")} (default: user)
 - claude plugin validate <path> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin validate <path> -h, --help - Display help for command
 - claude remote-control -h, --help - Display help for command
@@ -209,8 +203,7 @@
 - claude auto-mode config (Print the effective auto mode config as JSON: your settings where set, defaults otherwise)
 - claude auto-mode defaults (Print the default auto mode environment, allow, and deny rules as JSON)
 
-### mcp (8)
-- claude mcp add <name> <commandOrUrl> [args...] (Add an MCP server to Claude Code. Examples: # Add HTTP server: claude mcp add --transport http sentry https://mcp.sentry.dev/mcp # Add HTTP server with headers: claude mcp add --transport http corridor https://app.corridor.dev/api/mcp --header "Authorization: Bearer ..." # Add stdio server with environment variables: claude mcp add -e API_KEY=xxx my-server -- npx my-mcp-server # Add stdio server with subprocess flags: claude mcp add my-server -- my-command --some-flag arg1)
+### mcp (7)
 - claude mcp add-from-claude-desktop (Import MCP servers from Claude Desktop (Mac and WSL only))
 - claude mcp add-json <name> <json> (Add an MCP server (stdio or SSE) with a JSON string)
 - claude mcp get <name> (Get details about an MCP server)
@@ -319,7 +312,7 @@
 - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
 - /memory [inferred/medium]
 
-## Environment Variables (193)
+## Environment Variables (195)
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -513,8 +506,10 @@
 - CLAUDE_SKILL_DIR
 - CLAUDE_SONNET_4_6
 - CLAUDE_TMPDIR
+- CLAUDE_TRIGGERS_ORG
+- CLAUDE_TRIGGERS_TOKEN
 
-## Models (108)
+## Models (109)
 - claude-1.3
 - claude-1.3-100k
 - claude-2.0
@@ -550,6 +545,7 @@
 - claude-cli
 - claude-code-20250219
 - claude-code-action
+- claude-code-default
 - claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819
 - claude-code-feedback
 - claude-code-github-action
