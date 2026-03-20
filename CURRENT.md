@@ -1,11 +1,11 @@
-# Claude Code Inventory 2.1.80
+# Claude Code Inventory 2.1.81
 
 ## Summary
-- CLI commands: 34
+- CLI commands: 36
 - Hidden CLI commands: 1
-- Slash commands: 77
-- Environment variables: 195
-- Models: 109
+- Slash commands: 78
+- Environment variables: 194
+- Models: 110
 - SDK tools: 24
 - Settings: 0
 
@@ -26,6 +26,7 @@
 - claude --append-system-prompt <prompt> - Append a system prompt to the default system prompt
 - claude --append-system-prompt-file <file> [hidden] - Read system prompt from a file and append to the default system prompt
 - claude --available - Include available plugins from marketplaces (requires --json)
+- claude --bare - Minimal mode: skip hooks, LSP, plugin sync, attribution, auto-memory, background prefetches, keychain reads, and CLAUDE.md auto-discovery. Sets CLAUDE_CODE_SIMPLE=1. Anthropic auth is strictly ANTHROPIC_API_KEY or apiKeyHelper via --settings (OAuth and keychain are never read). 3P providers (Bedrock/Vertex/Foundry) use their own credentials. Skills still resolve via /skill-name. Explicitly provide context via: --system-prompt[-file], --append-system-prompt[-file], --add-dir (CLAUDE.md dirs), --mcp-config, --settings, --agents, --plugin-dir.
 - claude --betas <betas...> - Beta headers to include in API requests (API key users only)
 - claude --brief - Enable SendUserMessage tool for agent-to-user communication
 - claude --channels <servers...> [hidden] - MCP servers whose channel notifications (inbound push) should register this session. Space-separated server names.
@@ -37,7 +38,9 @@
 - claude --dangerously-load-development-channels <servers...> [hidden] - Load channel servers not on the approved allowlist. For local channel development only. Shows a confirmation dialog at startup.
 - claude --dangerously-skip-permissions - Bypass all permission checks. Recommended only for sandboxes with no internet access.
 - claude --debug-file <path> - Write debug logs to a specific file path (implicitly enables debug mode)
+- claude --deep-link-last-fetch <ms> [hidden] - FETCH_HEAD mtime in epoch ms, precomputed by the deep link trampoline
 - claude --deep-link-origin [hidden] - Signal that this session was launched from a deep link
+- claude --deep-link-repo <slug> [hidden] - Repo slug the deep link ?repo= parameter resolved to the current cwd
 - claude --disable-slash-commands - Disable all skills
 - claude --disallowedTools, --disallowed-tools <tools...> - Comma or space-separated list of tool names to deny (e.g. "Bash(git:*) Edit")
 - claude --effort <level> - Effort level for the current session (low, medium, high, max)
@@ -124,11 +127,21 @@
 - claude auth status -h, --help - Display help for command
 - claude auto-mode -h, --help - Display help for command
 - claude auto-mode config -h, --help - Display help for command
+- claude auto-mode critique --model <model> - Override which model is used
+- claude auto-mode critique -h, --help - Display help for command
 - claude auto-mode defaults -h, --help - Display help for command
 - claude doctor -h, --help - Display help for command
 - claude install [target] --force - Force installation even if already installed
 - claude install [target] -h, --help - Display help for command
 - claude mcp -h, --help - Display help for command
+- claude mcp add <name> <commandOrUrl> [args...] --callback-port <port> - Fixed port for OAuth callback (for servers requiring pre-registered redirect URIs)
+- claude mcp add <name> <commandOrUrl> [args...] --client-id <clientId> - OAuth client ID for HTTP/SSE servers
+- claude mcp add <name> <commandOrUrl> [args...] --client-secret - Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)
+- claude mcp add <name> <commandOrUrl> [args...] -e, --env <env...> - Set environment variables (e.g. -e KEY=value)
+- claude mcp add <name> <commandOrUrl> [args...] -H, --header <header...> - Set WebSocket headers (e.g. -H "X-Api-Key: abc123" -H "X-Custom: value")
+- claude mcp add <name> <commandOrUrl> [args...] -h, --help - Display help for command
+- claude mcp add <name> <commandOrUrl> [args...] -s, --scope <scope> - Configuration scope (local, user, or project)
+- claude mcp add <name> <commandOrUrl> [args...] -t, --transport <transport> - Transport type (stdio, sse, http). Defaults to stdio if not specified.
 - claude mcp add-from-claude-desktop -h, --help - Display help for command
 - claude mcp add-from-claude-desktop -s, --scope <scope> - Configuration scope (local, user, or project)
 - claude mcp add-json <name> <json> --client-secret - Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)
@@ -146,10 +159,10 @@
 - claude plugin disable [plugin] --cowork [hidden] - Use cowork_plugins directory
 - claude plugin disable [plugin] -a, --all - Disable all enabled plugins
 - claude plugin disable [plugin] -h, --help - Display help for command
-- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${XW.join(", ")} (default: auto-detect)
+- claude plugin disable [plugin] -s, --scope <scope> - Installation scope: ${vW.join(", ")} (default: auto-detect)
 - claude plugin enable <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin enable <plugin> -h, --help - Display help for command
-- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${XW.join(", ")} (default: auto-detect)
+- claude plugin enable <plugin> -s, --scope <scope> - Installation scope: ${vW.join(", ")} (default: auto-detect)
 - claude plugin install <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin install <plugin> -h, --help - Display help for command
 - claude plugin install <plugin> -s, --scope <scope> - Installation scope: user, project, or local
@@ -175,7 +188,7 @@
 - claude plugin uninstall <plugin> -s, --scope <scope> - Uninstall from scope: user, project, or local
 - claude plugin update <plugin> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin update <plugin> -h, --help - Display help for command
-- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${bw6.join(", ")} (default: user)
+- claude plugin update <plugin> -s, --scope <scope> - Installation scope: ${ow6.join(", ")} (default: user)
 - claude plugin validate <path> --cowork [hidden] - Use cowork_plugins directory
 - claude plugin validate <path> -h, --help - Display help for command
 - claude remote-control -h, --help - Display help for command
@@ -199,11 +212,13 @@
 - claude auth logout (Log out from your Anthropic account)
 - claude auth status (Show authentication status)
 
-### auto-mode (2)
+### auto-mode (3)
 - claude auto-mode config (Print the effective auto mode config as JSON: your settings where set, defaults otherwise)
+- claude auto-mode critique (Get AI feedback on your custom auto mode rules)
 - claude auto-mode defaults (Print the default auto mode environment, allow, and deny rules as JSON)
 
-### mcp (7)
+### mcp (8)
+- claude mcp add <name> <commandOrUrl> [args...] (Add an MCP server to Claude Code. Examples: # Add HTTP server: claude mcp add --transport http sentry https://mcp.sentry.dev/mcp # Add HTTP server with headers: claude mcp add --transport http corridor https://app.corridor.dev/api/mcp --header "Authorization: Bearer ..." # Add stdio server with environment variables: claude mcp add -e API_KEY=xxx my-server -- npx my-mcp-server # Add stdio server with subprocess flags: claude mcp add my-server -- my-command --some-flag arg1)
 - claude mcp add-from-claude-desktop (Import MCP servers from Claude Desktop (Mac and WSL only))
 - claude mcp add-json <name> <json> (Add an MCP server (stdio or SSE) with a JSON string)
 - claude mcp get <name> (Get details about an MCP server)
@@ -229,12 +244,12 @@
 - claude plugin marketplace update [name] (aliases: claude plugins marketplace update [name]; Update marketplace(s) from their source - updates all if no name specified)
 
 ## Slash Commands
-### Built-in (72)
+### Built-in (73)
 - /add-dir - Add a new working directory
 - /agents - Manage agent configurations
 - /branch - Create a branch of the current conversation at this point
 - /bridge-kick - Inject bridge failure states for manual recovery testing
-- /brief - Toggle brief-only mode
+- /brief
 - /btw - Ask a quick side question without interrupting the main conversation
 - /chrome - Claude in Chrome (Beta) settings
 - /clear - Clear conversation history and free up context
@@ -283,6 +298,7 @@
 - /remote-env
 - /rename - Rename the current conversation
 - /resume - Resume a previous conversation
+- /review - Review a pull request
 - /rewind - Restore the code and/or conversation to a previous point
 - /sandbox
 - /session - Show remote session URL and QR code
@@ -303,16 +319,16 @@
 - /voice - Toggle voice mode
 - /web-setup - Setup Claude Code on the web (requires connecting your GitHub account)
 
-### Plugin-backed (3)
-- /code-review - Review a pull request
+### Plugin-backed (2)
 - /pr-comments - Get comments from a GitHub pull request
 - /security-review - Complete a security review of the pending changes on the current branch
 
-### Inferred (2)
+### Inferred (3)
+- /dream [inferred/low]
 - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
 - /memory [inferred/medium]
 
-## Environment Variables (195)
+## Environment Variables (194)
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -484,6 +500,7 @@
 - CLAUDE_CODE_USE_COWORK_PLUGINS
 - CLAUDE_CODE_USE_FOUNDRY
 - CLAUDE_CODE_USE_NATIVE_FILE_SEARCH
+- CLAUDE_CODE_USE_POWERSHELL_TOOL
 - CLAUDE_CODE_USE_VERTEX
 - CLAUDE_CODE_WEBSOCKET_AUTH_FILE_DESCRIPTOR
 - CLAUDE_CODE_WORKER_EPOCH
@@ -506,10 +523,8 @@
 - CLAUDE_SKILL_DIR
 - CLAUDE_SONNET_4_6
 - CLAUDE_TMPDIR
-- CLAUDE_TRIGGERS_ORG
-- CLAUDE_TRIGGERS_TOKEN
 
-## Models (109)
+## Models (110)
 - claude-1.3
 - claude-1.3-100k
 - claude-2.0
@@ -545,6 +560,7 @@
 - claude-cli
 - claude-code-20250219
 - claude-code-action
+- claude-code-client-metadata
 - claude-code-default
 - claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819
 - claude-code-feedback
