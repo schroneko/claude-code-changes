@@ -1,7 +1,6 @@
 # Claude Code Inventory 2.1.84
 
 ## Summary
-
 - CLI commands: 0
 - Hidden CLI commands: 0
 - Slash commands: 83
@@ -11,13 +10,10 @@
 - Settings: 0
 
 ## CLI Commands
-
 ### Arguments
-
 - claude [prompt] - Your prompt
 
 ### Options
-
 - claude --add-dir <directories...> - Additional directories to allow tool access to
 - claude --advisor <model> [hidden] - Enable the server-side advisor tool with the specified model (alias or full ID).
 - claude --agent <agent> - Agent for the current session. Overrides the 'agent' setting.
@@ -27,7 +23,7 @@
 - claude --agent-type <type> [hidden] - Custom agent type for this teammate
 - claude --agents <json> - JSON object defining custom agents (e.g. '{"reviewer": {"description": "Reviews code", "prompt": "You are a code reviewer"}}')
 - claude --allow-dangerously-skip-permissions - Enable bypassing all permission checks as an option, without it being enabled by default. Recommended only for sandboxes with no internet access.
-- claude --allowedTools, --allowed-tools <tools...> - Comma or space-separated list of tool names to allow (e.g. "Bash(git:\*) Edit")
+- claude --allowedTools, --allowed-tools <tools...> - Comma or space-separated list of tool names to allow (e.g. "Bash(git:*) Edit")
 - claude --append-system-prompt <prompt> - Append a system prompt to the default system prompt
 - claude --append-system-prompt-file <file> [hidden] - Read system prompt from a file and append to the default system prompt
 - claude --bare - Minimal mode: skip hooks, LSP, plugin sync, attribution, auto-memory, background prefetches, keychain reads, and CLAUDE.md auto-discovery. Sets CLAUDE_CODE_SIMPLE=1. Anthropic auth is strictly ANTHROPIC_API_KEY or apiKeyHelper via --settings (OAuth and keychain are never read). 3P providers (Bedrock/Vertex/Foundry) use their own credentials. Skills still resolve via /skill-name. Explicitly provide context via: --system-prompt[-file], --append-system-prompt[-file], --add-dir (CLAUDE.md dirs), --mcp-config, --settings, --agents, --plugin-dir.
@@ -42,7 +38,7 @@
 - claude --deep-link-origin [hidden] - Signal that this session was launched from a deep link
 - claude --deep-link-repo <slug> [hidden] - Repo slug the deep link ?repo= parameter resolved to the current cwd
 - claude --disable-slash-commands - Disable all skills
-- claude --disallowedTools, --disallowed-tools <tools...> - Comma or space-separated list of tool names to deny (e.g. "Bash(git:\*) Edit")
+- claude --disallowedTools, --disallowed-tools <tools...> - Comma or space-separated list of tool names to deny (e.g. "Bash(git:*) Edit")
 - claude --effort <level> - Effort level for the current session (low, medium, high, max)
 - claude --enable-auth-status [hidden] - Enable auth status messages in SDK mode
 - claude --enable-auto-mode [hidden] - Opt in to auto mode
@@ -105,11 +101,8 @@
 - claude -w, --worktree [name] - Create a new git worktree for this session (optionally specify a name)
 
 - none
-
 ## Slash Commands
-
 ### Built-in (79)
-
 - /add-dir - Add a new working directory
 - /advisor - Configure the advisor model
 - /agents - Manage agent configurations
@@ -191,17 +184,14 @@
 - /web-setup - Setup Claude Code on the web (requires connecting your GitHub account)
 
 ### Plugin-backed (2)
-
 - /pr-comments - Get comments from a GitHub pull request
 - /security-review - Complete a security review of the pending changes on the current branch
 
 ### Inferred (2)
-
 - /dream [inferred/low]
 - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
 
 ## Environment Variables (207)
-
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -399,7 +389,7 @@
 - CLAUDE_HAIKU_4_5
 - CLAUDE_OPUS_4_6
 - CLAUDE_PLUGIN_DATA
-- CLAUDE*PLUGIN_OPTION*
+- CLAUDE_PLUGIN_OPTION_
 - CLAUDE_PLUGIN_ROOT
 - CLAUDE_PROJECT_DIR
 - CLAUDE_REPL_MODE
@@ -411,7 +401,6 @@
 - CLAUDE_TMPDIR
 
 ## Models (115)
-
 - claude-1.3
 - claude-1.3-100k
 - claude-2.0
@@ -529,7 +518,6 @@
 - claude-vscode
 
 ## SDK Tools (24)
-
 - AgentInput: description, prompt, subagent_type?, model?, run_in_background?
 - AskUserQuestionInput: questions, question, header, options, label, description, preview?
 - BashInput: command, timeout?
@@ -556,5 +544,4 @@
 - WebSearchInput: query, allowed_domains?, blocked_domains?
 
 ## Settings (0)
-
 - none

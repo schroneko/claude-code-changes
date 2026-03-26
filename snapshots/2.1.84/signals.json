@@ -705,62 +705,192 @@
   ],
   "slashCommands": [
     {
+      "name": "/add-dir",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Add a new working directory"
+    },
+    {
+      "name": "/advisor",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Configure the advisor model"
+    },
+    {
       "name": "/agents",
       "sources": [
+        "objectNameFallback",
         "status-hint",
         "tips"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage agent configurations"
+    },
+    {
+      "name": "/branch",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Create a branch of the current conversation at this point"
+    },
+    {
+      "name": "/bridge-kick",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Inject bridge failure states for manual recovery testing"
+    },
+    {
+      "name": "/brief",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle brief-only mode"
     },
     {
       "name": "/btw",
       "sources": [
+        "objectNameFallback",
         "usage"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Ask a quick side question without interrupting the main conversation"
     },
     {
       "name": "/chrome",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Claude in Chrome (Beta) settings"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Clear conversation history and free up context"
+    },
+    {
+      "name": "/color",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set the prompt bar color for this session"
+    },
+    {
+      "name": "/commit",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Create a git commit"
+    },
+    {
+      "name": "/commit-push-pr",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Commit, push, and open a PR"
     },
     {
       "name": "/compact",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Clear conversation history but keep a summary in context. Optional: /compact [instructions for summarization]"
     },
     {
       "name": "/config",
       "sources": [
+        "objectNameFallback",
         "tips"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Open config panel"
+    },
+    {
+      "name": "/context",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show current context usage"
     },
     {
       "name": "/copy",
       "sources": [
+        "objectNameFallback",
         "usage"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Copy Claude's last response to clipboard (or /copy N for the Nth-latest)"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show the total cost and duration of the current session"
+    },
+    {
+      "name": "/desktop",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Continue the current session in Claude Desktop"
+    },
+    {
+      "name": "/diff",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "View uncommitted changes and per-turn diffs"
     },
     {
       "name": "/doctor",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred",
-      "description": "View uncommitted changes and per-turn diffs"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Diagnose and verify your Claude Code installation and settings"
     },
     {
       "name": "/dream",
@@ -773,67 +903,179 @@
     {
       "name": "/effort",
       "sources": [
+        "objectNameFallback",
         "status-hint",
         "usage"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set effort level for model usage"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Exit the REPL"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Export the current conversation to a file or clipboard"
     },
     {
       "name": "/extra-usage",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Configure extra usage to keep working when limits are hit"
     },
     {
       "name": "/fast",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin"
     },
     {
       "name": "/feedback",
       "sources": [
+        "objectNameFallback",
         "tips"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Submit feedback about Claude Code"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "List all files currently in context"
+    },
+    {
+      "name": "/heapdump",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Dump the JS heap to ~/Desktop"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show help and available commands"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "View hook configurations for tool events"
     },
     {
       "name": "/ide",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage IDE integrations and show status"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init-verifiers",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Create verifier skill(s) for automated verification of code changes"
+    },
+    {
+      "name": "/insights",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Generate a report analyzing your Claude Code sessions"
     },
     {
       "name": "/install-github-app",
       "sources": [
+        "objectNameFallback",
         "tips"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set up Claude GitHub Actions for a repository"
     },
     {
       "name": "/install-slack-app",
       "sources": [
+        "objectNameFallback",
         "tips"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Install the Claude Slack app"
+    },
+    {
+      "name": "/keybindings",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Open or create your keybindings configuration file"
     },
     {
       "name": "/login",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Sign out from your Anthropic account"
     },
     {
       "name": "/loop",
@@ -847,54 +1089,91 @@
     {
       "name": "/mcp",
       "sources": [
+        "objectNameFallback",
         "status-hint",
         "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage MCP servers"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "objectNameFallback",
+        "status-hint",
+        "tips"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Edit Claude memory files"
+    },
+    {
+      "name": "/mobile",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show QR code to download the Claude mobile app"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "objectNameFallback"
       ],
       "confidence": "high",
       "kind": "builtin"
     },
     {
-      "name": "/memory",
+      "name": "/output-style",
       "sources": [
-        "status-hint",
-        "tips"
+        "objectNameFallback"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Deprecated: use /config to change output style"
     },
     {
       "name": "/passes",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin"
     },
     {
       "name": "/permissions",
       "sources": [
+        "objectNameFallback",
         "status-hint",
         "tips"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage allow & deny tool permission rules"
     },
     {
       "name": "/plan",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Enable plan mode or view the current session plan"
     },
     {
       "name": "/plugin",
       "sources": [
+        "objectNameFallback",
         "status-hint",
         "usage"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage Claude Code plugins"
     },
     {
       "name": "/pr-comments",
@@ -906,28 +1185,105 @@
       "description": "Get comments from a GitHub pull request"
     },
     {
+      "name": "/privacy-settings",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "View and update your privacy settings"
+    },
+    {
+      "name": "/rate-limit-options",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show options when rate limit is reached"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "View release notes"
+    },
+    {
+      "name": "/reload-plugins",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Activate pending plugin changes in the current session"
+    },
+    {
       "name": "/remote-control",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Connect this terminal for remote-control sessions"
+    },
+    {
+      "name": "/remote-env",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Configure the default remote environment for teleport sessions"
     },
     {
       "name": "/rename",
       "sources": [
+        "objectNameFallback",
         "usage"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Rename the current conversation"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Resume a previous conversation"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Review a pull request"
+    },
+    {
+      "name": "/rewind",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Restore the code and/or conversation to a previous point"
     },
     {
       "name": "/sandbox",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin"
     },
     {
       "name": "/security-review",
@@ -939,60 +1295,188 @@
       "description": "Complete a security review of the pending changes on the current branch"
     },
     {
+      "name": "/session",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show remote session URL and QR code"
+    },
+    {
       "name": "/skills",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "List available skills"
+    },
+    {
+      "name": "/stats",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show your Claude Code usage statistics and activity"
     },
     {
       "name": "/status",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show Claude Code status including version, model, account, API connectivity, and tool statuses"
     },
     {
       "name": "/statusline",
       "sources": [
+        "objectNameFallback",
         "tips"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set up Claude Code's status line UI"
+    },
+    {
+      "name": "/stickers",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Order Claude Code stickers"
     },
     {
       "name": "/tag",
       "sources": [
+        "objectNameFallback",
         "usage"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle a searchable tag on the current session"
+    },
+    {
+      "name": "/tasks",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "List and manage background tasks"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
     },
     {
       "name": "/theme",
       "sources": [
+        "objectNameFallback",
         "tips"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Change the theme"
+    },
+    {
+      "name": "/think-back",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Your 2025 Claude Code Year in Review"
+    },
+    {
+      "name": "/thinkback-play",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Play the thinkback animation"
     },
     {
       "name": "/ultraplan",
       "sources": [
+        "objectNameFallback",
         "usage"
       ],
-      "confidence": "medium",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ultrareview",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Upgrade to Max for higher rate limits and more Opus"
+    },
+    {
+      "name": "/usage",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show plan usage limits"
+    },
+    {
+      "name": "/version",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Print the version this session is running (not what autoupdate downloaded)"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle between Vim and Normal editing modes"
     },
     {
       "name": "/voice",
       "sources": [
+        "objectNameFallback",
         "status-hint"
       ],
-      "confidence": "low",
-      "kind": "inferred"
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle voice mode"
+    },
+    {
+      "name": "/web-setup",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Setup Claude Code on the web (requires connecting your GitHub account)"
     }
   ],
   "tools": {
