@@ -1,15 +1,18 @@
 import { extractCliArguments, extractCliCommands, extractCliOptions } from "./cli-commands.js";
+import ts from "typescript";
 import type { ExtractedSignals, SlashCommand, SnapshotSource, ToolDefinition } from "./types.js";
 
 function extractModels(cliContent: string): string[] {
   const modelPattern = /claude-[a-z0-9.-]+/g;
   const matches = cliContent.match(modelPattern) || [];
-  return [...new Set(matches)].filter((model) => {
-    if (model === "claude-code") return false;
-    if (model.startsWith("claude-cli-")) return false;
-    if (model.endsWith(".") || model.endsWith("-")) return false;
-    return model.length >= 10;
-  }).sort();
+  return [...new Set(matches)]
+    .filter((model) => {
+      if (model === "claude-code") return false;
+      if (model.startsWith("claude-cli-")) return false;
+      if (model.endsWith(".") || model.endsWith("-")) return false;
+      return model.length >= 10;
+    })
+    .sort();
 }
 
 function extractEnvVars(cliContent: string): string[] {
@@ -83,7 +86,10 @@ function findNearestDescription(cliContent: string, index: number): string | und
   return last ? last[2].replace(/\s+/g, " ").trim() : undefined;
 }
 
-function upgradeKind(current: SlashCommand["kind"] | undefined, next: SlashCommand["kind"]): SlashCommand["kind"] {
+function upgradeKind(
+  current: SlashCommand["kind"] | undefined,
+  next: SlashCommand["kind"],
+): SlashCommand["kind"] {
   const priority: Record<SlashCommand["kind"], number> = {
     plugin: 3,
     builtin: 2,
@@ -95,12 +101,116 @@ function upgradeKind(current: SlashCommand["kind"] | undefined, next: SlashComma
   return priority[next] > priority[current] ? next : current;
 }
 
+function getObjectProperty(
+  node: ts.ObjectLiteralExpression,
+  propertyName: string,
+): ts.ObjectLiteralElementLike | undefined {
+  return node.properties.find((property) => {
+    if (!("name" in property) || !property.name) {
+      return false;
+    }
+    if (ts.isIdentifier(property.name) || ts.isStringLiteral(property.name)) {
+      return property.name.text === propertyName;
+    }
+    return false;
+  });
+}
+
+function hasObjectProperty(node: ts.ObjectLiteralExpression, propertyName: string): boolean {
+  return getObjectProperty(node, propertyName) !== undefined;
+}
+
+function getStringInitializer(node: ts.Expression): string | undefined {
+  if (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) {
+    return node.text;
+  }
+  return undefined;
+}
+
+function getObjectStringProperty(
+  node: ts.ObjectLiteralExpression,
+  propertyName: string,
+): string | undefined {
+  const property = getObjectProperty(node, propertyName);
+  if (!property) {
+    return undefined;
+  }
+  if (ts.isPropertyAssignment(property)) {
+    return getStringInitializer(property.initializer);
+  }
+  return undefined;
+}
+
+function getObjectBooleanProperty(
+  node: ts.ObjectLiteralExpression,
+  propertyName: string,
+): boolean | undefined {
+  const property = getObjectProperty(node, propertyName);
+  if (!property || !ts.isPropertyAssignment(property)) {
+    return undefined;
+  }
+  if (property.initializer.kind === ts.SyntaxKind.TrueKeyword) {
+    return true;
+  }
+  if (property.initializer.kind === ts.SyntaxKind.FalseKeyword) {
+    return false;
+  }
+  return undefined;
+}
+
+function extractFallbackSlashCommands(cliContent: string): SlashCommand[] {
+  const sourceFile = ts.createSourceFile(
+    "cli.js",
+    cliContent,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.JS,
+  );
+  const commands = new Map<string, SlashCommand>();
+
+  function visit(node: ts.Node): void {
+    if (ts.isObjectLiteralExpression(node)) {
+      const name = getObjectStringProperty(node, "name");
+      const userFacingName = hasObjectProperty(node, "userFacingName");
+      const userInvocable = getObjectBooleanProperty(node, "userInvocable");
+      const source = getObjectStringProperty(node, "source");
+      const hasLoad = hasObjectProperty(node, "load");
+      const hasDescription = hasObjectProperty(node, "description");
+      const hasProgressMessage = hasObjectProperty(node, "progressMessage");
+      if (
+        name &&
+        name !== "stub" &&
+        /^[a-z][a-z0-9-]*$/.test(name) &&
+        !userFacingName &&
+        userInvocable !== true &&
+        (hasLoad || source === "builtin") &&
+        (hasDescription || hasProgressMessage)
+      ) {
+        commands.set(`/${name}`, {
+          name: `/${name}`,
+          sources: ["objectNameFallback"],
+          confidence: "high",
+          kind: "builtin",
+          description: getObjectStringProperty(node, "description"),
+        });
+      }
+    }
+    ts.forEachChild(node, visit);
+  }
+
+  visit(sourceFile);
+  return [...commands.values()].sort((a, b) => a.name.localeCompare(b.name));
+}
+
 function extractSlashCommands(cliContent: string): SlashCommand[] {
-  const commandSources = new Map<string, {
-    sources: Set<string>;
-    kind?: SlashCommand["kind"];
-    description?: string;
-  }>();
+  const commandSources = new Map<
+    string,
+    {
+      sources: Set<string>;
+      kind?: SlashCommand["kind"];
+      description?: string;
+    }
+  >();
   const patterns: Array<{
     label: string;
     regex: RegExp;
@@ -171,6 +281,25 @@ function extractSlashCommands(cliContent: string): SlashCommand[] {
     }
   }
 
+  for (const fallbackCommand of extractFallbackSlashCommands(cliContent)) {
+    if (!commandSources.has(fallbackCommand.name)) {
+      commandSources.set(fallbackCommand.name, {
+        sources: new Set(fallbackCommand.sources),
+        kind: fallbackCommand.kind,
+        description: fallbackCommand.description,
+      });
+      continue;
+    }
+    const entry = commandSources.get(fallbackCommand.name)!;
+    for (const source of fallbackCommand.sources) {
+      entry.sources.add(source);
+    }
+    entry.kind = upgradeKind(entry.kind, fallbackCommand.kind);
+    if (fallbackCommand.description) {
+      entry.description = fallbackCommand.description;
+    }
+  }
+
   return [...commandSources.entries()]
     .map(([name, entry]) => {
       const sources = [...entry.sources].sort();
@@ -178,7 +307,8 @@ function extractSlashCommands(cliContent: string): SlashCommand[] {
       if (
         sources.includes("userFacingName") ||
         sources.includes("userFacingNameArrow") ||
-        sources.includes("pluginCommand")
+        sources.includes("pluginCommand") ||
+        sources.includes("objectNameFallback")
       ) {
         confidence = "high";
       } else if (
