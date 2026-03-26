@@ -1,104 +1,20 @@
-# Claude Code Inventory 2.1.84
+# Claude Code Inventory 2.1.85
 
 ## Summary
 - CLI commands: 0
 - Hidden CLI commands: 0
 - Slash commands: 83
-- Environment variables: 207
+- Environment variables: 213
 - Models: 115
-- SDK tools: 24
+- SDK tools: 20
 - Settings: 0
 
 ## CLI Commands
 ### Arguments
-- claude [prompt] - Your prompt
+- none
 
 ### Options
-- claude --add-dir <directories...> - Additional directories to allow tool access to
-- claude --advisor <model> [hidden] - Enable the server-side advisor tool with the specified model (alias or full ID).
-- claude --agent <agent> - Agent for the current session. Overrides the 'agent' setting.
-- claude --agent-color <color> [hidden] - Teammate UI color
-- claude --agent-id <id> [hidden] - Teammate agent ID
-- claude --agent-name <name> [hidden] - Teammate display name
-- claude --agent-type <type> [hidden] - Custom agent type for this teammate
-- claude --agents <json> - JSON object defining custom agents (e.g. '{"reviewer": {"description": "Reviews code", "prompt": "You are a code reviewer"}}')
-- claude --allow-dangerously-skip-permissions - Enable bypassing all permission checks as an option, without it being enabled by default. Recommended only for sandboxes with no internet access.
-- claude --allowedTools, --allowed-tools <tools...> - Comma or space-separated list of tool names to allow (e.g. "Bash(git:*) Edit")
-- claude --append-system-prompt <prompt> - Append a system prompt to the default system prompt
-- claude --append-system-prompt-file <file> [hidden] - Read system prompt from a file and append to the default system prompt
-- claude --bare - Minimal mode: skip hooks, LSP, plugin sync, attribution, auto-memory, background prefetches, keychain reads, and CLAUDE.md auto-discovery. Sets CLAUDE_CODE_SIMPLE=1. Anthropic auth is strictly ANTHROPIC_API_KEY or apiKeyHelper via --settings (OAuth and keychain are never read). 3P providers (Bedrock/Vertex/Foundry) use their own credentials. Skills still resolve via /skill-name. Explicitly provide context via: --system-prompt[-file], --append-system-prompt[-file], --add-dir (CLAUDE.md dirs), --mcp-config, --settings, --agents, --plugin-dir.
-- claude --betas <betas...> - Beta headers to include in API requests (API key users only)
-- claude --brief - Enable SendUserMessage tool for agent-to-user communication
-- claude --channels <servers...> [hidden] - MCP servers whose channel notifications (inbound push) should register this session. Space-separated server names.
-- claude --chrome - Enable Claude in Chrome integration
-- claude --dangerously-load-development-channels <servers...> [hidden] - Load channel servers not on the approved allowlist. For local channel development only. Shows a confirmation dialog at startup.
-- claude --dangerously-skip-permissions - Bypass all permission checks. Recommended only for sandboxes with no internet access.
-- claude --debug-file <path> - Write debug logs to a specific file path (implicitly enables debug mode)
-- claude --deep-link-last-fetch <ms> [hidden] - FETCH_HEAD mtime in epoch ms, precomputed by the deep link trampoline
-- claude --deep-link-origin [hidden] - Signal that this session was launched from a deep link
-- claude --deep-link-repo <slug> [hidden] - Repo slug the deep link ?repo= parameter resolved to the current cwd
-- claude --disable-slash-commands - Disable all skills
-- claude --disallowedTools, --disallowed-tools <tools...> - Comma or space-separated list of tool names to deny (e.g. "Bash(git:*) Edit")
-- claude --effort <level> - Effort level for the current session (low, medium, high, max)
-- claude --enable-auth-status [hidden] - Enable auth status messages in SDK mode
-- claude --enable-auto-mode [hidden] - Opt in to auto mode
-- claude --fallback-model <model> - Enable automatic fallback to specified model when default model is overloaded (only works with --print)
-- claude --file <specs...> - File resources to download at startup. Format: file_id:relative_path (e.g., --file file_abc:doc.txt file_def:img.png)
-- claude --fork-session - When resuming, create a new session ID instead of reusing the original (use with --resume or --continue)
-- claude --from-pr [value] - Resume a session linked to a PR by PR number/URL, or open interactive picker with optional search term
-- claude --ide - Automatically connect to IDE on startup if exactly one valid IDE is available
-- claude --include-partial-messages - Include partial message chunks as they arrive (only works with --print and --output-format=stream-json)
-- claude --init [hidden] - Run Setup hooks with init trigger, then continue
-- claude --init-only [hidden] - Run Setup and SessionStart:startup hooks, then exit
-- claude --input-format <format> - Input format (only works with --print): "text" (default), or "stream-json" (realtime streaming input)
-- claude --json-schema <schema> - JSON Schema for structured output validation. Example: {"type":"object","properties":{"name":{"type":"string"}},"required":["name"]}
-- claude --maintenance [hidden] - Run Setup hooks with maintenance trigger, then continue
-- claude --max-budget-usd <amount> - Maximum dollar amount to spend on API calls (only works with --print)
-- claude --max-thinking-tokens <tokens> [hidden] - [DEPRECATED. Use --thinking instead for newer models] Maximum number of thinking tokens (only works with --print)
-- claude --max-turns <turns> [hidden] - Maximum number of agentic turns in non-interactive mode. This will early exit the conversation after the specified number of turns. (only works with --print)
-- claude --mcp-config <configs...> - Load MCP servers from JSON files or strings (space-separated)
-- claude --mcp-debug - [DEPRECATED. Use --debug instead] Enable MCP debug mode (shows MCP server errors)
-- claude --model <model> - Model for the current session. Provide an alias for the latest model (e.g. 'sonnet' or 'opus') or a model's full name (e.g. 'claude-sonnet-4-6').
-- claude --no-chrome - Disable Claude in Chrome integration
-- claude --no-session-persistence - Disable session persistence - sessions will not be saved to disk and cannot be resumed (only works with --print)
-- claude --output-format <format> - Output format (only works with --print): "text" (default), "json" (single result), or "stream-json" (realtime streaming)
-- claude --parent-session-id <id> [hidden] - Parent session ID for analytics correlation
-- claude --permission-mode <mode> - Permission mode to use for the session
-- claude --permission-prompt-tool <tool> [hidden] - MCP tool to use for permission prompts (only works with --print)
-- claude --plan-mode-required [hidden] - Require plan mode before implementation
-- claude --plugin-dir <path> - Load plugins from a directory for this session only (repeatable: --plugin-dir A --plugin-dir B)
-- claude --prefill <text> [hidden] - Pre-fill the prompt input with text without submitting it
-- claude --rc [name] [hidden] - Alias for --remote-control
-- claude --remote [description] [hidden] - Create a remote session with the given description
-- claude --remote-control [name] [hidden] - Start an interactive session with Remote Control enabled (optionally named)
-- claude --replay-user-messages - Re-emit user messages from stdin back on stdout for acknowledgment (only works with --input-format=stream-json and --output-format=stream-json)
-- claude --resume-session-at <message id> [hidden] - When resuming, only messages up to and including the assistant message with <message.id> (use with --resume in print mode)
-- claude --rewind-files <user-message-id> [hidden] - Restore files to state at the specified user message and exit (requires --resume)
-- claude --sdk-url <url> [hidden] - Use remote WebSocket endpoint for SDK I/O streaming (only with -p and stream-json format)
-- claude --session-id <uuid> - Use a specific session ID for the conversation (must be a valid UUID)
-- claude --setting-sources <sources> - Comma-separated list of setting sources to load (user, project, local).
-- claude --settings <file-or-json> - Path to a settings JSON file or a JSON string to load additional settings from
-- claude --strict-mcp-config - Only use MCP servers from --mcp-config, ignoring all other MCP configurations
-- claude --system-prompt <prompt> - System prompt to use for the session
-- claude --system-prompt-file <file> [hidden] - Read system prompt from a file
-- claude --task-budget <tokens> [hidden] - API-side task budget in tokens (output_config.task_budget)
-- claude --team-name <name> [hidden] - Team name for swarm coordination
-- claude --teammate-mode <mode> [hidden] - How to spawn teammates: "tmux", "in-process", or "auto"
-- claude --teleport [session] [hidden] - Resume a teleport session, optionally specify session ID
-- claude --thinking <mode> [hidden] - Thinking mode: enabled (equivalent to adaptive), disabled
-- claude --tmux - Create a tmux session for the worktree (requires --worktree). Uses iTerm2 native panes when available; use --tmux=classic for traditional tmux.
-- claude --tools <tools...> - Specify the list of available tools from the built-in set. Use "" to disable all tools, "default" to use all tools, or specify tool names (e.g. "Bash,Edit,Read").
-- claude --verbose - Override verbose mode setting from config
-- claude --workload <tag> [hidden] - Workload tag for billing-header attribution (cc_workload). Process-scoped; set by SDK daemon callers that spawn subprocesses for cron work. (only works with --print)
-- claude -c, --continue - Continue the most recent conversation in the current directory
-- claude -d, --debug [filter] - Enable debug mode with optional category filtering (e.g., "api,hooks" or "!1p,!file")
-- claude -d2e, --debug-to-stderr [hidden] - Enable debug mode (to stderr)
-- claude -h, --help - Display help for command
-- claude -n, --name <name> - Set a display name for this session (shown in /resume and terminal title)
-- claude -p, --print - Print response and exit (useful for pipes). Note: The workspace trust dialog is skipped when Claude is run with the -p mode. Only use this flag in directories you trust.
-- claude -r, --resume [value] - Resume a conversation by session ID, or open interactive picker with optional search term
-- claude -v, --version - Output the version number
-- claude -w, --worktree [name] - Create a new git worktree for this session (optionally specify a name)
+- none
 
 - none
 ## Slash Commands
@@ -191,7 +107,7 @@
 - /dream [inferred/low]
 - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
 
-## Environment Variables (207)
+## Environment Variables (213)
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -232,6 +148,7 @@
 - CLAUDE_CODE_CLIENT_CERT
 - CLAUDE_CODE_CLIENT_KEY
 - CLAUDE_CODE_CLIENT_KEY_PASSPHRASE
+- CLAUDE_CODE_COMMIT_LOG
 - CLAUDE_CODE_CONTAINER_ID
 - CLAUDE_CODE_CUSTOM_OAUTH_URL
 - CLAUDE_CODE_DATADOG_FLUSH_INTERVAL_MS
@@ -306,6 +223,8 @@
 - CLAUDE_CODE_MAX_RETRIES
 - CLAUDE_CODE_MAX_TOOL_USE_CONCURRENCY
 - CLAUDE_CODE_MCP_INSTR_DELTA
+- CLAUDE_CODE_MCP_SERVER_NAME
+- CLAUDE_CODE_MCP_SERVER_URL
 - CLAUDE_CODE_NEW_INIT
 - CLAUDE_CODE_OAUTH_CLIENT_ID
 - CLAUDE_CODE_OAUTH_REFRESH_TOKEN
@@ -330,6 +249,7 @@
 - CLAUDE_CODE_PROFILE_STARTUP
 - CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST
 - CLAUDE_CODE_PROXY_RESOLVES_HOSTS
+- CLAUDE_CODE_PWSH_PARSE_TIMEOUT_MS
 - CLAUDE_CODE_QUESTION_PREVIEW_FORMAT
 - CLAUDE_CODE_REMOTE
 - CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE
@@ -387,6 +307,8 @@
 - CLAUDE_ENV_FILE
 - CLAUDE_FORCE_DISPLAY_SURVEY
 - CLAUDE_HAIKU_4_5
+- CLAUDE_LOCAL_OAUTH_API_BASE
+- CLAUDE_LOCAL_OAUTH_APPS_BASE
 - CLAUDE_OPUS_4_6
 - CLAUDE_PLUGIN_DATA
 - CLAUDE_PLUGIN_OPTION_
@@ -517,7 +439,7 @@
 - claude-swarm
 - claude-vscode
 
-## SDK Tools (24)
+## SDK Tools (20)
 - AgentInput: description, prompt, subagent_type?, model?, run_in_background?
 - AskUserQuestionInput: questions, question, header, options, label, description, preview?
 - BashInput: command, timeout?
@@ -533,13 +455,9 @@
 - ListMcpResourcesInput: server?
 - NotebookEditInput: notebook_path, cell_id?, new_source, cell_type?, edit_mode?
 - ReadMcpResourceInput: server, uri
-- SubscribeMcpResourceInput: server, uri, reason?
-- SubscribePollingInput: type, server, toolName?, arguments?
 - TaskOutputInput: task_id, block, timeout
 - TaskStopInput: task_id?, shell_id?
 - TodoWriteInput: todos, content, status, activeForm
-- UnsubscribeMcpResourceInput: server?, uri?, subscriptionId?
-- UnsubscribePollingInput: subscriptionId?, server?, target?
 - WebFetchInput: url, prompt
 - WebSearchInput: query, allowed_domains?, blocked_domains?
 
