@@ -1,0 +1,158 @@
+[
+  {
+    "path": "bun.lock",
+    "kind": "text",
+    "size": 596,
+    "sha256": "969e57d2d8dea5eb2fd7f8e63b6eecbc195f9b5577a91e8ab9a7cc19e4eaccdd"
+  },
+  {
+    "path": "cli.js",
+    "kind": "text",
+    "size": 18188403,
+    "sha256": "f2557149495ec1db4fc86b98ce523eac41388999414616219f0ca4fc21e230e5"
+  },
+  {
+    "path": "LICENSE.md",
+    "kind": "text",
+    "size": 147,
+    "sha256": "8ce94b9478bb9868f9641f818e06cd722fbe55d4c22e2d2ed11971b20146173a"
+  },
+  {
+    "path": "package.json",
+    "kind": "text",
+    "size": 1242,
+    "sha256": "38404a93c04da0a7c492d7c8e0e744a2ee517d36aba7b465195ec6fac94ebd6a"
+  },
+  {
+    "path": "README.md",
+    "kind": "text",
+    "size": 2037,
+    "sha256": "9c121f2b01db7f62e3b75e400c8846857b4c32976083ae5a7b2cf6939876c17e"
+  },
+  {
+    "path": "resvg.wasm",
+    "kind": "binary",
+    "size": 2478606,
+    "sha256": "22bf6e9f9a100d972da0411a69c5ba504367fc1fa87b3b64e3f35e53926d2d70"
+  },
+  {
+    "path": "sdk-tools.d.ts",
+    "kind": "text",
+    "size": 119287,
+    "sha256": "715a1e99a795eb717ee1029937bf6a05654ce213b7093ea206b7d1e831200313"
+  },
+  {
+    "path": "vendor/audio-capture/arm64-darwin/audio-capture.node",
+    "kind": "binary",
+    "size": 439088,
+    "sha256": "5009f99e456f0b5d48a9fc7020de1f792a4f6e9ae9effcefa41ef3d05d6d49f8"
+  },
+  {
+    "path": "vendor/audio-capture/arm64-linux/audio-capture.node",
+    "kind": "binary",
+    "size": 458752,
+    "sha256": "bf339f968e599260b2a9972c828892680955da2e92403c8e7f9bdd6f2918f90f"
+  },
+  {
+    "path": "vendor/audio-capture/arm64-win32/audio-capture.node",
+    "kind": "binary",
+    "size": 447488,
+    "sha256": "9c1d4193a5a18db99f1836180ac14fa4187412e1f44b67da6dee994a97aadab5"
+  },
+  {
+    "path": "vendor/audio-capture/x64-darwin/audio-capture.node",
+    "kind": "binary",
+    "size": 431336,
+    "sha256": "3d57f855c7fe8c0ef66655a78aae67efed72325f263013c555300fcbf7a7ecea"
+  },
+  {
+    "path": "vendor/audio-capture/x64-linux/audio-capture.node",
+    "kind": "binary",
+    "size": 494520,
+    "sha256": "df61de540ba59a2d0bdef5c2007c574a6a37ed6dc090ec15952991eb3a85c830"
+  },
+  {
+    "path": "vendor/audio-capture/x64-win32/audio-capture.node",
+    "kind": "binary",
+    "size": 492544,
+    "sha256": "a7e7529addd7ad156fbf95b3d3ee8cba0c2c2bff7e5998b1c85607e936e5411b"
+  },
+  {
+    "path": "vendor/ripgrep/arm64-darwin/rg",
+    "kind": "binary",
+    "size": 4393360,
+    "sha256": "f052af072a844ef3a2189a269da0c061fc90750ce85af7e91e8c8fcc88047a40"
+  },
+  {
+    "path": "vendor/ripgrep/arm64-linux/rg",
+    "kind": "binary",
+    "size": 5248072,
+    "sha256": "717b20bd9176b6b81ecc9930d342cac9dfa3a129f194ea3923ac5a7fedad7ddf"
+  },
+  {
+    "path": "vendor/ripgrep/arm64-win32/rg.exe",
+    "kind": "binary",
+    "size": 3941888,
+    "sha256": "bb0b1cf86e6cb3407d1f1aee9761d587842508513a6828420d40a40b966a05ec"
+  },
+  {
+    "path": "vendor/ripgrep/COPYING",
+    "kind": "text",
+    "size": 126,
+    "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f"
+  },
+  {
+    "path": "vendor/ripgrep/x64-darwin/rg",
+    "kind": "binary",
+    "size": 5162504,
+    "sha256": "923dcc25cab57d33f4e7dd0476d4b74a554401a38817e246a8d6101dcd51c50f"
+  },
+  {
+    "path": "vendor/ripgrep/x64-linux/rg",
+    "kind": "binary",
+    "size": 6597984,
+    "sha256": "f401154e2393f9002ac77e419f9ee5521c18f4f8cd3e32293972f493ba06fce7"
+  },
+  {
+    "path": "vendor/ripgrep/x64-win32/rg.exe",
+    "kind": "binary",
+    "size": 5407744,
+    "sha256": "f162b54de2adfc72d78adb1dbada2dedda111ae0a5e2f6e9500f4f909664c5d2"
+  },
+  {
+    "path": "vendor/tree-sitter-bash/arm64-darwin/tree-sitter-bash.node",
+    "kind": "binary",
+    "size": 1876528,
+    "sha256": "60c4cfe5e595091d54d93a61577a2e77e6d2efb8f05de15fd59e2b19a15ad841"
+  },
+  {
+    "path": "vendor/tree-sitter-bash/arm64-linux/tree-sitter-bash.node",
+    "kind": "binary",
+    "size": 1791896,
+    "sha256": "c484c05834fc570172e930645a50e536de69afd6d9fcc349e6a4fa0ae64e71ca"
+  },
+  {
+    "path": "vendor/tree-sitter-bash/arm64-win32/tree-sitter-bash.node",
+    "kind": "binary",
+    "size": 1675776,
+    "sha256": "35105a69cf9d647659656c531c84552f417f8ca5ca957952f28766fbc6fcbb26"
+  },
+  {
+    "path": "vendor/tree-sitter-bash/x64-darwin/tree-sitter-bash.node",
+    "kind": "binary",
+    "size": 1825380,
+    "sha256": "6a6c361d33ce8ca4f2551a8bfc4f6b1f5b6dae0d90ff3d01139fe4c743508048"
+  },
+  {
+    "path": "vendor/tree-sitter-bash/x64-linux/tree-sitter-bash.node",
+    "kind": "binary",
+    "size": 1811624,
+    "sha256": "bcb0a798fbee1660da12949714e4cad063f309516e4513b25db79b10a0a2a3c4"
+  },
+  {
+    "path": "vendor/tree-sitter-bash/x64-win32/tree-sitter-bash.node",
+    "kind": "binary",
+    "size": 1674752,
+    "sha256": "232c603c2ed91435ff4f307c04516ac50f413566c5652985e6866273861020ce"
+  }
+]

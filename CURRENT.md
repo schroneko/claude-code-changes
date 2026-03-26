@@ -1,11 +1,11 @@
-# Claude Code Inventory 2.1.83
+# Claude Code Inventory 2.1.84
 
 ## Summary
 - CLI commands: 0
 - Hidden CLI commands: 0
-- Slash commands: 82
-- Environment variables: 202
-- Models: 113
+- Slash commands: 35
+- Environment variables: 207
+- Models: 115
 - SDK tools: 24
 - Settings: 0
 
@@ -81,6 +81,7 @@
 - claude --strict-mcp-config - Only use MCP servers from --mcp-config, ignoring all other MCP configurations
 - claude --system-prompt <prompt> - System prompt to use for the session
 - claude --system-prompt-file <file> [hidden] - Read system prompt from a file
+- claude --task-budget <tokens> [hidden] - API-side task budget in tokens (output_config.task_budget)
 - claude --team-name <name> [hidden] - Team name for swarm coordination
 - claude --teammate-mode <mode> [hidden] - How to spawn teammates: "tmux", "in-process", or "auto"
 - claude --teleport [session] [hidden] - Resume a teleport session, optionally specify session ID
@@ -101,95 +102,48 @@
 
 - none
 ## Slash Commands
-### Built-in (77)
-- /add-dir - Add a new working directory
-- /advisor - Configure the advisor model
-- /agents - Manage agent configurations
-- /branch - Create a branch of the current conversation at this point
-- /bridge-kick - Inject bridge failure states for manual recovery testing
-- /brief
-- /btw - Ask a quick side question without interrupting the main conversation
-- /chrome - Claude in Chrome (Beta) settings
-- /clear - Clear conversation history and free up context
-- /color - Set the prompt bar color for this session
-- /commit - Create a git commit
-- /commit-push-pr - Commit, push, and open a PR
-- /compact - Clear conversation history but keep a summary in context. Optional: /compact [instructions for summarization]
-- /config - Open config panel
-- /context - Show current context usage
-- /copy - Copy Claude's last response to clipboard (or /copy N for the Nth-latest)
-- /cost - Show the total cost and duration of the current session
-- /desktop - Continue the current session in Claude Desktop
-- /doctor - Diagnose and verify your Claude Code installation and settings
-- /effort - Set effort level for model usage
-- /exit - Exit the REPL
-- /export - Export the current conversation to a file or clipboard
-- /extra-usage - Configure extra usage to keep working when limits are hit
-- /fast
-- /feedback - Submit feedback about Claude Code
-- /files - List all files currently in context
-- /heapdump - Dump the JS heap to ~/Desktop
-- /help - Show help and available commands
-- /hooks - View hook configurations for tool events
-- /ide - Manage IDE integrations and show status
-- /init
-- /init-verifiers - Create verifier skill(s) for automated verification of code changes
-- /insights
-- /install-github-app - Set up Claude GitHub Actions for a repository
-- /install-slack-app - Install the Claude Slack app
-- /keybindings - Open or create your keybindings configuration file
-- /login - Open or create your keybindings configuration file
-- /logout - Sign out from your Anthropic account
-- /mcp - Manage MCP servers
-- /mobile - Show QR code to download the Claude mobile app
-- /model
-- /output-style - Toggle a searchable tag on the current session
-- /passes
-- /permissions - Manage allow & deny tool permission rules
-- /plan - Enable plan mode or view the current session plan
-- /plugin - Manage Claude Code plugins
-- /privacy-settings - View and update your privacy settings
-- /rate-limit-options
-- /release-notes - View release notes
-- /reload-plugins - Activate pending plugin changes in the current session
-- /remote-control - Connect this terminal for remote-control sessions
-- /remote-env
-- /rename - Rename the current conversation
-- /resume - Resume a previous conversation
-- /review - Review a pull request
-- /rewind - Restore the code and/or conversation to a previous point
-- /sandbox
-- /session - Show remote session URL and QR code
-- /skills - List available skills
-- /stats - Show your Claude Code usage statistics and activity
-- /status - Show Claude Code status including version, model, account, API connectivity, and tool statuses
-- /statusline - Set up Claude Code's status line UI
-- /stickers - Order Claude Code stickers
-- /tag
-- /tasks - List and manage background tasks
-- /terminal-setup - Edit Claude memory files
-- /theme - Change the theme
-- /think-back - Your 2025 Claude Code Year in Review
-- /thinkback-play - Play the thinkback animation
-- /ultraplan - Advanced multi-agent plan mode with our most powerful model (Opus). Runs in Claude Code on the web. See ${mC4}
-- /ultrareview - ~5–15 min · Cloud agent finds and verifies bugs in your branch
-- /upgrade - Upgrade to Max for higher rate limits and more Opus
-- /usage - Show plan usage limits
-- /version - Print the version this session is running (not what autoupdate downloaded)
-- /vim - Toggle between Vim and Normal editing modes
-- /voice - Toggle voice mode
-- /web-setup - Setup Claude Code on the web (requires connecting your GitHub account)
+### Built-in (1)
+- /mcp
 
 ### Plugin-backed (2)
 - /pr-comments - Get comments from a GitHub pull request
 - /security-review - Complete a security review of the pending changes on the current branch
 
-### Inferred (3)
+### Inferred (32)
+- /agents [inferred/medium]
+- /btw [inferred/medium]
+- /chrome [inferred/low]
+- /compact [inferred/low]
+- /config [inferred/medium]
+- /copy [inferred/medium]
+- /doctor - View uncommitted changes and per-turn diffs
 - /dream [inferred/low]
+- /effort [inferred/medium]
+- /extra-usage [inferred/low]
+- /fast [inferred/low]
+- /feedback [inferred/medium]
+- /ide [inferred/low]
+- /install-github-app [inferred/medium]
+- /install-slack-app [inferred/medium]
+- /login [inferred/low]
 - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
 - /memory [inferred/medium]
+- /passes [inferred/low]
+- /permissions [inferred/medium]
+- /plan [inferred/low]
+- /plugin [inferred/medium]
+- /remote-control [inferred/low]
+- /rename [inferred/medium]
+- /sandbox [inferred/low]
+- /skills [inferred/low]
+- /status [inferred/low]
+- /statusline [inferred/medium]
+- /tag [inferred/medium]
+- /theme [inferred/medium]
+- /ultraplan [inferred/medium]
+- /voice [inferred/low]
 
-## Environment Variables (202)
+## Environment Variables (207)
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -198,6 +152,7 @@
 - CLAUDE_AI_AUTHORIZE_URL
 - CLAUDE_AI_INFERENCE_SCOPE
 - CLAUDE_AI_OAUTH_SCOPES
+- CLAUDE_AI_ORIGIN
 - CLAUDE_AI_PROFILE_SCOPE
 - CLAUDE_API_KEY
 - CLAUDE_AUTOCOMPACT_PCT_OVERRIDE
@@ -211,6 +166,7 @@
 - CLAUDE_CODE_ACTION
 - CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD
 - CLAUDE_CODE_ADDITIONAL_PROTECTION
+- CLAUDE_CODE_AGENT_LIST_IN_MESSAGES
 - CLAUDE_CODE_AGENT_NAME
 - CLAUDE_CODE_ALWAYS_ENABLE_EFFORT
 - CLAUDE_CODE_API_BASE_URL
@@ -294,6 +250,8 @@
 - CLAUDE_CODE_IDE_HOST_OVERRIDE
 - CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL
 - CLAUDE_CODE_IDE_SKIP_VALID_CHECK
+- CLAUDE_CODE_IDLE_THRESHOLD_MINUTES
+- CLAUDE_CODE_IDLE_TOKEN_THRESHOLD
 - CLAUDE_CODE_INCLUDE_PARTIAL_MESSAGES
 - CLAUDE_CODE_IS_COWORK
 - CLAUDE_CODE_MAX_OUTPUT_TOKENS
@@ -391,9 +349,10 @@
 - CLAUDE_SESSION_INGRESS_TOKEN_FILE
 - CLAUDE_SKILL_DIR
 - CLAUDE_SONNET_4_6
+- CLAUDE_STREAM_IDLE_TIMEOUT_MS
 - CLAUDE_TMPDIR
 
-## Models (113)
+## Models (115)
 - claude-1.3
 - claude-1.3-100k
 - claude-2.0
@@ -441,6 +400,7 @@
 - claude-code-jetbrains-plugin
 - claude-code-keybindings.json
 - claude-code-marketplace
+- claude-code-on-the-web
 - claude-code-plugins
 - claude-code-releases
 - claude-code-review.yml
@@ -449,6 +409,7 @@
 - claude-code-url-handler
 - claude-code-url-handler.desktop
 - claude-code-user
+- claude-code.cli-no-window
 - claude-code.git
 - claude-context
 - claude-desktop
