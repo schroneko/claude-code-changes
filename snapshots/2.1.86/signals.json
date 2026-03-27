@@ -1,0 +1,1220 @@
+{
+  "version": "2.1.86",
+  "buildTime": "",
+  "cliArguments": [],
+  "cliCommands": [],
+  "cliOptions": [],
+  "slashCommands": [
+    {
+      "name": "/add-dir",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Add a new working directory"
+    },
+    {
+      "name": "/advisor",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Configure the advisor model"
+    },
+    {
+      "name": "/agents",
+      "sources": [
+        "objectNameFallback",
+        "status-hint",
+        "tips"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage agent configurations"
+    },
+    {
+      "name": "/branch",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Create a branch of the current conversation at this point"
+    },
+    {
+      "name": "/bridge-kick",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Inject bridge failure states for manual recovery testing"
+    },
+    {
+      "name": "/brief",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle brief-only mode"
+    },
+    {
+      "name": "/btw",
+      "sources": [
+        "objectNameFallback",
+        "usage"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Ask a quick side question without interrupting the main conversation"
+    },
+    {
+      "name": "/chrome",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Claude in Chrome (Beta) settings"
+    },
+    {
+      "name": "/clear",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Clear conversation history and free up context"
+    },
+    {
+      "name": "/color",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set the prompt bar color for this session"
+    },
+    {
+      "name": "/commit",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Create a git commit"
+    },
+    {
+      "name": "/commit-push-pr",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Commit, push, and open a PR"
+    },
+    {
+      "name": "/compact",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Clear conversation history but keep a summary in context. Optional: /compact [instructions for summarization]"
+    },
+    {
+      "name": "/config",
+      "sources": [
+        "objectNameFallback",
+        "tips"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Open config panel"
+    },
+    {
+      "name": "/context",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show current context usage"
+    },
+    {
+      "name": "/copy",
+      "sources": [
+        "objectNameFallback",
+        "usage"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Copy Claude's last response to clipboard (or /copy N for the Nth-latest)"
+    },
+    {
+      "name": "/cost",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show the total cost and duration of the current session"
+    },
+    {
+      "name": "/desktop",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Continue the current session in Claude Desktop"
+    },
+    {
+      "name": "/diff",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "View uncommitted changes and per-turn diffs"
+    },
+    {
+      "name": "/doctor",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Diagnose and verify your Claude Code installation and settings"
+    },
+    {
+      "name": "/dream",
+      "sources": [
+        "status-hint"
+      ],
+      "confidence": "low",
+      "kind": "inferred"
+    },
+    {
+      "name": "/effort",
+      "sources": [
+        "objectNameFallback",
+        "status-hint",
+        "usage"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set effort level for model usage"
+    },
+    {
+      "name": "/exit",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Exit the REPL"
+    },
+    {
+      "name": "/export",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Export the current conversation to a file or clipboard"
+    },
+    {
+      "name": "/extra-usage",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Configure extra usage to keep working when limits are hit"
+    },
+    {
+      "name": "/fast",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/feedback",
+      "sources": [
+        "objectNameFallback",
+        "tips"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Submit feedback about Claude Code"
+    },
+    {
+      "name": "/files",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "List all files currently in context"
+    },
+    {
+      "name": "/heapdump",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Dump the JS heap to ~/Desktop"
+    },
+    {
+      "name": "/help",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show help and available commands"
+    },
+    {
+      "name": "/hooks",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "View hook configurations for tool events"
+    },
+    {
+      "name": "/ide",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage IDE integrations and show status"
+    },
+    {
+      "name": "/init",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/init-verifiers",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Create verifier skill(s) for automated verification of code changes"
+    },
+    {
+      "name": "/insights",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Generate a report analyzing your Claude Code sessions"
+    },
+    {
+      "name": "/install-github-app",
+      "sources": [
+        "objectNameFallback",
+        "tips"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set up Claude GitHub Actions for a repository"
+    },
+    {
+      "name": "/install-slack-app",
+      "sources": [
+        "objectNameFallback",
+        "tips"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Install the Claude Slack app"
+    },
+    {
+      "name": "/keybindings",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Open or create your keybindings configuration file"
+    },
+    {
+      "name": "/login",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/logout",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Sign out from your Anthropic account"
+    },
+    {
+      "name": "/loop",
+      "sources": [
+        "usage"
+      ],
+      "confidence": "medium",
+      "kind": "inferred",
+      "description": "Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)"
+    },
+    {
+      "name": "/mcp",
+      "sources": [
+        "objectNameFallback",
+        "status-hint",
+        "userFacingNameArrow"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage MCP servers"
+    },
+    {
+      "name": "/memory",
+      "sources": [
+        "objectNameFallback",
+        "status-hint",
+        "tips"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Edit Claude memory files"
+    },
+    {
+      "name": "/mobile",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show QR code to download the Claude mobile app"
+    },
+    {
+      "name": "/model",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/output-style",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Deprecated: use /config to change output style"
+    },
+    {
+      "name": "/passes",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/permissions",
+      "sources": [
+        "objectNameFallback",
+        "status-hint",
+        "tips"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage allow & deny tool permission rules"
+    },
+    {
+      "name": "/plan",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Enable plan mode or view the current session plan"
+    },
+    {
+      "name": "/plugin",
+      "sources": [
+        "objectNameFallback",
+        "status-hint",
+        "usage"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Manage Claude Code plugins"
+    },
+    {
+      "name": "/pr-comments",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin",
+      "description": "Get comments from a GitHub pull request"
+    },
+    {
+      "name": "/privacy-settings",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "View and update your privacy settings"
+    },
+    {
+      "name": "/rate-limit-options",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show options when rate limit is reached"
+    },
+    {
+      "name": "/release-notes",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "View release notes"
+    },
+    {
+      "name": "/reload-plugins",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Activate pending plugin changes in the current session"
+    },
+    {
+      "name": "/remote-control",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Connect this terminal for remote-control sessions"
+    },
+    {
+      "name": "/remote-env",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Configure the default remote environment for teleport sessions"
+    },
+    {
+      "name": "/rename",
+      "sources": [
+        "objectNameFallback",
+        "usage"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Rename the current conversation"
+    },
+    {
+      "name": "/resume",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Resume a previous conversation"
+    },
+    {
+      "name": "/review",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Review a pull request"
+    },
+    {
+      "name": "/rewind",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Restore the code and/or conversation to a previous point"
+    },
+    {
+      "name": "/sandbox",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/security-review",
+      "sources": [
+        "pluginCommand"
+      ],
+      "confidence": "high",
+      "kind": "plugin",
+      "description": "Complete a security review of the pending changes on the current branch"
+    },
+    {
+      "name": "/session",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show remote session URL and QR code"
+    },
+    {
+      "name": "/skills",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "List available skills"
+    },
+    {
+      "name": "/stats",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show your Claude Code usage statistics and activity"
+    },
+    {
+      "name": "/status",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show Claude Code status including version, model, account, API connectivity, and tool statuses"
+    },
+    {
+      "name": "/statusline",
+      "sources": [
+        "objectNameFallback",
+        "tips"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Set up Claude Code's status line UI"
+    },
+    {
+      "name": "/stickers",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Order Claude Code stickers"
+    },
+    {
+      "name": "/tag",
+      "sources": [
+        "objectNameFallback",
+        "usage"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle a searchable tag on the current session"
+    },
+    {
+      "name": "/tasks",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "List and manage background tasks"
+    },
+    {
+      "name": "/terminal-setup",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/theme",
+      "sources": [
+        "objectNameFallback",
+        "tips"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Change the theme"
+    },
+    {
+      "name": "/think-back",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Your 2025 Claude Code Year in Review"
+    },
+    {
+      "name": "/thinkback-play",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Play the thinkback animation"
+    },
+    {
+      "name": "/ultraplan",
+      "sources": [
+        "objectNameFallback",
+        "usage"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/ultrareview",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin"
+    },
+    {
+      "name": "/upgrade",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Upgrade to Max for higher rate limits and more Opus"
+    },
+    {
+      "name": "/usage",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Show plan usage limits"
+    },
+    {
+      "name": "/version",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Print the version this session is running (not what autoupdate downloaded)"
+    },
+    {
+      "name": "/vim",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle between Vim and Normal editing modes"
+    },
+    {
+      "name": "/voice",
+      "sources": [
+        "objectNameFallback",
+        "status-hint"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Toggle voice mode"
+    },
+    {
+      "name": "/web-setup",
+      "sources": [
+        "objectNameFallback"
+      ],
+      "confidence": "high",
+      "kind": "builtin",
+      "description": "Setup Claude Code on the web (requires connecting your GitHub account)"
+    }
+  ],
+  "tools": {
+    "AgentInput": [
+      "description",
+      "prompt",
+      "subagent_type?",
+      "model?",
+      "run_in_background?"
+    ],
+    "BashInput": [
+      "command",
+      "timeout?"
+    ],
+    "TaskOutputInput": [
+      "task_id",
+      "block",
+      "timeout"
+    ],
+    "ExitPlanModeInput": [
+      "allowedPrompts?",
+      "tool",
+      "prompt"
+    ],
+    "FileEditInput": [
+      "file_path",
+      "old_string",
+      "new_string",
+      "replace_all?"
+    ],
+    "FileReadInput": [
+      "file_path",
+      "offset?",
+      "limit?",
+      "pages?"
+    ],
+    "FileWriteInput": [
+      "file_path",
+      "content"
+    ],
+    "GlobInput": [
+      "pattern",
+      "path?"
+    ],
+    "GrepInput": [
+      "pattern",
+      "path?"
+    ],
+    "TaskStopInput": [
+      "task_id?",
+      "shell_id?"
+    ],
+    "ListMcpResourcesInput": [
+      "server?"
+    ],
+    "NotebookEditInput": [
+      "notebook_path",
+      "cell_id?",
+      "new_source",
+      "cell_type?",
+      "edit_mode?"
+    ],
+    "ReadMcpResourceInput": [
+      "server",
+      "uri"
+    ],
+    "TodoWriteInput": [
+      "todos",
+      "content",
+      "status",
+      "activeForm"
+    ],
+    "WebFetchInput": [
+      "url",
+      "prompt"
+    ],
+    "WebSearchInput": [
+      "query",
+      "allowed_domains?",
+      "blocked_domains?"
+    ],
+    "AskUserQuestionInput": [
+      "questions",
+      "question",
+      "header",
+      "options",
+      "label",
+      "description",
+      "preview?"
+    ],
+    "ConfigInput": [
+      "setting",
+      "value?"
+    ],
+    "EnterWorktreeInput": [
+      "name?"
+    ],
+    "ExitWorktreeInput": [
+      "action",
+      "discard_changes?"
+    ]
+  },
+  "models": [
+    "claude-1.3",
+    "claude-1.3-100k",
+    "claude-2.0",
+    "claude-2.1",
+    "claude-3-5-haiku",
+    "claude-3-5-haiku-20241022",
+    "claude-3-5-haiku-20241022-v1",
+    "claude-3-5-haiku-latest",
+    "claude-3-5-sonnet",
+    "claude-3-5-sonnet-20240620",
+    "claude-3-5-sonnet-20241022",
+    "claude-3-5-sonnet-20241022-v2",
+    "claude-3-5-sonnet-v2",
+    "claude-3-7-sonnet",
+    "claude-3-7-sonnet-20250219",
+    "claude-3-7-sonnet-20250219-v1",
+    "claude-3-7-sonnet-latest",
+    "claude-3-haiku",
+    "claude-3-haiku-20240307",
+    "claude-3-opus",
+    "claude-3-opus-20240229",
+    "claude-3-sonnet",
+    "claude-3-sonnet-20240229",
+    "claude-4-opus-20250514",
+    "claude-agent-sdk",
+    "claude-agent-sdk-python",
+    "claude-agent-sdk-typescript",
+    "claude-ai-external-token",
+    "claude-ai.staging.ant.dev",
+    "claude-api",
+    "claude-api.md",
+    "claude-by-anthropic",
+    "claude-cli",
+    "claude-code-20250219",
+    "claude-code-action",
+    "claude-code-client-metadata",
+    "claude-code-default",
+    "claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819",
+    "claude-code-feedback",
+    "claude-code-github-action",
+    "claude-code-guest-passes",
+    "claude-code-guide",
+    "claude-code-hint",
+    "claude-code-jetbrains",
+    "claude-code-jetbrains-plugin",
+    "claude-code-keybindings.json",
+    "claude-code-marketplace",
+    "claude-code-on-the-web",
+    "claude-code-plugins",
+    "claude-code-releases",
+    "claude-code-review.yml",
+    "claude-code-screenshots",
+    "claude-code-settings.json",
+    "claude-code-url-handler",
+    "claude-code-url-handler.desktop",
+    "claude-code-user",
+    "claude-code.cli-no-window",
+    "claude-code.git",
+    "claude-context",
+    "claude-desktop",
+    "claude-dev",
+    "claude-folder",
+    "claude-for-hiring",
+    "claude-haiku",
+    "claude-haiku-3-5",
+    "claude-haiku-4",
+    "claude-haiku-4-5",
+    "claude-haiku-4-5-20251001",
+    "claude-haiku-4-5-20251001-v1",
+    "claude-hidden",
+    "claude-hook-check.txt",
+    "claude-in-chrome",
+    "claude-in-chrome-default-enabled",
+    "claude-in-chrome-mcp",
+    "claude-instant-1.1",
+    "claude-instant-1.1-100k",
+    "claude-instant-1.2",
+    "claude-local",
+    "claude-md-actions",
+    "claude-md-item",
+    "claude-md-section",
+    "claude-opus-4",
+    "claude-opus-4-0",
+    "claude-opus-4-1",
+    "claude-opus-4-1-20250805",
+    "claude-opus-4-1-20250805-v1",
+    "claude-opus-4-20250514",
+    "claude-opus-4-20250514-v1",
+    "claude-opus-4-5",
+    "claude-opus-4-5-20251101",
+    "claude-opus-4-5-20251101-v1",
+    "claude-opus-4-6",
+    "claude-opus-4-6-v1",
+    "claude-plugin",
+    "claude-plugin-directory",
+    "claude-plugin-telemetry-v1",
+    "claude-plugins-official",
+    "claude-proactive",
+    "claude-prompt",
+    "claude-remote-container-id",
+    "claude-remote-session-id",
+    "claude-review",
+    "claude-settings",
+    "claude-sonnet-3-7",
+    "claude-sonnet-4",
+    "claude-sonnet-4-0",
+    "claude-sonnet-4-20250514",
+    "claude-sonnet-4-20250514-v1",
+    "claude-sonnet-4-5",
+    "claude-sonnet-4-5-20250514",
+    "claude-sonnet-4-5-20250929",
+    "claude-sonnet-4-5-20250929-v1",
+    "claude-sonnet-4-6",
+    "claude-sonnet-4.6",
+    "claude-staging.fedstart.com",
+    "claude-swarm",
+    "claude-vscode"
+  ],
+  "envVars": [
+    "CLAUDE_AFTER_LAST_COMPACT",
+    "CLAUDE_AGENT_SDK_CLIENT_APP",
+    "CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS",
+    "CLAUDE_AGENT_SDK_MCP_NO_PREFIX",
+    "CLAUDE_AGENT_SDK_VERSION",
+    "CLAUDE_AI_AUTHORIZE_URL",
+    "CLAUDE_AI_INFERENCE_SCOPE",
+    "CLAUDE_AI_OAUTH_SCOPES",
+    "CLAUDE_AI_ORIGIN",
+    "CLAUDE_AI_PROFILE_SCOPE",
+    "CLAUDE_API_KEY",
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE",
+    "CLAUDE_AUTO_BACKGROUND_TASKS",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR",
+    "CLAUDE_BRIDGE_USE_CCR_V2",
+    "CLAUDE_CHROME_PERMISSION_MODE",
+    "CLAUDE_CODE_ACCESSIBILITY",
+    "CLAUDE_CODE_ACCOUNT_TAGGED_ID",
+    "CLAUDE_CODE_ACCOUNT_UUID",
+    "CLAUDE_CODE_ACTION",
+    "CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD",
+    "CLAUDE_CODE_ADDITIONAL_PROTECTION",
+    "CLAUDE_CODE_AGENT_LIST_IN_MESSAGES",
+    "CLAUDE_CODE_AGENT_NAME",
+    "CLAUDE_CODE_ALWAYS_ENABLE_EFFORT",
+    "CLAUDE_CODE_API_BASE_URL",
+    "CLAUDE_CODE_API_KEY_FILE_DESCRIPTOR",
+    "CLAUDE_CODE_API_KEY_HELPER_TTL_MS",
+    "CLAUDE_CODE_ATTRIBUTION_HEADER",
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW",
+    "CLAUDE_CODE_AUTO_CONNECT_IDE",
+    "CLAUDE_CODE_BASE_REF",
+    "CLAUDE_CODE_BASH_SANDBOX_SHOW_INDICATOR",
+    "CLAUDE_CODE_BLOCKING_LIMIT_OVERRIDE",
+    "CLAUDE_CODE_BRIEF",
+    "CLAUDE_CODE_BRIEF_UPLOAD",
+    "CLAUDE_CODE_BUBBLEWRAP",
+    "CLAUDE_CODE_CLIENT_CERT",
+    "CLAUDE_CODE_CLIENT_KEY",
+    "CLAUDE_CODE_CLIENT_KEY_PASSPHRASE",
+    "CLAUDE_CODE_COMMIT_LOG",
+    "CLAUDE_CODE_CONTAINER_ID",
+    "CLAUDE_CODE_CUSTOM_OAUTH_URL",
+    "CLAUDE_CODE_DATADOG_FLUSH_INTERVAL_MS",
+    "CLAUDE_CODE_DEBUG_LOGS_DIR",
+    "CLAUDE_CODE_DEBUG_LOG_LEVEL",
+    "CLAUDE_CODE_DEBUG_REPAINTS",
+    "CLAUDE_CODE_DIAGNOSTICS_FILE",
+    "CLAUDE_CODE_DISABLE_1M_CONTEXT",
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING",
+    "CLAUDE_CODE_DISABLE_ADVISOR_TOOL",
+    "CLAUDE_CODE_DISABLE_ATTACHMENTS",
+    "CLAUDE_CODE_DISABLE_AUTO_MEMORY",
+    "CLAUDE_CODE_DISABLE_BACKGROUND_TASKS",
+    "CLAUDE_CODE_DISABLE_CLAUDE_MDS",
+    "CLAUDE_CODE_DISABLE_COMMAND_INJECTION_CHECK",
+    "CLAUDE_CODE_DISABLE_CRON",
+    "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS",
+    "CLAUDE_CODE_DISABLE_FAST_MODE",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY",
+    "CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING",
+    "CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS",
+    "CLAUDE_CODE_DISABLE_LEGACY_MODEL_REMAP",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC",
+    "CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK",
+    "CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL",
+    "CLAUDE_CODE_DISABLE_PRECOMPACT_SKIP",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE",
+    "CLAUDE_CODE_DISABLE_THINKING",
+    "CLAUDE_CODE_DISABLE_VIRTUAL_SCROLL",
+    "CLAUDE_CODE_DONT_INHERIT_ENV",
+    "CLAUDE_CODE_EAGER_FLUSH",
+    "CLAUDE_CODE_EFFORT_LEVEL",
+    "CLAUDE_CODE_EMIT_SESSION_STATE_EVENTS",
+    "CLAUDE_CODE_EMIT_TOOL_USE_SUMMARIES",
+    "CLAUDE_CODE_ENABLE_CFC",
+    "CLAUDE_CODE_ENABLE_FINE_GRAINED_TOOL_STREAMING",
+    "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION",
+    "CLAUDE_CODE_ENABLE_SDK_FILE_CHECKPOINTING",
+    "CLAUDE_CODE_ENABLE_TASKS",
+    "CLAUDE_CODE_ENABLE_TELEMETRY",
+    "CLAUDE_CODE_ENABLE_TOKEN_USAGE_ATTACHMENT",
+    "CLAUDE_CODE_ENABLE_XAA",
+    "CLAUDE_CODE_ENHANCED_TELEMETRY_BETA",
+    "CLAUDE_CODE_ENTRYPOINT",
+    "CLAUDE_CODE_ENVIRONMENT_KIND",
+    "CLAUDE_CODE_ENVIRONMENT_RUNNER_VERSION",
+    "CLAUDE_CODE_EXIT_AFTER_FIRST_RENDER",
+    "CLAUDE_CODE_EXIT_AFTER_STOP_DELAY",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS",
+    "CLAUDE_CODE_EXTRA_BODY",
+    "CLAUDE_CODE_EXTRA_METADATA",
+    "CLAUDE_CODE_FILE_READ_MAX_OUTPUT_TOKENS",
+    "CLAUDE_CODE_FORCE_FULL_LOGO",
+    "CLAUDE_CODE_FORCE_GLOBAL_CACHE",
+    "CLAUDE_CODE_FORCE_SANDBOX",
+    "CLAUDE_CODE_FRAME_TIMING_LOG",
+    "CLAUDE_CODE_GIT_BASH_PATH",
+    "CLAUDE_CODE_GLOB_HIDDEN",
+    "CLAUDE_CODE_GLOB_NO_IGNORE",
+    "CLAUDE_CODE_GLOB_TIMEOUT_SECONDS",
+    "CLAUDE_CODE_HOST_HTTP_PROXY_PORT",
+    "CLAUDE_CODE_HOST_PLATFORM",
+    "CLAUDE_CODE_HOST_SOCKS_PROXY_PORT",
+    "CLAUDE_CODE_IDE_HOST_OVERRIDE",
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL",
+    "CLAUDE_CODE_IDE_SKIP_VALID_CHECK",
+    "CLAUDE_CODE_IDLE_THRESHOLD_MINUTES",
+    "CLAUDE_CODE_IDLE_TOKEN_THRESHOLD",
+    "CLAUDE_CODE_INCLUDE_PARTIAL_MESSAGES",
+    "CLAUDE_CODE_IS_COWORK",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS",
+    "CLAUDE_CODE_MAX_RETRIES",
+    "CLAUDE_CODE_MAX_TOOL_USE_CONCURRENCY",
+    "CLAUDE_CODE_MCP_INSTR_DELTA",
+    "CLAUDE_CODE_MCP_SERVER_NAME",
+    "CLAUDE_CODE_MCP_SERVER_URL",
+    "CLAUDE_CODE_NEW_INIT",
+    "CLAUDE_CODE_OAUTH_CLIENT_ID",
+    "CLAUDE_CODE_OAUTH_REFRESH_TOKEN",
+    "CLAUDE_CODE_OAUTH_SCOPES",
+    "CLAUDE_CODE_OAUTH_TOKEN",
+    "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR",
+    "CLAUDE_CODE_ORGANIZATION_UUID",
+    "CLAUDE_CODE_OTEL_FLUSH_TIMEOUT_MS",
+    "CLAUDE_CODE_OTEL_HEADERS_HELPER_DEBOUNCE_MS",
+    "CLAUDE_CODE_OTEL_SHUTDOWN_TIMEOUT_MS",
+    "CLAUDE_CODE_PERFETTO_TRACE",
+    "CLAUDE_CODE_PLAN_MODE_INTERVIEW_PHASE",
+    "CLAUDE_CODE_PLAN_MODE_REQUIRED",
+    "CLAUDE_CODE_PLAN_V2_AGENT_COUNT",
+    "CLAUDE_CODE_PLAN_V2_EXPLORE_AGENT_COUNT",
+    "CLAUDE_CODE_PLUGIN_CACHE_DIR",
+    "CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS",
+    "CLAUDE_CODE_PLUGIN_SEED_DIR",
+    "CLAUDE_CODE_PLUGIN_USE_ZIP_CACHE",
+    "CLAUDE_CODE_POST_FOR_SESSION_INGRESS_V2",
+    "CLAUDE_CODE_PROFILE_QUERY",
+    "CLAUDE_CODE_PROFILE_STARTUP",
+    "CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST",
+    "CLAUDE_CODE_PROXY_RESOLVES_HOSTS",
+    "CLAUDE_CODE_PWSH_PARSE_TIMEOUT_MS",
+    "CLAUDE_CODE_QUESTION_PREVIEW_FORMAT",
+    "CLAUDE_CODE_REMOTE",
+    "CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE",
+    "CLAUDE_CODE_REMOTE_MEMORY_DIR",
+    "CLAUDE_CODE_REMOTE_SEND_KEEPALIVES",
+    "CLAUDE_CODE_REMOTE_SESSION_ID",
+    "CLAUDE_CODE_RESUME_INTERRUPTED_TURN",
+    "CLAUDE_CODE_SAVE_HOOK_ADDITIONAL_CONTEXT",
+    "CLAUDE_CODE_SEARCH_HINTS_IN_LIST",
+    "CLAUDE_CODE_SESSIONEND_HOOKS_TIMEOUT_MS",
+    "CLAUDE_CODE_SESSION_ACCESS_TOKEN",
+    "CLAUDE_CODE_SHELL",
+    "CLAUDE_CODE_SHELL_PREFIX",
+    "CLAUDE_CODE_SIMPLE",
+    "CLAUDE_CODE_SKIP_BEDROCK_AUTH",
+    "CLAUDE_CODE_SKIP_FAST_MODE_NETWORK_ERRORS",
+    "CLAUDE_CODE_SKIP_FOUNDRY_AUTH",
+    "CLAUDE_CODE_SKIP_PROMPT_HISTORY",
+    "CLAUDE_CODE_SKIP_VERTEX_AUTH",
+    "CLAUDE_CODE_SLOW_OPERATION_THRESHOLD_MS",
+    "CLAUDE_CODE_SM_COMPACT",
+    "CLAUDE_CODE_SSE_PORT",
+    "CLAUDE_CODE_STALL_TIMEOUT_MS_FOR_TESTING",
+    "CLAUDE_CODE_SUBAGENT_MODEL",
+    "CLAUDE_CODE_SUBPROCESS_ENV_SCRUB",
+    "CLAUDE_CODE_SYNC_PLUGIN_INSTALL",
+    "CLAUDE_CODE_SYNC_PLUGIN_INSTALL_TIMEOUT_MS",
+    "CLAUDE_CODE_SYNTAX_HIGHLIGHT",
+    "CLAUDE_CODE_TAGS",
+    "CLAUDE_CODE_TASK_LIST_ID",
+    "CLAUDE_CODE_TEAMMATE_COMMAND",
+    "CLAUDE_CODE_TEAM_NAME",
+    "CLAUDE_CODE_TEST_FIXTURES_ROOT",
+    "CLAUDE_CODE_TMPDIR",
+    "CLAUDE_CODE_TMUX_PREFIX",
+    "CLAUDE_CODE_TMUX_PREFIX_CONFLICTS",
+    "CLAUDE_CODE_TMUX_SESSION",
+    "CLAUDE_CODE_TMUX_TRUECOLOR",
+    "CLAUDE_CODE_USER_EMAIL",
+    "CLAUDE_CODE_USE_BEDROCK",
+    "CLAUDE_CODE_USE_CCR_V2",
+    "CLAUDE_CODE_USE_COWORK_PLUGINS",
+    "CLAUDE_CODE_USE_FOUNDRY",
+    "CLAUDE_CODE_USE_NATIVE_FILE_SEARCH",
+    "CLAUDE_CODE_USE_POWERSHELL_TOOL",
+    "CLAUDE_CODE_USE_VERTEX",
+    "CLAUDE_CODE_WEBSOCKET_AUTH_FILE_DESCRIPTOR",
+    "CLAUDE_CODE_WORKER_EPOCH",
+    "CLAUDE_CODE_WORKSPACE_HOST_PATHS",
+    "CLAUDE_CONFIG_DIR",
+    "CLAUDE_COWORK_MEMORY_EXTRA_GUIDELINES",
+    "CLAUDE_COWORK_MEMORY_PATH_OVERRIDE",
+    "CLAUDE_DEBUG",
+    "CLAUDE_ENABLE_STREAM_WATCHDOG",
+    "CLAUDE_ENV_FILE",
+    "CLAUDE_FORCE_DISPLAY_SURVEY",
+    "CLAUDE_HAIKU_4_5",
+    "CLAUDE_LOCAL_OAUTH_API_BASE",
+    "CLAUDE_LOCAL_OAUTH_APPS_BASE",
+    "CLAUDE_LOCAL_OAUTH_CONSOLE_BASE",
+    "CLAUDE_OPUS_4_6",
+    "CLAUDE_PLUGIN_DATA",
+    "CLAUDE_PLUGIN_OPTION_",
+    "CLAUDE_PLUGIN_ROOT",
+    "CLAUDE_PROJECT_DIR",
+    "CLAUDE_REPL_MODE",
+    "CLAUDE_SESSION_ID",
+    "CLAUDE_SESSION_INGRESS_TOKEN_FILE",
+    "CLAUDE_SKILL_DIR",
+    "CLAUDE_SONNET_4_6",
+    "CLAUDE_STREAM_IDLE_TIMEOUT_MS",
+    "CLAUDE_TMPDIR",
+    "CLAUDE_TRUSTED_DEVICE_TOKEN"
+  ],
+  "settings": {}
+}

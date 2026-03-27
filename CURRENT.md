@@ -1,11 +1,11 @@
-# Claude Code Inventory 2.1.85
+# Claude Code Inventory 2.1.86
 
 ## Summary
 - CLI commands: 0
 - Hidden CLI commands: 0
 - Slash commands: 83
-- Environment variables: 213
-- Models: 115
+- Environment variables: 215
+- Models: 117
 - SDK tools: 20
 - Settings: 0
 
@@ -107,7 +107,7 @@
 - /dream [inferred/low]
 - /loop - Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m)
 
-## Environment Variables (213)
+## Environment Variables (215)
 - CLAUDE_AFTER_LAST_COMPACT
 - CLAUDE_AGENT_SDK_CLIENT_APP
 - CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS
@@ -309,6 +309,7 @@
 - CLAUDE_HAIKU_4_5
 - CLAUDE_LOCAL_OAUTH_API_BASE
 - CLAUDE_LOCAL_OAUTH_APPS_BASE
+- CLAUDE_LOCAL_OAUTH_CONSOLE_BASE
 - CLAUDE_OPUS_4_6
 - CLAUDE_PLUGIN_DATA
 - CLAUDE_PLUGIN_OPTION_
@@ -321,8 +322,9 @@
 - CLAUDE_SONNET_4_6
 - CLAUDE_STREAM_IDLE_TIMEOUT_MS
 - CLAUDE_TMPDIR
+- CLAUDE_TRUSTED_DEVICE_TOKEN
 
-## Models (115)
+## Models (117)
 - claude-1.3
 - claude-1.3-100k
 - claude-2.0
@@ -418,7 +420,9 @@
 - claude-opus-4-6-v1
 - claude-plugin
 - claude-plugin-directory
+- claude-plugin-telemetry-v1
 - claude-plugins-official
+- claude-proactive
 - claude-prompt
 - claude-remote-container-id
 - claude-remote-session-id
