@@ -1,4 +1,4 @@
-# Claude Code Inventory 2.1.86
+# Claude Code Inventory 2.1.87
 
 ## Summary
 - CLI commands: 0
